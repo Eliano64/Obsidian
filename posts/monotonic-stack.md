@@ -2,8 +2,7 @@
 title: monotonic stack
 tags:
   - DataStructureAndAlgorithm
-  - DataStructureAndAlgorithm
-  - MonotonicStack
+  - Stack
 categories:
   - Data Structure & Algorithm
 date: 2025-07-21 00:00:00

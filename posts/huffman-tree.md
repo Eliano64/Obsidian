@@ -2,6 +2,7 @@
 title: Huffman Tree
 tags:
   - DataStructureAndAlgorithm
+  - Tree
 categories:
   - Data Structure & Algorithm
 date: 2026-06-27 18:43:00

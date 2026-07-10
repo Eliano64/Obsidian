@@ -2,6 +2,7 @@
 title: JavaScript Basics
 tags:
   - Frontend
+  - JavaScript
 categories:
   - Frontend
 date: 2026-06-24 00:00:00

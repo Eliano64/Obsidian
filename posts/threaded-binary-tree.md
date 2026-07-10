@@ -1,10 +1,11 @@
 ---
-title: Threaded Binary Tree 
+title: Threaded Binary Tree
 tags:
   - DataStructureAndAlgorithm
+  - Tree
 categories:
   - Data Structure & Algorithm
-date: 2026-06-27 18:41:00 
+date: 2026-06-27 18:41:00
 katex: true
 ---
 

@@ -3,6 +3,7 @@ title: C and Cpp Compilation
 tags:
   - Compiler
 categories:
+  - Computer Organization
 date: 2026-06-24 00:00:00
 katex: true
 ---

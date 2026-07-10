@@ -1,10 +1,11 @@
 ---
-title: Tree Forest And Binary Tree Conversion 
+title: Tree Forest And Binary Tree Conversion
 tags:
   - DataStructureAndAlgorithm
+  - Tree
 categories:
   - Data Structure & Algorithm
-date: 2026-06-27 18:42:00 
+date: 2026-06-27 18:42:00
 katex: true
 ---
 

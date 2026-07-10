@@ -1,8 +1,6 @@
 ---
 title: Linux Index
 tags:
-  - Linux
-  - Bash
   - Shell
 categories:
   - Linux

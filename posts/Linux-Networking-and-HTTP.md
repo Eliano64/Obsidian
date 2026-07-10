@@ -1,7 +1,6 @@
 ---
 title: Linux Networking and HTTP
 tags:
-  - Linux
   - Network
 categories:
   - Linux

@@ -1,7 +1,6 @@
 ---
 title: Cpp STL Containers
 tags:
-  - DataStructureAndAlgorithm
   - STL
   - Container
 categories:

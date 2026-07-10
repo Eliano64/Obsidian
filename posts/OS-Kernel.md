@@ -2,6 +2,7 @@
 title: OS Kernel
 tags:
   - OperatingSystem
+  - Overview
 categories:
   - Operating System
 date: 2026-07-10 00:00:00

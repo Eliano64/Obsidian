@@ -1,10 +1,9 @@
 ---
 title: Cpp Competitive Programming Idioms
 tags:
-  - DataStructureAndAlgorithm
   - Lambda
 categories:
-  - Tool
+  - Cpp
 date: 2026-06-24 00:00:00
 katex: true
 ---

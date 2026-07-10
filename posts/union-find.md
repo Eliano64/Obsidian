@@ -1,10 +1,11 @@
 ---
-title: Union Find 
+title: Union Find
 tags:
   - DataStructureAndAlgorithm
+  - Tree
 categories:
   - Data Structure & Algorithm
-date: 2026-06-27 18:44:00 
+date: 2026-06-27 18:44:00
 katex: true
 ---
 

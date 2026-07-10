@@ -1,10 +1,9 @@
 ---
 title: Nginx
 tags:
-  - Tool
   - Nginx
 categories:
-  - Tool
+  - Base Knowledge
 date: 2025-11-29 00:00:00
 katex: true
 ---

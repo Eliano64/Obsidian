@@ -4,12 +4,17 @@ tags:
   - Frontend
   - HTML
   - CSS
-  - React
 categories:
   - Frontend
 date: 2026-06-26 00:00:00
 katex: true
 ---
+
+> [!TODO]
+> [x] JS
+> [ ] html
+> [ ] css
+> [ ] framework: React as example
 
 # Frontend Learning Index
 

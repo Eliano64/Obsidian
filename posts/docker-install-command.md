@@ -2,9 +2,8 @@
 title: docker install command
 tags:
   - Docker
-  - Tool
 categories:
-  - tool
+  - Base Knowledge
 date: 2025-09-26 00:00:00
 katex: true
 ---

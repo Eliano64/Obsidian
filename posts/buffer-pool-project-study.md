@@ -4,7 +4,7 @@ tags:
   - DataStructureAndAlgorithm
   - Cache
 categories:
-  - Cache
+  - Data Structure & Algorithm
 date: 2025-08-04 00:00:00
 katex: true
 ---

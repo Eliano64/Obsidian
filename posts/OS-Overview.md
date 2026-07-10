@@ -2,9 +2,10 @@
 title: OS Overview
 tags:
   - OperatingSystem
+  - Overview
 categories:
   - Operating System
-date: 2026-07-04 11:13:22
+date: 2026-07-10 20:43:08
 katex: true
 ---
 
@@ -54,7 +55,7 @@ katex: true
 
 图形用户界面属于更直观的用户接口。它把许多命令操作包装成窗口、图标、菜单和按钮，但底层仍会转化为操作系统服务。
 
-程序接口由一组**系统调用**组成。系统调用和 CPU 状态、中断/异常机制关系密切，见 [[CPU-Modes#系统调用|系统调用]]。
+程序接口由一组**系统调用**组成，其作用和执行过程见 [[System-Calls]]。系统调用引发的 CPU 状态切换见 [[CPU-Modes]]。
 
 # 四个特征
 

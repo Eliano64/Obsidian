@@ -1,10 +1,11 @@
 ---
-title: Data Type And ADT 
+title: Data Type And ADT
 tags:
-- DataStructureAndAlgorithm
+  - DataStructureAndAlgorithm
+  - Overview
 categories:
-- Data Structure & Algorithm
-date: 2026-06-27 13:13:25 
+  - Data Structure & Algorithm
+date: 2026-06-27 13:13:25
 katex: true
 ---
 

@@ -2,9 +2,8 @@
 title: Bash Shell Scripting
 tags:
   - Shell
-  - Linux
 categories:
-  - Bash
+  - Linux
 date: 2026-06-26 00:00:00
 katex: true
 ---

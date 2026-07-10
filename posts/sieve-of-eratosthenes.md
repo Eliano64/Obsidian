@@ -2,6 +2,7 @@
 title: sieve of eratosthenes
 tags:
   - DataStructureAndAlgorithm
+  - Mathematics
 categories:
   - Data Structure & Algorithm
 date: 2025-08-24 00:00:00

@@ -1,7 +1,6 @@
 ---
 title: Linux Processes Jobs Performance and Debugging
 tags:
-  - Linux
   - Shell
 categories:
   - Linux
