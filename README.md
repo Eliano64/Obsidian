@@ -1,6 +1,6 @@
 # Obsidian Study Notes
 
-Personal study notes as an Obsidian vault. 283 notes across operating systems, computer organization, networking, data structures and algorithms, programming languages, and tools.
+Personal study notes as an Obsidian vault that are across operating systems, computer organization, networking, data structures and algorithms, programming languages, and tools.
 
 Some notes embed interactive HTML slides via the **Local HTML Card** plugin. You must install it before opening this vault, otherwise slides will not render.
 
