@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="880" viewBox="0 0 1100 880" role="img" aria-labelledby="title desc">
   <title id="title">TCP connection states with state intervals</title>
   <desc id="desc">TCP connection states shown as vertical state intervals for client and server, with handshake and close messages crossing between interval boundaries.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .label{font-size:23px;font-weight:700}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="600" viewBox="0 0 1120 600" role="img" aria-labelledby="title desc">
   <title id="title">总线性能指标关系</title>
   <desc id="desc">展示总线时钟周期、总线时钟频率、总线周期、总线工作频率、总线宽度和总线带宽之间的关系。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

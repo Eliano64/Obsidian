@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="330" viewBox="0 0 980 330" role="img" aria-labelledby="title desc">
   <title id="title">TCP MSS MTU relation</title>
   <desc id="desc">MSS is TCP payload length, MTU contains IP header, TCP header and TCP payload.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.ip{fill:#fee2e2}.tcp{fill:#dbeafe}.mss{fill:#dcfce7}.label{font-size:22px;font-weight:700}.small{font-size:15px}.mid{font-size:17px;font-weight:700}.code{font-family:Consolas,monospace;font-size:15px}
     @media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.ip{fill:#3b0d0d}.tcp{fill:#10213f}.mss{fill:#0f2b1d}}

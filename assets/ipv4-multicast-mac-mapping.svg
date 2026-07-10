@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="430" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
   <title id="title">IPv4 multicast to Ethernet MAC mapping</title>
   <desc id="desc">IPv4 multicast address lower 23 bits map to Ethernet multicast MAC 01-00-5E plus 23 bits, so mapping is not unique.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#f8fafc;stroke:#334155;stroke-width:2}

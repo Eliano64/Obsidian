@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="780" viewBox="0 0 1280 780" role="img" aria-labelledby="title desc">
   <title id="title">Lower Bound Binary Search Decision Tree</title>
   <desc id="desc">Lower_bound decision tree for half-open binary search. All return-position leaves are aligned on the bottom row.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #f8fafc; }
     .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }

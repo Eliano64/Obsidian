@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
   <title id="title">硬布线控制器基本思路</title>
   <desc id="desc">指令操作码、工作周期、节拍信号和状态条件进入组合逻辑，产生微命令和控制信号。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #ffffff; }
     .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 10; }

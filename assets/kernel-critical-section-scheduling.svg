@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="540" viewBox="0 0 1080 540" role="img" aria-labelledby="title desc">
   <title id="title">普通临界区与内核临界区的调度差异</title>
   <desc id="desc">普通临界区访问用户资源时可以调度；内核临界区访问内核管理数据结构时通常不能调度。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --normal:#dcfce7; --kernel:#fee2e2; --data:#fff7ed; --cpu:#dbeafe; --bad:#b91c1c;

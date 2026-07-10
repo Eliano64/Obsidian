@@ -8,11 +8,8 @@ date: 2026-06-24 00:00:00
 katex: true
 ---
 
-# Git Commands and Commit Conventions
 
-本文记录 Git 日常版本管理命令，并说明 `git commit` 提交信息规范。
-
-## 1. 初始化仓库与关联远程仓库
+# 1. 初始化仓库与关联远程仓库
 
 ```bash
 git init
@@ -36,7 +33,7 @@ git push -u origin main
 
 `-u` 会设置本地 `main` 与远程 `origin/main` 的跟踪关系，之后可以直接使用 `git push` / `git pull`。
 
-## 2. 查看状态与差异
+# 2. 查看状态与差异
 
 ```bash
 git status
@@ -50,7 +47,7 @@ git diff --staged
 | `git diff` | 查看工作区尚未暂存的修改 |
 | `git diff --staged` | 查看已经暂存、即将提交的修改 |
 
-## 3. 添加、移动、删除文件
+# 3. 添加、移动、删除文件
 
 ```bash
 git add <file1> <file2>
@@ -72,7 +69,7 @@ git rm <file>
 git rm -r --cached <path>
 ```
 
-## 4. 提交代码
+# 4. 提交代码
 
 ```bash
 git commit -m "<message>"
@@ -85,7 +82,7 @@ git commit -v
 | `git commit -v` | 提交时在编辑器中显示 diff，便于确认改动 |
 | `git commit <file> -m "msg"` | 提交指定文件中已经暂存或可提交的改动；日常更推荐先 `git add` 再统一提交 |
 
-## 5. 查看历史与提交详情
+# 5. 查看历史与提交详情
 
 ```bash
 git log
@@ -99,7 +96,7 @@ git show HEAD^
 - `HEAD^`：当前提交的父提交。
 - `HEAD~5`：向前第 5 个祖先提交；比 `^5` 更符合“往前 5 个版本”的直觉。`HEAD^5` 表示第 5 个父提交，通常只在合并提交中有意义。
 
-## 6. 分支管理
+# 6. 分支管理
 
 ```bash
 git branch
@@ -123,7 +120,7 @@ git merge <branch_name>
 
 `checkout` 仍然可用，但新版本 Git 更推荐用 `switch` 处理分支切换，用 `restore` 处理文件恢复，语义更清楚。
 
-## 7. 拉取、获取与推送
+# 7. 拉取、获取与推送
 
 ```bash
 git fetch origin
@@ -139,7 +136,7 @@ git push
 | `git pull --rebase` | 拉取后把本地提交 rebase 到远程提交之后 |
 | `git push` | 推送本地提交到远程 |
 
-## 8. 回退与撤销
+# 8. 回退与撤销
 
 ```bash
 git restore <file>
@@ -160,7 +157,7 @@ git revert <commit_id>
 - 自己本地还没推送的历史，可以谨慎 `reset`。
 - 已经推送、别人可能基于它工作的历史，优先 `revert`。
 
-## 9. Conventional Commits 提交规范
+# 9. Conventional Commits 提交规范
 
 推荐格式：
 
@@ -180,7 +177,7 @@ feat(auth): 添加用户登录功能
 使用 JWT 实现用户登录状态保持，并引入 token 过期检查。
 ```
 
-### 字段说明
+## 字段说明
 
 | 部分 | 说明 |
 |---|---|
@@ -190,7 +187,7 @@ feat(auth): 添加用户登录功能
 | `body` | 详细说明，可选，适合说明动机和影响 |
 | `footer` | issue 关联、BREAKING CHANGE 等，可选 |
 
-### 常见 type
+## 常见 type
 
 | type | 含义 |
 |---|---|
@@ -205,7 +202,7 @@ feat(auth): 添加用户登录功能
 | `ci` | CI 配置相关修改 |
 | `revert` | 回滚提交 |
 
-### 提交信息写作建议
+## 提交信息写作建议
 
 - subject 简短明确，尽量一眼看懂改动。
 - 英文项目常用祈使句：`add login page`，不要写成 `added login page`。
@@ -214,7 +211,7 @@ feat(auth): 添加用户登录功能
 - 修复 issue 时可在 footer 写：`closes #123`。
 - 破坏兼容时写：`BREAKING CHANGE: ...`。
 
-## 10. commit 辅助工具
+## commit 辅助工具
 
 ### commitizen
 
@@ -247,7 +244,7 @@ cz
 git config --global commit.template ~/.gitmessage.txt
 ```
 
-## 11. 语义化版本 SemVer
+# 10. 语义化版本 SemVer
 
 版本号格式：
 
@@ -262,3 +259,24 @@ MAJOR.MINOR.PATCH
 | `PATCH` | 向后兼容的问题修复 |
 
 提交规范和语义化版本可以配合使用：例如 `feat` 对应 minor，`fix` 对应 patch，`BREAKING CHANGE` 对应 major。
+
+# 11. 文件忽略
+
+`.gitignore` 用于声明不应纳入版本控制的文件和目录。每行是一条匹配规则，路径相对于 `.gitignore` 所在目录；以 `/` 结尾表示目录，以 `!` 开头可重新纳入此前被忽略的路径。例如：
+
+```gitignore
+# 忽略所有日志文件
+*.log
+
+# 忽略项目根目录下的构建产物
+/dist/
+
+# 保留日志目录中的示例文件
+!logs/example.log
+```
+
+但`.gitignore` 只影响“未被 Git 跟踪”的文件。若文件以前已经被提交进仓库了，那么即使之后加 ignore，修改后它们仍会显示为 `M` / `D`。要让 Git 以后不再跟踪它们，需要从索引移除：
+
+```
+git rm -r --cached <name>
+```

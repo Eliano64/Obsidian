@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" role="img" aria-labelledby="title desc">
   <title id="title">Complete binary tree</title>
   <desc id="desc">A complete binary tree and a counterexample where a right child exists without the left child.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--fg:#111827;--muted:#475569;--line:#334155;--bad:#dc2626;--node:#fff;--accent:#2563eb;--fill:#dbeafe}
     @media(prefers-color-scheme:dark){:root{--fg:#e5e7eb;--muted:#cbd5e1;--line:#94a3b8;--bad:#f87171;--node:#0f172a;--accent:#60a5fa;--fill:#172554}}
     text{fill:var(--fg);font-family:"Segoe UI",Arial,sans-serif}.title{font-size:25px;font-weight:700}.small{font-size:16px;fill:var(--muted)}.node{fill:var(--node);stroke:var(--line);stroke-width:2}.root{fill:var(--fill);stroke:var(--accent);stroke-width:3}.edge{stroke:var(--line);stroke-width:2.2}.bad{stroke:var(--bad)}.badtext{fill:var(--bad);font-weight:700}.num{font-size:17px;font-weight:700;text-anchor:middle}.label{font-size:20px;font-weight:700}

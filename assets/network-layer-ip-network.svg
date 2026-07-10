@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-labelledby="title desc">
   <title id="title">异构网络经 IP 层互联</title>
   <desc id="desc">多个底层实现不同的网络通过路由器互联，网络层用统一 IP 地址和转发规则屏蔽链路差异。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #f8fafc; }
     .iparea { fill: #ecfeff; stroke: #0891b2; stroke-width: 2.5; stroke-dasharray: 9 7; }

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
   <title id="title">RTT 往返时间</title>
   <desc id="desc">客户端发出请求到收到服务端响应的往返时序图。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#64748b; --line:#cbd5e1;
       --req:#dbeafe; --req-line:#2563eb; --resp:#dcfce7; --resp-line:#16a34a; --rtt:#fef3c7; --rtt-line:#d97706;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620" role="img" aria-labelledby="title desc">
   <title id="title">Instruction cycle flow</title>
   <desc id="desc">Instruction execution flow: fetch, optional indirect addressing, execute, optional interrupt handling.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
   <title id="title">cmp and conditional branch flow</title>
   <desc id="desc">cmp subtracts operands, updates flags, and conditional jump reads flags to decide control flow.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--code:#dbeafe;--alu:#dcfce7;--flag:#fef3c7;--branch:#fee2e2;--flow:#ede9fe}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--code:#1e3a8a;--alu:#14532d;--flag:#713f12;--branch:#7f1d1d;--flow:#4c1d95}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="540" viewBox="0 0 1180 540" role="img" aria-labelledby="title desc">
   <title id="title">CPU datapath classification</title>
   <desc id="desc">Datapath can be classified by internal connection and by timing organization.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--ink:#172033;--muted:#5f6c80;--line:#526174;--a:#e8f1ff;--b:#eef7ee;--c:#fff2d8;--d:#f6eafe;--box:#fff}
     @media (prefers-color-scheme:dark){:root{--bg:#0f1420;--ink:#e7edf7;--muted:#aab6c8;--line:#91a0b5;--a:#17243a;--b:#18291d;--c:#302417;--d:#2b1c35;--box:#151c2a}}
     svg{background:var(--bg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}

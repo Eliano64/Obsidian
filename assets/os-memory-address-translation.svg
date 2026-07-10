@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">Dynamic Relocation and Memory Protection</title>
   <desc id="desc">A logical address is checked against the limit register and added to the relocation register to form a physical address.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

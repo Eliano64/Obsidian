@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="560" viewBox="0 0 1160 560" role="img" aria-labelledby="title desc">
   <title id="title">CPU datapath and control components</title>
   <desc id="desc">CPU consists of datapath and control unit. Datapath consists of combinational operation elements and sequential state elements.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--ink:#172033;--muted:#5d6980;--line:#526174;--dp:#e8f1ff;--ctl:#fff2d8;--op:#eef7ee;--st:#f6eafe;--chip:#fff}
     @media (prefers-color-scheme:dark){:root{--bg:#0f1420;--ink:#e7edf7;--muted:#aab6c8;--line:#91a0b5;--dp:#17243a;--ctl:#302417;--op:#18291d;--st:#2b1c35;--chip:#151c2a}}
     svg{background:var(--bg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif} text{fill:var(--ink)}

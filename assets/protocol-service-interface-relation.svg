@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">协议、服务和接口的关系</title>
   <desc id="desc">协议发生在对等实体之间，服务由下层提供给上层，接口位于同一系统相邻层之间。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#cbd5e1;--blue:#dbeafe;--bl:#2563eb;--green:#dcfce7;--gl:#16a34a;--amber:#fef3c7;--al:#d97706;--arrow:#475569}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#334155;--blue:#1e3a8a;--bl:#60a5fa;--green:#14532d;--gl:#4ade80;--amber:#713f12;--al:#fbbf24;--arrow:#cbd5e1}}
     .bg{fill:var(--bg)}.card{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.box{fill:var(--blue);stroke:var(--bl);stroke-width:2}.low{fill:var(--green);stroke:var(--gl);stroke-width:2}.sap{fill:var(--amber);stroke:var(--al);stroke-width:2}.proto{stroke:var(--bl);stroke-width:3;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}.svc{stroke:var(--gl);stroke-width:3;fill:none;marker-end:url(#arrow)}.iface{stroke:var(--al);stroke-width:3;fill:none}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
   <title id="title">公共就绪队列与私有就绪队列</title>
   <desc id="desc">左侧展示多个 CPU 共享一个公共就绪队列；右侧展示每个 CPU 拥有自己的私有就绪队列。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --queue:#e6eef9; --cpu:#dbeafe; --cache:#fff7ed; --proc:#2563eb; --proc2:#0f766e; --accent:#b45309;
@@ -27,6 +30,8 @@
     .chipText { fill:#fff; font-size:13px; font-weight:700; }
     .arrow { stroke:var(--line); stroke-width:2; fill:none; marker-end:url(#arrow); }
     .lock { fill:var(--accent); font-size:13px; font-weight:700; }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.chipText{fill:#0f172a}}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">QAM 星座图与格雷码</title>
   <desc id="desc">展示 QAM-16 星座点和格雷码相邻只差一位</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--grid:#cbd5e1;--blue:#2563eb;--amber:#d97706;--red:#dc2626}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--grid:#334155;--blue:#60a5fa;--amber:#fbbf24;--red:#f87171}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.axis{stroke:var(--line);stroke-width:2;marker-end:url(#arrow)}.grid{stroke:var(--grid);stroke-width:1}.pt{fill:var(--blue);stroke:var(--bg);stroke-width:2}.near{stroke:var(--red);stroke-width:2.4;fill:none}.formula{font-size:24px;font-weight:700}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:18px;font-weight:700}.small{font-size:15px;fill:var(--muted)}

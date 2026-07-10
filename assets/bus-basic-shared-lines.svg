@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" aria-labelledby="title desc">
   <title id="title">总线共享线路示意</title>
   <desc id="desc">CPU、主存和多个 I/O 接口共享地址、数据、控制三组总线；同一时刻只允许一个部件向总线发送信息。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

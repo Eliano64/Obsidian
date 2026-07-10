@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="610" viewBox="0 0 1080 610" role="img" aria-labelledby="title desc">
   <title id="title">磁盘几何结构</title>
   <desc id="desc">展示盘面、磁道、扇区、柱面和磁头的关系。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#7b8798;--blue:#2563eb;--green:#059669;--orange:#d97706;--red:#dc2626;--panel:#f8fafc}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--blue:#60a5fa;--green:#34d399;--orange:#fbbf24;--red:#f87171;--panel:#111827}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 27px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 18px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:15px "Microsoft YaHei",sans-serif}.thin{stroke:var(--line);stroke-width:2;fill:none}.disk{fill:none;stroke:var(--blue);stroke-width:3}.sector{fill:var(--orange);opacity:.28;stroke:var(--orange);stroke-width:2}.arm{stroke:var(--red);stroke-width:5;stroke-linecap:round}.head{fill:var(--red)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:1.4;rx:12}.cyl{stroke:var(--green);stroke-width:3;stroke-dasharray:8 7;fill:none}

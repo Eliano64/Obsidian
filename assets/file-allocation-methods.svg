@@ -1,10 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
   <title id="title">File Allocation Methods</title>
   <desc id="desc">Contiguous, linked and indexed file allocation methods.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--fg:#111827;--muted:#475569;--line:#cbd5e1;--panel:#f8fafc;--blue:#2563eb;--green:#059669;--orange:#d97706;--red:#dc2626;--purple:#7c3aed}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#cbd5e1;--line:#475569;--panel:#111827;--blue:#60a5fa;--green:#34d399;--orange:#fbbf24;--red:#f87171;--purple:#c084fc}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.blk{fill:var(--bg);stroke:var(--line);stroke-width:1.5}.used{fill:var(--blue);opacity:.75}.used2{fill:var(--green);opacity:.75}.idx{fill:var(--orange);opacity:.8}.t{fill:var(--fg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.a{stroke:var(--purple);stroke-width:3;fill:none;marker-end:url(#arrow)}
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.used2{fill:#166534;opacity:1}.idx{fill:#92400e;opacity:1}}
   </style>
   <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--purple)"/></marker></defs>
   <rect class="bg" width="1040" height="520"/>

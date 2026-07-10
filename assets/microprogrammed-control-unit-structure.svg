@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="640" viewBox="0 0 1180 640" role="img" aria-labelledby="title desc">
   <title id="title">微程序控制器的基本结构</title>
   <desc id="desc">微程序控制器内部由控制存储器、微指令寄存器、微地址形成部件和微程序计数器组成，IR 的操作码、标志和时钟参与形成后继微地址。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #ffffff; }
     .frame { fill: none; stroke: #334155; stroke-width: 2.2; stroke-dasharray: 10 9; rx: 8; }

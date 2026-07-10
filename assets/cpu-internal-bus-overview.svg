@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" role="img" aria-labelledby="title desc">
   <title id="title">CPU 内部总线示意</title>
   <desc id="desc">展示 CPU 内部寄存器、ALU、MAR、MDR 通过内部总线交换信息，控制器发出控制信号选择数据通路。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
   <title id="title">处理机调度的三个层次</title>
   <desc id="desc">展示高级调度、中级调度、低级调度分别发生在外存、内存、CPU之间。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --panel: #f8fafc;

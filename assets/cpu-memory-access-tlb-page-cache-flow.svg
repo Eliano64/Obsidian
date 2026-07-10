@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" role="img" aria-labelledby="title desc">
   <title id="title">CPU 一次访存中的 TLB、页面和 Cache 命中缺失关系</title>
   <desc id="desc">展示 CPU 发出虚拟地址后，先查 TLB，再必要时查页表；若页面不在主存则缺页，若页面在主存则形成物理地址后查 Cache，Cache 未命中再访问主存。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --ink: #172033;

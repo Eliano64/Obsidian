@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-label="PPP components">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     svg { background: transparent; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; }
     .title { fill: #111827; font-size: 26px; font-weight: 700; }

@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img">
   <title>SACK selective acknowledgement</title>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
     .t{font-size:22px;font-weight:700;fill:#111827}

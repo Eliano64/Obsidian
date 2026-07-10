@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
   <title id="title">调度、分派与进程切换的边界</title>
   <desc id="desc">展示调度器选择进程，分派器交出CPU，进程切换保存和恢复现场。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --blue:#2563eb; --green:#0f766e; --amber:#b45309; --chip:#e6eef9; --shadow:rgba(15,23,42,.12);

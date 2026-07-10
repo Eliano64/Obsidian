@@ -2,7 +2,10 @@
   <title id="title">死锁四个必要条件</title>
   <desc id="desc">死锁必须同时满足互斥、不剥夺、请求并保持、循环等待四个必要条件。</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root { --bg:#fff; --panel:#f8fafc; --line:#cbd5e1; --text:#172033; --muted:#64748b; --a:#dbeafe; --al:#2563eb; --b:#fee2e2; --bl:#dc2626; --c:#fef3c7; --cl:#d97706; --d:#dcfce7; --dl:#16a34a; }
       @media (prefers-color-scheme: dark) { :root { --bg:#0f172a; --panel:#111827; --line:#334155; --text:#e5e7eb; --muted:#94a3b8; --a:#1e3a8a; --al:#60a5fa; --b:#7f1d1d; --bl:#f87171; --c:#713f12; --cl:#fbbf24; --d:#14532d; --dl:#4ade80; } }
       text { font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; fill:var(--text); }

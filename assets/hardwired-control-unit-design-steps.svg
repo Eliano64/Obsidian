@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
   <title id="title">硬布线控制器设计步骤</title>
   <desc id="desc">硬布线控制器从微操作序列分析到选择控制方式、安排时序、设计组合逻辑电路。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #ffffff; }
     .step { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 12; }

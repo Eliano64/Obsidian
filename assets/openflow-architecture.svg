@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="940" height="420" viewBox="0 0 940 420" role="img" aria-labelledby="title desc">
   <title id="title">OpenFlow controller switch flow table</title>
   <desc id="desc">SDN controller manages flow tables in OpenFlow switches through OpenFlow over a secure channel.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #172033; }
     .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 12; }

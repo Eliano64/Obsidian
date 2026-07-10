@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">管程结构</title>
   <desc id="desc">展示管程名、局部共享数据、入口过程、初始化语句、条件变量和互斥入口</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#ffffff;--panel:#f8fafc;--line:#334155;--text:#172033;--muted:#64748b;--blue:#dbeafe;--blue-line:#2563eb;--green:#dcfce7;--green-line:#16a34a;--amber:#fef3c7;--amber-line:#d97706;--red:#fee2e2;--red-line:#dc2626}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--line:#94a3b8;--text:#e5e7eb;--muted:#94a3b8;--blue:#1e3a8a;--blue-line:#60a5fa;--green:#14532d;--green-line:#4ade80;--amber:#713f12;--amber-line:#fbbf24;--red:#7f1d1d;--red-line:#f87171}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:2}.outer{fill:none;stroke:var(--blue-line);stroke-width:3}.data{fill:var(--green);stroke:var(--green-line);stroke-width:2}.proc{fill:var(--blue);stroke:var(--blue-line);stroke-width:2}.cond{fill:var(--amber);stroke:var(--amber-line);stroke-width:2}.init{fill:var(--red);stroke:var(--red-line);stroke-width:2}.arrow{fill:none;stroke:var(--line);stroke-width:2.5;marker-end:url(#arrow)}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:20px;font-weight:700}.small{font-size:16px;fill:var(--muted)}.note{font-size:17px}

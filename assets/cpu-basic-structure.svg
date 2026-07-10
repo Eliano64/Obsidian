@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="660" viewBox="0 0 1160 660" role="img" aria-labelledby="title desc">
   <title id="title">CPU basic structure</title>
   <desc id="desc">CPU is divided into datapath oriented execution resources and control resources. Control signals drive data movement between registers, ALU, memory interface registers, and system buses.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

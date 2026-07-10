@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1060" height="520" viewBox="0 0 1060 520">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#ffffff;--ink:#172033;--muted:#64748b;--line:#cbd5e1;--a:#dbeafe;--b:#dcfce7;--c:#fef3c7;--accent:#2563eb}
     @media (prefers-color-scheme:dark){:root{--bg:#0b1020;--ink:#e5e7eb;--muted:#a3aab8;--line:#475569;--a:#172554;--b:#064e3b;--c:#713f12;--accent:#60a5fa}}
     text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:var(--ink)}

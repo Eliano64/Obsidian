@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">调度计算示例甘特图</title>
   <desc id="desc">横轴为时间，纵轴为进程，P1 在 0 到 4 运行，P2 在 4 到 7 运行，P3 在 7 到 9 运行。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --panel: #f8fafc;
@@ -95,6 +98,8 @@
       font-size: 13px;
       font-weight: 700;
     }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.barText{fill:#0f172a}}
   </style>
 
   <text class="title" x="490" y="40" text-anchor="middle">调度计算示例甘特图</text>

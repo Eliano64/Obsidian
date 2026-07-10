@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" aria-labelledby="title desc">
   <title id="title">PCB organization by process state</title>
   <desc id="desc">The operating system organizes PCB records by running, ready, and blocked states.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--fg:#111827;--muted:#64748b;--line:#94a3b8;--blue:#dbeafe;--green:#dcfce7;--amber:#fef3c7;--red:#fee2e2;--violet:#ede9fe;--accent:#2563eb}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--fg:#e5e7eb;--muted:#94a3b8;--line:#64748b;--blue:#1e3a8a;--green:#14532d;--amber:#713f12;--red:#7f1d1d;--violet:#4c1d95;--accent:#60a5fa}}
     .bg{fill:var(--bg)} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:var(--fg)} .title{font-size:26px;font-weight:700}.h{font-size:19px;font-weight:700}.t{font-size:15px}.small{font-size:13px;fill:var(--muted)}.box{stroke:var(--line);stroke-width:2;rx:10}.pcb{stroke:var(--line);stroke-width:2;rx:8}.arrow{fill:none;stroke:var(--accent);stroke-width:2.5;marker-end:url(#arrow)}

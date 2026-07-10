@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" role="img" aria-labelledby="title desc">
   <title id="title">Matrix Compressed Storage</title>
   <desc id="desc">Stored regions of symmetric, triangular, tridiagonal, and sparse matrices.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --ink:#17212b;
       --muted:#5b6876;

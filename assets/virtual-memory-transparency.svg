@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
   <title id="title">虚拟存储的透明性与软硬件分工</title>
   <desc id="desc">展示进程只看到虚拟地址空间，硬件完成地址变换与缺页检测，操作系统负责调页、分配、置换和页表维护。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --panel: #f8fafc;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">网络、互联网、因特网关系</title>
   <desc id="desc">展示网络、互联网和因特网从小到大的关系</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--line:#334155;--text:#172033;--muted:#64748b;--blue:#dbeafe;--blue-line:#2563eb;--green:#dcfce7;--green-line:#16a34a;--amber:#fef3c7;--amber-line:#d97706}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--line:#94a3b8;--text:#e5e7eb;--muted:#94a3b8;--blue:#1e3a8a;--blue-line:#60a5fa;--green:#14532d;--green-line:#4ade80;--amber:#713f12;--amber-line:#fbbf24}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:2}.network{fill:var(--blue);stroke:var(--blue-line);stroke-width:2.5}.internet{fill:var(--green);stroke:var(--green-line);stroke-width:3}.global{fill:none;stroke:var(--amber-line);stroke-width:4;stroke-dasharray:10 8}.arrow{fill:none;stroke:var(--line);stroke-width:2.4;marker-end:url(#arrow)}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:20px;font-weight:700}.small{font-size:16px;fill:var(--muted)}.tiny{font-size:14px;fill:var(--muted)}

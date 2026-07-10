@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">数据报服务和虚电路服务对比</title>
   <desc id="desc">数据报服务让每个分组独立携带完整目的地址；虚电路服务先建立逻辑连接，后续分组携带虚电路号。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #f8fafc; }
     .panel { fill: #fff; stroke: #cbd5e1; stroke-width: 2; }

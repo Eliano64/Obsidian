@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
   <title id="title">CIDR 最小子网规模判断</title>
   <desc id="desc">把 101.200.16.0/20 划分为 5 个子网，说明可能的最小子网规模。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill:#f8fafc; }
     .text { fill:#0f172a; font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif; font-size:18px; }

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
   <title id="title">Instruction Fetch Cycle</title>
   <desc id="desc">Static diagram showing the common fetch and decode sequence from PC to MAR, memory, MDR, IR, PC update, and CU decode.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #f7f7f4; }
     .panel { fill: #fff; stroke: #ccd4dc; stroke-width: 2; }
     .title { fill: #1f252b; font: 700 30px "Segoe UI", "Microsoft YaHei", sans-serif; }

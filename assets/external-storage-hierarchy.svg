@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="430" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
   <title id="title">外存、主存与 I/O 设备关系</title>
   <desc id="desc">展示 CPU 直接访问主存，辅存数据通常先调入主存，同时外存设备也属于 I/O 设备。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#8090a3;--cpu:#2563eb;--mem:#059669;--io:#d97706;--soft1:#dbeafe;--soft2:#d1fae5;--soft3:#ffedd5;--panel:#f8fafc}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--cpu:#60a5fa;--mem:#34d399;--io:#fbbf24;--soft1:#172554;--soft2:#064e3b;--soft3:#451a03;--panel:#111827}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 26px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 19px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:15px "Microsoft YaHei",sans-serif}.box{rx:12;stroke-width:2}.line{stroke:var(--line);stroke-width:2.5;fill:none;marker-end:url(#a)}.dash{stroke-dasharray:8 7}.panel{fill:var(--panel);stroke:var(--line);stroke-width:1.4;rx:12}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
   <title id="title">C to machine code levels</title>
   <desc id="desc">High-level code is compiled to assembly and assembled to machine code.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--c:#dcfce7;--asm:#dbeafe;--bin:#fee2e2;--tool:#fef3c7}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--c:#14532d;--asm:#1e3a8a;--bin:#7f1d1d;--tool:#713f12}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

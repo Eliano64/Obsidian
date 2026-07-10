@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
   <title id="title">负载均衡与处理机亲和性</title>
   <desc id="desc">图示负载均衡希望迁移任务，处理机亲和性希望进程留在同一 CPU 上，两者存在张力。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --cpu:#dbeafe; --cache:#fff7ed; --queue:#e6eef9; --hot:#fee2e2; --cool:#dcfce7;
@@ -29,6 +32,8 @@
     .procText { fill:#fff; font-size:13px; font-weight:700; }
     .arrow { stroke:var(--accent); stroke-width:2.4; fill:none; marker-end:url(#arrow); }
     .soft { stroke:var(--good); stroke-width:2.4; fill:none; stroke-dasharray:8 6; marker-end:url(#arrowGood); }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.procText{fill:#0f172a}}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

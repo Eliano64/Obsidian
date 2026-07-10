@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
   <title id="title">Multicast forwarding tree prune and graft</title>
   <desc id="desc">Multicast forwarding tree prunes leaf branches without members and grafts them back when members appear.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.node{fill:#fff;stroke:#475569;stroke-width:2}.member{fill:#dcfce7;stroke:#16a34a}.core{fill:#dbeafe;stroke:#2563eb}.link{stroke:#16a34a;stroke-width:4;fill:none}.cut{stroke:#dc2626;stroke-width:4;stroke-dasharray:8 6}.label{font-size:20px;font-weight:700}.small{font-size:14px}@media(prefers-color-scheme:dark){text{fill:#e5e7eb}.node{fill:#0b1220;stroke:#cbd5e1}.member{fill:#0f2b1d;stroke:#4ade80}.core{fill:#10213f;stroke:#60a5fa}.link{stroke:#4ade80}.cut{stroke:#f87171}}</style>
   <text x="480" y="38" text-anchor="middle" class="label">多播转发树：剪枝与嫁接</text>
   <circle cx="480" cy="95" r="28" class="core"/><text x="480" y="101" text-anchor="middle" class="small">源/核心</text>

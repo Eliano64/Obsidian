@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
   <title id="title">IPv6 basic header</title>
   <desc id="desc">IPv6 fixed 40 byte basic header fields.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.head{fill:#eff6ff}.addr{fill:#f0fdf4}.label{font-size:20px;font-weight:700}.small{font-size:14px}.bit{font-size:13px;fill:#526174}@media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.head{fill:#10213f}.addr{fill:#0f2b1d}.bit{fill:#a8b3c5}}</style>
   <text x="490" y="38" text-anchor="middle" class="label">IPv6 基本首部：固定 40 字节</text>
   <text x="105" y="75" class="bit">0</text><text x="320" y="75" class="bit">8</text><text x="540" y="75" class="bit">16</text><text x="760" y="75" class="bit">24</text><text x="870" y="75" class="bit">31</text>

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
   <title id="title">IEEE 754 floating-point layout</title>
   <desc id="desc">Single precision and double precision bit fields: sign, exponent, and fraction.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #f7f8f6; }
     .text { fill: #20242a; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; }

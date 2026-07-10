@@ -2,7 +2,10 @@
   <title id="title">x86 stack frame layout</title>
   <desc id="desc">A 32-bit x86 stack frame showing arguments, return address, saved ebp, local variables, ebp and esp offsets.</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root {
         --bg: #ffffff;
         --fg: #17212b;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">Insertion sorting methods overview</title>
   <desc id="desc">A compact comparison of direct insertion sort, binary insertion sort, and shell sort.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --panel: #f8fafc;

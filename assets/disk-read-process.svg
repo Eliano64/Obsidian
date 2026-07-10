@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="430" viewBox="0 0 1080 430" role="img" aria-labelledby="title desc">
   <title id="title">磁盘读写过程</title>
   <desc id="desc">展示按柱面号、盘面号、扇区号完成一次磁盘块读写。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#8190a3;--b:#2563eb;--g:#059669;--o:#d97706;--r:#dc2626;--sb:#dbeafe;--sg:#d1fae5;--so:#ffedd5;--sr:#fee2e2}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--b:#60a5fa;--g:#34d399;--o:#fbbf24;--r:#f87171;--sb:#172554;--sg:#064e3b;--so:#451a03;--sr:#450a0a}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 27px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 18px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:15px "Microsoft YaHei",sans-serif}.box{rx:12;stroke-width:2}.arrow{stroke:var(--line);stroke-width:2.5;marker-end:url(#a);fill:none}

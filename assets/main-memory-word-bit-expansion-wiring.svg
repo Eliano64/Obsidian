@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="535pt" height="442pt" viewBox="0 0 535 442" version="1.2">
-<style type="text/css"><![CDATA[
+<style type="text/css">/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+<![CDATA[
 @media (prefers-color-scheme: dark) {
   svg { background: #111827; }
   g[style*="fill:rgb(0%,0%,0%)"] { fill: #e5e7eb !important; }

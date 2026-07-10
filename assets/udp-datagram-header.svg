@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="330" viewBox="0 0 980 330" role="img" aria-labelledby="title desc">
   <title id="title">UDP datagram header</title>
   <desc id="desc">UDP header has four 16-bit fields: source port, destination port, length, and checksum.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#f8fafc;stroke:#334155;stroke-width:2}.head{fill:#dbeafe}.data{fill:#dcfce7}

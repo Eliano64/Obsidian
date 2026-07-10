@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">波分复用合路与分路</title>
   <desc id="desc">展示多个不同波长的光信号经过合波器进入同一根光纤，再由分波器分离</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--grid:#cbd5e1;--b:#2563eb;--g:#16a34a;--a:#d97706;--p:#7c3aed}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--grid:#334155;--b:#60a5fa;--g:#4ade80;--a:#fbbf24;--p:#c4b5fd}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:2}.fiber{fill:none;stroke:var(--line);stroke-width:26;stroke-linecap:round}.w1{fill:none;stroke:var(--b);stroke-width:4}.w2{fill:none;stroke:var(--g);stroke-width:4}.w3{fill:none;stroke:var(--a);stroke-width:4}.w4{fill:none;stroke:var(--p);stroke-width:4}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.head{font-size:20px;font-weight:700}.small{font-size:15px;fill:var(--muted)}

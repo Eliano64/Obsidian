@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="940" height="320" viewBox="0 0 940 320" role="img" aria-labelledby="title desc">
   <title id="title">RED active queue management zones</title>
   <desc id="desc">RED uses average queue length thresholds to decide no drop, probabilistic drop, or forced drop.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #172033; }
     .axis { stroke: #475569; stroke-width: 2.5; marker-end: url(#arrow); }

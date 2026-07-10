@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="330" viewBox="0 0 980 330" role="img" aria-labelledby="title desc">
   <title id="title">MIPS load-use 相关的时空图分析</title>
   <desc id="desc">展示 lw 后紧跟使用结果的 add 时，即使有转发也需要插入一个气泡。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;
@@ -49,6 +52,8 @@
     .wb { fill: var(--wb); }
     .bubble { fill: var(--bubble); }
     .arrow { fill: none; stroke: var(--accent); stroke-width: 3; marker-end: url(#arrow); }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.small{fill:#f8fafc}}
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">

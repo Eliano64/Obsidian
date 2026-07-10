@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-label="IEEE 802局域网数据链路层子层图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; fill:#172033; }
     .box { fill:#fff; stroke:#7d8aa0; stroke-width:2; rx:10; }

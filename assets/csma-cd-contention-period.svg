@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-label="CSMA CD争用期时空图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; fill:#172033; }
     .axis { stroke:#5f6d80; stroke-width:2.2; }

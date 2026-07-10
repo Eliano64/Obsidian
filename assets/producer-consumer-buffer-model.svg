@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
   <title id="title">Producer Consumer Buffer Model</title>
   <desc id="desc">Producer consumer problem with mutex, empty, and full semaphores.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #f8fafc;
       --panel: #ffffff;
@@ -43,6 +46,8 @@
     .orange { fill: var(--orange); font-weight: 700; }
     .arrow { stroke: var(--line); stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
     .dashed { stroke-dasharray: 8 7; }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:light){.code.orange{fill:#92400e}}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

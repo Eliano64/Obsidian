@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="430" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
   <title id="title">MIPS 流水线控制信号流动</title>
   <desc id="desc">展示指令在 ID 阶段译码产生控制信号，控制信号随流水线寄存器向后传递，并在对应阶段使用。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;
@@ -50,6 +53,8 @@
     .mono { font: 700 13px ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; fill: var(--fg); text-anchor: middle; }
     .arrow { fill: none; stroke: var(--accent); stroke-width: 3; marker-end: url(#arrow); }
     .thin { fill: none; stroke: var(--line); stroke-width: 2; marker-end: url(#arrowLine); }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.small{fill:#f8fafc}}
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">

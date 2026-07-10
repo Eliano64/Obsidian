@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
   <title id="title">Single bus datapath</title>
   <desc id="desc">A simplified CPU internal single bus datapath with registers, ALU, MAR, MDR, and control signals.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--ink:#172033;--muted:#5f6c80;--line:#526174;--bus:#345f9f;--box:#fff;--alu:#eef7ee;--mem:#fff2d8;--ctl:#f6eafe}
     @media (prefers-color-scheme:dark){:root{--bg:#0f1420;--ink:#e7edf7;--muted:#aab6c8;--line:#91a0b5;--bus:#86b7ff;--box:#151c2a;--alu:#18291d;--mem:#302417;--ctl:#2b1c35}}
     svg{background:var(--bg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}

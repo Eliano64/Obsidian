@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="650" viewBox="0 0 980 650" role="img" aria-labelledby="title desc">
   <title id="title">Endianness and alignment</title>
   <desc id="desc">A comparison of big endian, little endian, and aligned versus unaligned memory access.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #f7f8f6; }
     .title { fill: #20242a; font: 700 30px "Segoe UI", "Microsoft YaHei", sans-serif; }
     .text { fill: #303842; font: 18px "Segoe UI", "Microsoft YaHei", sans-serif; }

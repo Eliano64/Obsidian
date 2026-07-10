@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" role="img" aria-labelledby="title desc">
   <title id="title">Program and process</title>
   <desc id="desc">A static program file can correspond to multiple dynamic process executions.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--fg:#111827;--muted:#64748b;--line:#94a3b8;--blue:#dbeafe;--green:#dcfce7;--accent:#2563eb}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--fg:#e5e7eb;--muted:#94a3b8;--line:#64748b;--blue:#1e3a8a;--green:#14532d;--accent:#60a5fa}}
     .bg{fill:var(--bg)} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:var(--fg)} .h{font-size:24px;font-weight:700}.t{font-size:16px}.small{font-size:14px;fill:var(--muted)}.box{stroke:var(--line);stroke-width:2;rx:12}.arrow{fill:none;stroke:var(--accent);stroke-width:3;marker-end:url(#arrow)}

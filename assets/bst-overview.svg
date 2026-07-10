@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
   <title id="title">Binary Search Tree Overview</title>
   <desc id="desc">Binary search tree example with left subtree keys less than root and right subtree keys greater than root.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}.node{fill:#e0f2fe;stroke:#0284c7;stroke-width:1.8}.sub{fill:#f1f5f9;stroke:#94a3b8;stroke-dasharray:6 5;stroke-width:1.5}.line{stroke:#64748b;stroke-width:1.8;fill:none}.text{fill:#0f172a;font-family:Arial,"Microsoft YaHei",sans-serif}.muted{fill:#475569;font-family:Arial,"Microsoft YaHei",sans-serif}.accent{fill:#2563eb}
     @media(prefers-color-scheme:dark){.bg{fill:#0b1020}.panel{fill:#111827;stroke:#334155}.node{fill:#172554;stroke:#38bdf8}.sub{fill:#0f172a;stroke:#64748b}.line{stroke:#94a3b8}.text{fill:#e5e7eb}.muted{fill:#cbd5e1}.accent{fill:#60a5fa}}

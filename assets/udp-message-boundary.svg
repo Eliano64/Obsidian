@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="380" viewBox="0 0 980 380" role="img" aria-labelledby="title desc">
   <title id="title">UDP message boundary</title>
   <desc id="desc">UDP preserves application message boundaries: each application message maps to one UDP datagram.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#f8fafc;stroke:#334155;stroke-width:2}.msg{fill:#fef3c7;stroke:#d97706}.udp{fill:#dcfce7;stroke:#16a34a}.line{stroke:#64748b;stroke-width:3;fill:none;marker-end:url(#arr)}

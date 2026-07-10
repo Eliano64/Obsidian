@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="680" viewBox="0 0 1040 680" role="img">
   <title>TCP congestion window cwnd curve — slow start + congestion avoidance + timeout</title>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
     .t{font-size:22px;font-weight:700;fill:#111827}
@@ -56,6 +59,8 @@
       .lb-green{fill:#071a10}
       .lb-red{fill:#220808}
     }
+    /* contrast-audit-fix */
+  .contrast-label{fill:#fff;paint-order:stroke fill;stroke:#065f46;stroke-width:2px}@media(prefers-color-scheme:dark){.contrast-label{stroke:#052e16}}
   </style>
 
   <text x="520" y="34" text-anchor="middle" class="t">TCP 拥塞窗口 cwnd 变化曲线 — 慢开始 + 拥塞避免（单位：MSS）</text>
@@ -122,7 +127,7 @@
   <!-- Slow start label -->
   <rect x="100" y="90" width="130" height="26" rx="4" class="tag-g"/>
   <text x="165" y="100" text-anchor="middle" class="sw" style="font-size:11px;">慢开始：指数增长</text>
-  <text x="165" y="115" text-anchor="middle" class="ss">每收到 1 个 ACK → cwnd += 1</text>
+  <text x="165" y="115" text-anchor="middle" class="ss contrast-label">每收到 1 个 ACK → cwnd += 1</text>
   <text x="165" y="130" text-anchor="middle" class="ss">每轮 cwnd 翻倍</text>
 
   <!-- === PHASE 1: Congestion Avoidance === -->

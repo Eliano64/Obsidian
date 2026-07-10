@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="620" viewBox="0 0 1160 620" role="img" aria-labelledby="title desc">
   <title id="title">调度指标统一时间轴</title>
   <desc id="desc">用三个进程的到达、运行、完成时间展示响应时间、等待时间、周转时间和带权周转时间的计算关系。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --blue:#2563eb; --green:#0f766e; --amber:#b45309; --red:#b42318; --chip:#e6eef9;
@@ -31,6 +34,8 @@
     .greenText { fill:var(--green); font-size:14px; font-weight:700; }
     .amberText { fill:var(--amber); font-size:14px; font-weight:700; }
     .redText { fill:var(--red); font-size:14px; font-weight:700; }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.run1{fill:#1e3a8a;opacity:1}.run2{fill:#14532d;opacity:1}.run3{fill:#78350f;opacity:1}}
   </style>
 
   <text class="title" x="580" y="42" text-anchor="middle">调度指标统一时间轴</text>

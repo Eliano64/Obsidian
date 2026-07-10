@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
   <title id="title">五层原理体系结构</title>
   <desc id="desc">从应用层到物理层展示五层网络体系结构的主要职责、典型标识和数据单元。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#cbd5e1;--app:#dbeafe;--app-l:#2563eb;--tran:#dcfce7;--tran-l:#16a34a;--net:#fef3c7;--net-l:#d97706;--link:#fee2e2;--link-l:#dc2626;--phy:#ede9fe;--phy-l:#7c3aed}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#334155;--app:#1e3a8a;--app-l:#60a5fa;--tran:#14532d;--tran-l:#4ade80;--net:#713f12;--net-l:#fbbf24;--link:#7f1d1d;--link-l:#f87171;--phy:#4c1d95;--phy-l:#a78bfa}}
     .bg{fill:var(--bg)} .card{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.box{stroke-width:2.2;rx:12}

@@ -2,7 +2,10 @@
   <title id="title">哲学家就餐问题三种破局方式</title>
   <desc id="desc">对比限制最多四人拿筷子、奇偶哲学家拿筷子顺序不同、互斥执行拿筷子动作三种防止死锁的思路。</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root {
         --bg: #ffffff;
         --panel: #f8fafc;

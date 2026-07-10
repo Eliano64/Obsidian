@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="540" viewBox="0 0 1040 540" role="img" aria-labelledby="title desc">
   <title id="title">流水线性能时空图</title>
   <desc id="desc">用四段流水线处理五个任务，展示装入、稳定输出和排空过程，以及总时间 k+n-1 个周期。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

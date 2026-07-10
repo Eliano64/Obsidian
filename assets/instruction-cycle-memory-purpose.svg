@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
   <title id="title">Memory access purposes in instruction cycles</title>
   <desc id="desc">Fetch, indirect, execute, and interrupt cycles may all access memory, but their purposes are different.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;

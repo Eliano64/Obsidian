@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="310" viewBox="0 0 1040 310" role="img" aria-labelledby="title desc">
   <title id="title">TCP send window P1 P2 P3</title>
   <desc id="desc">TCP send window is divided by P1, P2, P3 into acknowledged, sent but unacknowledged, sendable, and unsendable regions.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .label{font-size:22px;font-weight:700}.small{font-size:14px}.mid{font-size:16px;font-weight:700}.code{font-family:Consolas,monospace;font-size:15px}

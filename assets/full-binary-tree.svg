@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
   <title id="title">Full binary tree</title>
   <desc id="desc">A full binary tree of height 4 with level order numbering.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--fg:#111827;--muted:#475569;--line:#334155;--node:#fff;--accent:#2563eb;--fill:#dbeafe}
     @media(prefers-color-scheme:dark){:root{--fg:#e5e7eb;--muted:#cbd5e1;--line:#94a3b8;--node:#0f172a;--accent:#60a5fa;--fill:#172554}}
     text{fill:var(--fg);font-family:"Segoe UI",Arial,sans-serif}.title{font-size:26px;font-weight:700}.small{font-size:17px;fill:var(--muted)}.node{fill:var(--node);stroke:var(--line);stroke-width:2}.root{fill:var(--fill);stroke:var(--accent);stroke-width:3}.edge{stroke:var(--line);stroke-width:2.2}.num{font-size:18px;font-weight:700;text-anchor:middle}

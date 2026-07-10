@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
   <title id="title">DAG and AOV overview</title>
   <desc id="desc">Comparison of DAG, cyclic directed graph, and AOV network.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#0f172a;--muted:#475569;--line:#94a3b8;--edge:#64748b;--good:#059669;--bad:#dc2626;--blue:#2563eb}
     @media (prefers-color-scheme: dark){:root{--bg:#0b1020;--panel:#111827;--text:#f8fafc;--muted:#cbd5e1;--line:#64748b;--edge:#94a3b8;--good:#34d399;--bad:#f87171;--blue:#60a5fa}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:1.4}.title{fill:var(--text);font:700 25px system-ui,Segoe UI,sans-serif}.h{fill:var(--text);font:700 18px system-ui,Segoe UI,sans-serif}.t{fill:var(--muted);font:14px system-ui,Segoe UI,sans-serif}.edge{stroke:var(--edge);stroke-width:3.6;fill:none;marker-end:url(#arr)}.good{stroke:var(--good);marker-end:url(#arrGood)}.bad{stroke:var(--bad);marker-end:url(#arrBad)}.node{fill:var(--bg);stroke:var(--edge);stroke-width:2}.label{fill:var(--text);font:700 15px system-ui,Segoe UI,sans-serif}.tag{fill:var(--blue);font:700 14px system-ui,Segoe UI,sans-serif}.cycleText{fill:var(--bad);font:700 13px system-ui,Segoe UI,sans-serif}

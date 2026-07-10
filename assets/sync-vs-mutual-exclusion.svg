@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
   <title id="title">进程同步与进程互斥</title>
   <desc id="desc">对比同步和互斥：同步强调操作先后顺序，互斥强调同一临界资源一次只能一个进程访问。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --a:#2563eb; --b:#0f766e; --resource:#fff7ed; --wait:#fee2e2; --ok:#dcfce7;
@@ -28,6 +31,8 @@
     .white { fill:#fff; font-size:14px; font-weight:700; }
     .arrow { stroke:var(--line); stroke-width:2.2; fill:none; marker-end:url(#arrow); }
     .dash { stroke:var(--line); stroke-width:2; fill:none; stroke-dasharray:8 7; marker-end:url(#arrow); }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.white{fill:#0f172a}}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">

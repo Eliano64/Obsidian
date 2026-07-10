@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-labelledby="title desc">
   <title id="title">Recursion Working Stack</title>
   <desc id="desc">Recursive calls push stack frames and returns pop them in reverse order.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --ink:#17212b;
       --muted:#5b6876;

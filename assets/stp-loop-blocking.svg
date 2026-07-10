@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-label="STP阻塞冗余链路示意图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.sw{fill:#eef6ff;stroke:#2f73c8;stroke-width:2.5;rx:10}.net{fill:#fff;stroke:#7d8aa0;stroke-width:2;rx:10}.line{stroke:#2d8a4d;stroke-width:5;fill:none}.blocked{stroke:#d14343;stroke-width:5;fill:none;stroke-dasharray:10 8}.title{font-size:28px;font-weight:700}.label{font-size:18px;font-weight:700}.small{font-size:15px}.muted{fill:#5d6b7e}
     @media(prefers-color-scheme:dark){text{fill:#e7edf7}.muted{fill:#b6c2d2}.sw{fill:#10243d;stroke:#63a3ff}.net{fill:#111827;stroke:#718096}.line{stroke:#67d493}.blocked{stroke:#ff8585}}

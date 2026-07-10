@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
   <title id="title">Segmentation Address Translation</title>
   <desc id="desc">A segment number and segment offset are checked with segment table length and segment length, then base plus offset gives physical address.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--panel:#f8fafc;--panel2:#eff6ff;--text:#111827;--muted:#4b5563;--line:#64748b;--accent:#2563eb;--danger:#dc2626;--ok:#15803d}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#1e293b;--panel2:#172554;--text:#e5e7eb;--muted:#cbd5e1;--line:#94a3b8;--accent:#93c5fd;--danger:#fca5a5;--ok:#86efac}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5;rx:8}.box2{fill:var(--panel2);stroke:var(--accent);stroke-width:1.7;rx:8}.cell{fill:var(--panel);stroke:var(--line);stroke-width:1}.hit{fill:var(--panel2);stroke:var(--accent);stroke-width:2}

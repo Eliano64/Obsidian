@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="420" viewBox="0 0 1180 420" role="img" aria-labelledby="title desc">
   <title id="title">MIPS 五段流水线</title>
   <desc id="desc">MIPS 五段流水线由 IF、ID、EX、MEM、WB 五个阶段和四组流水线寄存器组成。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #fff; }
     .stage { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 8; }

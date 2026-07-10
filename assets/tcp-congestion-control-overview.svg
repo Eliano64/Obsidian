@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="600" viewBox="0 0 1040 600" role="img">
   <title>TCP congestion control overview</title>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
     .t{font-size:22px;font-weight:700;fill:#111827}
@@ -76,34 +79,34 @@
   <rect x="35" y="340" width="110" height="28" rx="4" class="tag-g"/>
   <text x="90" y="359" text-anchor="middle" class="sw">① 慢开始</text>
   <text x="165" y="358" text-anchor="middle" class="sm">Slow Start</text>
-  <text x="45" y="385" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">触发：cwnd &lt; ssthresh（连接建立时、超时后）</text>
-  <text x="45" y="405" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">规则：每收到 1 个新 ACK → cwnd += 1 MSS</text>
-  <text x="45" y="425" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">效果：每经过 1 个 RTT → cwnd 翻倍（指数增长）</text>
+  <text x="45" y="385" class="ss" style="font-size:13px;" text-anchor="start">触发：cwnd &lt; ssthresh（连接建立时、超时后）</text>
+  <text x="45" y="405" class="ss" style="font-size:13px;" text-anchor="start">规则：每收到 1 个新 ACK → cwnd += 1 MSS</text>
+  <text x="45" y="425" class="ss" style="font-size:13px;" text-anchor="start">效果：每经过 1 个 RTT → cwnd 翻倍（指数增长）</text>
 
   <!-- Algorithm 2: Congestion Avoidance -->
   <rect x="530" y="325" width="490" height="115" rx="6" class="box"/>
   <rect x="545" y="340" width="110" height="28" rx="4" class="tag-b"/>
   <text x="600" y="359" text-anchor="middle" class="sw">② 拥塞避免</text>
   <text x="675" y="358" text-anchor="middle" class="sm">Congestion Avoidance</text>
-  <text x="555" y="385" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">触发：cwnd &gt;= ssthresh</text>
-  <text x="555" y="405" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">规则：每经过 1 个 RTT → cwnd += 1 MSS</text>
-  <text x="555" y="425" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">效果：cwnd 线性缓慢增长，避免过快注入网络</text>
+  <text x="555" y="385" class="ss" style="font-size:13px;" text-anchor="start">触发：cwnd &gt;= ssthresh</text>
+  <text x="555" y="405" class="ss" style="font-size:13px;" text-anchor="start">规则：每经过 1 个 RTT → cwnd += 1 MSS</text>
+  <text x="555" y="425" class="ss" style="font-size:13px;" text-anchor="start">效果：cwnd 线性缓慢增长，避免过快注入网络</text>
 
   <!-- Algorithm 3: Fast Retransmit -->
   <rect x="20" y="458" width="490" height="115" rx="6" class="box"/>
   <rect x="35" y="473" width="110" height="28" rx="4" class="tag-r"/>
   <text x="90" y="492" text-anchor="middle" class="sw">③ 快重传</text>
   <text x="165" y="491" text-anchor="middle" class="sm">Fast Retransmit</text>
-  <text x="45" y="518" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">触发：发送方连续收到 3 个重复 ACK</text>
-  <text x="45" y="538" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">动作：立即重传缺失报文段，不等超时计时器</text>
-  <text x="45" y="558" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">意义：避免误判拥塞 → 不必把 cwnd 降为 1</text>
+  <text x="45" y="518" class="ss" style="font-size:13px;" text-anchor="start">触发：发送方连续收到 3 个重复 ACK</text>
+  <text x="45" y="538" class="ss" style="font-size:13px;" text-anchor="start">动作：立即重传缺失报文段，不等超时计时器</text>
+  <text x="45" y="558" class="ss" style="font-size:13px;" text-anchor="start">意义：避免误判拥塞 → 不必把 cwnd 降为 1</text>
 
   <!-- Algorithm 4: Fast Recovery -->
   <rect x="530" y="458" width="490" height="115" rx="6" class="box"/>
   <rect x="545" y="473" width="110" height="28" rx="4" class="tag-a"/>
   <text x="600" y="492" text-anchor="middle" class="sw">④ 快恢复</text>
   <text x="675" y="491" text-anchor="middle" class="sm">Fast Recovery</text>
-  <text x="555" y="518" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">触发：快重传之后（配合使用，Reno 版本）</text>
-  <text x="555" y="538" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">动作：ssthresh ← cwnd/2, cwnd ← ssthresh（不降为 1）</text>
-  <text x="555" y="558" text-anchor="middle" class="ss" style="font-size:13px;" text-anchor="start">然后直接进入拥塞避免，跳过慢开始</text>
+  <text x="555" y="518" class="ss" style="font-size:13px;" text-anchor="start">触发：快重传之后（配合使用，Reno 版本）</text>
+  <text x="555" y="538" class="ss" style="font-size:13px;" text-anchor="start">动作：ssthresh ← cwnd/2, cwnd ← ssthresh（不降为 1）</text>
+  <text x="555" y="558" class="ss" style="font-size:13px;" text-anchor="start">然后直接进入拥塞避免，跳过慢开始</text>
 </svg>

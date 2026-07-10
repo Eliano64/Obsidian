@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">Disk Address Order</title>
   <desc id="desc">Comparison of cylinder-surface-sector order and surface-cylinder-sector order.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--fg:#111827;--muted:#475569;--line:#cbd5e1;--panel:#f8fafc;--good:#2563eb;--bad:#dc2626;--accent:#059669}
     @media (prefers-color-scheme: dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#cbd5e1;--line:#475569;--panel:#111827;--good:#60a5fa;--bad:#f87171;--accent:#34d399}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.t{fill:var(--fg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.line{stroke:var(--line);stroke-width:2}.good{stroke:var(--good);fill:none;stroke-width:4}.bad{stroke:var(--bad);fill:none;stroke-width:4}.dotg{fill:var(--good)}.dotb{fill:var(--bad)}.dota{fill:var(--accent)}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420" role="img" aria-labelledby="title desc">
   <title id="title">磁盘访问时间组成</title>
   <desc id="desc">展示磁盘访问时间由寻道时间、旋转延迟和传输时间组成。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#8090a3;--b:#2563eb;--g:#059669;--o:#d97706;--sb:#dbeafe;--sg:#d1fae5;--so:#ffedd5}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--b:#60a5fa;--g:#34d399;--o:#fbbf24;--sb:#172554;--sg:#064e3b;--so:#451a03}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 27px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 18px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:15px "Microsoft YaHei",sans-serif}.seg{stroke-width:2;rx:12}.axis{stroke:var(--line);stroke-width:2.5;marker-end:url(#a);fill:none}

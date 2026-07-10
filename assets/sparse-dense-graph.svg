@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="460" viewBox="0 0 980 460" role="img" aria-labelledby="title desc">
   <title id="title">Sparse graph and dense graph</title>
   <desc id="desc">Comparison of sparse and dense graphs.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     svg{background:transparent;font-family:"Segoe UI",Arial,sans-serif}
     .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}.edge{stroke:#64748b;stroke-width:3;fill:none;stroke-linecap:round}.node{fill:#fff;stroke:#2563eb;stroke-width:3}

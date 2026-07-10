@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">String Storage Structures</title>
   <desc id="desc">Sequential and linked storage of strings.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: Arial, sans-serif; font-size: 16px; fill: #1f2937; }
     .title { font-size: 22px; font-weight: 700; }

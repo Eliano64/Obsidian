@@ -2,7 +2,10 @@
   <title id="title">Process virtual address space and call stack</title>
   <desc id="desc">A process virtual address space showing code, data, heap and user stack. The stack is in high addresses and grows downward.</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root {
         --bg: #ffffff;
         --fg: #17212b;

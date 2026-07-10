@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1150" height="620" viewBox="0 0 1150 620" role="img" aria-label="802.11 address fields by To DS and From DS">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     svg { background: transparent; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; }
     .title { fill: #111827; font-size: 25px; font-weight: 700; }

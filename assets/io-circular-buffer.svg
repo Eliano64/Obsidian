@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" role="img" aria-labelledby="title desc">
   <title id="title">Circular Buffer</title>
   <desc id="desc">Circular buffer with in pointer and out pointer.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--fg:#111827;--muted:#475569;--line:#cbd5e1;--panel:#f8fafc;--green:#059669;--orange:#d97706;--blue:#2563eb}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#cbd5e1;--line:#475569;--panel:#111827;--green:#34d399;--orange:#fbbf24;--blue:#60a5fa}}
     .bg{fill:var(--bg)}.empty{fill:color-mix(in srgb,var(--green) 14%,var(--bg));stroke:var(--green);stroke-width:2}.full{fill:color-mix(in srgb,var(--orange) 18%,var(--bg));stroke:var(--orange);stroke-width:2}.t{fill:var(--fg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.a{stroke:var(--blue);stroke-width:3;fill:none;marker-end:url(#ba)}

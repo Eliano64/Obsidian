@@ -1,10 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
   <title id="title">CDMA 码片序列与发送比特</title>
   <desc id="desc">展示比特 1 发送本站码片序列，比特 0 发送本站码片序列反码</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--grid:#cbd5e1;--one:#2563eb;--neg:#dc2626;--pos:#16a34a}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--grid:#334155;--one:#60a5fa;--neg:#f87171;--pos:#4ade80}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.chip{stroke:var(--line);stroke-width:1.3}.pos{fill:var(--pos)}.neg{fill:var(--neg)}.bit{fill:var(--one);opacity:.9}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.head{font-size:20px;font-weight:700}.small{font-size:15px;fill:var(--muted)}.mark{font-size:17px;font-weight:800;fill:#fff}
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.mark{fill:#0f172a}}
   </style>
   <rect class="bg" width="980" height="500"/>
   <text x="50" y="56" class="title">CDMA：一个比特时间被切成多个码片</text>

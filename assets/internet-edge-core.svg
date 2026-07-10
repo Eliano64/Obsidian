@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">因特网边缘部分与核心部分</title>
   <desc id="desc">展示边缘主机通过接入网络连接到由路由器和网络组成的核心部分</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--line:#334155;--text:#172033;--muted:#64748b;--edge:#dbeafe;--edge-line:#2563eb;--core:#fef3c7;--core-line:#d97706;--host:#dcfce7;--host-line:#16a34a}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--line:#94a3b8;--text:#e5e7eb;--muted:#94a3b8;--edge:#1e3a8a;--edge-line:#60a5fa;--core:#713f12;--core-line:#fbbf24;--host:#14532d;--host-line:#4ade80}}
     .bg{fill:var(--bg)}.edge{fill:var(--edge);stroke:var(--edge-line);stroke-width:2.5}.core{fill:var(--core);stroke:var(--core-line);stroke-width:3}.host{fill:var(--host);stroke:var(--host-line);stroke-width:2}.router{fill:var(--panel);stroke:var(--line);stroke-width:2.5}.link{stroke:var(--line);stroke-width:2.5;fill:none}.dash{stroke-dasharray:8 7}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:20px;font-weight:700}.small{font-size:16px;fill:var(--muted)}

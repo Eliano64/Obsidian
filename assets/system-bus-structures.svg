@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="566pt" height="369pt" viewBox="0 0 566 369" version="1.2">
-<style type="text/css"><![CDATA[
+<style type="text/css">/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+<![CDATA[
 :root { color-scheme: light dark; }
 @media (prefers-color-scheme: dark) {
   svg { filter: invert(1) hue-rotate(180deg); }

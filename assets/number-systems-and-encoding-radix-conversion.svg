@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680" role="img" aria-labelledby="title desc">
   <title id="title">Radix Conversion</title>
   <desc id="desc">A static study diagram for radix conversion among decimal, binary, octal, and hexadecimal numbers.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #f7f7f4; }
     .panel { fill: #fff; stroke: #ccd4dc; stroke-width: 2; }
     .title { fill: #20262d; font: 700 30px "Segoe UI", "Microsoft YaHei", sans-serif; }

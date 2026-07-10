@@ -2,7 +2,10 @@
   <title id="title">读者-写者关系矩阵</title>
   <desc id="desc">展示读读共享、读写互斥、写写互斥三种并发关系。</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root {
         --bg: #ffffff;
         --panel: #f8fafc;

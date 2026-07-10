@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="IEEE 802.1Q帧格式图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.field{fill:#fff;stroke:#7d8aa0;stroke-width:2}.tag{fill:#fff7e8;stroke:#bf7a18;stroke-width:2.5}.title{font-size:28px;font-weight:700}.label{font-size:16px;font-weight:700}.small{font-size:14px}.muted{fill:#5d6b7e}
     @media(prefers-color-scheme:dark){text{fill:#e7edf7}.muted{fill:#b6c2d2}.field{fill:#111827;stroke:#718096}.tag{fill:#2b2111;stroke:#e4a548}}

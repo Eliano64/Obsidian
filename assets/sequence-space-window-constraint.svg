@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="330" viewBox="0 0 980 330" role="img" aria-labelledby="title desc">
   <title id="title">序号空间与窗口约束</title>
   <desc id="desc">发送窗口和接收窗口之和不能超过序号空间。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#172033;--muted:#64748b;--line:#334155;--panel:#f8fafc;--blue:#2563eb;--green:#16a34a;--red:#dc2626}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--panel:#111827;--blue:#60a5fa;--green:#4ade80;--red:#f87171}}
     .bg{fill:var(--bg)}.t{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-size:18px}.h{font-size:24px;font-weight:800}.ring{fill:none;stroke:var(--line);stroke-width:3}.send{fill:color-mix(in srgb,var(--blue) 22%,transparent);stroke:var(--blue);stroke-width:2}.recv{fill:color-mix(in srgb,var(--green) 22%,transparent);stroke:var(--green);stroke-width:2}.bad{fill:color-mix(in srgb,var(--red) 16%,transparent);stroke:var(--red);stroke-width:2}

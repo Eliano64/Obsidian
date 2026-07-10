@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">DFS overview</title>
   <desc id="desc">Depth-first search follows one path as deep as possible, then backtracks through the call stack.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;
@@ -43,6 +46,8 @@
     .node-text { fill: var(--text); font: 700 18px "Segoe UI", Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
     .frame { fill: var(--stack); stroke: var(--stack-stroke); stroke-width: 2; rx: 8; }
     .frame-text { fill: var(--text); font: 700 15px "Consolas", monospace; text-anchor: middle; dominant-baseline: central; }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.node-active{fill:#92400e;stroke:#fbbf24}}
   </style>
 
   <rect class="bg" width="980" height="520"/>

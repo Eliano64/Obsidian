@@ -2,7 +2,10 @@
   <title id="title">Multi-level memory hierarchy pyramid</title>
   <desc id="desc">Classic memory hierarchy pyramid showing the relationship among speed, capacity, and cost per bit.</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       .bg{fill:#fbfcff}.title{font:700 28px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.label{font:700 19px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.small{font:400 14px "Microsoft YaHei",Arial,sans-serif;fill:#40506a}.note{font:700 16px "Microsoft YaHei",Arial,sans-serif;fill:#8a4b00}.lvl1{fill:#e8f2ff;stroke:#5f92d6}.lvl2{fill:#edf8f1;stroke:#62a87c}.lvl3{fill:#fff4df;stroke:#d49a3a}.lvl4{fill:#ffecec;stroke:#c77777}.axis{stroke:#27354f;stroke-width:2.2;fill:none}.dash{stroke:#758399;stroke-width:1.8;stroke-dasharray:7 6;fill:none}.tri{stroke-width:2.2}
       @media (prefers-color-scheme: dark){.bg{fill:#111827}.title,.label{fill:#f3f4f6}.small{fill:#cbd5e1}.note{fill:#fbbf24}.lvl1{fill:#172554;stroke:#60a5fa}.lvl2{fill:#143525;stroke:#4ade80}.lvl3{fill:#3b2a12;stroke:#f59e0b}.lvl4{fill:#3b1d1d;stroke:#f87171}.axis{stroke:#d1d5db}.dash{stroke:#94a3b8}}
     </style>

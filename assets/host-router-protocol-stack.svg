@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
   <title id="title">主机与路由器协议栈差异</title>
   <desc id="desc">主机通常处理到应用层，路由器转发任务通常处理到网络层。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#cbd5e1;--blue:#dbeafe;--bl:#2563eb;--green:#dcfce7;--gl:#16a34a;--amber:#fef3c7;--al:#d97706;--red:#fee2e2;--rl:#dc2626;--purple:#ede9fe;--pl:#7c3aed;--arrow:#475569}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#334155;--blue:#1e3a8a;--bl:#60a5fa;--green:#14532d;--gl:#4ade80;--amber:#713f12;--al:#fbbf24;--red:#7f1d1d;--rl:#f87171;--purple:#4c1d95;--pl:#a78bfa;--arrow:#cbd5e1}}
     .bg{fill:var(--bg)}.card{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.layer{stroke-width:2}.app{fill:var(--blue);stroke:var(--bl)}.tran{fill:var(--green);stroke:var(--gl)}.net{fill:var(--amber);stroke:var(--al)}.link{fill:var(--red);stroke:var(--rl)}.phy{fill:var(--purple);stroke:var(--pl)}.arrow{stroke:var(--arrow);stroke-width:3;fill:none;marker-end:url(#arrow)}

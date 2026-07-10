@@ -3,7 +3,10 @@
   <desc id="desc">说明发生死锁一定有循环等待，但有循环等待不一定发生死锁。</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--arrow)"/></marker>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root{--bg:#fff;--panel:#f8fafc;--line:#cbd5e1;--text:#172033;--muted:#64748b;--p:#dbeafe;--pl:#2563eb;--r:#fef3c7;--rl:#d97706;--bad:#fee2e2;--badl:#dc2626;--ok:#dcfce7;--okl:#16a34a;--arrow:#475569}
       @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--line:#334155;--text:#e5e7eb;--muted:#94a3b8;--p:#1e3a8a;--pl:#60a5fa;--r:#713f12;--rl:#fbbf24;--bad:#7f1d1d;--badl:#f87171;--ok:#14532d;--okl:#4ade80;--arrow:#cbd5e1}}
       text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:var(--text)}.title{font-size:32px;font-weight:700}.head{font-size:24px;font-weight:700}.body{font-size:19px}.small{font-size:17px;fill:var(--muted)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2;rx:18}.p{fill:var(--p);stroke:var(--pl);stroke-width:2}.r{fill:var(--r);stroke:var(--rl);stroke-width:2}.bad{fill:var(--bad);stroke:var(--badl);stroke-width:2;rx:12}.ok{fill:var(--ok);stroke:var(--okl);stroke-width:2;rx:12}.edge{fill:none;stroke:var(--arrow);stroke-width:2.5;marker-end:url(#arrow)}

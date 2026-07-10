@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
   <title id="title">Privileged instructions and CPU states</title>
   <desc id="desc">User mode can execute non-privileged instructions; kernel mode can execute privileged instructions.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--user:#dbeafe;--kernel:#dcfce7;--trap:#fee2e2;--psw:#fef3c7}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--user:#1e3a8a;--kernel:#14532d;--trap:#7f1d1d;--psw:#713f12}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
   <title id="title">TCP segment header</title>
   <desc id="desc">TCP header format with fixed 20 bytes and optional fields.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.fixed{fill:#dbeafe}.ctl{fill:#fef3c7}.opt{fill:#dcfce7}.label{font-size:22px;font-weight:700}.small{font-size:14px}.mid{font-size:16px;font-weight:700}.code{font-family:Consolas,monospace;font-size:13px}
     @media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.fixed{fill:#10213f}.ctl{fill:#3b2506}.opt{fill:#0f2b1d}}

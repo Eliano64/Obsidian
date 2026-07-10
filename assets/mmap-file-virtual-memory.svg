@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="690" viewBox="0 0 1160 690" role="img" aria-labelledby="title desc">
   <title id="title">mmap 文件映射与虚拟地址空间</title>
   <desc id="desc">展示同一个磁盘文件通过页表映射到两个进程的虚拟地址空间，并在主存中共享同一份物理页。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --ink: #172033;

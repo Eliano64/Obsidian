@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
   <title id="title">IPv6 address compression rules</title>
   <desc id="desc">IPv6 hexadecimal notation allows leading zero omission and one double-colon zero compression.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2;rx:10}.good{fill:#f0fdf4;stroke:#16a34a}.bad{fill:#fee2e2;stroke:#dc2626}.label{font-size:20px;font-weight:700}.small{font-size:15px}.code{font-family:Consolas,monospace;font-size:17px}@media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.good{fill:#0f2b1d;stroke:#4ade80}.bad{fill:#3b0d0d;stroke:#f87171}}</style>
   <text x="480" y="38" text-anchor="middle" class="label">IPv6 地址冒号十六进制与压缩规则</text>
   <rect x="55" y="75" width="850" height="60" class="box"/><text x="480" y="112" text-anchor="middle" class="code">2001:0db8:0000:0000:0000:ff00:0042:8329</text>

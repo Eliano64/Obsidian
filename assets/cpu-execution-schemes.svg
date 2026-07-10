@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="600" viewBox="0 0 1180 600" role="img" aria-labelledby="title desc">
   <title id="title">CPU execution schemes</title>
   <desc id="desc">Comparison of single-cycle, multi-cycle, and pipelined execution schemes.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--ink:#172033;--muted:#5d6980;--line:#526174;--a:#e8f1ff;--b:#fff2d8;--c:#eef7ee;--seg:#fff}
     @media (prefers-color-scheme:dark){:root{--bg:#0f1420;--ink:#e7edf7;--muted:#aab6c8;--line:#91a0b5;--a:#17243a;--b:#302417;--c:#18291d;--seg:#151c2a}}
     svg{background:var(--bg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif} text{fill:var(--ink)}

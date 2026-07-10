@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
   <title id="title">Network congestion load throughput curve</title>
   <desc id="desc">Throughput increases with offered load at first, then saturates and may collapse when congestion becomes severe.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #172033; }
     .axis { stroke: #475569; stroke-width: 2.5; marker-end: url(#arrow); }

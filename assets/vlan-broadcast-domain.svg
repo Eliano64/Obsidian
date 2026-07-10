@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-label="VLAN划分广播域示意图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .sw{fill:#eef6ff;stroke:#2f73c8;stroke-width:2.5;rx:10}.host{fill:#fff;stroke:#7d8aa0;stroke-width:2;rx:8}.line{stroke:#8a98aa;stroke-width:3}.v10{fill:none;stroke:#2d8a4d;stroke-width:2.5;stroke-dasharray:10 8;rx:18}.v20{fill:none;stroke:#bf7a18;stroke-width:2.5;stroke-dasharray:10 8;rx:18}.title{font-size:28px;font-weight:700}.label{font-size:18px;font-weight:700}.small{font-size:15px}.muted{fill:#5d6b7e}

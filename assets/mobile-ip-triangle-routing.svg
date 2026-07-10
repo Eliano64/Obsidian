@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" role="img" aria-labelledby="title desc">
   <title id="title">Mobile IP triangle routing</title>
   <desc id="desc">Correspondent host sends through home agent to foreign agent, while mobile host can send directly back.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.node{fill:#fff;stroke:#475569;stroke-width:2;rx:10}.agent{fill:#eff6ff;stroke:#2563eb}.mobile{fill:#f0fdf4;stroke:#16a34a}.line{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow)}.return{stroke:#16a34a;stroke-width:3;fill:none;stroke-dasharray:8 6;marker-end:url(#greenArrow)}.label{font-size:20px;font-weight:700}.small{font-size:14px}@media(prefers-color-scheme:dark){text{fill:#e5e7eb}.node{fill:#0b1220;stroke:#cbd5e1}.agent{fill:#10213f;stroke:#60a5fa}.mobile{fill:#0f2b1d;stroke:#4ade80}.line{stroke:#60a5fa}.return{stroke:#4ade80}}</style>
   <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker><marker id="greenArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#16a34a"/></marker></defs>
   <text x="460" y="38" text-anchor="middle" class="label">移动 IP 的三角形路由</text>

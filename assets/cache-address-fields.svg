@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="title desc">
   <title id="title">Cache address fields and cache line contents</title>
   <desc id="desc">A CPU address is split into tag, index and block offset fields; a cache line stores data block, tag and state bits, but does not store index or block offset as metadata.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #ffffff;
       --text: #111827;

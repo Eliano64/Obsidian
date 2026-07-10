@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
   <title id="title">Offset addressing comparison</title>
   <desc id="desc">Base, indexed and relative addressing all use base plus offset but differ in the source of the base value.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--reg:#dbeafe;--a:#dcfce7;--ea:#fee2e2;--pc:#fef3c7;--panel:#f8fafc}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--reg:#1e3a8a;--a:#14532d;--ea:#7f1d1d;--pc:#713f12;--panel:#1f2937}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

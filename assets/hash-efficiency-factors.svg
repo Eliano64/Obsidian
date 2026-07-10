@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}.bg{fill:#f8fafc}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.box{fill:#e0f2fe;stroke:#0284c7;stroke-width:2}.warn{fill:#fee2e2;stroke:#dc2626;stroke-width:2}.ok{fill:#dcfce7;stroke:#16a34a;stroke-width:2}.edge{stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}.text{fill:#0f172a;font-family:Arial,"Microsoft YaHei",sans-serif}.title{font-size:25px;font-weight:700}.h{font-size:19px;font-weight:700;text-anchor:middle}.small{font-size:15px;text-anchor:middle}.note{font-size:15px;fill:#475569}
     @media(prefers-color-scheme:dark){.bg{fill:#0b1020}.panel{fill:#111827;stroke:#334155}.box{fill:#172554;stroke:#38bdf8}.warn{fill:#3f1d1d;stroke:#f87171}.ok{fill:#12351f;stroke:#4ade80}.edge{stroke:#94a3b8}.text{fill:#e5e7eb}.note{fill:#cbd5e1}}
   </style>

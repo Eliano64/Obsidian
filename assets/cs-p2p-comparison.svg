@@ -5,7 +5,10 @@
     <marker id="blueArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#2563eb"/></marker>
     <marker id="greenArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#059669"/></marker>
   </defs>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}.title{font:700 24px "Microsoft YaHei",sans-serif;fill:#172033}.head{font:700 21px "Microsoft YaHei",sans-serif}.label{font:700 17px "Microsoft YaHei",sans-serif;fill:#172033}.sub{font:14px "Microsoft YaHei",sans-serif;fill:#526174}.note{font:15px "Microsoft YaHei",sans-serif;fill:#172033}.box{fill:#fff;stroke:#64748b;stroke-width:2}.server{fill:#dbeafe;stroke:#2563eb}.client{fill:#f8fafc;stroke:#2563eb}.peer{fill:#dcfce7;stroke:#059669}.panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}.divider{stroke:#94a3b8;stroke-dasharray:7 7}.blue{fill:#2563eb}.green{fill:#059669}.link{fill:none;stroke:#94a3b8;stroke-width:2}.request{fill:none;stroke:#2563eb;stroke-width:2.5;marker-end:url(#blueArrow)}.response{fill:none;stroke:#059669;stroke-width:2.5;marker-end:url(#greenArrow)}.peerlink{fill:none;stroke:#059669;stroke-width:2;marker-start:url(#greenArrow);marker-end:url(#greenArrow)}
     @media(prefers-color-scheme:dark){.title,.label,.note{fill:#e5edf5}.sub{fill:#a9b7c6}.box{fill:#121b25;stroke:#64748b}.server{fill:#17345a}.client{fill:#16212c}.peer{fill:#123d2d}.panel{fill:#121b25;stroke:#344354}.divider{stroke:#526174}}
   </style>

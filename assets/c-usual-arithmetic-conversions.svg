@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="620" viewBox="0 0 860 620" role="img" aria-labelledby="title desc">
   <title id="title">C arithmetic conversion rank</title>
   <desc id="desc">A simple vertical rank diagram for C arithmetic conversions. Low-rank types convert upward to high-rank types, and small integer types promote to int first.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #ffffff; }
     .title { fill: #1f2328; font: 700 28px "Segoe UI", "Microsoft YaHei", sans-serif; }
     .hint { fill: #cf222e; font: 700 20px "Segoe UI", "Microsoft YaHei", sans-serif; }

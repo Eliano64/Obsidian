@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="240" viewBox="0 0 980 240" role="img" aria-labelledby="title desc">
   <title id="title">TCP connection phases</title>
   <desc id="desc">TCP connection has establishment, data transfer and release phases.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.a{fill:#dbeafe}.b{fill:#dcfce7}.c{fill:#fee2e2}.line{stroke:#64748b;stroke-width:3;marker-end:url(#arr)}.label{font-size:22px;font-weight:700}.small{font-size:15px}.mid{font-size:18px;font-weight:700}
     @media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.a{fill:#10213f}.b{fill:#0f2b1d}.c{fill:#3b0d0d}.line{stroke:#94a3b8}}

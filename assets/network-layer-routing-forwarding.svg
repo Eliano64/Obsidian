@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="460" viewBox="0 0 980 460" role="img" aria-labelledby="title desc">
   <title id="title">路由选择和分组转发的关系</title>
   <desc id="desc">路由选择生成路由表，路由表派生转发表，分组转发按转发表逐包查找输出接口。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill: #f8fafc; }
     .box { fill: #fff; stroke: #cbd5e1; stroke-width: 2; }

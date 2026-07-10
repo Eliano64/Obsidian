@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
   <title id="title">TSL and Swap Atomic Check And Lock</title>
   <desc id="desc">Atomic hardware instructions combine checking the old lock value and setting the lock to true.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg: #f8fafc;
       --panel: #ffffff;

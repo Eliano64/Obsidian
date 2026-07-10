@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">死锁处理策略总览</title>
   <desc id="desc">对比死锁预防、避免、检测与解除三类处理策略。</desc>
-  <defs><style>
+  <defs><style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--line:#cbd5e1;--text:#172033;--muted:#64748b;--a:#dbeafe;--al:#2563eb;--b:#fef3c7;--bl:#d97706;--c:#dcfce7;--cl:#16a34a}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--line:#334155;--text:#e5e7eb;--muted:#94a3b8;--a:#1e3a8a;--al:#60a5fa;--b:#713f12;--bl:#fbbf24;--c:#14532d;--cl:#4ade80}}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:var(--text)}.title{font-size:34px;font-weight:700}.muted{font-size:19px;fill:var(--muted)}.card{fill:var(--panel);stroke:var(--line);stroke-width:2;rx:18}.head{font-size:25px;font-weight:700}.body{font-size:20px}.small{font-size:18px;fill:var(--muted)}.tag{stroke-width:2;rx:14}.a{fill:var(--a);stroke:var(--al)}.b{fill:var(--b);stroke:var(--bl)}.c{fill:var(--c);stroke:var(--cl)}

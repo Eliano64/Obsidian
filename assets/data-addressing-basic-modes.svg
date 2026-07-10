@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680" role="img" aria-labelledby="title desc">
   <title id="title">Basic data addressing modes</title>
   <desc id="desc">Direct, indirect, register, register indirect, immediate and implicit addressing modes.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--inst:#dbeafe;--mem:#dcfce7;--reg:#fef3c7;--data:#fee2e2;--panel:#f8fafc}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--inst:#1e3a8a;--mem:#14532d;--reg:#713f12;--data:#7f1d1d;--panel:#1f2937}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

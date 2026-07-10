@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
   <title id="title">PDU 与 SDU 关系</title>
   <desc id="desc">展示上一层交给本层的数据作为 SDU，本层添加首部后成为本层 PDU。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#cbd5e1;--blue:#dbeafe;--bl:#2563eb;--green:#dcfce7;--gl:#16a34a;--amber:#fef3c7;--al:#d97706;--arrow:#475569}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#334155;--blue:#1e3a8a;--bl:#60a5fa;--green:#14532d;--gl:#4ade80;--amber:#713f12;--al:#fbbf24;--arrow:#cbd5e1}}
     .bg{fill:var(--bg)}.card{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.sdu{fill:var(--green);stroke:var(--gl);stroke-width:2}.hdr{fill:var(--amber);stroke:var(--al);stroke-width:2}.pdu{fill:none;stroke:var(--bl);stroke-width:3}.arrow{stroke:var(--arrow);stroke-width:3;fill:none;marker-end:url(#arrow)}

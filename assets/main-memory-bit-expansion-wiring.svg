@@ -5,7 +5,10 @@
     <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
       <path d="M0 0 L10 5 L0 10 z"/>
     </marker>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       .bg{fill:#fbfcff}
       .title{font:700 26px "Microsoft YaHei",Arial,sans-serif;fill:#172033}
       .h{font:700 17px "Microsoft YaHei",Arial,sans-serif;fill:#172033}

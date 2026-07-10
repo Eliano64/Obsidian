@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="390" viewBox="0 0 980 390" role="img" aria-labelledby="title desc">
   <title id="title">Transport layer demultiplexing examples</title>
   <desc id="desc">DNS over UDP port 53 and HTTP over TCP port 80 are demultiplexed by protocol and destination port.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#f8fafc;stroke:#334155;stroke-width:2}.udp{fill:#dcfce7;stroke:#16a34a}.tcp{fill:#dbeafe;stroke:#2563eb}.app{fill:#fef3c7;stroke:#d97706}

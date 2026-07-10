@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="540" viewBox="0 0 1080 540" role="img" aria-labelledby="title desc">
   <title id="title">x86 operand forms</title>
   <desc id="desc">x86 operands can be registers, memory operands or immediate values.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--text:#111827;--muted:#4b5563;--line:#111827;--inst:#dbeafe;--reg:#dcfce7;--mem:#fef3c7;--imm:#fee2e2;--panel:#f8fafc}
     @media(prefers-color-scheme:dark){:root{--bg:#111827;--text:#e5e7eb;--muted:#cbd5e1;--line:#e5e7eb;--inst:#1e3a8a;--reg:#14532d;--mem:#713f12;--imm:#7f1d1d;--panel:#1f2937}}
     .bg{fill:var(--bg)}.text{fill:var(--text);font-family:"Segoe UI",Arial,sans-serif}.muted{fill:var(--muted);font-family:"Segoe UI",Arial,sans-serif}

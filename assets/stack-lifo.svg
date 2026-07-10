@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
   <title id="title">Stack LIFO Structure</title>
   <desc id="desc">A stack with push and pop at the top only.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { --bg: transparent; --ink: #17212b; --muted: #5b6876; --line: #334e68; --accent: #0f766e; --cell: #eef6ff; --base: #fff7e6; }
     @media (prefers-color-scheme: dark) {
       :root { --ink: #e6edf3; --muted: #b8c4cf; --line: #9ccfd8; --accent: #5eead4; --cell: #16212c; --base: #2a2113; }
@@ -12,6 +15,8 @@
     .cell { fill: var(--cell); stroke: var(--line); stroke-width: 2; rx: 8; }
     .base { fill: var(--base); stroke: #ad6800; stroke-width: 2; rx: 8; }
     .arrow { stroke: var(--accent); stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    /* contrast-audit-fix */
+  .muted{paint-order:stroke fill;stroke:#f8fafc;stroke-width:3px}@media(prefers-color-scheme:dark){.muted{stroke:#0b1020}}
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">

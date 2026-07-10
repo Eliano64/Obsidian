@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
   <title id="title">SSD 页与块</title>
   <desc id="desc">展示 SSD 中页是读写单位，块是擦除单位。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#8090a3;--g:#059669;--o:#d97706;--r:#dc2626;--soft:#f8fafc;--pg:#d1fae5;--po:#ffedd5;--pr:#fee2e2}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--g:#34d399;--o:#fbbf24;--r:#f87171;--soft:#111827;--pg:#064e3b;--po:#451a03;--pr:#450a0a}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 27px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 18px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:15px "Microsoft YaHei",sans-serif}.panel{fill:var(--soft);stroke:var(--line);stroke-width:1.5;rx:14}.page{fill:var(--pg);stroke:var(--g);stroke-width:1.5;rx:8}.dirty{fill:var(--po);stroke:var(--o)}.erase{fill:var(--pr);stroke:var(--r)}.arrow{stroke:var(--line);stroke-width:2.5;marker-end:url(#a);fill:none}

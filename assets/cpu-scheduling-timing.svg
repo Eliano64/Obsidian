@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="title desc">
   <title id="title">进程调度的时机</title>
   <desc id="desc">展示主动放弃处理机、被动放弃处理机以及不能进行调度切换的情况。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --panel2:#eef6ff; --text:#172033; --muted:#526174;
       --line:#536273; --blue:#2563eb; --green:#0f766e; --red:#b42318; --amber:#b45309;

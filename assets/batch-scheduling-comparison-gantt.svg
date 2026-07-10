@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="980" viewBox="0 0 1180 980" role="img" aria-labelledby="title desc">
   <title id="title">批处理调度算法甘特图对比</title>
   <desc id="desc">四个子图分别展示 FCFS、SJF、SRTN、HRRN 的甘特图；每个子图纵轴为进程，横轴为时间。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       --bg:#ffffff; --panel:#f8fafc; --text:#172033; --muted:#526174; --line:#536273;
       --grid:#cbd5e1; --p1:#2563eb; --p2:#0f766e; --p3:#b45309; --p4:#7c3aed; --p5:#be123c;
@@ -27,6 +30,8 @@
     .bar { stroke:var(--line); stroke-width:1; rx:5; }
     .barText { fill:#fff; font-size:12px; font-weight:700; }
     .note { fill:var(--muted); font-size:12px; }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.barText{fill:#0f172a}}
   </style>
 
   <text class="title" x="590" y="38" text-anchor="middle">批处理调度算法甘特图对比</text>

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
   <title id="title">MIPS RAW 相关的时空图分析</title>
   <desc id="desc">对比 add 和 sub 两条指令在有转发和无转发时的流水线时空图。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root {
       color-scheme: light dark;
       --bg: #ffffff;
@@ -53,6 +56,8 @@
     .stall { fill: var(--stall); }
     .arrow { fill: none; stroke: var(--accent); stroke-width: 3; marker-end: url(#arrow); }
     .wait { fill: none; stroke: var(--accent2); stroke-width: 2; stroke-dasharray: 7 5; marker-end: url(#arrow2); }
+    /* contrast-audit-fix */
+  @media(prefers-color-scheme:dark){.small{fill:#f8fafc}}
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">

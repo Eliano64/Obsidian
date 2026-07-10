@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="760" viewBox="0 0 1040 760" role="img" aria-labelledby="title desc">
   <title id="title">常用线路编码波形</title>
   <desc id="desc">展示 NRZ、NRZI、RZ、曼彻斯特、差分曼彻斯特编码波形，并标出码元边界和零电平</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{
       --bg:#ffffff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;
       --grid:#94a3b8;--zero:#64748b;--blue:#2563eb;--cyan:#0891b2;--green:#16a34a;

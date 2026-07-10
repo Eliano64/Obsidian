@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
   <title id="title">数字信号、带宽受限与码间串扰</title>
   <desc id="desc">展示数字信号高频分量受限后边沿变缓导致码间串扰</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--grid:#cbd5e1;--blue:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--grid:#334155;--blue:#60a5fa;--green:#4ade80;--red:#f87171;--amber:#fbbf24}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.grid{stroke:var(--grid);stroke-width:1;stroke-dasharray:5 6}.ideal{fill:none;stroke:var(--blue);stroke-width:3}.soft{fill:none;stroke:var(--red);stroke-width:3}.sine{fill:none;stroke:var(--green);stroke-width:2.4}.sum{fill:none;stroke:var(--amber);stroke-width:2.4}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:20px;font-weight:700}.small{font-size:15px;fill:var(--muted)}

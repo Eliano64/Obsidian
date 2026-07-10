@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="740" viewBox="0 0 1120 740" role="img" aria-labelledby="title desc">
   <title id="title">Original, Ones Complement, Twos Complement, Excess Code</title>
   <desc id="desc">A static comparison diagram for signed number encodings.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #f7f7f4; }
     .panel { fill: #fff; stroke: #ccd4dc; stroke-width: 2; }
     .title { fill: #20262d; font: 700 30px "Segoe UI", "Microsoft YaHei", sans-serif; }

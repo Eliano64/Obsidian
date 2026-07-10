@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
   <title id="title">CIDR 地址块</title>
   <desc id="desc">CIDR 使用网络前缀长度表示地址块，块大小由主机号位数决定。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}.bg{fill:#f8fafc}.text{fill:#0f172a;font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:18px}.small{fill:#334155;font-size:15px}.block{fill:#fff;stroke:#cbd5e1;stroke-width:2}.net{fill:#dbeafe;stroke:#2563eb}.host{fill:#dcfce7;stroke:#16a34a}.range{stroke:#f97316;stroke-width:8;stroke-linecap:round}.tick{stroke:#64748b;stroke-width:2}
     @media(prefers-color-scheme:dark){.bg{fill:#020617}.text{fill:#e5e7eb}.small{fill:#cbd5e1}.block{fill:#0f172a;stroke:#334155}.net{fill:#172554;stroke:#60a5fa}.host{fill:#052e16;stroke:#4ade80}.tick{stroke:#94a3b8}}
   </style>

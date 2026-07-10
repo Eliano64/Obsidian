@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" role="img" aria-labelledby="title desc">
   <title id="title">IPv4 分类编址</title>
   <desc id="desc">A、B、C 类 IPv4 地址中，类别前缀属于网络号的一部分，网络号与主机号共同组成 32 bit 地址。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     .bg { fill:#f8fafc; }
     .text { fill:#0f172a; font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif; font-size:18px; }

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
   <title id="title">Free Space Management</title>
   <desc id="desc">Free table, free linked list, bitmap and grouped linking.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--fg:#111827;--muted:#475569;--line:#cbd5e1;--panel:#f8fafc;--free:#059669;--used:#d97706;--blue:#2563eb;--purple:#7c3aed}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#cbd5e1;--line:#475569;--panel:#111827;--free:#34d399;--used:#fbbf24;--blue:#60a5fa;--purple:#c084fc}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.blk{stroke:var(--line);stroke-width:1.2}.free{fill:var(--free);opacity:.75}.used{fill:var(--used);opacity:.8}.t{fill:var(--fg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.a{stroke:var(--blue);stroke-width:2.5;fill:none;marker-end:url(#arrow)}

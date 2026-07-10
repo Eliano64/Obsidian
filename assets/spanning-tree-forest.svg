@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
   <title id="title">Spanning tree and spanning forest</title>
   <desc id="desc">A connected graph with a spanning tree and a disconnected graph with a spanning forest.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     svg{background:transparent;font-family:"Segoe UI",Arial,sans-serif}
     .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}.edge{stroke:#94a3b8;stroke-width:3;fill:none;stroke-linecap:round}.tree{stroke:#16a34a;stroke-width:5;fill:none;stroke-linecap:round}

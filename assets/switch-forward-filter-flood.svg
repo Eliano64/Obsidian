@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-label="交换机转发过滤泛洪三种情况">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#fff;stroke:#8a98aa;stroke-width:2;rx:12}.sw{fill:#eef6ff;stroke:#2f73c8;stroke-width:2.5;rx:10}.host{fill:#fff;stroke:#7d8aa0;stroke-width:2;rx:8}

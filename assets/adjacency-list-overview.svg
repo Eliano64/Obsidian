@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="650" viewBox="0 0 1180 650" role="img" aria-labelledby="title desc">
   <title id="title">Adjacency list overview</title>
   <desc id="desc">An undirected graph and a directed graph represented by adjacency lists.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     svg{background:transparent;font-family:"Segoe UI",Arial,sans-serif}
     .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}

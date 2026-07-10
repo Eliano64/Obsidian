@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-label="共享式以太网碰撞域示意图">
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill:#172033; }
     .muted { fill:#5d6b7e; }

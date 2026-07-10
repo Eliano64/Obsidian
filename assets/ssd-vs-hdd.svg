@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420" role="img" aria-labelledby="title desc">
   <title id="title">HDD 与 SSD 对比</title>
   <desc id="desc">对比机械硬盘和固态硬盘的访问特点。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark;--bg:#fff;--text:#172033;--muted:#536171;--line:#8090a3;--b:#2563eb;--g:#059669;--soft1:#dbeafe;--soft2:#d1fae5}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--text:#e5e7eb;--muted:#aab4c3;--line:#687386;--b:#60a5fa;--g:#34d399;--soft1:#172554;--soft2:#064e3b}}
     .bg{fill:var(--bg)}.title{fill:var(--text);font:700 27px "Microsoft YaHei",sans-serif}.h{fill:var(--text);font:700 21px "Microsoft YaHei",sans-serif}.body{fill:var(--muted);font:16px "Microsoft YaHei",sans-serif}.box{rx:14;stroke-width:2}.disk{fill:none;stroke:var(--b);stroke-width:3}.chip{fill:var(--soft2);stroke:var(--g);stroke-width:2;rx:8}.line{stroke:var(--line);stroke-width:2}

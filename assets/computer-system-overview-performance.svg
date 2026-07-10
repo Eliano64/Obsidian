@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780" role="img" aria-labelledby="title desc">
   <title id="title">Computer Performance Metrics</title>
   <desc id="desc">Static summary of memory capacity, CPU execution time, throughput, response time, IPS, and FLOPS.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     .bg { fill: #f7f7f4; }
     .panel { fill: #ffffff; stroke: #cfd6dd; stroke-width: 2; }
     .title { fill: #1f252b; font: 700 30px "Segoe UI", "Microsoft YaHei", sans-serif; }

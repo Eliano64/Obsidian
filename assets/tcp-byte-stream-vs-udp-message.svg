@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="390" viewBox="0 0 980 390" role="img" aria-labelledby="title desc">
   <title id="title">TCP byte stream vs UDP message</title>
   <desc id="desc">UDP preserves message boundaries, TCP provides a continuous byte stream.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.udp{fill:#dcfce7;stroke:#16a34a}.tcp{fill:#dbeafe;stroke:#2563eb}.label{font-size:22px;font-weight:700}.small{font-size:15px}.mid{font-size:17px;font-weight:700}
     @media(prefers-color-scheme:dark){text{fill:#e5e7eb}.box{fill:#111827;stroke:#94a3b8}.udp{fill:#0f2b1d;stroke:#4ade80}.tcp{fill:#10213f;stroke:#60a5fa}}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">海明码校验位覆盖关系</title>
   <desc id="desc">展示海明码中校验位放在 1、2、4、8 等位置，并按二进制位覆盖数据位</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--blue:#2563eb;--green:#16a34a;--amber:#d97706;--purple:#7c3aed;--red:#dc2626}
     @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--blue:#60a5fa;--green:#4ade80;--amber:#fbbf24;--purple:#c4b5fd;--red:#f87171}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.cell{stroke:var(--line);stroke-width:1.3}.p1{fill:color-mix(in srgb,var(--blue) 25%,transparent)}.p2{fill:color-mix(in srgb,var(--green) 25%,transparent)}.p4{fill:color-mix(in srgb,var(--amber) 30%,transparent)}.p8{fill:color-mix(in srgb,var(--purple) 28%,transparent)}.d{fill:var(--panel)}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.head{font-size:18px;font-weight:700}.small{font-size:15px;fill:var(--muted)}.mark{font-size:17px;font-weight:800}

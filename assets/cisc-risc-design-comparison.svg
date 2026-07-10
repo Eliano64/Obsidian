@@ -2,7 +2,10 @@
   <title id="title">CISC and RISC design comparison</title>
   <desc id="desc">Comparison of CISC and RISC design ideas: one complex instruction versus multiple simple load-store instructions.</desc>
   <defs>
-    <style>
+    <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
       :root {
         --bg: #ffffff;
         --fg: #17212b;

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
   <title id="title">File System Structures In Memory</title>
   <desc id="desc">A read system call uses a file descriptor as an index into the per-process open file table, then reaches the system-wide open file table, file control block, and data blocks.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--fg:#111827;--muted:#475569;--line:#94a3b8;--panel:#f8fafc;--blue:#2563eb;--green:#059669;--orange:#d97706;--purple:#7c3aed}
     @media(prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#cbd5e1;--line:#64748b;--panel:#111827;--blue:#60a5fa;--green:#34d399;--orange:#fbbf24;--purple:#c084fc}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:2}.outer{fill:none;stroke:var(--line);stroke-width:2}.t{fill:var(--fg);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.m{fill:var(--muted);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.row{fill:var(--blue);opacity:.12}.hit{fill:var(--orange);opacity:.28}.data{fill:var(--green);opacity:.16;stroke:var(--green);stroke-width:1.5}.meta{fill:var(--purple);opacity:.16;stroke:var(--purple);stroke-width:1.5}.a{stroke:var(--blue);stroke-width:3;fill:none;marker-end:url(#arrow)}.ga{stroke:var(--green);stroke-width:3;fill:none;marker-end:url(#garrow)}.oa{stroke:var(--orange);stroke-width:3;fill:none;marker-end:url(#oarrow)}

@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
   <title id="title">UDP checksum pseudo header</title>
   <desc id="desc">UDP checksum is calculated over pseudo header, UDP header, and UDP data.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}
     text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}
     .box{fill:#f8fafc;stroke:#334155;stroke-width:2}.pseudo{fill:#fee2e2}.udp{fill:#dbeafe}.data{fill:#dcfce7}.sum{fill:#fef3c7;stroke:#d97706}

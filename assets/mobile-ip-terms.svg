@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">Mobile IP terms</title>
   <desc id="desc">Mobile IP home network, home agent, foreign network, foreign agent, care-of address, and correspondent host.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark} text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;fill:#172033}.net{fill:#f8fafc;stroke:#334155;stroke-width:2;rx:12}.home{fill:#eff6ff}.foreign{fill:#f0fdf4}.node{fill:#fff;stroke:#475569;stroke-width:2;rx:8}.line{stroke:#64748b;stroke-width:2.5}.label{font-size:20px;font-weight:700}.small{font-size:15px}@media(prefers-color-scheme:dark){text{fill:#e5e7eb}.net{fill:#111827;stroke:#94a3b8}.home{fill:#10213f}.foreign{fill:#0f2b1d}.node{fill:#0b1220;stroke:#cbd5e1}.line{stroke:#94a3b8}}</style>
   <text x="490" y="38" text-anchor="middle" class="label">移动 IP 术语关系</text>
   <rect x="65" y="85" width="370" height="245" class="net home"/><text x="250" y="120" text-anchor="middle" class="label">归属网络</text>

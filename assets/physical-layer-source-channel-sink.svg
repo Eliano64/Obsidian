@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
   <title id="title">信源 信道 信宿</title>
   <desc id="desc">展示信源、信道、信宿和噪声的关系</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--panel2:#eef6ff;--text:#172033;--muted:#64748b;--line:#334155;--blue:#2563eb;--blue-bg:#dbeafe;--green:#16a34a;--green-bg:#dcfce7;--amber:#d97706;--amber-bg:#fef3c7;--red:#dc2626;--red-bg:#fee2e2}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--panel2:#172554;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--blue:#60a5fa;--blue-bg:#1e3a8a;--green:#4ade80;--green-bg:#14532d;--amber:#fbbf24;--amber-bg:#713f12;--red:#f87171;--red-bg:#7f1d1d}}
     .bg{fill:var(--bg)}.box{fill:var(--panel);stroke:var(--line);stroke-width:2.2}.source{fill:var(--blue-bg);stroke:var(--blue)}.sink{fill:var(--green-bg);stroke:var(--green)}.noise{fill:var(--red-bg);stroke:var(--red)}.channel{fill:var(--panel2);stroke:var(--line);stroke-width:2.4}.arrow{fill:none;stroke:var(--line);stroke-width:2.6;marker-end:url(#arrow)}.wave{fill:none;stroke:var(--blue);stroke-width:3}.noiseLine{stroke:var(--red);stroke-width:2.6;stroke-dasharray:8 8;marker-end:url(#redArrow)}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:22px;font-weight:700}.small{font-size:16px;fill:var(--muted)}

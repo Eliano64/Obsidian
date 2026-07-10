@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
   <title id="title">Circular Queue</title>
   <desc id="desc">Circular queue positions with front and rear pointers.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { --ink: #17212b; --muted: #5b6876; --line: #334e68; --accent: #0f766e; --warn: #b45309; --cell: #eef6ff; --empty: #f4f6f8; }
     @media (prefers-color-scheme: dark) {
       :root { --ink: #e6edf3; --muted: #b8c4cf; --line: #9ccfd8; --accent: #5eead4; --warn: #f6c177; --cell: #16212c; --empty: #1b2430; }

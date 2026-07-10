@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
   <title id="title">IPv4 数据报首部格式</title>
   <desc id="desc">IPv4 首部按 32 bit 为一行展示关键字段。</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{color-scheme:light dark}.bg{fill:#f8fafc}.text{fill:#0f172a;font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:17px}.small{fill:#334155;font-size:14px}.cell{fill:#fff;stroke:#64748b;stroke-width:1.5}.key{fill:#dbeafe}.frag{fill:#fed7aa}.addr{fill:#dcfce7}.opt{fill:#ede9fe}.note{fill:#0369a1;font-weight:700}@media(prefers-color-scheme:dark){.bg{fill:#020617}.text{fill:#e5e7eb}.small{fill:#cbd5e1}.cell{fill:#0f172a;stroke:#94a3b8}.key{fill:#172554}.frag{fill:#431407}.addr{fill:#052e16}.opt{fill:#2e1065}.note{fill:#67e8f9}}
   </style>
   <rect class="bg" width="1100" height="520"/>

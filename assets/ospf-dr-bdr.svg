@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="920" height="410" viewBox="0 0 920 410" role="img" aria-labelledby="title desc">
   <title id="title">OSPF DR and BDR on a multi-access network</title>
   <desc id="desc">Ordinary OSPF routers form adjacencies with DR and BDR instead of every router with every other router.</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root { color-scheme: light dark; }
     text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #172033; }
     .bus { stroke: #475569; stroke-width: 5; }

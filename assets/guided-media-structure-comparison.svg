@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">导引型传输媒体结构对比</title>
   <desc id="desc">展示双绞线、同轴电缆和光纤的结构特点</desc>
-  <style>
+  <style>/* paired-theme-canvas */
+svg{background:#f8fafc}
+@media(prefers-color-scheme:dark){svg{background:#0b1020}}
+
     :root{--bg:#fff;--panel:#f8fafc;--text:#172033;--muted:#64748b;--line:#334155;--copper:#b45309;--copper2:#16a34a;--shield:#64748b;--fiber:#2563eb;--fiber-bg:#dbeafe;--cladding:#bfdbfe;--light:#f59e0b;--green:#16a34a}
     @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--line:#94a3b8;--copper:#f59e0b;--copper2:#4ade80;--shield:#94a3b8;--fiber:#60a5fa;--fiber-bg:#1e3a8a;--cladding:#1d4ed8;--light:#fbbf24;--green:#4ade80}}
     .bg{fill:var(--bg)}.panel{fill:var(--panel);stroke:var(--line);stroke-width:2}.wireA{fill:none;stroke:var(--copper);stroke-width:7;stroke-linecap:round}.wireB{fill:none;stroke:var(--copper2);stroke-width:7;stroke-linecap:round}.jacket{fill:none;stroke:var(--line);stroke-width:1.6;stroke-dasharray:6 7;opacity:.65}.shield{fill:none;stroke:var(--shield);stroke-width:12}.clad{fill:var(--cladding);stroke:var(--fiber);stroke-width:2.5}.core{fill:var(--fiber-bg);stroke:var(--fiber);stroke-width:2}.ray{fill:none;stroke:var(--light);stroke-width:3.2;stroke-linejoin:round;marker-end:url(#lightArrow)}.labelLine{stroke:var(--line);stroke-width:1.8;marker-end:url(#arrow)}text{fill:var(--text);font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}.title{font-size:28px;font-weight:700}.label{font-size:21px;font-weight:700}.small{font-size:15px;fill:var(--muted)}
