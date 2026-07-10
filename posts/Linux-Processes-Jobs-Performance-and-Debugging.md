@@ -5,7 +5,6 @@ tags:
   - Shell
 categories:
   - Linux
-  - OS
 date: 2026-06-26 00:00:00
 katex: true
 ---
