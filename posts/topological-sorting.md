@@ -16,7 +16,7 @@ katex: true
 AOV 网用顶点表示活动，用有向边 `<u, v>` 表示活动 `u` 必须先于活动 `v` 进行。因为活动依赖不能循环，所以 AOV 网必须是 DAG，也就是有向无环图。
 
 > [!note] 和 DFS 判环的关系
-> 拓扑排序本身可以判断有向图是否有环。DFS 也可以通过 `VISITING` 状态判断有向环，见 [DFS 判有向图环](depth-first-search.md)。
+> 拓扑排序本身可以判断有向图是否有环。DFS 也可以通过 `VISITING` 状态判断有向环，见[[depth-first-search#DFS 判断有向图是否有环|DFS 判有向图环]]。
 
 ## 拓扑序列的定义
 
