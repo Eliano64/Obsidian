@@ -15,7 +15,7 @@ katex: true
 
 ![900](../assets/lan-wan-link-context.svg)
 
-局域网与广域网的差异可以先这样把握：
+局域网与广域网的差异：
 
 | 对比项 | 局域网 LAN | 广域网 WAN |
 |---|---|---|

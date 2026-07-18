@@ -1,18 +1,15 @@
 ---
-title: Prefix Sum and Two Pointers
+title: Prefix Sum
 tags:
   - DataStructureAndAlgorithm
-  - PrefixSum
-  - TwoPointers
+  - Array
 categories:
   - Data Structure & Algorithm
 date: 2026-06-24 00:00:00
 katex: true
 ---
 
-# Prefix Sum and Two Pointers Notes
-
-## 1. 前缀和
+# 前缀和
 
 区间求和类题，问求和满足某某性质的区间有多少个。
 
@@ -30,7 +27,7 @@ katex: true
 
 前缀和可以将暴力法的$O(n^{2})$下降到$O(n)$
 
-### 1.1 一维前缀和模板
+## 1.1 一维前缀和模板
 
 ```cpp
 vector<long long> pre(n + 1, 0);
@@ -42,7 +39,7 @@ for (int i = 0; i < n; i++) {
 long long sum = pre[r + 1] - pre[l];
 ```
 
-### 1.2 二维前缀和模板
+## 1.2 二维前缀和模板
 
 ```cpp
 s[i][j] = a[i][j] + s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1];

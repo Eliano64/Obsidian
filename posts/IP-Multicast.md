@@ -2,7 +2,7 @@
 title: IP Multicast
 tags:
   - ComputerNetwork
-  - NetworkLayer
+  - InternetLayer
 categories:
   - Computer Network
 date: 2026-07-08 16:05:00

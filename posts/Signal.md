@@ -54,7 +54,7 @@ Linux 中用 `kill`、`pkill` 发送信号的命令用法见 [Linux Signals](../
 
 异常/中断首先让 CPU 转入内核态，由内核完成硬件相关或系统级处理。若这个事件需要通知某个用户进程，内核可以在该进程的待处理信号集中设置对应信号。之后，当该进程准备回到用户态时，信号机制再负责把这个事件交给进程处理。
 
-异常与中断的基本机制见 [[Exception-And-Interrupt-Brief]] 和 [[Exception-And-Interrupt-Handling]]。
+异常与中断的基本机制见 [[Exception-And-Interrupt-Definition]] 和 [[Exception-And-Interrupt-Handling]]。
 
 > [!warning] 信号不是信号量
 > 信号用于异步通知事件，例如终止、子进程退出。信号量用于同步、互斥或资源计数，例如缓冲区是否有空位、临界区是否可进入。二者名字相近，但用途完全不同。

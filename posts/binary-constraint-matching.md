@@ -2,7 +2,7 @@
 title: binary constraint matching
 tags:
   - DataStructureAndAlgorithm
-  - Hashtable
+  - Search
 categories:
   - Data Structure & Algorithm
 date: 2025-11-12 00:00:00

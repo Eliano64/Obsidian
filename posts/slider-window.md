@@ -1,15 +1,15 @@
 ---
 title: slider window
 tags:
-  - SliderWindow
   - DataStructureAndAlgorithm
+  - Queue
 categories:
   - Data Structure & Algorithm
 date: 2025-10-12 00:00:00
 katex: true
 ---
 
-核心思想：使用两个指针`l`和`r`表示窗口的左右边界。`r`表示即将入窗口的元素，`l`表示即将出窗口的元素。这种出和入只发生在窗口特定的位置，与队列相似。
+核心思想：使用两个指针`l`和`r`表示窗口的左右边界。`r`表示即将入窗口的元素，`l`表示即将出窗口的元素。由于这种出和入只发生在窗口特定的位置，显然就可以只需检查出/入的单个元素来维护这个窗口里的元素满足的性质。
 
 # 1. 定长滑动窗口
 

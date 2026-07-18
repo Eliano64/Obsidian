@@ -2,7 +2,7 @@
 title: Network Layer Services
 tags:
   - ComputerNetwork
-  - NetworkLayer
+  - InternetLayer
 categories:
   - Computer Network
 date: 2026-07-08 08:46:37

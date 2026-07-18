@@ -2,7 +2,8 @@
 title: buffer pool project study
 tags:
   - DataStructureAndAlgorithm
-  - Cache
+  - OperatingSystem
+  - Memory
 categories:
   - Data Structure & Algorithm
 date: 2025-08-04 00:00:00

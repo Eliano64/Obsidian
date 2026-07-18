@@ -2,7 +2,7 @@
 title: DHCP
 tags:
   - ComputerNetwork
-  - NetworkLayer
+  - InternetLayer
   - ApplicationLayer
 categories:
   - Computer Network

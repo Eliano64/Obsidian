@@ -2,7 +2,7 @@
 title: IPv4 Datagram
 tags:
   - ComputerNetwork
-  - NetworkLayer
+  - InternetLayer
 categories:
   - Computer Network
 date: 2026-07-08 10:05:00
@@ -64,7 +64,7 @@ $$
 
 分片可以再次分片。中间路由器只负责继续转发或继续分片；重组只在目的主机进行。这样可以避免每个中间路由器都维护大量重组状态。
 
-> [!warning] DF 位
+> [!warning] DF = 1 且数据报长度大于 MTU
 > `DF=1` 表示不允许分片。若下一段链路的 MTU 装不下该数据报，路由器不能强行分片，只能丢弃，并通常通过 [[ICMP|ICMP]] 返回差错报告。
 
 # TTL、协议字段和首部检验和

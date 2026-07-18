@@ -1,7 +1,7 @@
 ---
 title: difference array
 tags:
-  - Difference
+  - Array
   - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
@@ -13,22 +13,22 @@ katex: true
 
 对于一个数组a，构造的这样的一个数组d称为a的差分数组：
 
-<script type="math/tex; mode=display">
+$$
 d[i] =
 \begin{cases}
 0, & \text{if } i = 0 \\
 a[i] - a[i-1], & \text{otherwise}
 \end{cases}
-</script>
+$$
 
 # 2. 性质
 
 1. 对d构造前缀和数组得到a
-2. 对于a的一个下标区间[i,j)对应的元素统一加上一个数`c`后，则对应的d的变化为：`d[i](now)=>d[i](prev)+c` `d[j](now)=>d[j](prev)-c`。
+2. 对于a的一个下标区间\[i,j)对应的元素统一加上一个数`c`后，则对应的d的变化为：`d[i](now)=>d[i](prev)+c` `d[j](now)=>d[j](prev)-c`。
 
 也就是说，**差分数组的构造可以将一个区间的变化映射为两个元素的变化**。
 
-> 在实际操作时，还要注意j==a.length，此时超出d索引范围（因为在前面的构造中d.length==a.length）。因此为了方便，通常让d.length=a.length+1，即设置一个dummy。
+> 在实际操作时，还要注意`j==a.length`，此时超出d索引范围（因为在前面的构造中`d.length==a.length`）。因此为了方便，通常让d.length=a.length+1，即设置一个dummy。
 
 # 3. 例题
 
