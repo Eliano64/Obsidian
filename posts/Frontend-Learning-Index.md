@@ -1,7 +1,6 @@
 ---
 title: Frontend Learning Index
 tags:
-  - Frontend
   - HTML
   - CSS
 categories:

@@ -1,7 +1,6 @@
 ---
 title: Internal Sorting Basics
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm

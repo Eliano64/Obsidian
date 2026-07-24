@@ -1,7 +1,6 @@
 ---
 title: Memory Management Overview
 tags:
-  - OperatingSystem
   - Memory
 categories:
   - Operating System

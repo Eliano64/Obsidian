@@ -1,7 +1,6 @@
 ---
 title: CPU Pipeline
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

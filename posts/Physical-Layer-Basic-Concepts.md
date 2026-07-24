@@ -1,7 +1,6 @@
 ---
 title: Physical Layer Basic Concepts
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

@@ -1,11 +1,10 @@
 ---
-title: Breadth First Search 
+title: Breadth First Search
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 17:36:17 
+date: 2026-06-28 17:36:17
 katex: true
 ---
 

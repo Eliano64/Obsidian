@@ -1,7 +1,6 @@
 ---
 title: Network Congestion Control
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

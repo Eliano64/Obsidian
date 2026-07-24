@@ -1,7 +1,6 @@
 ---
 title: Full Binary Tree
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

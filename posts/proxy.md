@@ -1,7 +1,6 @@
 ---
 title: proxy
 tags:
-  - DesignPattern
   - ProxyPattern
 categories:
   - Design Pattern

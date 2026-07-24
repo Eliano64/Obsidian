@@ -1,7 +1,6 @@
 ---
 title: TCP Reliable Transmission
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

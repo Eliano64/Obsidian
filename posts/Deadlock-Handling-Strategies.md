@@ -1,7 +1,6 @@
 ---
 title: Deadlock Handling Strategies
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System
@@ -40,6 +39,8 @@ katex: true
 # 避免死锁
 
 避免死锁在每次分配资源之前判断：如果现在同意这个请求，系统会不会进入**不安全状态**。
+
+%%什么是安全状态？什么又是不安全状态？这个概念根本没有解释！%%
 
 ## 安全序列
 
@@ -136,7 +137,7 @@ P1 -> P3 -> P0 -> P2 -> P4
 | `P_i -> R_j` | `P_i` 正在请求 `R_j` |
 | `R_j -> P_i` | `R_j` 的某个实例已经分配给 `P_i` |
 
-资源分配图保存的是“谁占有资源、谁还在等资源”。检测算法不直接猜测将来调度顺序，而是不断问一个问题：当前可用资源是否足以让某个进程完成？
+资源分配图保存的是“谁占有资源、谁还在等资源”。检测算法不断问一个问题：当前可用资源是否足以让某个进程完成？
 
 [html-card height=700](../assets/deadlock-resource-graph-reduction-slides.html)
 

@@ -1,11 +1,10 @@
 ---
-title: Undirected And Directed Graph 
+title: Undirected And Directed Graph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 10:46:30 
+date: 2026-06-28 10:46:30
 katex: true
 ---
 

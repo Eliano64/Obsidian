@@ -1,11 +1,10 @@
 ---
-title: Sparse And Dense Graph 
+title: Sparse And Dense Graph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 13:03:30 
+date: 2026-06-28 13:03:30
 katex: true
 ---
 

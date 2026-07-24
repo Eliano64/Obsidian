@@ -1,7 +1,6 @@
 ---
 title: Multiprocessor Scheduling
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

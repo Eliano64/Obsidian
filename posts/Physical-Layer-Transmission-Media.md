@@ -1,7 +1,6 @@
 ---
 title: Physical Layer Transmission Media
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

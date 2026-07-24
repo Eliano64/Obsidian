@@ -2,7 +2,6 @@
 title: facade
 tags:
   - FacadePattern
-  - DesignPattern
   - InterfaceOrientedDesign
 categories:
   - Design Pattern

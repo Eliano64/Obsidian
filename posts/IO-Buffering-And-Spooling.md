@@ -1,7 +1,6 @@
 ---
 title: IO Buffering And Spooling
 tags:
-  - OperatingSystem
   - IO
 categories:
   - Operating System

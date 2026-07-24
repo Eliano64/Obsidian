@@ -1,7 +1,6 @@
 ---
 title: composite
 tags:
-  - DesignPattern
   - CompositePattern
   - InterfaceOrientedDesign
 categories:

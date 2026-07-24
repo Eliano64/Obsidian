@@ -1,7 +1,6 @@
 ---
 title: VLAN And 8021Q
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

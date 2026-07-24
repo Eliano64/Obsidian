@@ -1,11 +1,10 @@
 ---
-title: K Way Merge And Loser Tree 
+title: K Way Merge And Loser Tree
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 15:25:00 
+date: 2026-06-29 15:25:00
 katex: true
 ---
 

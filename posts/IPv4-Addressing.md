@@ -1,7 +1,6 @@
 ---
 title: IPv4 Addressing
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: Deadlock Basics And Necessary Conditions
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

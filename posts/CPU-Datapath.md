@@ -1,7 +1,6 @@
 ---
 title: CPU Datapath
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

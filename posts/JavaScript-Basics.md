@@ -1,7 +1,6 @@
 ---
 title: JavaScript Basics
 tags:
-  - Frontend
   - JavaScript
 categories:
   - Frontend

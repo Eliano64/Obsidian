@@ -1,11 +1,10 @@
 ---
-title: Minimum Spanning Tree 
+title: Minimum Spanning Tree
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 12:24:30 
+date: 2026-06-28 12:24:30
 katex: true
 ---
 

@@ -2,7 +2,6 @@
 title: factory method abstract factory
 tags:
   - InterfaceOrientedProgramming
-  - DesignPattern
   - FactoryMethod
   - AbstractFactory
 categories:

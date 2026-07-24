@@ -1,7 +1,6 @@
 ---
 title: TCP Flow Control
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

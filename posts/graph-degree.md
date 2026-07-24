@@ -1,11 +1,10 @@
 ---
-title: Graph Degree 
+title: Graph Degree
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 11:18:30 
+date: 2026-06-28 11:18:30
 katex: true
 ---
 

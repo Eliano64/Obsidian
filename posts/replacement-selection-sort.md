@@ -1,11 +1,10 @@
 ---
-title: Replacement Selection Sort 
+title: Replacement Selection Sort
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 15:30:00 
+date: 2026-06-29 15:30:00
 katex: true
 ---
 

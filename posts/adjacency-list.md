@@ -1,11 +1,10 @@
 ---
-title: Adjacency List 
+title: Adjacency List
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 16:18:30 
+date: 2026-06-28 16:18:30
 katex: true
 ---
 

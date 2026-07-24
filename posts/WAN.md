@@ -1,7 +1,6 @@
 ---
 title: WAN
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

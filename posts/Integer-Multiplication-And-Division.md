@@ -1,7 +1,6 @@
 ---
 title: Integer Multiplication And Division
 tags:
-  - ComputerOrganization
   - Number
 categories:
   - Computer Organization
@@ -43,7 +42,7 @@ ACC | MQ
 1. 看 `MQ` 的最低位。
 2. 若最低位为 `1`，则 `ACC = ACC + X`。
 3. 若最低位为 `0`，则 `ACC` 不变。
-4. 将 `ACC | MQ` 整体右移一位。
+4. 将 `进位（若有）|ACC | MQ` 整体逻辑右移一位。
 5. 重复 n 次后，`ACC | MQ` 中保存完整乘积。
 
 > [!note] 
@@ -126,4 +125,7 @@ $$
 [html-card height=760](../assets/integer-division-shift-subtract.html)
 
 以上是无符号数的除法的过程。
-有符号除法一般先对绝对值做无符号除法，再根据操作数的符号恢复商和余数的符号，结果按补码保存。若结果超出补码可表示范围，也会发生商溢出；典型情况是 n bit 补码的最小负数除以 `-1`。
+
+有符号除法一般先对绝对值做无符号除法，再根据操作数的符号恢复商和余数的符号，结果按补码保存。
+
+若结果超出补码可表示范围，也会发生商溢出；典型情况是 n bit 补码的最小负数除以 `-1`。

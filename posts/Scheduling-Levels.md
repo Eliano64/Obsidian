@@ -1,7 +1,6 @@
 ---
 title: Scheduling Levels
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

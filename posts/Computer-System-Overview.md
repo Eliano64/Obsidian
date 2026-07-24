@@ -1,8 +1,7 @@
 ---
 title: Computer System Overview
 tags:
-  - ComputerOrganization
-  - Overview
+  - ComputerOrganizationIntroduction
 categories:
   - Computer Organization
 date: 2026-06-30 08:49:23

@@ -1,7 +1,6 @@
 ---
 title: Doubly Linked List
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

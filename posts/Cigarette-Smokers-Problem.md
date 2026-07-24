@@ -1,7 +1,6 @@
 ---
 title: Cigarette Smokers Problem
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

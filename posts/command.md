@@ -1,7 +1,6 @@
 ---
 title: command
 tags:
-  - DesignPattern
   - CommandPattern
   - InterfaceOrientedProgramming
 categories:

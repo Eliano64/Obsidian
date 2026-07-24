@@ -1,7 +1,6 @@
 ---
 title: KMP Nextval
 tags:
-  - DataStructureAndAlgorithm
   - String
 categories:
   - Data Structure & Algorithm

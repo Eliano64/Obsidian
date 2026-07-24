@@ -1,7 +1,6 @@
 ---
 title: Software Defined Networking
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

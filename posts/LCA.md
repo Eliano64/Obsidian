@@ -1,7 +1,6 @@
 ---
 title: LCA
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

@@ -1,7 +1,6 @@
 ---
 title: Combinatorial Thinking In Data Structures
 tags:
-  - DataStructureAndAlgorithm
   - Combinatorics
 categories:
   - Data Structure & Algorithm

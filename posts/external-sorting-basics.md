@@ -1,11 +1,10 @@
 ---
-title: External Sorting Basics 
+title: External Sorting Basics
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 15:20:00 
+date: 2026-06-29 15:20:00
 katex: true
 ---
 

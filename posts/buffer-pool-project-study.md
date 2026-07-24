@@ -1,8 +1,6 @@
 ---
 title: buffer pool project study
 tags:
-  - DataStructureAndAlgorithm
-  - OperatingSystem
   - Memory
 categories:
   - Data Structure & Algorithm

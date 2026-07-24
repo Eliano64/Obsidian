@@ -1,7 +1,6 @@
 ---
 title: Reliable Transmission And Stop Wait
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: Trie
 tags:
-  - DataStructureAndAlgorithm
   - String
   - Tree
 categories:

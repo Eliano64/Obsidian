@@ -1,11 +1,10 @@
 ---
-title: Weighted Graph 
+title: Weighted Graph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 13:02:30 
+date: 2026-06-28 13:02:30
 katex: true
 ---
 

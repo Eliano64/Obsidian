@@ -1,7 +1,6 @@
 ---
 title: Contiguous Memory Allocation
 tags:
-  - OperatingSystem
   - Memory
 categories:
   - Operating System

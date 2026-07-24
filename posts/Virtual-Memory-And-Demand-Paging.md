@@ -1,9 +1,7 @@
 ---
 title: Virtual Memory And Demand Paging
 tags:
-  - OperatingSystem
   - Memory
-  - ComputerOrganization
 categories:
   - Operating System
   - Computer Organization
@@ -42,7 +40,6 @@ katex: true
 
 ## 透明性
 
-虚拟存储的透明性要分两层看。
 
 ![](../assets/virtual-memory-transparency.svg)
 
@@ -246,7 +243,7 @@ CPU 一次访存会连续经过两类问题：
 | 可变分配 + 全局置换 | 缺页时可从系统范围获取页框，进程页框数会变化      |
 
 > [!warning] “固定分配 + 全局置换”为什么不可行？
-> 全局置换可能让进程页框数变化，和固定分配矛盾      
+> 全局置换让进程页框数变化，和固定分配矛盾      
 
 三种可行组合的差异：
 

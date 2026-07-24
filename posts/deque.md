@@ -1,7 +1,6 @@
 ---
 title: Deque
 tags:
-  - DataStructureAndAlgorithm
   - Deque
 categories:
   - Data Structure & Algorithm

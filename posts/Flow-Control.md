@@ -1,7 +1,6 @@
 ---
 title: Flow Control
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

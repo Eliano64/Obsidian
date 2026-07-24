@@ -1,11 +1,10 @@
 ---
-title: Selection Sorts 
+title: Selection Sorts
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 07:12:00 
+date: 2026-06-29 07:12:00
 katex: true
 ---
 

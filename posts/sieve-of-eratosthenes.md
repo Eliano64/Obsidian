@@ -1,7 +1,6 @@
 ---
 title: sieve of eratosthenes
 tags:
-  - DataStructureAndAlgorithm
   - Mathematics
 categories:
   - Data Structure & Algorithm

@@ -1,7 +1,6 @@
 ---
 title: World Wide Web
 tags:
-  - ComputerNetwork
   - ApplicationLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: Parentheses Matching
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

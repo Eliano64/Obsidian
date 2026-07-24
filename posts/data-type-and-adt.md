@@ -1,8 +1,7 @@
 ---
 title: Data Type And ADT
 tags:
-  - DataStructureAndAlgorithm
-  - Overview
+  - DataStructureAndAlgorithmIntroduction
 categories:
   - Data Structure & Algorithm
 date: 2026-06-27 13:13:25

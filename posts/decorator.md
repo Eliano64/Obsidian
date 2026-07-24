@@ -1,7 +1,6 @@
 ---
 title: decorator
 tags:
-  - DesignPattern
   - DecoratorPattern
   - InterfaceOrientedDesign
 categories:

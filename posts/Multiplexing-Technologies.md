@@ -1,7 +1,6 @@
 ---
 title: Multiplexing Technologies
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

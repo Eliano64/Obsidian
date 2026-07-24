@@ -1,11 +1,10 @@
 ---
-title: DAG And AOV Network 
+title: DAG And AOV Network
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 22:12:45 
+date: 2026-06-28 22:12:45
 katex: true
 ---
 

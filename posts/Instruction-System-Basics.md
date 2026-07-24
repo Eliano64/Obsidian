@@ -1,7 +1,6 @@
 ---
 title: Instruction System Basics
 tags:
-  - ComputerOrganization
   - InstructionSystem
 categories:
   - Computer Organization

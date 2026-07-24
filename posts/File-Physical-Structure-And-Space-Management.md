@@ -1,7 +1,6 @@
 ---
 title: File Physical Structure And Space Management
 tags:
-  - OperatingSystem
   - FileSystem
 categories:
   - Operating System

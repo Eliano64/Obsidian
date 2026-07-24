@@ -1,7 +1,6 @@
 ---
 title: Data Link Layer Functions
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

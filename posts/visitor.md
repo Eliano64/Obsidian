@@ -1,7 +1,6 @@
 ---
 title: visitor
 tags:
-  - DesignPattern
   - VisitorPattern
   - InterfaceOrientedDesign
 categories:

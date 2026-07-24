@@ -1,11 +1,10 @@
 ---
-title: Orthogonal List And Adjacency Multilist 
+title: Orthogonal List And Adjacency Multilist
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 17:08:30 
+date: 2026-06-28 17:08:30
 katex: true
 ---
 

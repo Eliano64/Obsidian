@@ -1,7 +1,6 @@
 ---
 title: File Transfer Protocol
 tags:
-  - ComputerNetwork
   - ApplicationLayer
 categories:
   - Computer Network

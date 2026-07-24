@@ -1,7 +1,6 @@
 ---
 title: String Definition And Operations
 tags:
-  - DataStructureAndAlgorithm
   - String
 categories:
   - Data Structure & Algorithm

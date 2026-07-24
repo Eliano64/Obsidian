@@ -1,7 +1,6 @@
 ---
 title: Linux Text Processing Pipelines
 tags:
-  - Linux
   - Shell
 categories:
   - Linux

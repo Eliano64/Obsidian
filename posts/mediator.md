@@ -1,7 +1,6 @@
 ---
 title: mediator
 tags:
-  - DesignPattern
   - MediatorPattern
 categories:
   - Design Pattern

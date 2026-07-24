@@ -1,7 +1,6 @@
 ---
 title: Circular Queue
 tags:
-  - DataStructureAndAlgorithm
   - Queue
 categories:
   - Data Structure & Algorithm

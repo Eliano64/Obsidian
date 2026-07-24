@@ -1,7 +1,6 @@
 ---
 title: IPv4 Datagram
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

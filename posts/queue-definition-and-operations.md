@@ -1,7 +1,6 @@
 ---
 title: Queue Definition And Operations
 tags:
-  - DataStructureAndAlgorithm
   - Queue
 categories:
   - Data Structure & Algorithm

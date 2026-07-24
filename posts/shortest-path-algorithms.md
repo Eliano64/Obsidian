@@ -1,11 +1,10 @@
 ---
-title: Shortest Path Algorithms 
+title: Shortest Path Algorithms
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 21:30:32 
+date: 2026-06-28 21:30:32
 katex: true
 ---
 最短路径问题讨论的是：在图中，从一个顶点走到另一个顶点，怎样使路径长度最小。

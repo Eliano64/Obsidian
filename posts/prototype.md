@@ -1,7 +1,6 @@
 ---
 title: prototype
 tags:
-  - DesignPattern
   - PrototypePattern
   - InterfaceOrientedProgramming
 categories:

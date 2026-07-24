@@ -1,7 +1,6 @@
 ---
 title: Backtracking
 tags:
-  - DataStructureAndAlgorithm
   - Search
 categories:
   - Data Structure & Algorithm

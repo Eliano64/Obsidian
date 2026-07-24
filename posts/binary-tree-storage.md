@@ -1,7 +1,6 @@
 ---
 title: Binary Tree Storage 
 tags:
-  - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
 date: 2026-06-27 18:39:00 

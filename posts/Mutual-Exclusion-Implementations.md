@@ -1,7 +1,6 @@
 ---
 title: Mutual Exclusion Implementations
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

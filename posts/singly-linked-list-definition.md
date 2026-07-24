@@ -1,7 +1,6 @@
 ---
 title: Singly Linked List Definition
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

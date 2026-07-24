@@ -1,7 +1,6 @@
 ---
 title: OS IO Software And Device Management
 tags:
-  - OperatingSystem
   - IO
 categories:
   - Operating System

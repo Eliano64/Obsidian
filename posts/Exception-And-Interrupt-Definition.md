@@ -1,9 +1,8 @@
 ---
 title: Exception And Interrupt Definition
 tags:
-  - OperatingSystem
-  - ComputerOrganization
-  - Overview
+  - OperatingSystemIntroduction
+  - ComputerOrganizationIntroduction
 categories:
   - Operating System
   - Computer Organization

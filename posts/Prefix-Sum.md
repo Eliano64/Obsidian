@@ -1,7 +1,6 @@
 ---
 title: Prefix Sum
 tags:
-  - DataStructureAndAlgorithm
   - Array
 categories:
   - Data Structure & Algorithm

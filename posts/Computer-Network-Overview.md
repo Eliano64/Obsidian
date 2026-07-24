@@ -1,8 +1,7 @@
 ---
 title: Computer Network Overview
 tags:
-  - ComputerNetwork
-  - Overview
+  - ComputerNetworkIntroduction
 categories:
   - Computer Network
 date: 2026-07-06 20:48:00

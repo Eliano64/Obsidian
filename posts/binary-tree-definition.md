@@ -1,7 +1,6 @@
 ---
 title: Binary Tree Definition
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

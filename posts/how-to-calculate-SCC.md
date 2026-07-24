@@ -1,7 +1,6 @@
 ---
 title: How to Calculate SCC
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm

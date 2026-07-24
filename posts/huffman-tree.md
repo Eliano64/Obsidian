@@ -1,7 +1,6 @@
 ---
 title: Huffman Tree
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

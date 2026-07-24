@@ -1,9 +1,9 @@
 ---
 title: C and Cpp Compilation
 tags:
-  - Compiler
+  - Compile
 categories:
-  - Computer Organization
+  - Operating System
 date: 2026-06-24 00:00:00
 katex: true
 ---

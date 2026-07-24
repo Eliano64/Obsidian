@@ -1,7 +1,6 @@
 ---
 title: state
 tags:
-  - DesignPattern
   - StatePattern
   - InterfaceOrientedDesign
 categories:

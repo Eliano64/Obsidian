@@ -1,9 +1,8 @@
 ---
 title: Exception And Interrupt Handling
 tags:
-  - OperatingSystem
-  - ComputerOrganization
-  - Overview
+  - OperatingSystemIntroduction
+  - ComputerOrganizationIntroduction
 categories:
   - Operating System
   - Computer Organization

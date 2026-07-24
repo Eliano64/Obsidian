@@ -1,7 +1,6 @@
 ---
 title: Sequential List Insert Delete
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

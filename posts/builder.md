@@ -1,7 +1,6 @@
 ---
 title: builder
 tags:
-  - DesignPattern
   - BuilderPattern
   - InterfaceOrientedProgramming
 categories:

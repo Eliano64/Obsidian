@@ -1,9 +1,7 @@
 ---
 title: Disk Scheduling And Management
 tags:
-  - OperatingSystem
   - Storage
-  - ComputerOrganization
 categories:
   - Operating System
   - Computer Organization

@@ -1,7 +1,6 @@
 ---
 title: adapter
 tags:
-  - DesignPattern
   - AdapterPattern
   - InterfaceOrientedProgramming
 categories:

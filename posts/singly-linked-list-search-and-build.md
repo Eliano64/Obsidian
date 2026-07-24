@@ -1,7 +1,6 @@
 ---
 title: Singly Linked List Search And Build
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

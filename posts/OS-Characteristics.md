@@ -1,8 +1,7 @@
 ---
 title: OS Characteristics
 tags:
-  - OperatingSystem
-  - Overview
+  - OperatingSystemIntroduction
 categories:
   - Operating System
 date: 2026-07-17 13:30:13

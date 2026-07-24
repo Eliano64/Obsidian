@@ -1,7 +1,6 @@
 ---
 title: chain of responsibility
 tags:
-  - DesignPattern
   - ChainOfResponsibilityPattern
   - InterfaceOrientedProgramming
 categories:

@@ -1,7 +1,6 @@
 ---
 title: monotonic stack
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

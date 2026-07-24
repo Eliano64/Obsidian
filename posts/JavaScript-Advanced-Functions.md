@@ -1,7 +1,6 @@
 ---
 title: JavaScript Advanced Functions
 tags:
-  - Frontend
   - JavaScript
 categories:
   - Frontend

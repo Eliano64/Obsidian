@@ -1,7 +1,6 @@
 ---
 title: Readers Writers Problem
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

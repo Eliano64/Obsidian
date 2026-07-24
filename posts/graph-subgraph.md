@@ -1,11 +1,10 @@
 ---
-title: Graph Subgraph 
+title: Graph Subgraph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 12:07:30 
+date: 2026-06-28 12:07:30
 katex: true
 ---
 

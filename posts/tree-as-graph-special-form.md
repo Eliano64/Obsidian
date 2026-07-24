@@ -1,11 +1,10 @@
 ---
-title: Tree As Graph Special Form 
+title: Tree As Graph Special Form
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 13:04:30 
+date: 2026-06-28 13:04:30
 katex: true
 ---
 

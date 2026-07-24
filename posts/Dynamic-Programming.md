@@ -1,7 +1,6 @@
 ---
 title: Dynamic Programming
 tags:
-  - DataStructureAndAlgorithm
   - DynamicProgramming
 categories:
   - Data Structure & Algorithm

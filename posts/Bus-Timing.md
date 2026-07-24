@@ -1,7 +1,6 @@
 ---
 title: Bus Timing
 tags:
-  - ComputerOrganization
   - Bus
 categories:
   - Computer Organization

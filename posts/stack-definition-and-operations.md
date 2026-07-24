@@ -1,7 +1,6 @@
 ---
 title: Stack Definition And Operations
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

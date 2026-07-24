@@ -1,7 +1,6 @@
 ---
 title: Channel Capacity Nyquist Shannon
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

@@ -3,7 +3,6 @@ title: strategy
 tags:
   - StrategyPattern
   - InterfaceOrientedDesign
-  - DesignPattern
 categories:
   - Design Pattern
 date: 2025-11-22 00:00:00

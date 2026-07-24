@@ -1,11 +1,10 @@
 ---
-title: Topological Sorting 
+title: Topological Sorting
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 22:04:10 
+date: 2026-06-28 22:04:10
 katex: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Microprogrammed Control Unit
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

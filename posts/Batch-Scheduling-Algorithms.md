@@ -1,7 +1,6 @@
 ---
 title: Batch Scheduling Algorithms
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

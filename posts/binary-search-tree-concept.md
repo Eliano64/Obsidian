@@ -1,7 +1,6 @@
 ---
 title: Binary Search Tree Concept
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

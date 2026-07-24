@@ -1,7 +1,6 @@
 ---
 title: Transport Layer Overview
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

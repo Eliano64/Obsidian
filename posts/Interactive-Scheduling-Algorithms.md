@@ -1,7 +1,6 @@
 ---
 title: Interactive Scheduling Algorithms
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

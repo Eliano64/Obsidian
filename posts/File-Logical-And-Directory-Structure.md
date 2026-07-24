@@ -1,7 +1,6 @@
 ---
 title: File Logical And Directory Structure
 tags:
-  - OperatingSystem
   - FileSystem
 categories:
   - Operating System

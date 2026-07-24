@@ -1,7 +1,6 @@
 ---
 title: Dining Philosophers Problem
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

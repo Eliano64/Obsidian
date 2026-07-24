@@ -1,7 +1,6 @@
 ---
 title: Linear List Definition And Operations
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

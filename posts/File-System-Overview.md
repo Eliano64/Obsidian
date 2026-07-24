@@ -1,7 +1,6 @@
 ---
 title: File System Overview
 tags:
-  - OperatingSystem
   - FileSystem
 categories:
   - Operating System

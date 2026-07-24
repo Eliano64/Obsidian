@@ -1,7 +1,6 @@
 ---
 title: search definition
 tags:
-  - DataStructureAndAlgorithm
   - Search
 categories:
   - Data Structure & Algorithm

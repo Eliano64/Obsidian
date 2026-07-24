@@ -1,7 +1,6 @@
 ---
 title: x86 Assembly Basics
 tags:
-  - ComputerOrganization
   - InstructionSystem
 categories:
   - Computer Organization

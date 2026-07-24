@@ -1,7 +1,6 @@
 ---
 title: Bus Performance
 tags:
-  - ComputerOrganization
   - Bus
 categories:
   - Computer Organization

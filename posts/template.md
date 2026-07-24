@@ -1,7 +1,6 @@
 ---
 title: template
 tags:
-  - DesignPattern
   - TemplateMethodPattern
   - InterfaceOrientedDesign
 categories:

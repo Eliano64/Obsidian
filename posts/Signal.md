@@ -1,7 +1,6 @@
 ---
 title: Signal
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

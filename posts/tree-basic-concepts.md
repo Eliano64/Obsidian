@@ -1,7 +1,6 @@
 ---
 title: Tree Basic Concepts
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

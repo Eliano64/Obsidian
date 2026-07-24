@@ -1,7 +1,6 @@
 ---
 title: Static Linked List
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

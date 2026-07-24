@@ -1,7 +1,6 @@
 ---
 title: Private Networks
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

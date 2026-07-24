@@ -1,11 +1,10 @@
 ---
-title: Counting Sort 
+title: Counting Sort
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 09:05:00 
+date: 2026-06-29 09:05:00
 katex: true
 ---
 

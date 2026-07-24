@@ -1,7 +1,6 @@
 ---
 title: CPU Multiprocessor And Hardware Multithreading
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

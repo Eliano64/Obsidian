@@ -1,8 +1,6 @@
 ---
 title: IO System And Controllers
 tags:
-  - OperatingSystem
-  - ComputerOrganization
   - IO
 categories:
   - Computer Organization

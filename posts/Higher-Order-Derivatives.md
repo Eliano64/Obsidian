@@ -1,10 +1,9 @@
 ---
 title: Higher Order Derivatives
 tags:
-  - Calculus
   - Derivative
 categories:
-  - Mathematics
+  - Calculus
 date: 2026-07-18 13:59:09
 katex: true
 ---

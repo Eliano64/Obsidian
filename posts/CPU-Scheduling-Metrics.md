@@ -1,7 +1,6 @@
 ---
 title: CPU Scheduling Metrics
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

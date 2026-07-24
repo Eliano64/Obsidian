@@ -1,7 +1,6 @@
 ---
 title: Sequential List Storage
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

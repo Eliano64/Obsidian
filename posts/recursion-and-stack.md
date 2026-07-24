@@ -1,7 +1,6 @@
 ---
 title: Recursion And Stack
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

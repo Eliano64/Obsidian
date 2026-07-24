@@ -1,7 +1,6 @@
 ---
 title: Semaphores
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

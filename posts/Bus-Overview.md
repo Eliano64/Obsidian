@@ -1,7 +1,6 @@
 ---
 title: Bus Overview
 tags:
-  - ComputerOrganization
   - Bus
 categories:
   - Computer Organization

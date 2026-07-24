@@ -1,7 +1,6 @@
 ---
 title: binary constraint matching
 tags:
-  - DataStructureAndAlgorithm
   - Search
 categories:
   - Data Structure & Algorithm

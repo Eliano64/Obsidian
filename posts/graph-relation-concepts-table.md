@@ -1,7 +1,6 @@
 ---
 title: Graph Relation Concepts Table
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm

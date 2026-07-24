@@ -1,7 +1,6 @@
 ---
 title: TCP Congestion Control
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

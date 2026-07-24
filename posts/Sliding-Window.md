@@ -1,7 +1,6 @@
 ---
 title: Sliding Window
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

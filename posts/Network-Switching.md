@@ -1,8 +1,7 @@
 ---
 title: Network Switching
 tags:
-  - ComputerNetwork
-  - Overview
+  - ComputerNetworkIntroduction
 categories:
   - Computer Network
 date: 2026-07-10 20:46:39

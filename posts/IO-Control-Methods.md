@@ -1,8 +1,6 @@
 ---
 title: IO Control Methods
 tags:
-  - OperatingSystem
-  - ComputerOrganization
   - IO
 categories:
   - Computer Organization

@@ -1,7 +1,6 @@
 ---
 title: Main Memory And Storage Chips
 tags:
-  - ComputerOrganization
   - Memory
 categories:
   - Computer Organization

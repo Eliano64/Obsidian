@@ -1,8 +1,6 @@
 ---
 title: Memory System Overview
 tags:
-  - ComputerOrganization
-  - OperatingSystem
   - Memory
 categories:
   - Computer Organization

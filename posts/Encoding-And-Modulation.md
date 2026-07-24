@@ -1,7 +1,6 @@
 ---
 title: Encoding And Modulation
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

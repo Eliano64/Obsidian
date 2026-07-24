@@ -1,7 +1,6 @@
 ---
 title: CPU Structure
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

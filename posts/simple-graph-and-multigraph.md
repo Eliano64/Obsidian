@@ -1,7 +1,6 @@
 ---
 title: Simple Graph And Multigraph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm

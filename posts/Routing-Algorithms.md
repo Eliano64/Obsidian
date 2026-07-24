@@ -1,7 +1,6 @@
 ---
 title: Routing Algorithms
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

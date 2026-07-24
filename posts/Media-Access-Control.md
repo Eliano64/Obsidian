@@ -1,7 +1,6 @@
 ---
 title: Media Access Control
 tags:
-  - ComputerNetwork
   - DataLinkLayer
 categories:
   - Computer Network

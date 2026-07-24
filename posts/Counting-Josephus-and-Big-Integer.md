@@ -1,7 +1,6 @@
 ---
 title: Counting Josephus and Big Integer
 tags:
-  - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
 date: 2026-06-24 00:00:00

@@ -1,7 +1,6 @@
 ---
 title: Linked Queue
 tags:
-  - DataStructureAndAlgorithm
   - Queue
 categories:
   - Data Structure & Algorithm

@@ -1,9 +1,7 @@
 ---
 title: SSD And Flash Storage
 tags:
-  - ComputerOrganization
   - Storage
-  - OperatingSystem
 categories:
   - Computer Organization
   - Operating System

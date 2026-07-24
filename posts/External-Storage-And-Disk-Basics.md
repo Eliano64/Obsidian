@@ -1,9 +1,7 @@
 ---
 title: External Storage And Disk Basics
 tags:
-  - ComputerOrganization
   - Storage
-  - OperatingSystem
 categories:
   - Computer Organization
   - Operating System

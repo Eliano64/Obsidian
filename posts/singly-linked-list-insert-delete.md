@@ -1,7 +1,6 @@
 ---
 title: Singly Linked List Insert Delete
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm
@@ -134,6 +133,35 @@ bool ListDelete(LinkList head, int index, ElemType *deletedValue) {
 4. 释放 `nextNode`。
 
 局限：若 `node` 是最后一个结点，没有后继可覆盖，仍必须从头遍历找到 `node` 的前驱。
+
+## 翻转给定区间
+
+对于带头结点的单链表，翻转第 `left` 到第 `right` 个数据结点时，先找到第 `left - 1` 个结点 `before`。令 `first = before->next`，每轮取下 `first` 后面的结点，再把它插到 `before` 后面。`first` 不随结点移动，最后自然成为翻转区间的尾结点。
+
+[html-card height=620 step=40](../assets/singly-linked-list-range-reverse.html)
+
+实现如下。这里默认参数值合法。
+
+```c
+void ReverseBetween(LinkList head, int left, int right) {
+    // 找到第 left - 1 个结点。
+    LNode *before = head;
+    for (int position = 1; position < left; ++position) {
+        before = before->next;
+    }
+
+    LNode *first = before->next;
+    // 每轮把 first 后面的结点摘下，插到 before 后面。
+    for (int count = 0; count < right - left; ++count) {
+        LNode *moved = first->next;
+        first->next = moved->next;
+        moved->next = before->next;
+        before->next = moved;
+    }
+}
+```
+
+寻找区间并完成反转共需 `O(n)` 时间；算法只使用固定数量的指针，额外空间为 `O(1)`。当 `left = right` 时循环执行零次，链表保持不变。
 
 ## 关联
 

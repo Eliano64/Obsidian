@@ -1,7 +1,6 @@
 ---
 title: observer
 tags:
-  - DesignPattern
   - ObserverPattern
   - InterfaceOrientedDesign
 categories:

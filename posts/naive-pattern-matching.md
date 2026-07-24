@@ -1,7 +1,6 @@
 ---
 title: Naive Pattern Matching
 tags:
-  - DataStructureAndAlgorithm
   - String
 categories:
   - Data Structure & Algorithm

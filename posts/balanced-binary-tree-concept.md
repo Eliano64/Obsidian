@@ -1,7 +1,6 @@
 ---
 title: Balanced Binary Tree Concept
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

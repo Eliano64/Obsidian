@@ -1,7 +1,6 @@
 ---
 title: Tree Properties
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

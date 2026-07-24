@@ -1,7 +1,6 @@
 ---
 title: Binary Tree Basic Forms
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

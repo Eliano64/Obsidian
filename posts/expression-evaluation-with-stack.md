@@ -1,7 +1,6 @@
 ---
 title: Expression Evaluation With Stack
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

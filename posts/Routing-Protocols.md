@@ -1,7 +1,6 @@
 ---
 title: Routing Protocols
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

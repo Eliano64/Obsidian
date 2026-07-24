@@ -1,7 +1,6 @@
 ---
 title: Arithmetic Unit Basics
 tags:
-  - ComputerOrganization
   - Number
 categories:
   - Computer Organization
@@ -319,7 +318,7 @@ $$
 对无符号减法：
 
 * 实质：$(a+(2^{n}-b))\text{mod}(2^{n})$
-- 若**未**发生进位，说明被减数小于减数，发生**下溢**。
+- 若**未**发生进位，说明被减数小于减数，产生借位，发生**下溢**。
 - 此时 `CF = 1`。
 
 若用统一加法器表示加减法，可以记作：

@@ -1,7 +1,6 @@
 ---
 title: Linux Filesystem and Basic Commands
 tags:
-  - Linux
   - Shell
 categories:
   - Linux

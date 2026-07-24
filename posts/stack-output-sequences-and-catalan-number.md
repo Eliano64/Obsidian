@@ -1,7 +1,6 @@
 ---
 title: Stack Output Sequences And Catalan Number
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

@@ -2,7 +2,6 @@
 title: singleton
 tags:
   - InterfaceOrientedProgramming
-  - DesignPattern
   - SingletonPattern
 categories:
   - Design Pattern

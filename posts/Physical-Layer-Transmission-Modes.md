@@ -1,7 +1,6 @@
 ---
 title: Physical Layer Transmission Modes
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: slider window
 tags:
-  - DataStructureAndAlgorithm
   - Queue
 categories:
   - Data Structure & Algorithm

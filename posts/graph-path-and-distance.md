@@ -1,11 +1,10 @@
 ---
-title: Graph Path And Distance 
+title: Graph Path And Distance
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 11:19:30 
+date: 2026-06-28 11:19:30
 katex: true
 ---
 

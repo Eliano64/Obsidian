@@ -1,11 +1,10 @@
 ---
-title: Insertion Sorts 
+title: Insertion Sorts
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 06:08:23 
+date: 2026-06-29 06:08:23
 katex: true
 ---
 

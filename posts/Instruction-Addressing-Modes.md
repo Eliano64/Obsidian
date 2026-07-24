@@ -1,7 +1,6 @@
 ---
 title: Instruction Addressing Modes
 tags:
-  - ComputerOrganization
   - InstructionSystem
 categories:
   - Computer Organization

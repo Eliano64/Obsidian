@@ -1,7 +1,6 @@
 ---
 title: Queue Applications
 tags:
-  - DataStructureAndAlgorithm
   - Queue
 categories:
   - Data Structure & Algorithm

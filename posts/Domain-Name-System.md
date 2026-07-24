@@ -1,7 +1,6 @@
 ---
 title: Domain Name System
 tags:
-  - ComputerNetwork
   - ApplicationLayer
 categories:
   - Computer Network

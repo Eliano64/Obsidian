@@ -1,7 +1,6 @@
 ---
 title: Memory Mapped Files And mmap
 tags:
-  - OperatingSystem
   - Memory
   - FileSystem
 categories:

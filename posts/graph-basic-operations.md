@@ -1,11 +1,10 @@
 ---
-title: Graph Basic Operations 
+title: Graph Basic Operations
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 17:08:30 
+date: 2026-06-28 17:08:30
 katex: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Tree Forest And Binary Tree Conversion
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

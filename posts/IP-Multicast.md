@@ -1,7 +1,6 @@
 ---
 title: IP Multicast
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

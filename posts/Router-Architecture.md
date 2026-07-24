@@ -1,7 +1,6 @@
 ---
 title: Router Architecture
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

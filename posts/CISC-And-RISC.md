@@ -1,7 +1,6 @@
 ---
 title: CISC And RISC
 tags:
-  - ComputerOrganization
   - InstructionSystem
 categories:
   - Computer Organization

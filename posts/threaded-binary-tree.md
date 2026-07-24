@@ -1,7 +1,6 @@
 ---
 title: Threaded Binary Tree
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

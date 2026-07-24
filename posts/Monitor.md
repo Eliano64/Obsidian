@@ -1,7 +1,6 @@
 ---
 title: Monitor
 tags:
-  - OperatingSystem
   - ProcessAndThread
 categories:
   - Operating System

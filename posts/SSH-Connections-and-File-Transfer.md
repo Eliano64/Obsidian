@@ -1,7 +1,6 @@
 ---
 title: SSH Connections and File Transfer
 tags:
-  - SSH
 categories:
   - SSH
 date: 2026-06-24 00:00:00

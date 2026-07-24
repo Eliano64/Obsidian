@@ -1,7 +1,6 @@
 ---
 title: TCP Segment
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: IPv6
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

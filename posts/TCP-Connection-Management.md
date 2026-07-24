@@ -1,7 +1,6 @@
 ---
 title: TCP Connection Management
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

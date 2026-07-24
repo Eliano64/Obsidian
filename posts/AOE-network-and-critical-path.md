@@ -1,11 +1,10 @@
 ---
-title: AOE Network And Critical Path 
+title: AOE Network And Critical Path
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 23:08:01 
+date: 2026-06-28 23:08:01
 katex: true
 ---
 

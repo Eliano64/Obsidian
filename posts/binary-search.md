@@ -1,7 +1,6 @@
 ---
 title: binary search
 tags:
-  - DataStructureAndAlgorithm
   - Search
 categories:
   - Data Structure & Algorithm

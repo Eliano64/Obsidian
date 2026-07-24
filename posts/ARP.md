@@ -1,7 +1,6 @@
 ---
 title: ARP
 tags:
-  - ComputerNetwork
   - InternetLayer
   - DataLinkLayer
 categories:

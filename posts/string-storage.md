@@ -1,7 +1,6 @@
 ---
 title: String Storage
 tags:
-  - DataStructureAndAlgorithm
   - String
 categories:
   - Data Structure & Algorithm

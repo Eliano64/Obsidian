@@ -1,11 +1,10 @@
 ---
-title: Graph Connectivity And Components 
+title: Graph Connectivity And Components
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 11:20:30 
+date: 2026-06-28 11:20:30
 katex: true
 ---
 

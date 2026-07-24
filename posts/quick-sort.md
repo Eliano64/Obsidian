@@ -2,7 +2,6 @@
 title: Quick Sort
 tags:
   - Sort
-  - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
 date: 2025-08-25 00:00:00

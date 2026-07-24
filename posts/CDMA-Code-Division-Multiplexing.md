@@ -1,7 +1,6 @@
 ---
 title: CDMA Code Division Multiplexing
 tags:
-  - ComputerNetwork
   - PhysicalLayer
 categories:
   - Computer Network

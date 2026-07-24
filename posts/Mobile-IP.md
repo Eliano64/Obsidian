@@ -1,7 +1,6 @@
 ---
 title: Mobile IP
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

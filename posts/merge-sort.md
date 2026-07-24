@@ -1,11 +1,10 @@
 ---
-title: Merge Sort 
+title: Merge Sort
 tags:
-  - DataStructureAndAlgorithm
   - Sort
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 08:10:00 
+date: 2026-06-29 08:10:00
 katex: true
 ---
 

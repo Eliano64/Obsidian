@@ -1,11 +1,10 @@
 ---
-title: Graph Traversal And Connectivity 
+title: Graph Traversal And Connectivity
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 18:15:28 
+date: 2026-06-28 18:15:28
 katex: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Hungarian Algorithm
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm

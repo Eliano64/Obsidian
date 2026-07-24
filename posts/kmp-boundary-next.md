@@ -1,7 +1,6 @@
 ---
 title: KMP Boundary Next
 tags:
-  - DataStructureAndAlgorithm
   - String
 categories:
   - Data Structure & Algorithm

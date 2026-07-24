@@ -1,7 +1,6 @@
 ---
 title: Network Layer Services
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

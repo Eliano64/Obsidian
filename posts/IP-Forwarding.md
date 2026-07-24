@@ -1,7 +1,6 @@
 ---
 title: IP Forwarding
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

@@ -1,7 +1,6 @@
 ---
 title: Application-Models
 tags:
-  - ComputerNetwork
   - ApplicationLayer
 categories:
   - Computer Network

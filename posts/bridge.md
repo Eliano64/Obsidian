@@ -1,7 +1,6 @@
 ---
 title: bridge
 tags:
-  - DesignPattern
   - BridgePattern
   - InterfaceOrientedProgramming
 categories:

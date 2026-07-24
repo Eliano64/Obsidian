@@ -1,11 +1,10 @@
 ---
-title: Adjacency Matrix 
+title: Adjacency Matrix
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 15:22:30 
+date: 2026-06-28 15:22:30
 katex: true
 ---
 

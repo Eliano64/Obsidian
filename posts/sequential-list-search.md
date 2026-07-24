@@ -1,7 +1,6 @@
 ---
 title: Sequential List Search
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm

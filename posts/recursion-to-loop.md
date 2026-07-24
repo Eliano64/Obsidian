@@ -1,8 +1,8 @@
 ---
 title: recursion to loop
 tags:
-  - DataStructureAndAlgorithm
-  - ComputerOrganization
+  - Stack
+  - InstructionSystem
 categories:
   - Data Structure & Algorithm
 date: 2026-04-15 00:00:00

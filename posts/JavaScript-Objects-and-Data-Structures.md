@@ -1,7 +1,6 @@
 ---
 title: JavaScript Objects and Data Structures
 tags:
-  - Frontend
 categories:
   - Frontend
 date: 2026-06-26 00:00:00

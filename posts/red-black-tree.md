@@ -1,12 +1,11 @@
 ---
-title: Red Black Tree 
+title: Red Black Tree
 tags:
-  - DataStructureAndAlgorithm
   - Search
   - Tree
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 21:35:00 
+date: 2026-06-29 21:35:00
 katex: true
 ---
 

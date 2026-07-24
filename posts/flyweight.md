@@ -1,7 +1,6 @@
 ---
 title: flyweight
 tags:
-  - DesignPattern
   - FlyweightPattern
 categories:
   - Design Pattern

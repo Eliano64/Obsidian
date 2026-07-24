@@ -1,7 +1,6 @@
 ---
 title: Union Find
 tags:
-  - DataStructureAndAlgorithm
   - Tree
 categories:
   - Data Structure & Algorithm

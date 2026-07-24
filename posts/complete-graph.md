@@ -1,7 +1,6 @@
 ---
 title: Complete Graph
 tags:
-  - DataStructureAndAlgorithm
   - Graph
   - "#Graph"
 categories:

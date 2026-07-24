@@ -2,7 +2,6 @@
 title: Tarjan Algorithm
 tags:
   - Graph
-  - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
 date: 2026-06-24 00:00:00

@@ -1,7 +1,6 @@
 ---
 title: Array Storage
 tags:
-  - DataStructureAndAlgorithm
   - Array
 categories:
   - Data Structure & Algorithm

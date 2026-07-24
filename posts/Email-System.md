@@ -1,7 +1,6 @@
 ---
 title: Email System
 tags:
-  - ComputerNetwork
   - ApplicationLayer
 categories:
   - Computer Network

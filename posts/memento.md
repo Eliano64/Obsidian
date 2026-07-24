@@ -1,7 +1,6 @@
 ---
 title: memento
 tags:
-  - DesignPattern
   - MementoPattern
 categories:
   - Design Pattern

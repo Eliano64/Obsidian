@@ -1,7 +1,6 @@
 ---
 title: Sequential Stack
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

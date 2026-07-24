@@ -1,7 +1,6 @@
 ---
 title: Paging And Segmentation
 tags:
-  - OperatingSystem
   - Memory
 categories:
   - Operating System

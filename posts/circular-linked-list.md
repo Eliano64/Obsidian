@@ -1,7 +1,6 @@
 ---
 title: Circular Linked List
 tags:
-  - DataStructureAndAlgorithm
   - LinearList
 categories:
   - Data Structure & Algorithm
@@ -15,7 +14,7 @@ katex: true
 
 ## 循环单链表
 
-循环单链表将表尾结点的 `next` 指针指向头结点，而不是 `NULL`。
+循环单链表将表尾结点的 `next` 指针指向头结点。
 
 带头结点循环单链表的空表通常满足：
 

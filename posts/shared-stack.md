@@ -1,7 +1,6 @@
 ---
 title: Shared Stack
 tags:
-  - DataStructureAndAlgorithm
   - Stack
 categories:
   - Data Structure & Algorithm

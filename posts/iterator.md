@@ -1,7 +1,6 @@
 ---
 title: iterator
 tags:
-  - DesignPattern
   - IteratorPattern
   - InterfaceOrientedProgramming
 categories:

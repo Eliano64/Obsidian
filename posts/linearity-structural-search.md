@@ -1,7 +1,6 @@
 ---
 title: Linearity Structural Search
 tags:
-  - DataStructureAndAlgorithm
   - Search
 categories:
   - Data Structure & Algorithm

@@ -1,7 +1,6 @@
 ---
 title: UDP Datagram
 tags:
-  - ComputerNetwork
   - TransportLayer
 categories:
   - Computer Network

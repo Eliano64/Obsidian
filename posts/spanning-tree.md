@@ -1,11 +1,10 @@
 ---
-title: Spanning Tree 
+title: Spanning Tree
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 12:08:30 
+date: 2026-06-28 12:08:30
 katex: true
 ---
 

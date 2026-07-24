@@ -1,11 +1,10 @@
 ---
-title: Depth First Search 
+title: Depth First Search
 tags:
-  - DataStructureAndAlgorithm
   - Graph
 categories:
   - Data Structure & Algorithm
-date: 2026-06-28 17:54:13 
+date: 2026-06-28 17:54:13
 katex: true
 ---
 

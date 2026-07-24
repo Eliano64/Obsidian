@@ -1,7 +1,6 @@
 ---
 title: Instruction Cycle
 tags:
-  - ComputerOrganization
   - CPU
 categories:
   - Computer Organization

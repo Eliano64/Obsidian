@@ -1,7 +1,6 @@
 ---
 title: ICMP
 tags:
-  - ComputerNetwork
   - InternetLayer
 categories:
   - Computer Network

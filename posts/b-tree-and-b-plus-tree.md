@@ -1,12 +1,11 @@
 ---
-title: B Tree And B Plus Tree 
+title: B Tree And B Plus Tree
 tags:
-  - DataStructureAndAlgorithm
   - Search
   - Tree
 categories:
   - Data Structure & Algorithm
-date: 2026-06-29 22:10:00 
+date: 2026-06-29 22:10:00
 katex: true
 ---
 

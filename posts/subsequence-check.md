@@ -2,7 +2,6 @@
 title: subsequence check
 tags:
   - String
-  - DataStructureAndAlgorithm
 categories:
   - Data Structure & Algorithm
 date: 2025-09-26 00:00:00

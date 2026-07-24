@@ -1,11 +1,10 @@
 ---
 title: Function Limits and Continuity
 tags:
-  - Calculus
   - Limit
   - Continuity
 categories:
-  - Mathematics
+  - Calculus
 date: 2026-07-18 13:59:09
 katex: true
 ---
@@ -94,10 +93,25 @@ $$
 证明局部性质时，把 $\varepsilon$ 取成合适的固定值：
 
 - 局部有界：取 $\varepsilon=1$；
-- $A\ne0$ 时保号：取 $\varepsilon=|A|/2$；
-- 证明分母远离零：同样取 $\varepsilon=|A|/2$。
+- $A\ne0$ 时[[#保号性]]：取 $\varepsilon$为某个小于 $|A|$ 的正数即可；
 
-$A=0$ 时不能只由极限推出符号。
+# 保号性
+
+**重要前提：$\displaystyle\lim_{ x \to x_{0} }f(x)=A$存在！**
+
+先讨论$A\neq 0$时。保号性即存在$x_{0}$的去心邻域，若$x$在去心邻域里，则$f(x)$与$A$同号。
+
+令 $\displaystyle\varepsilon= \frac{|A|}{3}$；则存在$\delta>0$, 使得$x \in (x_{0}-\delta, x_{0}+\delta)$，有$$0<|f(x)-A|< \frac{|A|}{3}$$
+即$$\begin{cases}
+0<\frac{2}{3}A<f(x)< \frac{4}{3}A,A>0; \\
+\frac{4}{3}A<f(x)< \frac{2}{3}A<0,A<0
+\end{cases}$$
+
+得证。
+
+所以我们还能更进一步地说：**保号性即存在$x_{0}$的去心邻域，若$x$在去心邻域里，在$A>0$时，则$f(x)$的值可以大于$[0, A)$的任意值；$A<0$时，则$f(x)$的值可以小于$(A, 0]$的任意值**
+
+$A=0$ 时不能只由极限推出符号。还必须要有其他信息。
 
 > [!example] 题目
 > 已知 $f'(x)\le0$，且
@@ -106,7 +120,7 @@ $A=0$ 时不能只由极限推出符号。
 > $$
 > 证明：$f(x)\ge0$。
 
-$f'(x)\le0$ 说明 $f$ 单调递减。对任意 $t>x$，$f(x)\ge f(t)$；令 $t\to+\infty$，得到 $f(x)\ge f(t)\geqslant_{0}$。
+$f'(x)\le0$ 说明 $f$ 单调递减。对任意 $t>x$，$f(x)\ge f(t)$；令 $t\to+\infty$，得到 $f(x)\ge f(t)\geqslant{0}$。
 
 # 夹逼
 
@@ -119,9 +133,11 @@ $$
 
 振荡项用 $|\sin u|,|\cos u|\le1$；积分可用“区间长度 $\times$ 被积函数上界”估计。
 
-# 连续与间断
+# 连续
 
 连续需同时满足：$f(x_0)$ 有定义、左右极限相等、极限等于 $f(x_0)$。
+
+# 间断
 
 | 单侧极限情况        | 间断类型 | 归类  |
 | ------------- | ---- | --- |

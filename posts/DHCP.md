@@ -1,7 +1,6 @@
 ---
 title: DHCP
 tags:
-  - ComputerNetwork
   - InternetLayer
   - ApplicationLayer
 categories:
