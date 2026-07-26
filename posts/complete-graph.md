@@ -2,7 +2,6 @@
 title: Complete Graph
 tags:
   - Graph
-  - "#Graph"
 categories:
   - Data Structure & Algorithm
 date: 2026-06-28 11:42:30

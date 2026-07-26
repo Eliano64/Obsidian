@@ -18,15 +18,8 @@ git clone https://github.com/Eliano64/local-html-card-plugin.git .obsidian/plugi
 
 Open the folder as an Obsidian vault and enable **Local HTML Card** in Settings → Community plugins → Installed plugins.
 
-## Topics
+# 
 
-| Area | Topics |
-|---|---|
-| Operating System | Processes, threads, CPU scheduling, synchronization, deadlock, memory management, paging, virtual memory, file systems, I/O, disk scheduling, kernel, boot, VMM |
-| Computer Organization | CPU structure, datapath, pipeline, cache, bus, instruction system, arithmetic unit, number systems, hardwired/microprogrammed control, x86 assembly |
-| Computer Networks | Layered architecture, physical layer, data link, MAC, network layer, IP, routing, transport layer, TCP/UDP, application layer (HTTP, DNS, SMTP, FTP) |
-| Data Structures | Linear lists, linked lists, stacks, queues, trees, BST, AVL, red-black, B-tree, heap, Huffman, hash table, graphs, union-find, Trie |
-| Algorithms | Sorting, searching, graph traversal, shortest path, MST, DP, backtracking, KMP, Tarjan, counting sort, radix sort, external sorting |
-| Programming | C/C++, JavaScript, Bash, STL, competitive programming idioms |
-| Tools | Linux, Git, Docker, Nginx, SSH, Qt, Swagger, JWT |
-| Design Patterns | Singleton, factory, observer, strategy, decorator, proxy, command, visitor, etc. |
+
+
+

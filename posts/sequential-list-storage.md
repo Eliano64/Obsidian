@@ -102,4 +102,4 @@ void DestroyList(SeqList *L) {
 
 ## 关联
 
-顺序表的具体操作见 [[sequential-list-insert-delete|顺序表的插入与删除]]、[[sequential-list-search|顺序表的查找]]。与链表的整体比较见 [[sequential-list-vs-linked-list|顺序表与链表对比]]。
+顺序表的具体操作见 [[Sequential-List-Insert-Delete|顺序表的插入与删除]]、[[sequential-list-search|顺序表的查找]]。与链表的整体比较见 [[sequential-list-vs-linked-list|顺序表与链表对比]]。

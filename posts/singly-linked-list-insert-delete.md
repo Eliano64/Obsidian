@@ -165,4 +165,4 @@ void ReverseBetween(LinkList head, int left, int right) {
 
 ## 关联
 
-顺序表插入删除的主要成本是移动元素，见 [[sequential-list-insert-delete|顺序表的插入与删除]]；单链表的主要成本是查找前驱。
+顺序表插入删除的主要成本是移动元素，见 [[Sequential-List-Insert-Delete|顺序表的插入与删除]]；单链表的主要成本是查找前驱。
