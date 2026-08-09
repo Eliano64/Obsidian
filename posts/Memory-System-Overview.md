@@ -4,7 +4,6 @@ tags:
   - Memory
 categories:
   - Computer Organization
-  - Operating System
 date: 2026-06-30 21:27:05
 katex: true
 ---
