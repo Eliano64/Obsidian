@@ -18,7 +18,6 @@ git clone https://github.com/Eliano64/local-html-card-plugin.git .obsidian/plugi
 
 Open the folder as an Obsidian vault and enable **Local HTML Card** in Settings → Community plugins → Installed plugins.
 
-# 
 
 
 
