@@ -7,12 +7,11 @@ categories:
 date: 2026-06-27 15:24:00
 katex: true
 ---
+# 核心思想
 
-# 共享栈
+共享栈让两个 [[Sequential-Stack|顺序栈]] 共享同一个数组。一个栈从数组低地址端向高地址端增长，另一个栈从高地址端向低地址端增长。
 
-## 核心思想
-
-共享栈让两个 [[sequential-stack|顺序栈]] 共享同一个数组。一个栈从数组低地址端向高地址端增长，另一个栈从高地址端向低地址端增长。
+共享栈适合两个栈的空间需求此消彼长、总容量有上限的场景。
 
 ![Shared stack structure](../assets/shared-stack.svg)
 
@@ -35,7 +34,7 @@ void InitSharedStack(SharedStack *stack) {
 }
 ```
 
-## 判满条件
+# 判满条件
 
 两个栈顶相邻时，数组中没有空位：
 
@@ -47,7 +46,7 @@ stack->top0 + 1 == stack->top1
 
 这是共享栈最重要的条件。
 
-## 进栈
+# 进栈
 
 ```c
 bool Push0(SharedStack *stack, ElemType value) {
@@ -65,7 +64,7 @@ bool Push1(SharedStack *stack, ElemType value) {
 }
 ```
 
-## 出栈
+# 出栈
 
 ```c
 bool Pop0(SharedStack *stack, ElemType *value) {
@@ -82,7 +81,3 @@ bool Pop1(SharedStack *stack, ElemType *value) {
     return true;
 }
 ```
-
-## 适用场景
-
-共享栈适合两个栈的空间需求此消彼长、总容量有上限的场景。它不能突破数组总容量，只是减少“一边空着、另一边已满”的浪费。

@@ -2,6 +2,7 @@
 title: Geometric Properties of Functions
 tags:
   - Derivative
+  - Integral
 categories:
   - Calculus
 date: 2026-07-20 20:55:10
@@ -115,6 +116,63 @@ f''(x)\le0\quad(x\in I)
 $$
 
 $f''>0$ 与 $f''<0$ 分别保证严格凹与严格凸。
+
+> [!example] Hermite–Hadamard 不等式：由二阶导正负性推定积分上下限
+>
+> 设 $f$ 在 $[a,b]$ 上连续、在 $(a,b)$ 上二阶可导，且 $f''<0$。由二阶导判别，$f$ 严格凸。于是
+>
+> $$
+> \frac{f(a)+f(b)}2
+> <
+> \frac1{b-a}\int_a^b f(x)\,dx
+> <
+> f\left(\frac{a+b}{2}\right).
+> $$
+>
+> > [!success] 下界证明
+> >
+> > 对任意 $x\in(a,b)$，
+> >
+> > $$
+> > x=\frac{b-x}{b-a}a+\frac{x-a}{b-a}b.
+> > $$
+> >
+> > 直接代入严格凸的定义：
+> >
+> > $$
+> > f(x)>
+> > \frac{b-x}{b-a}f(a)
+> > +
+> > \frac{x-a}{b-a}f(b).
+> > $$
+> >
+> > 在 $[a,b]$ 上积分，得到
+> >
+> > $$
+> > \frac1{b-a}\int_a^b f(x)\,dx
+> > >
+> > \frac{f(a)+f(b)}2.
+> > $$
+>
+> > [!success] 上界证明
+> >
+> > 令 $m=\dfrac{a+b}{2}$。
+> > 需要构造$\int_{a}^{b} f(x)\, \mathrm{d}{x}$。注意到$\int_{a}^{b} f(x)\, \mathrm{d}{x}=\int_{a}^{b} f(a+b-x)\, \mathrm{d}{x}=\int_{a}^{b} f(2m-x)\, \mathrm{d}{x}$，于是先
+> >
+> > $$
+> > f(m)>
+> > \frac{f(x)+f(a+b-x)}2\qquad(x\ne m).
+> > $$
+> >
+> > 两边在 $[a,b]$ 上积分，得到
+> >
+> > $$
+> > f\left(\frac{a+b}{2}\right)
+> > >
+> > \frac1{b-a}\int_a^b f(x)\,dx.
+> > $$
+>
+> 这就是 Hermite–Hadamard 不等式在本文凹凸约定下的严格凸情形。若 $f''>0$，不等号全部反向；线性函数取等号。
 
 # 极值与拐点
 

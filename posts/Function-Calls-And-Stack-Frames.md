@@ -176,7 +176,7 @@ mov [sum], eax
 
 递归函数每调用一次自身，就形成一个新的栈帧。每一层栈帧都保存本层的参数、局部变量、返回地址和必要上下文。
 
-手动模拟栈帧将任何递归改为循环详见[[../posts/recursion-to-loop|recursion-to-loop]]
+手动模拟栈帧将任何递归改为循环详见[[Recursion-To-Loop-With-Stack|Recursion-To-Loop]]
 
 # 小结
 

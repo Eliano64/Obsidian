@@ -1,5 +1,5 @@
 ---
-title: recursion to loop
+title: Recursion To Loop with stack
 tags:
   - Stack
   - InstructionSystem
@@ -15,7 +15,7 @@ katex: true
 
 在调用函数时，机器会将当前指令指针（IP）以及调用者函数的入口地址(bp)压入栈中进行保存。在子函数返回时，机器就会从栈中弹出这两个值。又由于根据bp的值可以找到调用者函数的传入参数/内部变量的存储地址，所以从而恢复调用者函数的执行状态。
 
-而对于返回值，则是会分配寄存器%eax专门地进行存储。
+而对于返回值，则是会分配寄存器 `%eax` 专门地进行存储。
 
 # 2. 伪代码
 
@@ -132,8 +132,8 @@ void hanoi(int src, int tmp, int dst, int n) {
             continue;
         }
         if (cur->ip == 0) {
-            cur->ip = 1;
             stack[++top] = (Frame){cur->src, cur->dst, cur->tmp, cur->n - 1, 0};
+            cur->ip = 1;
             continue;
         }
         if (cur->ip == 1) {

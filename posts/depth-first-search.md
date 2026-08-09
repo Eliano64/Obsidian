@@ -12,7 +12,7 @@ katex: true
 
 深度优先搜索（Depth-First Search, DFS）是图的遍历算法。它从某个起始顶点出发，沿着一个未访问邻接点不断深入；当前顶点没有未访问邻接点时，再返回上一层，继续尝试上一层的其他邻接点。
 
-相关卡片：[[breadth-first-search|广度优先搜索]]、[[graph-basic-operations|图的基本操作]]、[递归与栈](../posts/recursion-and-stack.md)、[搜索与回溯](backtracking.md)。
+相关卡片：[[breadth-first-search|广度优先搜索]]、[[graph-basic-operations|图的基本操作]]、[递归与栈](Recursion.md)、[搜索与回溯](backtracking.md)。
 
 ![DFS 总览](../assets/graph-dfs-overview.svg)
 
@@ -167,7 +167,7 @@ $$
 
 ## DFS 判断有向图是否有环
 
-普通 `visited[]` 只能回答“这个顶点以前是否被发现过”，但有向图判环需要更细的状态：这个顶点是否还在**当前递归路径**上。这里正好利用了 DFS 的递归栈性质；相关递归栈概念见[递归与栈](../posts/recursion-and-stack.md)。
+普通 `visited[]` 只能回答“这个顶点以前是否被发现过”，但有向图判环需要更细的状态：这个顶点是否还在**当前递归路径**上。这里正好利用了 DFS 的递归栈性质；相关递归栈概念见[递归与栈](Recursion.md)。
 
 [html-card height=820 step=80](../assets/graph-dfs-directed-cycle.html)
 

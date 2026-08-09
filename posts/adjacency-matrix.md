@@ -101,8 +101,8 @@ bool AdjacentInBinaryMatrix(int matrix[][MAX_VERTEX_NUM], int from, int to) {
 常用约定：
 
 - 若 $v_i$ 到 $v_j$ 有边或弧，则 `edge[i][j]` 保存权值。
-- 若 $v_i$ 到 $v_j$ 没有边或弧，则 `edge[i][j]` 记为 $\infty$。
-- 主对角线常记为 $0$，表示顶点到自身的距离为 $0$；也有材料会把所有不存在的边统一记作 $\infty$，做题时按题目约定判断。
+- 若 $v_i$ 到 $v_j$ ($i\neq j$)没有边或弧，则 `edge[i][j]` 记为 $\infty$。
+- 主对角线常记为 $0$，表示顶点到自身的距离为 $0$。
 - C 语言里常用一个足够大的整数表示 $\infty$，例如 `INT_MAX` 或自定义 `INF`。
 
 ## C 语言表示

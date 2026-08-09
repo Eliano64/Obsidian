@@ -7,10 +7,7 @@ categories:
 date: 2026-06-27 15:24:00
 katex: true
 ---
-
-# 链队列
-
-## 定义
+# 定义
 
 链队列是用链式存储实现的 [[queue-definition-and-operations|队列]]。通常设置队头指针 `front` 和队尾指针 `rear`。
 
@@ -28,7 +25,9 @@ typedef struct {
 } LinkQueue;
 ```
 
-## 带头结点初始化
+此时队头指针指向头结点，队尾指针指向队列最后一个元素。
+
+# 带头结点初始化
 
 ```c
 bool InitQueue(LinkQueue *queue) {
@@ -47,7 +46,7 @@ bool InitQueue(LinkQueue *queue) {
 queue.front == queue.rear
 ```
 
-## 入队
+# 入队
 
 入队发生在队尾：
 
@@ -66,7 +65,7 @@ bool EnQueue(LinkQueue *queue, ElemType value) {
 
 先让原队尾接上新结点，再更新 `rear`。
 
-## 出队
+# 出队
 
 出队删除队头结点的后继：
 
@@ -87,9 +86,10 @@ bool DeQueue(LinkQueue *queue, ElemType *value) {
 }
 ```
 
-若删除的是最后一个数据结点，必须让 `rear` 回到头结点，否则 `rear` 会悬空。
+> [! warning]
+> 若删除的是最后一个数据结点， `rear` 需要指回头结点。
 
-## 不带头结点的特殊情况
+# 不带头结点的情况
 
 不带头结点时，空队列通常满足：
 
@@ -97,4 +97,5 @@ bool DeQueue(LinkQueue *queue, ElemType *value) {
 queue.front == NULL && queue.rear == NULL
 ```
 
-第一次入队和删除最后一个结点都需要特殊处理。考试中若未说明，带头结点链队列更容易写出统一代码。
+>[! danger] 第一次入队和删除最后一个结点都需要特殊处理
+**不带头结点时，除了删除最后一个结点，第一次入队和时两个指针也都会被影响！**
