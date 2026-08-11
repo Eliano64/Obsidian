@@ -8,21 +8,10 @@ categories:
 date: 2026-07-18 13:59:09
 katex: true
 ---
-
 # 等价无穷小
+## $0/0$
 
-| 结构 | 优先处理 |
-|---|---|
-| $0/0$，无明显相消 | 等价无穷小、因式分解、洛必达 |
-| $0/0$，主项相消 | 泰勒展开到首个非零项 |
-| 含变上限积分 | 积分中值或洛必达去积分号 |
-| $\infty-\infty$ | 通分、有理化、提取主导项 |
-| 振荡因子乘衰减因子 | 取绝对值后夹逼 |
-| $1^\infty,0^0,\infty^0$ | 先取对数 |
-
-## $0/0$：比较最低非零次数
-
-写成
+使用泰勒展开，写成
 
 $$
 P(x)=a_m(x-x_0)^m+o((x-x_0)^m),
@@ -32,22 +21,9 @@ $$
 Q(x)=b_n(x-x_0)^n+o((x-x_0)^n).
 $$
 
-- $m>n$：极限为 $0$；
-- $m=n$：极限为 $a_m/b_n$；
-- $m<n$：通常发散，需判断左右符号。
+分母只保留次数最小的项作为主项，分子展开式只保留次数小于等于主项次数的项。
 
-“次数对齐”不是让分子、分母形式相同，而是两边都展开到首个不相消的项。
-
-常用等价无穷小：
-
-$$
-\sin x\sim x,\quad e^x-1\sim x,\quad
-\ln(1+x)\sim x,\quad 1-\cos x\sim\frac{x^2}{2}.
-$$
-
-等价替换只直接用于乘积和商。遇到 $\sin x-x$、$e^x-1-x$ 等加减相消，改用泰勒展开。
-
-## 含积分号
+### 定积分
 
 若被积函数连续，变上限积分可求导：
 
@@ -57,22 +33,51 @@ $$
 
 形成 $0/0$ 型时，首选洛必达去积分号。
 
+### 重积分
+
 ## $\infty-\infty$
 
-目标是暴露大项相消后的下一阶项：
 
-- 分式通分；
-- 根式乘共轭式；
-- 同阶项提取主导量；
-- 指数、幂式先取对数或作渐近展开。
-
-例如
+若幂式的底数和指数同时变化，可插入一个中间项, 使得第一项只改变指数或底数，第二项只改变底数或指数, 然后再对每一项提公因式。例如：
 
 $$
-\sqrt{x^2+x}-x
-=\frac{x}{\sqrt{x^2+x}+x}
-\to\frac12.
+a_1^{b_1}-a_2^{b_2}
+=\left(a_1^{b_1}-a_1^{b_2}\right)
++\left(a_1^{b_2}-a_2^{b_2}\right)=a_{1}^{b_{1}}(1-e^{(b_{2}-b_{1})\ln a_{1}})-a_{1}^{b_{2}}(1-e^{b_{2}\ln(1+(\frac{a_{1}-a_{2}}{a_{1}}))}).
 $$
+
+
+插入哪一个中间项并不固定。选择标准是：拆分后每一项只保留一种变化，并且能直接使用通分、共轭、中值定理或渐近展开。
+
+
+> [!example] 底数与指数同时变化
+> 设 $a>0$，求
+> $$
+> \lim_{x\to+\infty}
+> \left[(x+a)^{1+\frac1x}-x^{1+\frac1{x+a}}\right].
+> $$
+>
+> 令
+> $$
+> \alpha=1+\frac1x,
+> \qquad
+> \beta=1+\frac1{x+a}.
+> $$
+> 插入 $(x+a)^\beta$：
+> $$\begin{align}
+> (x+a)^\alpha-x^\beta &=\left[(x+a)^\alpha-(x+a)^\beta\right]+\left[(x+a)^\beta-x^\beta\right] \\
+> &= (x+a)^{\alpha}(1-e^{(\beta-\alpha)\ln(x+a)})+(x+a)^{\beta}(1-e^{\beta \ln(1-\frac{a}{x+a})}) \\
+> 
+> \end{align}
+> $$
+> 又$$\lim_{x\to+\infty}(x+a)^{\frac1x}=\exp\left\{ \lim_{ x \to \infty } \left(\frac{1}{x} \right)\ln(x+a) \right\}=0$$同理$$\lim_{ x \to \infty } (x+a)^{ \frac{1}{x+a} }=0$$
+> 所以原式即为：$$\begin{align}
+> &(x+a)\left( 1-e^{  -\frac{a}{x(x+a)} \ln(x+a)} \right)+(x+a)\left( 1-e^{\left( 1+ \frac{1}{x+a} \right) \left( -\frac{a}{x+a} \right)} \right) \\
+> =&(x+a)(\frac{a}{x(x+a)} \ln(x+a))+(x+a)\left( \left( 1+ \frac{1}{x+a} \right) \left( \frac{a}{x+a} \right) \right) \\
+> =& \frac{a}{x}\ln(x+a)+ a\left( 1+\frac{1}{x+a} \right) \\
+> =& 0 + a \\
+> =& a
+> \end{align}$$
 
 # 极限
 

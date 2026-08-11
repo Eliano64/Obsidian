@@ -24,7 +24,7 @@ katex: true
 
 ## 树形结构
 
-数据元素之间是一对多关系。一个元素可以有多个后继，但通常只有一个直接前驱。[[tree-basic-concepts|树]]、[[binary-tree-definition|二叉树]]属于这一类。
+数据元素之间是一对多关系。一个元素可以有多个后继，但通常只有一个直接前驱。[[Tree-Basic-Concepts|树]]属于这一类。
 
 ## 图结构
 

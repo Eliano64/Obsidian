@@ -17,7 +17,7 @@ katex: true
 
 [html-card height=880 step=80](../assets/union-find.html)
 
-## 存储结构
+# 存储结构
 
 并查集通常使用数组形式的双亲表示法：
 
@@ -37,7 +37,7 @@ void InitSet(int parent[], int n) {
 
 初始时每个元素各自构成一个集合，因此每个位置都是根。
 
-## Find 操作
+# Find 操作
 
 ```c
 int Find(int parent[], int x) {
@@ -52,7 +52,7 @@ int Find(int parent[], int x) {
 
 未优化时，`Find` 最坏时间复杂度等于树高，可能达到 $O(n)$。
 
-## Union 操作
+# Union 操作
 
 ```c
 void Union(int parent[], int x, int y) {
@@ -64,7 +64,11 @@ void Union(int parent[], int x, int y) {
 }
 ```
 
-合并两个集合，本质上是让一棵树的根成为另一棵树根的孩子。
+合并两个集合，本质上是让一棵树的根成为另一棵树根的孩子。因此可见主要的时间开销是两次 `Find` 操作寻找两集合的代表，即两树的根。
+
+# 优化
+
+未经优化的 `Union` 不考虑两棵树的规模，合并顺序不利时会形成很高的树，使 `Find` 沿较长的双亲链查找。下面分别从合并时控制树高、查找后缩短路径两个方向优化。
 
 ## 按规模合并
 
@@ -108,10 +112,10 @@ int FindCompress(int parent[], int x) {
 
 结合按规模合并与路径压缩后，操作复杂度可达到 $O(\alpha(n))$ 级别。$\alpha(n)$ 增长极慢，常见规模下通常不超过 4。
 
-## 复杂度对比
+# 时间复杂度
 
-| 实现 | Find 最坏复杂度 | 多次 Union 合并为一个集合 |
-|---|---:|---:|
-| 不优化 | $O(n)$ | $O(n^2)$ |
-| 按规模合并 | $O(\log_2 n)$ | $O(n\log_2 n)$ |
-| 按规模合并 + 路径压缩 | $O(\alpha(n))$ | $O(n\alpha(n))$ |
+| 实现 | Find 与一次 Union 最坏复杂度 |
+| --- | ---: |
+| 不优化 | $O(n)$ |
+| 按规模合并 | $O(\log_2 n)$ |
+| 按规模合并 + 路径压缩 | $O(\alpha(n))$ |
