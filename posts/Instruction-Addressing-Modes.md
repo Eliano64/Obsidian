@@ -1,7 +1,7 @@
 ---
 title: Instruction Addressing Modes
 tags:
-  - InstructionSystem
+  - ISA
 categories:
   - Computer Organization
 date: 2026-07-02 11:40:41

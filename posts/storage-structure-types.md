@@ -22,7 +22,7 @@ katex: true
 
 ## 链式存储
 
-逻辑上相邻的元素，物理位置可以不相邻，通过指针表示元素之间的关系。典型例子是 [[singly-linked-list-definition|单链表]] 和 [[doubly-linked-list|双链表]]。
+逻辑上相邻的元素，物理位置可以不相邻，通过指针表示元素之间的关系。典型例子是 [[singly-linked-list-definition|单链表]] 和 [[Doubly-Linked-List|双链表]]。
 
 特点：不要求连续空间；扩容灵活；查找前通常需要沿指针遍历；指针域会带来额外空间开销。
 

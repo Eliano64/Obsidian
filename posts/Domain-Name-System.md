@@ -30,6 +30,9 @@ $$
 
 例如 `mail.cctv.com` 中，`com` 是顶级域名，`cctv` 是二级域名，`mail` 是三级域名。级别最低的写在最左边，级别最高的写在最右边。
 
+> [! Danger] www.abc.com 的域名解析
+> www.abc.com 是 abc.com 的子域名，查询 ip 地址时最坏情况下，依然需要查询 **abc.com 域名服务器，而不是只需要访问 com 域名服务器查 abc.com**。
+
 ## 顶级域名 TLD
 
 顶级域名（Top Level Domain）分为三类：

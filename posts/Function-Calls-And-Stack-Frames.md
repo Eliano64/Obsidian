@@ -1,7 +1,7 @@
 ---
 title: Function Calls And Stack Frames
 tags:
-  - InstructionSystem
+  - ISA
 categories:
   - Computer Organization
 date: 2026-07-02 11:39:24

@@ -76,4 +76,4 @@ katex: true
 
 ## 关联
 
-细节可回看 [[sequential-list-storage|顺序表的存储与实现]]、[[singly-linked-list-definition|单链表的定义与头结点]]、[[circular-linked-list|循环链表]]、[[doubly-linked-list|双链表]]、[[static-linked-list|静态链表]]。
+细节可回看 [[sequential-list-storage|顺序表的存储与实现]]、[[singly-linked-list-definition|单链表的定义与头结点]]、[[circular-linked-list|循环链表]]、[[Doubly-Linked-List|双链表]]、[[static-linked-list|静态链表]]。

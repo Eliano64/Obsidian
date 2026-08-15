@@ -10,71 +10,41 @@ katex: true
 
 > 他向远方望去，无法看到高山背后的矮山，只看到一座座更高的山峰。————by [灵神](https://leetcode.cn/discuss/post/3579480/ti-dan-dan-diao-zhan-ju-xing-xi-lie-zi-d-u4hk/)
 
-## 1. 总结
+# 模型建立
 
-单调栈就是保持栈内元素单调的栈。**当新元素破坏单调性时，弹出栈顶元素，弹出的瞬间就找到栈顶元素对应的答案**。
+> [!example] 单调栈处理的问题
+> 给定一个序列，对每个元素寻找能够向一侧延伸到的边界。例如：为每个 `a[i]` 寻找右侧第一个大于它的元素。
 
-栈里存放着暂时还没有找到对应答案的元素。新元素入栈时，如果栈顶元素使得栈单调性被破环，那么栈顶元素的答案产生，栈顶元素找到答案，出栈。因此需要建立的栈的单调性与题目的答案需求往往是“反过来”。要下一个更大就要单减；要下一个更小就要单增。
+# 单调栈
+
+从左向右扫描数组，后进入的待解决元素先得到答案，符合[[Stack-Definition-And-Operations#栈的语义|栈的语义]]。
+
+以“寻找右侧第一个更大元素”为例。扫描到 `a[i]` 时，若它大于栈顶元素，那么栈顶元素找到了栈顶元素右侧第一个更大的元素，找到了栈顶元素对应的问题的答案（此前扫描过的中间元素都没有使栈顶出栈，因此它们都不满足条件），记录答案并弹出栈顶；若 `a[i]` 仍大于新的栈顶，就继续处理。最后把 `i` 入栈，等待后面的元素回答它的问题。
+
+弹出所有小于 `a[i]` 的元素后，栈中对应的值从栈底到栈顶保持单调不增，所以称为**单调栈**。
+
 
 ```txt
-algorithm generalized-monotonic-stack(A, cmp, process)
+algorithm monotonic-stack(A, ans)
     stack S ← ∅
+    ans[n]  ← ∅
     for i ← 0 to n-1 do:
-        while S ≠ ∅ and condition(A[i], A[S.top()]) do: // 栈的单调性被破坏，while是为了让栈里满足条件的元素都可以出栈
-            j ← S.pop() // 栈顶出栈
-            recordAnswer(j, i)  // 计算并记录栈顶对应的答案
+        while S ≠ ∅ and condition(A[i], A[S.top()]) do: // A[i] 已成为栈顶元素的答案
+            j ← S.pop()
+            recordAnswer(j, i)
         end while
-        S.push(i) // 栈为空或者栈的单调性没有被破坏，则新元素一定不是某个元素的答案，入栈
+        S.push(i) // 当前元素等待后续元素给出答案
     end for
+    return ans
 end algorithm
 ```
 
-### 时间复杂度为什么是 O(n)？
+### 复杂度
 
-每个元素最多入栈一次，出栈一次，总操作数 ≤ 2n。
+空间复杂度$O(n)$: 需要 `ans[n]` 和栈。
+时间复杂度$O(n)$: 每个元素最多入栈一次，出栈一次，总操作数 ≤ 2n。
 
-## 2. 问题分类
-
-### 类型1：找下一个更大/更小元素
-
-**模板：**
-
-```cpp
-// 下一个更大元素
-while (!st.empty() && arr[i] > arr[st.top()]) {
-    result[st.top()] = arr[i];
-    st.pop();
-}
-
-// 下一个更小元素  
-while (!st.empty() && arr[i] < arr[st.top()]) {
-    result[st.top()] = arr[i];
-    st.pop();
-}
-```
-
-### 类型2：计算面积/距离
-
-**模板：**
-
-```cpp
-// 柱状图最大矩形
-while (!st.empty() && heights[i] < heights[st.top()]) {
-    int h = heights[st.top()];
-    st.pop();
-    int w = st.empty() ? i : i - st.top() - 1;
-    maxArea = max(maxArea, h * w);
-}
-
-// 每日温度（计算距离）
-while (!st.empty() && temps[i] > temps[st.top()]) {
-    int j = st.top();
-    st.pop();
-    result[j] = i - j;  // 距离
-}
-```
-
-## 3. 典型例题
+# 典型例题
 
 ### 例1：下一个更大元素
 
@@ -165,39 +135,3 @@ TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
         return st.top();
     }
 ``` 
-
-## 4. 常用技巧
-
-### 技巧1：哨兵
-
-在数组末尾加 0 或无穷大，确保所有元素都能出栈：
-
-```cpp
-heights.push_back(0);
-```
-
-### 技巧2：循环数组
-
-遍历两遍模拟循环：
-
-```cpp
-for (int i = 0; i < 2 * n; i++) {
-    // 使用 nums[i % n]
-    if (i < n) st.push(i);  // 只在第一轮入栈
-}
-```
-
-### 技巧3：存储下标 vs 存储值
-
-- 需要计算距离/面积：存储下标
-- 只需要元素值：存储值
-
-## 5. 解题细节
-
-* 递增栈还是递减栈？
-
-* 弹出元素的条件？
-
-* 弹出时如何处理，进而得到答案？
-
-* 是否需要哨兵？

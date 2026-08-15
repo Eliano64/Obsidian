@@ -1,7 +1,7 @@
 ---
 title: System Call
 tags:
-  - OperatingSystemIntroduction
+  - ExceptionAndInterrupt
 categories:
   - Operating System
 date: 2026-07-10 20:43:08

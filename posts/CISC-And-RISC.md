@@ -1,7 +1,7 @@
 ---
 title: CISC And RISC
 tags:
-  - InstructionSystem
+  - ISA
 categories:
   - Computer Organization
 date: 2026-07-02 11:49:27
@@ -36,9 +36,9 @@ CISC 和 RISC 讨论的是**指令系统的设计思想**：复杂功能应该�
 | 控制方式 | 常见微程序控制 | 更适合硬布线控制 |
 | 流水线 | 可实现，但复杂度较高 | 更适合流水线 |
 
-> [!important] 最核心的判断点
+> [!tip] 
 > RISC 哲学：“三个臭皮匠，顶个诸葛亮。”
-> CISC 哲学：“精英统治。”
+> CISC 哲学：“精英政治。”
 
 ## RISC 更适合流水线
 
