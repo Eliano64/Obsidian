@@ -15,6 +15,10 @@ katex: true
 1. 积分区间伸向无穷；
 2. 被积函数在某个端点或内部点趋于无穷。
 
+瑕点：被积函数在该点附近无界。
+
+实质是看黎曼积分在该不满足黎曼积分定义点（瑕点）处是否存在极限。
+
 瑕点都必须改写成极限。例如
 
 $$
@@ -41,7 +45,46 @@ $$
 > [!danger] 不能用正负抵消代替收敛
 > $\displaystyle\int_{-1}^1\frac{dx}{x}$ 的两个单侧积分均发散，因此反常积分发散；对称计算得到的 $0$ 只是柯西主值。
 
+
+
 能通过求原函数然后取极限计算得出定积分者，计算出值直接判断是否收敛即可。本文主要讨论无法轻易算出具体定积分值的情况。
+
+
+# 幂函数的积分
+
+有限点附近：
+
+$$
+\int_\varepsilon^\delta x^\alpha\,dx
+=
+\begin{cases}
+\dfrac{\delta^{\alpha+1}-\varepsilon^{\alpha+1}}{\alpha+1},
+&\alpha\ne-1,\\[6pt]
+\ln\dfrac{\delta}{\varepsilon},
+&\alpha=-1.
+\end{cases}
+$$
+
+令 $\varepsilon\to0^+$ 可得
+
+$$
+\int_0^\delta x^\alpha\,dx
+\text{ 收敛}\iff\alpha>-1.
+$$
+
+无穷远处同理：
+
+$$
+\int_A^{+\infty}x^\alpha\,dx
+\text{ 收敛}\iff\alpha<-1.
+$$
+
+因此
+
+| 位置        | 收敛条件        |
+| --------- | ----------- |
+| 有限点 $a$   | $\alpha>-1$ |
+| $+\infty$ | $\alpha<-1$ |
 
 # 等价比较
 
@@ -51,13 +94,17 @@ $$
 \lim\frac{f(x)}{g(x)}=C,\qquad 0<C<+\infty.
 $$
 
-则充分靠近瑕点时$f(x) \sim Cg(x)$
+根据保号性，充分靠近瑕点时$f(x) \sim Cg(x)$
 
-积分后仍保持该性质。所以 $\int f$ 与 $\int g$ 同敛散。
+设$a$为正常端点，$b$为瑕点，则 $\int_{a}^{b} f(x)\, \mathrm{d}x=\int_{a}^{b-\epsilon} f(x) \, \mathrm{d}x+C\int_{b-\epsilon}^{b} g(x) \, \mathrm{d}x$,$\epsilon$为充分小的正数。
+
+所以$\int_{}^{} f(x) \, \mathrm{d}x$与$\int_{}^{} g(x) \, \mathrm{d}x$同敛散。
 
 **该比较要求函数在瑕点附近同号；振荡积分不能直接这样处理。**
 
 ## $g(x)$选取
+
+一般选择幂函数。
 
 有限点使用等价无穷小：
 
@@ -104,47 +151,9 @@ $$
 > =\frac{x}{1+x}\to1
 > \qquad(x\to+\infty).
 > $$
-> 因为 $-\dfrac12>-1$ 且 $-\dfrac32<-1$，两部分均收敛。
+> 因为 $\int_{0}^{\epsilon}x^{ -\frac{1}{2} }  \, \mathrm{d}x$ 和 $\int_{A}^{+\infty}x^{-\frac{3}{2}}  \, \mathrm{d}x$均收敛，故原反常积分收敛。
 
-
-
-# 基准幂积分
-
-有限点附近：
-
-$$
-\int_\varepsilon^\delta x^\alpha\,dx
-=
-\begin{cases}
-\dfrac{\delta^{\alpha+1}-\varepsilon^{\alpha+1}}{\alpha+1},
-&\alpha\ne-1,\\[6pt]
-\ln\dfrac{\delta}{\varepsilon},
-&\alpha=-1.
-\end{cases}
-$$
-
-令 $\varepsilon\to0^+$ 可得
-
-$$
-\int_0^\delta x^\alpha\,dx
-\text{ 收敛}\iff\alpha>-1.
-$$
-
-无穷远处同理：
-
-$$
-\int_A^{+\infty}x^\alpha\,dx
-\text{ 收敛}\iff\alpha<-1.
-$$
-
-因此
-
-| 位置        | 收敛条件        |
-| --------- | ----------- |
-| 有限点 $a$   | $\alpha>-1$ |
-| $+\infty$ | $\alpha<-1$ |
-
-## 临界幂次与对数
+# 含$\ln x$与幂函数的反常积分
 
 $\alpha=-1$ 时，幂积分变成对数并发散。若还有对数因子，不能把它丢掉：
 
@@ -185,10 +194,8 @@ $$
 > 而
 > $$0 \leqslant \int_{}^{} f(x)+|f(x)|\, \mathrm{d}{x} \leqslant 2\int |f(x)|\,\mathrm{d}{x}$$  
 
-**收敛是绝对收敛的必要条件。**
+**绝对收敛一定收敛**
 ## Dirichlet 判别
-
-Dirichlet 判别处理“振荡项有抵消，但振幅逐渐减小”的情形。
 
 > [! info] 引理
 若
@@ -202,6 +209,8 @@ Dirichlet 判别处理“振荡项有抵消，但振幅逐渐减小”的情形�
 > \int_A^{+\infty}h(x)\phi(x)\,dx
 > $$
 > 收敛。
+
+类似于交错级数的 Leibniz 判别。
 
 > [! success] Proof
 > 对它分部积分
