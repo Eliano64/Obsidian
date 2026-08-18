@@ -94,7 +94,7 @@ void UnionBySize(int parent[], int x, int y) {
 
 因为根结点保存的是负数，`parent[rootX]` 越小，集合规模越大。
 
-按规模合并后，树高不超过 $O(\log_2 n)$，`Find` 最坏复杂度降为 $O(\log_2 n)$。
+按规模合并后，树高不超过 $O(\log_2 n)$，`Find` 最坏复杂度为 $O(\log_2 n)$。
 
 ## 路径压缩
 
