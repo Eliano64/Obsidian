@@ -19,7 +19,7 @@ S='a_1a_2\cdots a_n'\quad(n\ge 0)
 $$
 
 - `S` 是串名。
-- 与普通的[[linear-list-definition-and-operations|线性表]]相比，它的特殊性体现在[[data-and-data-elements#数据、数据元素、数据项|数据元素]]是一个字符。当然，与线性表一样，存储结构既可以是顺序的，也可以是线性的。
+- 与普通的[[Linear-List-Definition-And-Operations|线性表]]相比，它的特殊性体现在[[Data-And-Data-Elements#数据、数据元素、数据项|数据元素]]是一个字符。当然，与线性表一样，存储结构既可以是顺序的，也可以是线性的。
 - 单引号括起来的字符序列是串值；字符可以是字母、数字、标点或其他字符。
 - 串中字符个数 `n` 称为串长。
 - `n = 0` 时为空串，常记作 $\emptyset$。
@@ -49,7 +49,7 @@ $$
 
 ## 串和线性表的关系
 
-串是一种特殊的[[linear-list-definition-and-operations|线性表]]：
+串是一种特殊的[[Linear-List-Definition-And-Operations|线性表]]：
 
 - 逻辑结构仍然是一对一的线性关系。
 - 数据对象被限定为字符集。

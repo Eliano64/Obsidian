@@ -12,7 +12,7 @@ katex: true
 
 生成树讨论的是：在保持全部顶点连通的前提下，把边删到尽可能少。非连通图不能得到覆盖全图的一棵生成树，只能得到生成森林。
 
-相关基础：[[graph-subgraph|子图与生成子图]]、[[graph-connectivity-and-components|连通性与连通分量]]。
+相关基础：[[Graph-Subgraph|子图与生成子图]]、[[Graph-Connectivity-And-Components|连通性与连通分量]]。
 
 ![生成树与生成森林](../assets/spanning-tree-forest.svg)
 
@@ -40,7 +40,7 @@ $$
 
 ## 生成森林
 
-非连通无向图没有覆盖全图的生成树。此时，对每个[[graph-connectivity-and-components|连通分量]]分别取一棵生成树，这些生成树合在一起称为**生成森林**。
+非连通无向图没有覆盖全图的生成树。此时，对每个[[Graph-Connectivity-And-Components|连通分量]]分别取一棵生成树，这些生成树合在一起称为**生成森林**。
 
 若非连通图有 $n$ 个顶点、$k$ 个连通分量，则其生成森林共有：
 

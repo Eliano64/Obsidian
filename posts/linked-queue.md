@@ -9,7 +9,7 @@ katex: true
 ---
 # 定义
 
-链队列是用链式存储实现的 [[queue-definition-and-operations|队列]]。通常设置队头指针 `front` 和队尾指针 `rear`。
+链队列是用链式存储实现的 [[Queue-Definition-And-Operations|队列]]。通常设置队头指针 `front` 和队尾指针 `rear`。
 
 带头结点的链队列结构：
 

@@ -149,4 +149,4 @@ LinkList List_HeadInsert(void) {
 
 ## 关联
 
-建立链表本质上反复使用后插操作。插入和删除细节见 [[singly-linked-list-insert-delete|单链表的插入与删除]]。
+建立链表本质上反复使用后插操作。插入和删除细节见 [[Singly-Linked-List-Insert-Delete|单链表的插入与删除]]。

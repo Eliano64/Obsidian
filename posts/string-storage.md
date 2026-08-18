@@ -107,4 +107,4 @@ int StrCompare(SString s, SString t) {
 
 ### 定位
 
-`Index(S, T)` 是模式匹配问题：在主串 `S` 中找到模式串 `T` 第一次出现的位置。朴素算法见[[naive-pattern-matching]]，KMP 见[[kmp]]。
+`Index(S, T)` 是模式匹配问题：在主串 `S` 中找到模式串 `T` 第一次出现的位置。朴素算法见[[Naive-Pattern-Matching]]，KMP 见[[KMP]]。

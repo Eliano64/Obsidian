@@ -58,6 +58,6 @@ $$
 
 # 分类
 
-- [[linearity-structural-search|线性结构]]
-- [[binary-search-tree|树形结构]]
-- [[hash-table|散列结构]]
+- [[Linearity-Structural-Search|线性结构]]
+- [[Binary-Search-Tree|树形结构]]
+- [[Hash-Table|散列结构]]

@@ -83,4 +83,4 @@ $$
 
 无向图中，`(v,w)` 和 `(w,v)` 是同一条边；有向图中，$\langle v,w\rangle$ 和 $\langle w,v\rangle$ 是两条方向相反的弧。
 
-这一区别会影响[[graph-degree|度、入度与出度]]、[[complete-graph|完全图]]、[[weighted-graph|带权图]]、|图的存储结构]]和图的遍历。
+这一区别会影响[[Graph-Degree|度、入度与出度]]、[[Complete-Graph|完全图]]、[[Weighted-Graph|带权图]]、|图的存储结构]]和图的遍历。

@@ -1,12 +1,14 @@
 ---
-title: Basic Graphs Of A Function
+title: Graphs Of Functions
 tags:
-  - GraphOfAFunction
+  - Integral
 categories:
   - Calculus
 date: 2026-07-26 15:46:23
 katex: true
 ---
+以下是一些常见的用来构造求图像面积类型题目的曲线。
+
 # 心形线
 
 $$
@@ -75,25 +77,3 @@ $$
 $$
 
 具有很好的对称性，只需研究 $t\in[0,\pi/2]$ 的第一象限部分。
-
-# 笛卡尔叶形线
-
-$$
-x^3+y^3=3axy,
-\qquad
-\begin{cases}
-x=\dfrac{3at}{1+t^3},\\[4pt]
-y=\dfrac{3at^2}{1+t^3}.
-\end{cases}
-$$
-
-![笛卡尔叶形线](../assets/folium-of-descartes.svg)
-
-- 交换 $x,y$ 后方程不变，故关于 $y=x$ 对称；
-- $t>0$ 描出第一象限叶环，$t=1$ 时经过 $\left(\dfrac{3a}{2},\dfrac{3a}{2}\right)$；
-- $t=0$ 与 $t\to\pm\infty$ 都趋于原点，两支切线分别为坐标轴；
-- $t\to-1$ 时曲线趋于斜渐近线
-  $$
-  x+y+a=0.
-  $$
-

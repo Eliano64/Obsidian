@@ -12,11 +12,11 @@ katex: true
 
 顶点的**度**描述一个顶点与多少条边或弧相关，是图中最常考的局部数量关系之一。
 
-相关概念可配合 [[graph-relation-concepts-table|图的关系概念速查表]] 复习。
+相关概念可配合 [[Graph-Relation-Concepts-Table|图的关系概念速查表]] 复习。
 
 ## 无向图的度
 
-在[[undirected-and-directed-graph|无向图]]中，顶点 $v$ 的度是指**依附于该顶点的边的条数**，记作 $TD(v)$。
+在[[Undirected-And-Directed-Graph|无向图]]中，顶点 $v$ 的度是指**依附于该顶点的边的条数**，记作 $TD(v)$。
 
 ![无向图与有向图的顶点度](../assets/graph-degree.svg)
 
@@ -39,7 +39,7 @@ $$
 
 ## 有向图的入度、出度、度
 
-在[[undirected-and-directed-graph|有向图]]中，边有方向，需要分开统计：
+在[[Undirected-And-Directed-Graph|有向图]]中，边有方向，需要分开统计：
 
 | 名称 | 记号 | 含义 |
 |---|---|---|

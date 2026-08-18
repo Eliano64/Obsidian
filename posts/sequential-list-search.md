@@ -42,4 +42,4 @@ C 语言中结构体通常不能直接用 `==` 比较整体是否相等，应逐
 
 ## 关联
 
-顺序表按位查找优于链表，见 [[sequential-list-vs-linked-list|顺序表与链表对比]]。链表查找见 [[singly-linked-list-search-and-build|单链表的查找与建立]]。
+顺序表按位查找优于链表，见 [[Sequential-List-VS-Linked-List|顺序表与链表对比]]。链表查找见 [[Singly-Linked-List-Search-And-Build|单链表的查找与建立]]。

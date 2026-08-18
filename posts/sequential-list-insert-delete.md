@@ -100,4 +100,4 @@ bool ListDelete(SqList *list, int index, ElemType *deletedValue) {
 
 ## 关联
 
-链式存储的插入删除见 [[singly-linked-list-insert-delete|单链表的插入与删除]]。顺序表插入删除的主要成本是移动元素，链表的主要成本是定位前驱结点。
+链式存储的插入删除见 [[Singly-Linked-List-Insert-Delete|单链表的插入与删除]]。顺序表插入删除的主要成本是移动元素，链表的主要成本是定位前驱结点。

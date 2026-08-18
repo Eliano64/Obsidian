@@ -23,17 +23,41 @@ $$
 
 分母只保留次数最小的项作为主项，分子展开式只保留次数小于等于主项次数的项。
 
-### 定积分
+### 定积分与重积分
 
-若被积函数连续，变上限积分可求导：
+例如$\displaystyle\lim_{ t \to 0 } \frac{F(t,x,y)}{t^{n}}$型，其中$n$为固定的常数，$F(t,x,y)$是一个以$t$为上限的、被积函数为$f(x,y)$的变上限积分。
 
-$$
-\left(\int_a^x f(t)\,\mathrm dt\right)'=f(x).
-$$
+也是不断地用洛必达法则。
 
-形成 $0/0$ 型时，首选洛必达去积分号。
+> [!important] 变限积分求导
+> 1. 若
+> $$
+> F(x)=\int_{\alpha(x)}^{\beta(x)}f(t,x)\,\mathrm dt,
+> $$
+> 则莱布尼茨公式为
+> $$
+> F'(x)=f(\beta(x),x)\beta'(x)-f(\alpha(x),x)\alpha'(x)
+> +\int_{\alpha(x)}^{\beta(x)}\frac{\partial f}{\partial x}(t,x)\,\mathrm dt.
+> $$
+> 前两项来自积分上下限的变化，积分项来自被积函数中参数 $x$ 的变化。
+>
+> 2. 若：
+> $$
+> G(t)=\int_0^t\int_x^t f(x,y)\,\mathrm dy\,\mathrm dx.
+> $$
+> 积分区域是 $0\le x\le y\le t$，交换积分次序得
+> $$
+> G(t)=\int_0^t\int_0^y f(x,y)\,\mathrm dx\,\mathrm dy.
+> $$
+> 因而
+> $$
+> G'(t)=\int_0^t f(x,t)\,\mathrm dx,
+> $$
+> 再求一次导数：
+> $$
+> G''(t)=f(t,t)+\int_0^t\frac{\partial f}{\partial y}(x,t)\,\mathrm dx.
+> $$
 
-### 重积分
 
 ## $\infty-\infty$
 

@@ -12,7 +12,7 @@ katex: true
 
 广度优先搜索（Breadth-First Search, BFS）是图的遍历算法。它从某个起始顶点出发，先访问距离起点最近的一层顶点，再访问下一层顶点。实现上的核心工具是**队列**：先被发现的顶点先扩展。
 
-相关卡片：[[graph-basic-operations|图的基本操作]]、[[adjacency-matrix|邻接矩阵]]、[[adjacency-list|邻接表]]、[[graph-connectivity-and-components|连通分量]]。
+相关卡片：[[Graph-Basic-Operations|图的基本操作]]、[[Adjacency-Matrix|邻接矩阵]]、[[Adjacency-List|邻接表]]、[[Graph-Connectivity-And-Components|连通分量]]。
 
 ![BFS 总览](../assets/graph-bfs-overview.svg)
 
@@ -36,7 +36,7 @@ katex: true
 | ----------- | -------------------------------------------------------- | ------------------------------ |
 | 怎样找到某顶点的邻接点 | `FirstNeighbor(G, v)` 与 `NextNeighbor(G, v, w)`          | 不直接依赖具体存储结构，邻接矩阵和邻接表都可以实现这两个接口 |
 | 怎样避免重复访问    | `visited[]`                                              | 顶点第一次被发现时置为 `true`             |
-| 怎样按层扩展      | [队列](../posts/queue-definition-and-operations.md) `Queue` | 队头顶点出队并扩展，它发现的新顶点进入队尾          |
+| 怎样按层扩展      | [队列](Queue-Definition-And-Operations.md) `Queue` | 队头顶点出队并扩展，它发现的新顶点进入队尾          |
 
 `FirstNeighbor(G, v)` 返回顶点 `v` 的第一个邻接点；若不存在，返回 `-1`。  
 `NextNeighbor(G, v, w)` 在已知 `w` 是 `v` 的某个邻接点时，返回 `v` 在 `w` 之后的下一个邻接点；若 `w` 已是最后一个邻接点，返回 `-1`。
@@ -73,7 +73,7 @@ BFS 的“按层”不是靠递归深度，而是靠队列顺序自然形成：
 
 ## C 代码
 
-下面用 [[graph-basic-operations#^267de5|FirstNeighbor]] 和 [[graph-basic-operations#^267de5|NextNeighbor]] 屏蔽存储结构差异。考试写伪代码时通常只要把这两个接口说明清楚即可；写 C 时可以把队列看成已经实现好的顺序队列或链队列。
+下面用 [[Graph-Basic-Operations#^267de5|FirstNeighbor]] 和 [[Graph-Basic-Operations#^267de5|NextNeighbor]] 屏蔽存储结构差异。考试写伪代码时通常只要把这两个接口说明清楚即可；写 C 时可以把队列看成已经实现好的顺序队列或链队列。
 
 ```c
 // Visits all vertices reachable from `start` by breadth-first search.
@@ -170,8 +170,8 @@ void BFSTraverse(const Graph *graph, int vertexCount) {
 
 即使起点相同，BFS 序列也可能受存储结构影响：
 
-- [[adjacency-matrix|邻接矩阵]]在顶点编号固定时表示唯一，扫描邻接点通常按编号顺序进行，因此遍历序列唯一。
-- [[adjacency-list|邻接表]]中同一顶点的邻接点链表顺序不唯一，因此遍历序列可能不唯一。
+- [[Adjacency-Matrix|邻接矩阵]]在顶点编号固定时表示唯一，扫描邻接点通常按编号顺序进行，因此遍历序列唯一。
+- [[Adjacency-List|邻接表]]中同一顶点的邻接点链表顺序不唯一，因此遍历序列可能不唯一。
 
 > [!example] 邻接表顺序改变的影响
 > 若顶点 `6` 的邻接表写作 `2, 3, 7`，从 `2` 出发时会先发现 `3` 再发现 `7`。  

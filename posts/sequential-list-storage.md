@@ -14,7 +14,7 @@ katex: true
 
 ## 定义
 
-顺序表是用顺序存储方式实现的 [[linear-list-definition-and-operations|线性表]]。它把逻辑上相邻的数据元素存放在物理位置也相邻的存储单元中。
+顺序表是用顺序存储方式实现的 [[Linear-List-Definition-And-Operations|线性表]]。它把逻辑上相邻的数据元素存放在物理位置也相邻的存储单元中。
 
 若第一个元素地址为 `LOC(L)`，每个元素占 `sizeof(ElemType)` 字节，则第 `i` 个元素的地址为：
 
@@ -102,4 +102,4 @@ void DestroyList(SeqList *L) {
 
 ## 关联
 
-顺序表的具体操作见 [[Sequential-List-Insert-Delete|顺序表的插入与删除]]、[[sequential-list-search|顺序表的查找]]。与链表的整体比较见 [[sequential-list-vs-linked-list|顺序表与链表对比]]。
+顺序表的具体操作见 [[Sequential-List-Insert-Delete|顺序表的插入与删除]]、[[Sequential-List-Search|顺序表的查找]]。与链表的整体比较见 [[Sequential-List-VS-Linked-List|顺序表与链表对比]]。

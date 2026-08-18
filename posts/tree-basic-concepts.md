@@ -119,7 +119,7 @@ $$
 - 无序树：各子树无次序，可以互换。
 - 森林：$m(m \ge 0)$ 棵互不相交的树的集合，$m=0$ 时为空森林。
 
-森林和树可以相互转换，见[[tree-forest-and-binary-tree-conversion]]。
+森林和树可以相互转换，见[[Tree-Forest-And-Binary-Tree-Conversion]]。
 
 # 树形逻辑结构的应用
 

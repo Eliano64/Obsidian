@@ -66,4 +66,4 @@ int LocateElem(SqList L, ElemType e);
 
 ## 关联
 
-线性表可以用 [[sequential-list-storage|顺序表]] 或 [[singly-linked-list-definition|链表]] 实现。不同实现不改变逻辑结构，但会改变操作复杂度。
+线性表可以用 [[Sequential-List-Storage|顺序表]] 或 [[Singly-Linked-List-Definition|链表]] 实现。不同实现不改变逻辑结构，但会改变操作复杂度。

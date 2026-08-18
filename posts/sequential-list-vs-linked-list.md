@@ -12,7 +12,7 @@ katex: true
 
 ## 共同点
 
-顺序表和链表都用于实现 [[linear-list-definition-and-operations|线性表]]，逻辑结构都是线性结构。区别主要来自存储结构不同。
+顺序表和链表都用于实现 [[Linear-List-Definition-And-Operations|线性表]]，逻辑结构都是线性结构。区别主要来自存储结构不同。
 
 ## 链表的六种组织方式
 
@@ -76,4 +76,4 @@ katex: true
 
 ## 关联
 
-细节可回看 [[sequential-list-storage|顺序表的存储与实现]]、[[singly-linked-list-definition|单链表的定义与头结点]]、[[circular-linked-list|循环链表]]、[[Doubly-Linked-List|双链表]]、[[static-linked-list|静态链表]]。
+细节可回看 [[Sequential-List-Storage|顺序表的存储与实现]]、[[Singly-Linked-List-Definition|单链表的定义与头结点]]、[[Circular-Linked-List|循环链表]]、[[Doubly-Linked-List|双链表]]、[[Static-Linked-List|静态链表]]。

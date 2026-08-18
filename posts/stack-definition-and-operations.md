@@ -9,7 +9,7 @@ katex: true
 ---
 # 定义
 
-栈是只允许在一端进行插入和删除操作的 [[linear-list-definition-and-operations|线性表]]。允许操作的一端称为栈顶，另一端称为栈底。没有元素的栈称为空栈。
+栈是只允许在一端进行插入和删除操作的 [[Linear-List-Definition-And-Operations|线性表]]。允许操作的一端称为栈顶，另一端称为栈底。没有元素的栈称为空栈。
 
 栈的核心性质是后进先出：后进入栈的元素先出栈，简称 LIFO。
 

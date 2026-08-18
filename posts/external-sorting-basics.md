@@ -10,7 +10,7 @@ katex: true
 
 # 外部排序的基本问题
 
-**外部排序**用于处理无法一次全部装入内存的大文件。和[[internal-sorting-basics|内部排序]]不同，外部排序的主要瓶颈不是 CPU 比较，而是**磁盘 I/O**。
+**外部排序**用于处理无法一次全部装入内存的大文件。和[[Internal-Sorting-Basics|内部排序]]不同，外部排序的主要瓶颈不是 CPU 比较，而是**磁盘 I/O**。
 
 外部排序时间通常分为三部分：
 
@@ -97,7 +97,7 @@ $$
 - 增大归并路数 $k$，减少归并趟数；
 - 增大初始归并段长度，减少初始归并段数量 $r$。
 
-这两个方向分别对应[[k-way-merge-and-loser-tree|多路归并与败者树]]和[[replacement-selection-sort|置换-选择排序]]。
+这两个方向分别对应[[K-Way-Merge-And-Loser-Tree|多路归并与败者树]]和[[Replacement-Selection-Sort|置换-选择排序]]。
 
 # 小结
 

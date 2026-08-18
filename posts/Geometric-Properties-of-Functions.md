@@ -61,7 +61,7 @@ $$
 > \lim_{x\to x_0}f'(x)=f'(x_0).
 > $$
 >
-> 所以当 $f''(x_0)$ 存在且 $f'(x_0)\ne0$ 时，由于 **$\displaystyle\lim_{ x \to x_{0} }f'(x)$存在**，**所以这里可以使用 $f'$ 的[[../posts/Function-Limits-and-Continuity#保号性|保号性]]推出 $f$ 在 $x_0$ 的某邻域内严格单调。**
+> 所以当 $f''(x_0)$ 存在且 $f'(x_0)\ne0$ 时，由于 **$\displaystyle\lim_{ x \to x_{0} }f'(x)$存在**，**所以这里可以使用 $f'$ 的[[Function-Limits-And-Continuity#保号性|保号性]]推出 $f$ 在 $x_0$ 的某邻域内严格单调。**
 >
 > > [! danger]
 > >但若没有$f'(x)$连续的条件，**因为$\displaystyle\lim_{ x \to x_{0} }f'(x)$不存在，所以不可以使用保号性**，由一点导数的正负性推出区间单调性！

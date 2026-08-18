@@ -13,7 +13,7 @@ katex: true
 
 一个 [[File#FCB|FCB]] 就是一个文件目录项，FCB 的有序集合就是文件目录。
 
-![[../assets/directory-inode-lookup.svg|457]]
+![[../assets/directory-inode-lookup.svg|547]]
 
 # 目录结构
 

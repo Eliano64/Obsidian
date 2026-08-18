@@ -9,7 +9,7 @@ katex: true
 ---
 
 
-[[queue-definition-and-operations|队列]] 的核心特征是先进先出，适合保存“先到先处理”的对象，也适合按层次、按距离逐步扩展的过程。
+[[Queue-Definition-And-Operations|队列]] 的核心特征是先进先出，适合保存“先到先处理”的对象，也适合按层次、按距离逐步扩展的过程。
 
 # 树的层次遍历
 

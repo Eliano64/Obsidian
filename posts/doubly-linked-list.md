@@ -111,4 +111,4 @@ bool DeleteNext(DNode *prev) {
 
 ## 关联
 
-双链表解决的是 [[singly-linked-list-definition|单链表]] 无法逆向检索的问题。若进一步把首尾相连，就得到 [[circular-linked-list|循环双链表]]。
+双链表解决的是 [[Singly-Linked-List-Definition|单链表]] 无法逆向检索的问题。若进一步把首尾相连，就得到 [[Circular-Linked-List|循环双链表]]。

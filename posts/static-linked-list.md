@@ -75,4 +75,4 @@ typedef struct {
 
 ## 关联
 
-静态链表在逻辑上类似 [[singly-linked-list-definition|单链表]]，在物理上使用数组连续存储，和 [[sequential-list-storage|顺序表]] 有明显区别。
+静态链表在逻辑上类似 [[Singly-Linked-List-Definition|单链表]]，在物理上使用数组连续存储，和 [[Sequential-List-Storage|顺序表]] 有明显区别。

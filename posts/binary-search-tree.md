@@ -17,7 +17,7 @@ katex: true
 - 右子树上所有结点的关键字都大于根结点关键字。
 - 左子树和右子树也分别是二叉排序树。
 
-基础定义也可参考 [[binary-search-tree-concept|二叉排序树概念]]。本篇重点放在查找、插入、删除。
+基础定义也可参考 [[Binary-Search-Tree-Concept|二叉排序树概念]]。本篇重点放在查找、插入、删除。
 
 ![](../assets/bst-overview.svg)
 

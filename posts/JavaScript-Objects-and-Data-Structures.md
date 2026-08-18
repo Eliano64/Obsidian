@@ -997,7 +997,7 @@ retrieve it later
 
 ## 浅拷贝与深拷贝的安全写法
 
-[上文](JavaScript-Objects-and-Data-Structures.md#12.%20对象的拷贝)里已经区分了对象引用复制、浅拷贝和深拷贝。需要特别注意：`typeof` 返回的是小写字符串，所以判断对象时应写：
+[上文](JavaScript-Objects-And-Data-Structures.md#12.%20对象的拷贝)里已经区分了对象引用复制、浅拷贝和深拷贝。需要特别注意：`typeof` 返回的是小写字符串，所以判断对象时应写：
 
 ```js
 if (typeof value === "object" && value !== null) {

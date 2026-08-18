@@ -12,11 +12,11 @@ katex: true
 
 连通性讨论顶点之间是否“走得到”。无向图看是否有路径，有向图还要看两个方向是否都走得到。
 
-相关概念可配合 [[graph-relation-concepts-table|图的关系概念速查表]] 复习。
+相关概念可配合 [[Graph-Relation-Concepts-Table|图的关系概念速查表]] 复习。
 
 ## 无向图的连通与连通图
 
-在[[undirected-and-directed-graph|无向图]]中，若从顶点 $v$ 到顶点 $w$ 存在路径，则称 $v$ 和 $w$ 是**连通的**。
+在[[Undirected-And-Directed-Graph|无向图]]中，若从顶点 $v$ 到顶点 $w$ 存在路径，则称 $v$ 和 $w$ 是**连通的**。
 
 若图 $G$ 中任意两个顶点都是连通的，则称 $G$ 为**连通图**；否则称为**非连通图**。
 
@@ -69,7 +69,7 @@ katex: true
 
 有向图中的**极大强连通子图**称为强连通分量。
 
-需要实际求出有向图的强连通分量时，可用 [[how-to-calculate-SCC#Kosaraju 手算 SCC 个数|Kosaraju]] 或 [[how-to-calculate-SCC|Tarjan 算法]]。
+需要实际求出有向图的强连通分量时，可用 [[How-To-Calculate-SCC#Kosaraju 手算 SCC 个数|Kosaraju]] 或 [[How-To-Calculate-SCC|Tarjan 算法]]。
 
 判断强连通分量时抓住三点：
 
@@ -77,7 +77,7 @@ katex: true
 - 在保持强连通的前提下，顶点尽可能多；
 - 相关弧保留到不能继续扩大该强连通区域为止。
 
-考试若要求判断一个有向图有几个强连通分量，优先按 [[how-to-calculate-SCC#Kosaraju 手算 SCC 个数|Kosaraju 手算方式]]：原图 DFS 记完成时间，反图按完成时间从大到小 DFS，每启动一次 DFS 就得到一个强连通分量。
+考试若要求判断一个有向图有几个强连通分量，优先按 [[How-To-Calculate-SCC#Kosaraju 手算 SCC 个数|Kosaraju 手算方式]]：原图 DFS 记完成时间，反图按完成时间从大到小 DFS，每启动一次 DFS 就得到一个强连通分量。
 
 > [!tip] 连通分量与强连通分量的区别
 > 连通分量用于无向图，只看是否有路径相连；强连通分量用于有向图，要看任意两点之间两个方向是否都存在路径。

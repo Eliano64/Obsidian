@@ -123,4 +123,4 @@ for (LNode *p = L->next; p != L; p = p->next) {
 
 ## 关联
 
-循环链表是在 [[singly-linked-list-definition|单链表]] 或 [[Doubly-Linked-List|双链表]] 的基础上改变首尾连接关系。
+循环链表是在 [[Singly-Linked-List-Definition|单链表]] 或 [[Doubly-Linked-List|双链表]] 的基础上改变首尾连接关系。

@@ -14,10 +14,10 @@ katex: true
 
 | 主题          | 笔记                                                 | 适合查什么                                                                          |
 | ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------ |
-| 文件系统与基础命令   | [[Linux-Filesystem-and-Basic-Commands]]            | `pwd`、`cp`、`rm`、`cat`、`less`、`find`、`mount`、`tar`、权限、环境变量、APT/Snap             |
+| 文件系统与基础命令   | [[Linux-Filesystem-And-Basic-Commands]]            | `pwd`、`cp`、`rm`、`cat`、`less`、`find`、`mount`、`tar`、权限、环境变量、APT/Snap             |
 | 文本处理与管道     | [[Linux-Text-Processing-Pipelines]]                | `head`、`tail`、`wc`、`grep`、`sort`、`uniq`、`cut`、`tr`、`sed`、`awk`、`xargs`、`tee`   |
-| 进程、作业、性能与调试 | [[Linux-Processes-Jobs-Performance-and-Debugging]] | `ps`、`top`、`jobs`、`fg`、`pidof`、`kill`、`pkill`、`time`、`strace`、`objdump`        |
-| 网络与 HTTP 调试 | [[Linux-Networking-and-HTTP]]                | `ss`、`netstat`、`ip addr`、`ip route`、`ping`、`dig`、`curl`、`wget`、端口、DNS、HTTP 状态码 |
+| 进程、作业、性能与调试 | [[Linux-Processes-Jobs-Performance-And-Debugging]] | `ps`、`top`、`jobs`、`fg`、`pidof`、`kill`、`pkill`、`time`、`strace`、`objdump`        |
+| 网络与 HTTP 调试 | [[Linux-Networking-And-HTTP]]                | `ss`、`netstat`、`ip addr`、`ip route`、`ping`、`dig`、`curl`、`wget`、端口、DNS、HTTP 状态码 |
 
 ## Command Lookup
 
@@ -25,14 +25,14 @@ katex: true
 
 | 场景      | 命令      | 笔记                                            |
 | ------- | ------- | --------------------------------------------- |
-| 查看当前路径  | `pwd`   | [[Linux-Filesystem-and-Basic-Commands#pwd]]   |
-| 复制      | `cp`    | [[Linux-Filesystem-and-Basic-Commands#cp]]    |
-| 删除      | `rm`    | [[Linux-Filesystem-and-Basic-Commands#rm]]    |
-| 查看小文件   | `cat`   | [[Linux-Filesystem-and-Basic-Commands#cat]]   |
-| 分页查看大文件 | `less`  | [[Linux-Filesystem-and-Basic-Commands#less]]  |
-| 查找文件    | `find`  | [[Linux-Filesystem-and-Basic-Commands#find]]  |
-| 挂载      | `mount` | [[Linux-Filesystem-and-Basic-Commands#mount]] |
-| 归档压缩    | `tar`   | [[Linux-Filesystem-and-Basic-Commands#tar]]   |
+| 查看当前路径  | `pwd`   | [[Linux-Filesystem-And-Basic-Commands#pwd]]   |
+| 复制      | `cp`    | [[Linux-Filesystem-And-Basic-Commands#cp]]    |
+| 删除      | `rm`    | [[Linux-Filesystem-And-Basic-Commands#rm]]    |
+| 查看小文件   | `cat`   | [[Linux-Filesystem-And-Basic-Commands#cat]]   |
+| 分页查看大文件 | `less`  | [[Linux-Filesystem-And-Basic-Commands#less]]  |
+| 查找文件    | `find`  | [[Linux-Filesystem-And-Basic-Commands#find]]  |
+| 挂载      | `mount` | [[Linux-Filesystem-And-Basic-Commands#mount]] |
+| 归档压缩    | `tar`   | [[Linux-Filesystem-And-Basic-Commands#tar]]   |
 
 ### 文本处理与管道
 
@@ -54,27 +54,27 @@ katex: true
 
 | 场景 | 命令 | 笔记 |
 |---|---|---|
-| 进程快照 | `ps`, `ps aux` | [[Linux-Processes-Jobs-Performance-and-Debugging#ps]] |
-| 实时资源 | `top` | [[Linux-Processes-Jobs-Performance-and-Debugging#top]] |
-| PID 查询 | `pidof` | [[Linux-Processes-Jobs-Performance-and-Debugging#pidof]] |
-| 终止进程 | `kill`, `pkill` | [[Linux-Processes-Jobs-Performance-and-Debugging#Signals, kill, and pkill]] |
-| 作业控制 | `jobs`, `fg` | [[Linux-Processes-Jobs-Performance-and-Debugging#jobs]] |
-| 耗时统计 | `time` | [[Linux-Processes-Jobs-Performance-and-Debugging#time]] |
-| 系统调用追踪 | `strace` | [[Linux-Processes-Jobs-Performance-and-Debugging#strace]] |
-| 二进制分析 | `objdump` | [[Linux-Processes-Jobs-Performance-and-Debugging#objdump]] |
+| 进程快照 | `ps`, `ps aux` | [[Linux-Processes-Jobs-Performance-And-Debugging#ps]] |
+| 实时资源 | `top` | [[Linux-Processes-Jobs-Performance-And-Debugging#top]] |
+| PID 查询 | `pidof` | [[Linux-Processes-Jobs-Performance-And-Debugging#pidof]] |
+| 终止进程 | `kill`, `pkill` | [[Linux-Processes-Jobs-Performance-And-Debugging#Signals, kill, and pkill]] |
+| 作业控制 | `jobs`, `fg` | [[Linux-Processes-Jobs-Performance-And-Debugging#jobs]] |
+| 耗时统计 | `time` | [[Linux-Processes-Jobs-Performance-And-Debugging#time]] |
+| 系统调用追踪 | `strace` | [[Linux-Processes-Jobs-Performance-And-Debugging#strace]] |
+| 二进制分析 | `objdump` | [[Linux-Processes-Jobs-Performance-And-Debugging#objdump]] |
 
 ### 网络与 HTTP
 
 | 场景         | 命令                            | 笔记                                                             |     |
 | ---------- | ----------------------------- | -------------------------------------------------------------- | --- |
-| 查看监听端口     | `ss -tulnp`, `netstat -tulnp` | [[Linux-Networking-and-HTTP#2. Ports and Connections]]   |     |
-| 查端口占用      | `ss -ltnp  \| grep 3000`      | [[Linux-Networking-and-HTTP#2. Ports and Connections]]   |     |
-| 查看 IP 地址   | `ip addr`                     | [[Linux-Networking-and-HTTP#3. IP Address and Routing]]  |     |
-| 查看路由       | `ip route`, `netstat -rn`     | [[Linux-Networking-and-HTTP#3. IP Address and Routing]]  |     |
-| 测连通性       | `ping`, `nc`                  | [[Linux-Networking-and-HTTP#4. Connectivity and DNS]]    |     |
-| 查 DNS      | `dig`, `nslookup`             | [[Linux-Networking-and-HTTP#4. Connectivity and DNS]]    |     |
-| HTTP 请求/下载 | `curl`, `wget`                | [[Linux-Networking-and-HTTP#5. HTTP Requests with curl]] |     |
-| 网络系统调用     | `strace -e trace=network`     | [[Linux-Networking-and-HTTP#7. Network-related strace]]  |     |
+| 查看监听端口     | `ss -tulnp`, `netstat -tulnp` | [[Linux-Networking-And-HTTP#2. Ports and Connections]]   |     |
+| 查端口占用      | `ss -ltnp  \| grep 3000`      | [[Linux-Networking-And-HTTP#2. Ports and Connections]]   |     |
+| 查看 IP 地址   | `ip addr`                     | [[Linux-Networking-And-HTTP#3. IP Address and Routing]]  |     |
+| 查看路由       | `ip route`, `netstat -rn`     | [[Linux-Networking-And-HTTP#3. IP Address and Routing]]  |     |
+| 测连通性       | `ping`, `nc`                  | [[Linux-Networking-And-HTTP#4. Connectivity and DNS]]    |     |
+| 查 DNS      | `dig`, `nslookup`             | [[Linux-Networking-And-HTTP#4. Connectivity and DNS]]    |     |
+| HTTP 请求/下载 | `curl`, `wget`                | [[Linux-Networking-And-HTTP#5. HTTP Requests with curl]] |     |
+| 网络系统调用     | `strace -e trace=network`     | [[Linux-Networking-And-HTTP#7. Network-related strace]]  |     |
 
 ## Useful Pipelines
 

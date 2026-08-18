@@ -9,7 +9,7 @@ katex: true
 ---
 # 定义
 
-双端队列允许在两端插入和删除元素。它比普通 [[queue-definition-and-operations|队列]] 更灵活，也能模拟 [[Stack-Definition-And-Operations|栈]] 的行为。
+双端队列允许在两端插入和删除元素。它比普通 [[Queue-Definition-And-Operations|队列]] 更灵活，也能模拟 [[Stack-Definition-And-Operations|栈]] 的行为。
 
 # 受限双端队列
 

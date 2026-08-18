@@ -7,7 +7,7 @@ categories:
 date: 2026-06-28 12:09:30
 katex: true
 ---
-[[graph-connectivity-and-components#强连通分量|强连通分量]]的常见求法有 Tarjan 和 Kosaraju。Tarjan 更适合理解代码实现，Kosaraju 更适合手算 SCC 个数。
+[[Graph-Connectivity-And-Components#强连通分量|强连通分量]]的常见求法有 Tarjan 和 Kosaraju。Tarjan 更适合理解代码实现，Kosaraju 更适合手算 SCC 个数。
 
 # Tarjan
 

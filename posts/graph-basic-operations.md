@@ -12,7 +12,7 @@ katex: true
 
 图的基本操作要分清两个层次：接口语义和存储结构代价。接口语义说明“这个操作要做什么”，存储结构决定“做这件事要扫描矩阵、扫描链表，还是直接改指针”。
 
-相关卡片：[[adjacency-matrix|邻接矩阵]]、[[adjacency-list|邻接表]]、[[orthogonal-list-and-adjacency-multilist|十字链表与邻接多重表]]。
+相关卡片：[[Adjacency-Matrix|邻接矩阵]]、[[Adjacency-List|邻接表]]、[[Orthogonal-List-And-Adjacency-Multilist|十字链表与邻接多重表]]。
 
 ## 操作语义
 
@@ -58,7 +58,7 @@ katex: true
 
 | 存储结构 | 空间复杂度 | 找相邻边 | 删除边或顶点 | 适用对象 | 表示方式 |
 |---|---|---|---|---|---|
-| [[adjacency-matrix]] | $O(\lvert V\rvert^2)$ | 遍历对应行或列，判断指定边为 $O(1)$ | 删除边方便；删除顶点可能需要移动大量数据 | 稠密图 | 唯一 |
-| [[adjacency-list]] | 无向图 $O(\lvert V\rvert+2\lvert E\rvert)$；有向图 $O(\lvert V\rvert+\lvert E\rvert)$ | 有向图找入边要扫描整个邻接表，其余较方便 | 无向图中删除边或顶点不方便 | 稀疏图 | 不唯一 |
-| [[orthogonal-list-and-adjacency-multilist]] | $O(\lvert V\rvert+\lvert E\rvert)$ | 入边、出边都方便 | 较方便 | 有向图 | 不唯一 |
-| [[orthogonal-list-and-adjacency-multilist]] | $O(\lvert V\rvert+\lvert E\rvert)$ | 方便 | 较方便 | 无向图 | 不唯一 |
+| [[Adjacency-Matrix]] | $O(\lvert V\rvert^2)$ | 遍历对应行或列，判断指定边为 $O(1)$ | 删除边方便；删除顶点可能需要移动大量数据 | 稠密图 | 唯一 |
+| [[Adjacency-List]] | 无向图 $O(\lvert V\rvert+2\lvert E\rvert)$；有向图 $O(\lvert V\rvert+\lvert E\rvert)$ | 有向图找入边要扫描整个邻接表，其余较方便 | 无向图中删除边或顶点不方便 | 稀疏图 | 不唯一 |
+| [[Orthogonal-List-And-Adjacency-Multilist]] | $O(\lvert V\rvert+\lvert E\rvert)$ | 入边、出边都方便 | 较方便 | 有向图 | 不唯一 |
+| [[Orthogonal-List-And-Adjacency-Multilist]] | $O(\lvert V\rvert+\lvert E\rvert)$ | 方便 | 较方便 | 无向图 | 不唯一 |

@@ -10,9 +10,9 @@ katex: true
 
 # AOE Network And Critical Path
 
-AOE 网用于分析工程项目中“活动耗时”与“工程最短完成时间”。它和 [[DAG-and-AOV-network#AOV 网|AOV]] 都依赖有向无环结构，但含义不同：
+AOE 网用于分析工程项目中“活动耗时”与“工程最短完成时间”。它和 [[DAG-And-AOV-Network#AOV 网|AOV]] 都依赖有向无环结构，但含义不同：
 
-- AOV 网：顶点表示活动，边表示活动先后约束，主要用于 [[topological-sorting|拓扑排序]]。
+- AOV 网：顶点表示活动，边表示活动先后约束，主要用于 [[Topological-Sorting|拓扑排序]]。
 - AOE 网：顶点表示事件，边表示活动，边权表示活动耗时，主要用于求关键路径。
 
 ## AOE 网
@@ -49,7 +49,7 @@ AOE 网中通常只有一个入度为 0 的顶点，称为**源点**或开始顶
 
 `ve(k)` 表示事件 `Vk` 最早可能发生的时间。它决定所有从 `Vk` 出发的活动最早什么时候能开始。
 
-按[[topological-sorting#拓扑序列的定义|拓扑序列]]计算：
+按[[Topological-Sorting#拓扑序列的定义|拓扑序列]]计算：
 
 ```text
 ve(source) = 0
@@ -62,7 +62,7 @@ ve(k) = max{ve(j) + weight(j, k)}
 
 `vl(k)` 表示在不推迟整个工程完成的前提下，事件 `Vk` 最迟必须发生的时间。
 
-按[[topological-sorting#逆拓扑排序|逆拓扑序列]]计算：
+按[[Topological-Sorting#逆拓扑排序|逆拓扑序列]]计算：
 
 ```text
 vl(sink) = ve(sink)

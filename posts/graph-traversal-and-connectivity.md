@@ -12,7 +12,7 @@ katex: true
 
 图的遍历不仅是“访问所有顶点”的算法模板，也能反映图的连通性。复习时先分清图的类型：无向图看连通分量，有向图看沿弧方向的可达范围；强连通图才有“任一顶点出发都能覆盖全部”的性质。
 
-相关卡片：[[graph-definition|图的定义]]、[[undirected-and-directed-graph|无向图与有向图]]、[[breadth-first-search|广度优先搜索]]、[[depth-first-search|深度优先搜索]]、[[graph-connectivity-and-components|图的连通性与连通分量]]、[[how-to-calculate-SCC|Tarjan 算法]]、[[graph-relation-concepts-table|图的关系概念速查表]]。
+相关卡片：[[Graph-Definition|图的定义]]、[[Undirected-And-Directed-Graph|无向图与有向图]]、[[Breadth-First-Search|广度优先搜索]]、[[Depth-First-Search|深度优先搜索]]、[[Graph-Connectivity-And-Components|图的连通性与连通分量]]、[[How-To-Calculate-SCC|Tarjan 算法]]、[[Graph-Relation-Concepts-Table|图的关系概念速查表]]。
 
 ![图的遍历与连通性](../assets/graph-traversal-connectivity.svg)
 
@@ -51,7 +51,7 @@ for (int i = 0; i < vertexCount; ++i) {
 - 若有向图是强连通图，则从任一顶点出发都只需调用一次 BFS/DFS。
 
 > [!warning] 有向图不要套无向图结论
-> 无向图中“调用次数 = 连通分量数”很稳定；有向图中，普通 BFS/DFS 的调用次数要看出发顶点能沿弧方向到达哪些顶点。若要系统讨论有向图内部互相可达的极大区域，应使用[[graph-connectivity-and-components|强连通分量]]，实际算法可看 [[how-to-calculate-SCC|Tarjan 算法]]。
+> 无向图中“调用次数 = 连通分量数”很稳定；有向图中，普通 BFS/DFS 的调用次数要看出发顶点能沿弧方向到达哪些顶点。若要系统讨论有向图内部互相可达的极大区域，应使用[[Graph-Connectivity-And-Components|强连通分量]]，实际算法可看 [[How-To-Calculate-SCC|Tarjan 算法]]。
 
 ## BFS 与 DFS 在连通性问题中的用法
 
@@ -62,17 +62,17 @@ for (int i = 0; i < vertexCount; ++i) {
 | 生成森林 | 得到广度优先生成森林 | 得到深度优先生成森林 | 看题目要求层次还是深入路径 |
 | 判断有向图从某起点是否可达全部顶点 | 可做 | 可做 | 只需看一次遍历后的 `visited[]` |
 | 判断有向图是否强连通 | 需要进一步检查反向可达或使用 SCC 算法 | 需要进一步检查反向可达或使用 SCC 算法 | 不要只做一次普通遍历 |
-| 判断有向图是否有环 | 不常用普通 BFS 直接判 | 使用三色 DFS 很自然 | 见 [DFS 判有向图环](depth-first-search.md) |
+| 判断有向图是否有环 | 不常用普通 BFS 直接判 | 使用三色 DFS 很自然 | 见 [DFS 判有向图环](Depth-First-Search.md) |
 
 ## 遍历序列、生成树与存储结构
 
 遍历序列和生成树都不只由图本身决定，还受起点和邻接点访问顺序影响。
 
 - 起点不同，BFS/DFS 序列通常不同。
-- [[adjacency-matrix|邻接矩阵]]在顶点编号固定时表示唯一，邻接点扫描顺序通常固定，因此序列和生成树通常唯一。
-- [[adjacency-list|邻接表]]表示方式不唯一，同一顶点的邻接点链表顺序可变，因此序列和生成树可能不唯一。
-- BFS 记录第一次发现顶点的边，形成[[breadth-first-search|广度优先生成树或森林]]。
-- DFS 记录第一次递归进入顶点的边，形成[[depth-first-search|深度优先生成树或森林]]。
+- [[Adjacency-Matrix|邻接矩阵]]在顶点编号固定时表示唯一，邻接点扫描顺序通常固定，因此序列和生成树通常唯一。
+- [[Adjacency-List|邻接表]]表示方式不唯一，同一顶点的邻接点链表顺序可变，因此序列和生成树可能不唯一。
+- BFS 记录第一次发现顶点的边，形成[[Breadth-First-Search|广度优先生成树或森林]]。
+- DFS 记录第一次递归进入顶点的边，形成[[Depth-First-Search|深度优先生成树或森林]]。
 
 ## 考试速记
 

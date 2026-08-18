@@ -53,7 +53,7 @@ dp[i][j] = max(dp[i-1][j], dp[i-1][j-capacity[i]] + value[i])
 dp[i][j] = dp[i-1][j]
 ```
 
-[[0-1-knapsack-dp|空间优化]]
+[[0-1-Knapsack-DP|空间优化]]
 
 ### 2.2 代码
 

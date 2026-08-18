@@ -28,7 +28,7 @@ katex: true
 
 只含一个孩子时，不要只说“有一个孩子”，要明确是左孩子还是右孩子。这个位置差异会影响：
 
-- [[binary-tree-traversal|遍历序列]]
-- [[binary-tree-storage|顺序存储中的空位]]
+- [[Binary-Tree-Traversal|遍历序列]]
+- [[Binary-Tree-Storage|顺序存储中的空位]]
 - [[complete-binary-tree|完全二叉树]]的判断
-- [[threaded-binary-tree|线索二叉树]]中前驱、后继线索的含义
+- [[Threaded-Binary-Tree|线索二叉树]]中前驱、后继线索的含义

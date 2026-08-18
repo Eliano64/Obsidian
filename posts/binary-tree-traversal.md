@@ -51,7 +51,7 @@ void PostOrder(BiTree root) {
 
 ## 层次遍历
 
-层次遍历从上到下、从左到右访问结点，依赖[[queue-definition-and-operations|队列]]。
+层次遍历从上到下、从左到右访问结点，依赖[[Queue-Definition-And-Operations|队列]]。
 
 ```c
 void LevelOrder(BiTree root) {

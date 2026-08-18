@@ -14,7 +14,7 @@ katex: true
 
 ## 定义
 
-单链表是用链式存储方式实现的 [[linear-list-definition-and-operations|线性表]]。每个结点通常包含数据域和指针域：
+单链表是用链式存储方式实现的 [[Linear-List-Definition-And-Operations|线性表]]。每个结点通常包含数据域和指针域：
 
 ```c
 typedef struct LNode {
@@ -65,4 +65,4 @@ bool InitList(LinkList *L) {
 
 ## 关联
 
-操作实现见 [[singly-linked-list-insert-delete|单链表的插入与删除]]、[[singly-linked-list-search-and-build|单链表的查找与建立]]。
+操作实现见 [[Singly-Linked-List-Insert-Delete|单链表的插入与删除]]、[[Singly-Linked-List-Search-And-Build|单链表的查找与建立]]。

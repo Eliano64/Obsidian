@@ -12,7 +12,7 @@ katex: true
 
 深度优先搜索（Depth-First Search, DFS）是图的遍历算法。它从某个起始顶点出发，沿着一个未访问邻接点不断深入；当前顶点没有未访问邻接点时，再返回上一层，继续尝试上一层的其他邻接点。
 
-相关卡片：[[breadth-first-search|广度优先搜索]]、[[graph-basic-operations|图的基本操作]]、[递归与栈](Recursion.md)、[搜索与回溯](backtracking.md)。
+相关卡片：[[Breadth-First-Search|广度优先搜索]]、[[Graph-Basic-Operations|图的基本操作]]、[递归与栈](Recursion.md)、[搜索与回溯](Backtracking.md)。
 
 ![DFS 总览](../assets/graph-dfs-overview.svg)
 
@@ -127,8 +127,8 @@ void DFSTraverse(const Graph *graph, int vertexCount) {
 
 即使起点相同，DFS 序列也可能受存储结构影响：
 
-- [[adjacency-matrix|邻接矩阵]]在顶点编号固定时表示唯一，通常按编号顺序扫描邻接点，因此 DFS 序列唯一。
-- [[adjacency-list|邻接表]]中同一顶点的邻接点链表顺序不唯一，因此 DFS 序列可能不唯一。
+- [[Adjacency-Matrix|邻接矩阵]]在顶点编号固定时表示唯一，通常按编号顺序扫描邻接点，因此 DFS 序列唯一。
+- [[Adjacency-List|邻接表]]中同一顶点的邻接点链表顺序不唯一，因此 DFS 序列可能不唯一。
 
 > [!example] 邻接表顺序改变的影响
 > 若顶点 `2` 的邻接表写作 `1, 6`，从 `2` 出发会先深入 `1`。  

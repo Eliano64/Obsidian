@@ -9,7 +9,7 @@ katex: true
 ---
 # 定义
 
-队列是只允许在一端插入、在另一端删除的 [[linear-list-definition-and-operations|线性表]]。
+队列是只允许在一端插入、在另一端删除的 [[Linear-List-Definition-And-Operations|线性表]]。
 
 - 允许删除的一端称为队头。
 - 允许插入的一端称为队尾。
@@ -32,6 +32,6 @@ katex: true
 
 队列可以用顺序存储或链式存储实现。
 
-顺序队列实际通常是 [[circular-queue|循环队列]]。
+顺序队列实际通常是 [[Circular-Queue|循环队列]]。
 
-链式存储实现见 [[linked-queue|链队列]]。
+链式存储实现见 [[Linked-Queue|链队列]]。

@@ -21,7 +21,7 @@ katex: true
 
 
 - [[JavaScript-Basics]]：脚本引入、变量、基本类型、类型转换、控制流、函数基础、函数表达式、回调、箭头函数基础。
-- [[JavaScript-Objects-and-Data-Structures]]：对象、拷贝、构造函数、可选链、Symbol、数组、迭代器、Map/Set、WeakMap/WeakSet、Date、JSON。
+- [[JavaScript-Objects-And-Data-Structures]]：对象、拷贝、构造函数、可选链、Symbol、数组、迭代器、Map/Set、WeakMap/WeakSet、Date、JSON。
 - [[JavaScript-Advanced-Functions]]：Rest、Spread、定时器、`bind`、`this` 与箭头函数。
 
 ## HTML

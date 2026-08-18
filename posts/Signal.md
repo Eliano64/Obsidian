@@ -37,7 +37,7 @@ katex: true
 
 不是所有信号都能被捕获或忽略。`SIGKILL` 和 `SIGSTOP` 通常不能被进程改写处理方式，否则进程可能拒绝被系统终止或暂停。
 
-Linux 中用 `kill`、`pkill` 发送信号的命令用法见 [Linux Signals](../posts/Linux-Processes-Jobs-Performance-and-Debugging.md#Signals)。
+Linux 中用 `kill`、`pkill` 发送信号的命令用法见 [Linux Signals](Linux-Processes-Jobs-Performance-And-Debugging.md#Signals)。
 
 # 信号和异常/中断
 
