@@ -12,11 +12,10 @@ katex: true
 
 深度优先搜索（Depth-First Search, DFS）是图的遍历算法。它从某个起始顶点出发，沿着一个未访问邻接点不断深入；当前顶点没有未访问邻接点时，再返回上一层，继续尝试上一层的其他邻接点。
 
-相关卡片：[[Breadth-First-Search|广度优先搜索]]、[[Graph-Basic-Operations|图的基本操作]]、[递归与栈](Recursion.md)、[搜索与回溯](Backtracking.md)。
 
 ![DFS 总览](../assets/graph-dfs-overview.svg)
 
-## 从树的先根遍历到图的 DFS
+# 从树的先根遍历到图的 DFS
 
 树的深度优先遍历通常对应先根遍历：
 
@@ -27,8 +26,10 @@ katex: true
 
 图的 DFS 与它类似，但图可能有回路。树中从父结点走向孩子时，孩子一定没访问过；图中搜索邻接点时，可能遇到已经访问过的顶点，所以必须维护 `visited[]`。
 
-> [!important] DFS 的核心状态
+> [!important] 
 > `visited[v] = true` 表示顶点 `v` 已经被发现。递归版本 DFS 的“当前搜索路径”隐含保存在函数调用栈中，这一点也是有向图判环的基础。
+
+# DFS 算法
 
 ## 递归调用栈过程
 
@@ -117,7 +118,7 @@ void DFSTraverse(const Graph *graph, int vertexCount) {
 
 有向图不能只看弱连通外形。若起始顶点沿弧方向能到达其他所有顶点，则只需调用一次；若有向图是强连通图，则从任一顶点出发都只需调用一次。
 
-## DFS 遍历序列
+# DFS 遍历序列
 
 同一个图，从不同起点出发，DFS 遍历序列通常不同。例如在前面的无向图中：
 
@@ -134,7 +135,7 @@ void DFSTraverse(const Graph *graph, int vertexCount) {
 > 若顶点 `2` 的邻接表写作 `1, 6`，从 `2` 出发会先深入 `1`。  
 > 若顶点 `2` 的邻接表写作 `6, 1`，从 `2` 出发会先深入 `6`，DFS 序列可能变为 `2, 6, 7, 8, 4, 3, 1, 5`。
 
-## 深度优先生成树与生成森林
+# 深度优先生成树与生成森林
 
 DFS 过程中，一个顶点第一次被发现时，若是通过边 $(u,v)$ 从 `u` 进入 `v`，就把这条边记录为生成树边。所有这样的边构成**深度优先生成树**。
 
@@ -148,7 +149,7 @@ DFS 过程中，一个顶点第一次被发现时，若是通过边 $(u,v)$ 从 
 
 对非连通图执行完整 DFS 遍历时，每个连通分量会得到一棵 DFS 生成树，所有这些树合起来称为**深度优先生成森林**。
 
-## 复杂度
+# 复杂度
 
 递归 DFS 的辅助空间来自函数调用栈和 `visited[]`。最坏情况下，递归深度可达 $\lvert V\rvert$，所以空间复杂度为：
 
@@ -160,104 +161,41 @@ $$
 
 时间复杂度取决于存储结构：
 
-| 存储结构 | 顶点访问 | 邻接点查找 | 总时间复杂度 |
-|---|---:|---:|---:|
-| 邻接矩阵 | $O(\lvert V\rvert)$ | 每个顶点都要扫描一整行，合计 $O(\lvert V\rvert^2)$ | $O(\lvert V\rvert^2)$ |
-| 邻接表 | $O(\lvert V\rvert)$ | 所有边或弧被扫描有限次，合计 $O(\lvert E\rvert)$ | $O(\lvert V\rvert+\lvert E\rvert)$ |
+| 存储结构 |                顶点访问 |                                邻接点查找 |                             总时间复杂度 |
+| ---- | ------------------: | -----------------------------------: | ---------------------------------: |
+| 邻接矩阵 | $O(\lvert V\rvert)$ | 每个顶点都要扫描一整行，合计 $O(\lvert V\rvert^2)$ |              $O(\lvert V\rvert^2)$ |
+| 邻接表  | $O(\lvert V\rvert)$ |   所有边或弧被扫描有限次，合计 $O(\lvert E\rvert)$ | $O(\lvert V\rvert+\lvert E\rvert)$ |
 
-## DFS 判断有向图是否有环
+# DFS 判断图是否有环
 
-普通 `visited[]` 只能回答“这个顶点以前是否被发现过”，但有向图判环需要更细的状态：这个顶点是否还在**当前递归路径**上。这里正好利用了 DFS 的递归栈性质；相关递归栈概念见[递归与栈](Recursion.md)。
+DFS 第一次发现一个顶点时，会把发现它的边记为 DFS 树边。
 
-[html-card height=820 step=80](../assets/graph-dfs-directed-cycle.html)
+[html-card height=650 step=80](../assets/graph-dfs-directed-cycle.html)
 
-节点有3种状态：
+## 无向图
 
-| 状态 | 含义 | 判环作用 |
-|---|---|---|
-| `UNVISITED` | 还没有被 DFS 发现 | 可以递归进入 |
-| `VISITING` | 已进入 DFS，但该顶点的后继还没全部处理完 | 仍在当前递归栈中 |
-| `DONE` | 该顶点的所有后继都处理完，递归已返回 | 不在当前递归栈中 |
+记录每个顶点在 BFS 树中的父顶点 `parent`。
 
-判断逻辑：
+从 `u` 检查邻接点 `v` 时：
 
-- 若从 `u` 扫描到 `v`，且 `v` 是 `UNVISITED`，继续递归 `DFS(v)`。
-- 若从 `u` 扫描到 `v`，且 `v` 是 `VISITING`，说明有一条边指回当前递归路径上的祖先或当前路径顶点，形成有向环。
-- 若从 `u` 扫描到 `v`，且 `v` 是 `DONE`，说明 `v` 所在分支已经处理完，不代表当前路径能回到自己，不能据此判环。
+- `v` 未访问：令 `parent[v] = u`，递归进入 `v`。
+- `v` 已访问且 `v == parent[u]`：若 DFS 从 `u` 发现 `v`，后来处理 `v` 时必然会再次看到已经访问的 `u`。这是 `u` 的来路，忽略。
+- `v` 已访问且 `v != parent[u]`：除了 `u` 以外， `v` 还与另一点相连，说明存在从源点出发的多条路径能到达 `v` ，由于是无向图，说明至少存在一条从源点到源点的路径，即存在回路。
 
-```c
-typedef enum {
-    UNVISITED,
-    VISITING,
-    DONE
-} VisitState;
+## 有向图
 
-// Detects whether a directed cycle is reachable from `vertex`.
-//
-// Args:
-//   graph: directed graph to query.
-//   vertex: current vertex index.
-//   state: three-color visit state array.
-//
-// Returns:
-//   true if a back edge to a VISITING vertex is found; false otherwise.
-bool HasDirectedCycleFrom(const Graph *graph, int vertex, VisitState state[]) {
-    state[vertex] = VISITING;
+即使存在从源点出发的多条路径能到达 `v` ，也不能保证存在从 `v` 返回源点的有向路径。
 
-    for (int neighbor = FirstNeighbor(graph, vertex);
-         neighbor >= 0;
-         neighbor = NextNeighbor(graph, vertex, neighbor)) {
-        if (state[neighbor] == VISITING) {
-            // neighbor 仍在当前递归路径中，说明存在一条回到路径内部的弧。
-            return true;
-        }
+因此对有向图判环时，我们应利用递归栈的性质，使用三种状态：
 
-        if (state[neighbor] == UNVISITED) {
-            if (HasDirectedCycleFrom(graph, neighbor, state)) {
-                return true;
-            }
-        }
-    }
+| 状态 | 含义 |
+|---|---|
+| `UNVISITED` | 尚未进入 DFS |
+| `VISITING` | 已进入 DFS，仍在当前递归路径上 |
+| `DONE` | 所有出边均已处理，已经退出当前路径 |
 
-    // vertex 的所有后继都处理完，离开当前递归路径。
-    state[vertex] = DONE;
-    return false;
-}
+在 `u` 对应的递归函数 $dfs(u)$ 中将要进入能到达的 `v` 对应的 $dfs(v)$ 之前检查：
 
-// Detects whether a directed graph contains any cycle.
-//
-// Args:
-//   graph: directed graph to query.
-//   vertexCount: number of vertices in graph.
-//
-// Returns:
-//   true if the graph has at least one directed cycle; false otherwise.
-bool HasDirectedCycle(const Graph *graph, int vertexCount) {
-    VisitState state[MAX_VERTEX_NUM];
-
-    for (int i = 0; i < vertexCount; ++i) {
-        state[i] = UNVISITED;
-    }
-
-    for (int i = 0; i < vertexCount; ++i) {
-        if (state[i] == UNVISITED && HasDirectedCycleFrom(graph, i, state)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-```
-
-> [!warning] 不要把“指向访问过的点”直接当成有向环
-> 有向图中，边指向已经访问过的 `DONE` 顶点并不一定构成环。只有指向当前递归栈中的 `VISITING` 顶点，才说明沿当前路径已经能从那个顶点走到当前顶点，又存在回去的弧。
-
-## 考试速记
-
-- DFS 使用递归或显式栈，BFS 使用队列。
-- DFS 的本质是“先深入，走不动再回退”。
-- 单次 DFS 只能覆盖从起点可达的部分。
-- 无向图完整 DFS 的调用次数等于连通分量数。
-- DFS 生成树记录的是“递归第一次进入新顶点”的边。
-- 递归 DFS 的空间复杂度最坏为 $O(\lvert V\rvert)$。
-- 有向图判环要看边是否指向 `VISITING` 顶点，而不是只看 `visited`。
+- `v` 是 `UNVISITED`：说明 `u` 与 `v` 此时不存在环，递归进入 `v` 。
+- `v` 是 `VISITING`：当前路径中已有 $v\to\cdots\to u$，再加上 $u\to v$，形成有向环。
+- `v` 是 `DONE`：`v` 已退出当前路径，不能由 $u\to v$ 推出 $v$ 能返回 `u`，不能据此判环。

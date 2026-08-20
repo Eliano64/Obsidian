@@ -1,9 +1,9 @@
 ---
 title: binary constraint matching
 tags:
-  - Search
+  - LeetCode
 categories:
-  - Data Structure & Algorithm
+  - Record
 date: 2025-11-12 00:00:00
 katex: true
 ---

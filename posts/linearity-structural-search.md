@@ -14,19 +14,7 @@ katex: true
 
 [html-card height=620](../assets/sequential-search-process.html)
 
-## 普通顺序查找
-
-```c
-int sequential_search(const int a[], int n, int key) {
-    for (int i = 0; i < n; ++i) {
-        // 每次循环都比较一次关键字。
-        if (a[i] == key) {
-            return i;
-        }
-    }
-    return -1;
-}
-```
+## 普通顺序查找的 ASL
 
 普通顺序查找中，若表长为 $n$：
 
@@ -40,47 +28,13 @@ $$
 ASL_{fail}=n
 $$
 
-若采用从下标 1 开始、0 号位置放哨兵的教材写法，则失败时会停在 0 号位置。此时常见写法的返回值能直接区分成功与失败，但 0 号哨兵不是有效数据元素。
-
-```c
-int sequential_search_with_sentinel(int a[], int n, int key) {
-    a[0] = key;
-
-    int i = n;
-    while (a[i] != key) {
-        --i;
-    }
-
-    // 返回 0 表示查找失败；返回 1..n 表示目标所在位置。
-    return i;
-}
-```
-
-哨兵的优点是循环中无需额外判断 `i >= 1`，可以减少边界判断。
-
 若各元素被查概率不相等，顺序表不要求有序时，应把被查概率大的元素**靠近查找起点**，降低成功 ASL。
 
-## 有序表中的顺序查找
+## 有序表中的顺序查找的 ASL
 
 若线性表已经按关键字递增排列，顺序查找可以提前失败：当当前元素已经大于目标关键字时，后面的元素更大，不可能再出现目标。
 
 ![](../assets/ordered-sequential-search-decision-tree.svg)
-
-```c
-int ordered_sequential_search(const int a[], int n, int key) {
-    for (int i = 0; i < n; ++i) {
-        if (a[i] == key) {
-            return i;
-        }
-
-        // 递增表中，当前关键字已超过 key，后续元素不可能命中。
-        if (a[i] > key) {
-            return -1;
-        }
-    }
-    return -1;
-}
-```
 
 有序顺序查找的成功 ASL 仍是：
 
@@ -115,7 +69,7 @@ $$
 
 # 折半查找
 
-折半查找也称二分查找，适用于有序的顺序表。这里按 [[Binary-Search|Binary Search]] 的写法理解：用半开区间 `[lo, hi)` 维护搜索范围，在单调谓词上寻找边界。
+折半查找也称二分查找，适用于有序的顺序表。即在定义域为\[lo, hi)的单增的f(x), 找出最小的ans, 使得f(ans)>0成立。单减同理，甚至可以进行预处理先转化为单增的情况。
 
 对递增数组，常用谓词是：
 
@@ -130,6 +84,143 @@ $$
 - 循环结束时 `lo == hi`，搜索区间为空，返回记录到的 `ans` 或返回 `lo`。
 
 [html-card height=1020](../assets/lower-bound-binary-search-process.html)
+
+## 代码实现
+
+伪代码如下：
+
+```plaintext
+algorithm binary-search(lo,hi)
+	while the search area has elments do:
+		mid <- lo + (hi-lo)/2;
+		if f(mid) satisfied: // the answer may occur here
+            		ans := mid;
+			hi <- mid; 
+            // the search area could have no elments when in the next loop, so return ans; 
+            // but mid>ans if next loop continues,  
+            // for this is a right-open area, hi <- mid;
+		else :
+			lo <- mid + 1; 
+            // mid is not the answer, and mid < answer;
+            // for this is a left-close area, lo <- mid + 1;
+	end while
+	return ans;
+
+```
+
+### 例
+
+1. 已知一个有序数组，查找一个元素的位置并返回。若该元素不存在，则返回元素应插入的位置。
+
+**定义域为\[0, nums.size())，找出最小的ans, nums\[ans\] >= target成立**
+
+```C
+int searchInsert(int[] nums, int numSize, int target)
+{
+        int left=0,right=numSize,ans=numSize-1; // f(ans)= nums[ans] 的定义域： ans \in [left, right)
+        while(left<right){
+            int mid=(right-left)/2 + left;//防止直接right+left造成溢出
+            if(nums[mid]>=target){//因为我们要找的就是nums[ans]>=target
+                ans=mid; //所以mid可能为答案。
+                right=mid; //也可能mid不是答案，更新开的上界为mid
+            }
+            else{
+                left=mid+1; // 否则mid绝对不是答案。更新闭的下界为mid+1。
+            }
+        }
+        return ans;
+ }
+```
+
+2. 给你一个非负整数 `x` ，计算并返回 `x` 的 **算术平方根** 。
+   由于返回类型是整数，结果只保留 **整数部分** ，小数部分将被 **舍去 。**
+
+**定义域为$[0, +\infty)$, 找出最大的$\text{ans}$, $\text{ans}^2 \leqslant x$**
+
+```C
+int mySqrt(int x) {
+       long long l = 0, r = x+1, ans; // ans \in [0, +\infty), 但这里对r这样赋值只是为了让ans快速收敛。为什么x+1: x=0,1时 ans = x < x+1。  
+        while (l < r) {
+            long long  mid = (r - l)/2 + l;
+            if (mid * mid <= x) {//因为要找的就是ans*ans<=x
+                ans = mid; //所以mid可能为答案。
+                l = mid + 1; //也可能mid不是答案，更新闭的下界为mid+1
+            } else {
+                r = mid; // 否则mid绝对不是答案。更新开的上界为mid。
+            }
+        }
+        return ans; 
+    }
+```
+
+也有一些**更抽象**的二分查找：
+
+[3350.检测相邻递增子数组II](https://leetcode.cn/problems/adjacent-increasing-subarrays-detection-ii/description/)
+
+令f(x)：`k=x`时数组是否存在两个相邻且长度为 `k` 的严格递增子数组,存在则`f(x)=1`否则`f(x)=0`。
+
+则`f(x)`单减。**满足二分查找的使用**
+
+于是原问题即为
+
+**定义域为$[2, \lceil nums.length/2 \rceil)$, 找出最大的$\text{ans}$, $f(\text{ans})>=1$**
+
+解法示例：
+
+```go
+func f(x int, lengths []int) bool {
+    count := 0
+    for _, l := range lengths {
+        if l >= 2*x { 
+            return true
+        }
+        if l >= x {
+            count++
+            if count >= 2 {
+                return true
+            }
+        }else{
+            count = 0
+        }
+    }
+    return false
+}
+
+func maxIncreasingSubarrays(nums []int) int {
+    n := len(nums)
+    lengths := []int{}
+    cur := 1
+    for i := 1; i < n; i++ {
+        if nums[i] > nums[i-1] {
+            cur++
+        } else {
+            lengths = append(lengths, cur)
+            cur = 1
+        }
+    }
+    lengths = append(lengths, cur)
+
+    lo := 1; hi := len(nums)/2+1
+    var ans int
+    for lo<hi{
+        mi := lo + (hi-lo)/2
+        if f(mi,lengths){
+            ans = mi
+            lo = mi + 1
+        }else{
+            hi=mi
+        }
+    }
+    return ans
+}
+```
+
+### 何时使用二分查找？
+
+- 寻找一个*值*
+- 题目条件给出数组，以及建立在数组上的一个**单调**映射f。
+- 这个*值*使得f*恰好*满足某个条件。
+
 
 ## 边界判定树
 
@@ -148,12 +239,16 @@ $$
 
 因此，若 `target` 正好等于 `nums[pos]`，这个叶子表示查找成功；若 `target` 落在两个关键字之间，或大于所有关键字，这个叶子表示查找失败时的插入位置。
 
-## 判定树的形态性质与ASL计算
+## 判定树的性质
 
-1. **任意节点左右子树高度差不超过1**
+1. **任意节点左子树与右子树高度差只可能是0或1**
 2. **不考虑外部节点（表示查找失败的结点）时，任意节点的左子树结点个数与右子树节点个数之差只可能是0或1**
 
-由于$2^{h-1}-1< 2n+1 \leqslant 2^{h} -1$,所以得到
+## ASL 计算
+
+将查找失败的结点也计入树，若原数组有$n$个元素，则对应查找失败的情况共$n+1$种，则树一共有$2n+1$个节点。
+
+设树高$h$, 由于$2^{h-1}-1< 2n+1 \leqslant 2^{h} -1$,所以得到
 
 $$
 h=1+\lceil \log_2(n+1)\rceil
@@ -162,7 +257,10 @@ $$
 
 所以
 $$
-ASL_{success} = ASL_{fail}= h = 1 +  \lceil \log_2(n+1)\rceil
+\begin{cases}
+ASL_{fail}= h = 1 +  \lceil \log_2(n+1)\rceil; \\
+ASL_{success}=
+\end{cases}
 $$
 
 算法的时间复杂度为$O(\log_2 n)$
@@ -180,7 +278,7 @@ $$
 
 分块查找也称索引顺序查找。它把查找表分成若干块，并建立索引表。索引表中通常保存每个块的最大关键字和该块的存储区间。
 
-分块查找的结构要求是：==块间有序，块内可以无序==。也就是说，前一块中所有元素的关键字都小于后一块中所有元素的关键字，但同一块内部不要求排序。
+分块查找的结构要求是：==块间有序，块内可以无序==。也就是说，前一块中任意元素的关键字都小于后一块中任意元素的关键字，但同一块内部不要求排序。
 
 [html-card height=680](../assets/block-search-process.html)
 

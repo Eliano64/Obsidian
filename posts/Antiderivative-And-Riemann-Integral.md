@@ -22,4 +22,4 @@ katex: true
 
 
 
-[^1]: 测度：区间的长度。根据$\epsilon-\delta$语言可定义一个点的测度为 0 （对任意的 $\epsilon$, 都可以找到$\delta$, 使得区间$(x-\delta,x+\delta)$的长度小于$\epsilon$）。使用多个区间定义点的集合的测度为 0 ：对任意的 $\epsilon$, 都可以找到{$\delta_{i}$}, 使得区间$(x_{i}-\delta_{i},x_{i}+\delta_{i})$的总长度和小于$\epsilon$。有限个点的集合的测度显然为 0 。
+[^1]: 测度：区间的长度。根据$\epsilon-\delta$语言可定义一个点的测度为 0 （对任意的 $\epsilon$, 都可以找到$\delta$, 使得区间$(x-\delta,x+\delta)$的长度小于$\epsilon$）。使用多个区间定义点的集合的测度为 0 ：如果对任意的 $\epsilon$, 都可以找到{$\delta_{i}$}, 使得区间$(x_{i}-\delta_{i},x_{i}+\delta_{i})$的总长度和小于$\epsilon$，那么我们认为这个点集的测度为 0 。有限个点的集合的测度显然为 0 。

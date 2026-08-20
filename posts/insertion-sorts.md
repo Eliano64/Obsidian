@@ -124,7 +124,7 @@ void insertion_sort_with_sentinel(int a[], int n) {
 
 ### 折半插入排序的 C 写法
 
-查找实现的详细解释见[[Binary-Search|Codex-Rename-Temp-1787034806619-15]]
+查找实现的详细解释见[[Binary-Search]]
 
 ```c
 /**

@@ -50,6 +50,15 @@ $$
 > [!tip] 度的计算
 > 在无向图中，第 $i$ 个顶点的度等于第 $i$ 行非零元素个数，也等于第 $i$ 列非零元素个数。
 
+## 无向图邻接矩阵的压缩存储
+
+无向图的邻接矩阵是对称矩阵，又由于对角线上元素一定为 0 。因此可以**丢弃对角线上的元素和对称的另一部分，只存上/下三角区**。这样就可以把 $n\times n$ 个单元压缩为：
+
+$$
+\frac{(n)(n-1)}{2}
+$$
+
+关于压缩后的矩阵的访问见：[[Array-Storage]]。只是与普通的上/下三角矩阵或对称矩阵不同的是，邻接矩阵不需要存储对角线上的元素。
 # 有向图的邻接矩阵
 
 有向弧 $\langle v_i,v_j\rangle$ 只能说明从 $v_i$ 到 $v_j$ 有边，不能反推从 $v_j$ 到 $v_i$ 有边：
@@ -283,48 +292,6 @@ $$
 - 不适合存储稀疏图，因为大量矩阵单元可能都表示“无边”。
 - 判断两个顶点是否相邻是 $O(1)$。
 - 查找一个顶点的全部邻接点需要 $O(|V|)$。
-
-# 无向图邻接矩阵的压缩存储
-
-无向图的邻接矩阵是对称矩阵，因此可以只存主对角线加下三角区，或只存主对角线加上三角区。这样可以把 $n\times n$ 个单元压缩为：
-
-$$
-\frac{n(n+1)}{2}
-$$
-
-若按行优先存储主对角线和下三角区，且矩阵下标从 $1$ 开始、一维数组下标从 $0$ 开始，则：
-
-$$
-k=\frac{i(i-1)}{2}+j-1,\quad i\ge j
-$$
-
-若遇到 $i<j$，利用对称性 $a_{i,j}=a_{j,i}$，转成：
-
-$$
-k=\frac{j(j-1)}{2}+i-1,\quad i<j
-$$
-
-```c
-// Converts a symmetric matrix coordinate to a compressed-array index.
-//
-// Args:
-//   row: 1-based row index in the full matrix.
-//   col: 1-based column index in the full matrix.
-//
-// Returns:
-//   0-based index in the one-dimensional array that stores the main diagonal
-//   and lower triangle by row-major order.
-int LowerTriangleIndex(int row, int col) {
-    if (row >= col) {
-        // 已经在主对角线或下三角区，按行优先直接定位。
-        // row 和 col 使用 1 起始下标，返回的一维数组下标从 0 开始。
-        return row * (row - 1) / 2 + col - 1;
-    }
-
-    // 若访问的是上三角元素 a[row][col]，利用对称性转成 a[col][row]。
-    return col * (col - 1) / 2 + row - 1;
-}
-```
 
 # 矩阵幂与路径条数
 

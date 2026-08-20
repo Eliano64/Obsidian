@@ -9,67 +9,67 @@ katex: true
 ---
 
 
-| 概念                                                  | 适用对象           | 一句话定义                                                     | 注意                                                                                                                 |
-| --------------------------------------------------- | -------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [度 $TD(v)$](Graph-Degree.md)                        | 无向图、有向图        | 与顶点 $v$ 相关的边或弧的总数                                         | 有向图中 $TD(v)=ID(v)+OD(v)$                                                                                           |
-| [入度 $ID(v)$](Graph-Degree.md)                       | 有向图            | 以 $v$ 为终点的弧数                                              | 只数进入的弧，不数出去的弧                                                                                                      |
-| [出度 $OD(v)$](Graph-Degree.md)                       | 有向图            | 以 $v$ 为起点的弧数                                              | 只数出去的弧，不数进入的弧                                                                                                      |
-| [路径](Graph-Path-And-Distance.md)                    | 无向图、有向图        | 从一个顶点到另一个顶点的顶点序列                                          | 有向图路径要沿弧方向                                                                                                         |
-| [回路，也称环](Graph-Path-And-Distance.md)                | 无向图、有向图        | 起点和终点相同的路径                                                | 回路不一定是简单回路                                                                                                         |
-| [简单路径](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 顶点不重复出现的路径                                                | 起点和终点也不能重复，否则变成回路                                                                                                  |
-| [简单回路](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 除首尾同一顶点外，其余顶点不重复的回路                                       | 允许第一个顶点和最后一个顶点相同                                                                                                   |
-| [路径长度](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 路径上边或弧的数目                                                 | 经过 $k$ 个顶点的路径长度通常是 $k-1$                                                                                           |
-| [距离](Graph-Path-And-Distance.md)                    | 无向图、有向图        | 两点间最短路径的长度                                                | 不存在路径时记为 $\infty$                                                                                                  |
-| [连通](Graph-Connectivity-And-Components.md)          | 无向图            | 两个顶点之间存在路径                                                | 只用于无向图的普通可达关系                                                                                                      |
-| [强连通](Graph-Connectivity-And-Components.md)         | 有向图            | 两个顶点互相都有路径可达                                              | $v$ 到 $w$ 可达不代表 $w$ 到 $v$ 可达                                                                                       |
-| [连通图](Graph-Connectivity-And-Components.md)         | 无向图            | 任意两个顶点都连通                                                 | $n$ 个顶点的连通图最少有 $n-1$ 条边                                                                                            |
-| [非连通图](Graph-Connectivity-And-Components.md)        | 无向图            | 至少有一对顶点不连通                                                | $n$ 个顶点的非连通图最多有 $C_{n-1}^{2}$ 条边                                                                                   |
-| [强连通图](Graph-Connectivity-And-Components.md)        | 有向图            | 任意两个顶点都强连通                                                | $n$ 个顶点的强连通图最少有 $n$ 条弧                                                                                             |
-| [子图](Graph-Subgraph.md)                             | 无向图、有向图        | 从原图中取部分顶点和部分边或弧                                           | 选了边或弧，就要同时保留它的端点；有向图还要保留方向                                                                                         |
-| [生成子图](Graph-Subgraph.md)                           | 无向图、有向图        | 保留原图全部顶点的子图                                               | 生成子图不一定连通，也不一定是树                                                                                                   |
-| [连通子图](Graph-Subgraph.md)                           | 无向图            | 本身连通的子图                                                   | 连通子图不一定是连通分量                                                                                                       |
-| [连通分量](Graph-Connectivity-And-Components.md)        | 无向图            | 极大连通子图                                                    | 不是随便取一个连通子图，而是已经不能继续扩大                                                                                             |
-| [强连通分量](Graph-Connectivity-And-Components.md)       | 有向图            | 极大强连通子图                                                   | 考手算 SCC 个数时优先用 [Kosaraju](How-To-Calculate-SCC.md#Kosaraju%20手算%20SCC%20个数) 的两次 DFS；代码分析再看 Tarjan 的 `dfn`、`low` 和栈 |
-| [生成树](Spanning-Tree.md)                             | 连通无向图          | 包含全部顶点的极小连通子图                                             | 有 $n-1$ 条边；删任一边会非连通，加任一边会成环                                                                                        |
-| [生成森林](Spanning-Tree.md)                            | 非连通无向图         | 各连通分量的生成树组成的森林                                            | $n$ 个顶点、$k$ 个连通分量时有 $n-k$ 条边                                                                                       |
-| [最小生成树](Minimum-Spanning-Tree.md)                   | 带权无向连通图        | 权值总和最小的生成树                                                | 图不连通时只能求最小生成森林                                                                                                     |
-| [Kruskal](Minimum-Spanning-Tree.md)                 | 带权无向图          | 按边权从小到大选不成环的边                                             | 适合稀疏图；选够 $n-1$ 条边停止                                                                                                |
-| [Prim](Minimum-Spanning-Tree.md)                    | 带权无向图          | 从树集合出发，每次接入最近的外部顶点                                        | 邻接矩阵朴素实现适合稠密图                                                                                                      |
-| [边的权](Weighted-Graph.md)                            | 无向图、有向图        | 边或弧上标注的数值                                                 | 权值可表示距离、费用、概率、时间等不同含义                                                                                              |
-| [带权图，也称网](Weighted-Graph.md)                        | 无向图、有向图        | 边或弧带有权值的图                                                 | 图结构相同，权值含义不同，最优问题可能不同                                                                                              |
-| [带权路径长度](Weighted-Graph.md)                         | 带权图            | 路径上所有边或弧的权值之和                                             | 不等于边数；边数是普通路径长度                                                                                                    |
-| [单源最短路径](Shortest-Path-Algorithms.md)               | 无向图、有向图、带权图    | 从一个源点到其他各顶点的最短路径                                          | 无权图可用 BFS；非负权图常用 Dijkstra                                                                                          |
-| [每对顶点间最短路径](Shortest-Path-Algorithms.md)            | 有向图、无向图、带权图    | 求任意两个顶点之间的最短路径                                            | Floyd 可处理负权边，但不能处理负权回路                                                                                             |
-| [负权回路](Shortest-Path-Algorithms.md)                 | 带权图            | 回路上边权之和为负                                                 | 存在可达负权回路时，最短路径可能没有定义                                                                                               |
-| [邻接矩阵](Adjacency-Matrix.md)                         | 无向图、有向图、带权图    | 用 $\lvert V\rvert\times \lvert V\rvert$ 矩阵表示顶点之间是否有边、弧或权值 | 空间只和顶点数有关，不和实际边数有关                                                                                                 |
-| [无向图邻接矩阵](Adjacency-Matrix.md)                      | 无向图            | $A[i][j]=A[j][i]$，矩阵关于主对角线对称                              | 可以只存主对角线加上三角或下三角                                                                                                   |
-| [有向图邻接矩阵](Adjacency-Matrix.md)                      | 有向图            | $A[i][j]$ 表示从 $v_i$ 到 $v_j$ 的弧                            | $A[i][j]=1$ 不代表 $A[j][i]=1$                                                                                        |
-| [邻接表](Adjacency-List.md)                            | 无向图、有向图、带权图    | 顶点表顺序存储顶点，每个顶点后接链表保存邻接点                                   | 表示方式不唯一                                                                                                            |
-| [无向图邻接表](Adjacency-List.md)                         | 无向图            | 每条边在两个端点的链表中各存一次                                          | 顶点度等于对应链表长度                                                                                                        |
-| [有向图邻接表](Adjacency-List.md)                         | 有向图            | 每条弧只存到起点的链表中，默认保存出边                                       | 出度方便，入度和入边需要扫描整个邻接表                                                                                                |
-| [十字链表](Orthogonal-List-And-Adjacency-Multilist.md)  | 有向图            | 一个弧结点同时挂入弧尾的出边链和弧头的入边链                                    | 只用于有向图                                                                                                             |
-| [邻接多重表](Orthogonal-List-And-Adjacency-Multilist.md) | 无向图            | 一条无向边只存一个边结点，同时挂入两个端点的边链                                  | 只用于无向图                                                                                                             |
-| [广度优先搜索](Breadth-First-Search.md)                   | 无向图、有向图        | 借助队列从起点按层扩展访问顶点                                           | 非连通图需要从未访问顶点继续调用 BFS                                                                                               |
-| [广度优先生成树](Breadth-First-Search.md)                  | 连通图的 BFS 过程    | 由 BFS 第一次发现新顶点时经过的边构成                                     | 邻接表顺序不唯一时，生成树也可能不唯一                                                                                                |
-| [广度优先生成森林](Breadth-First-Search.md)                 | 非连通图的完整 BFS 过程 | 各连通分量的 BFS 生成树组成的森林                                       | 无向图中 BFS 调用次数等于连通分量数                                                                                               |
-| [深度优先搜索](Depth-First-Search.md)                     | 无向图、有向图        | 沿未访问邻接点不断深入，走不动再回退                                        | 非连通图需要从未访问顶点继续调用 DFS                                                                                               |
-| [深度优先生成树](Depth-First-Search.md)                    | 连通图的 DFS 过程    | 由 DFS 第一次递归进入新顶点时经过的边构成                                   | 邻接表顺序不唯一时，生成树也可能不唯一                                                                                                |
-| [深度优先生成森林](Depth-First-Search.md)                   | 非连通图的完整 DFS 过程 | 各连通分量的 DFS 生成树组成的森林                                       | 无向图中 DFS 调用次数等于连通分量数                                                                                               |
-| [DFS 判有向图环](Depth-First-Search.md)                  | 有向图            | 若搜索边指向当前递归栈中的顶点，则存在有向环                                    | 不能把指向 `DONE` 顶点误判为环                                                                                                |
-| [遍历与连通性](Graph-Traversal-And-Connectivity.md)       | 无向图、有向图        | 通过 BFS/DFS 的覆盖范围和启动次数分析连通关系                               | 无向图调用次数等于连通分量数；有向图要按弧方向具体分析                                                                                        |
-| [DAG](DAG-And-AOV-Network.md)                       | 有向图            | 不存在有向环的有向图                                                | 有拓扑序列当且仅当该有向图是 DAG                                                                                                 |
-| [表达式 DAG](DAG-And-AOV-Network.md)                   | 表达式结构          | 合并重复操作数和重复子表达式后的表达式图                                      | 通常按结构相同合并，不自动做复杂代数化简                                                                                               |
-| [AOV 网](DAG-And-AOV-Network.md)                     | 有向无环图          | 顶点表示活动，边表示活动先后约束                                          | 必须无环；有环表示依赖关系矛盾                                                                                                    |
-| [拓扑排序](Topological-Sorting.md)                      | DAG、AOV 网      | 使每条路径起点都排在终点前面的顶点序列                                       | 序列不唯一；图有环时不存在拓扑序列                                                                                                  |
-| [逆拓扑排序](Topological-Sorting.md)                     | DAG、AOV 网      | 从后继约束末端开始输出的反向拓扑序列                                        | 指向 `DONE` 顶点不是环                                                                                                    |
-| [AOE 网](AOE-Network-And-Critical-Path.md)           | 带权有向无环图        | 顶点表示事件，边表示活动，边权表示活动耗时                                     | 用于求关键路径；活动在边上，不在顶点上                                                                                                |
-| [关键路径](AOE-Network-And-Critical-Path.md)            | AOE 网          | 从源点到汇点的最长路径                                               | 关键路径长度是工程最短完成时间                                                                                                    |
-| [关键活动](AOE-Network-And-Critical-Path.md)            | AOE 网          | 时间余量为 0 的活动                                               | 关键活动延期会导致工期延期                                                                                                      |
-| [稀疏图](Sparse-And-Dense-Graph.md)                    | 无向图、有向图        | 边数较少的图                                                    | 这是经验界限，不是绝对定义                                                                                                      |
-| [稠密图](Sparse-And-Dense-Graph.md)                    | 无向图、有向图        | 边数较多的图                                                    | 常和邻接矩阵适用性一起考                                                                                                       |
-| [树](Tree-As-Graph-Special-Form.md)                  | 无向图            | 连通且无回路的无向图                                                | 树作为数据结构的完整概念见 [Tree-Basic-Concepts](Tree-Basic-Concepts.md)                                                        |
-| [森林](Tree-As-Graph-Special-Form.md)                 | 无向图            | 若干棵互不相交的树组成                                               | $n$ 个顶点、$k$ 个分量时有 $n-k$ 条边                                                                                         |
-| [有向树](Tree-As-Graph-Special-Form.md)                | 有向图            | 一个顶点入度为 0，其余顶点入度均为 1                                      | 只看入度条件时仍要注意题目是否默认连通或可达                                                                                             |
-| [无向完全图](Complete-Graph.md)                          | 无向图            | 任意两个不同顶点之间都有边                                             | 边数是 $C_n^2$，不是 $n(n-1)$                                                                                            |
-| [有向完全图](Complete-Graph.md)                          | 有向图            | 任意两个不同顶点之间都有方向相反的两条弧                                      | 弧数是 $2C_n^2=n(n-1)$                                                                                                |
+| 概念                                                  | 适用对象           | 一句话定义                                                     |
+| --------------------------------------------------- | -------------- | --------------------------------------------------------- |
+| [度 $TD(v)$](Graph-Degree.md)                        | 无向图、有向图        | 与顶点 $v$ 相关的边或弧的总数                                         |
+| [入度 $ID(v)$](Graph-Degree.md)                       | 有向图            | 以 $v$ 为终点的弧数                                              |
+| [出度 $OD(v)$](Graph-Degree.md)                       | 有向图            | 以 $v$ 为起点的弧数                                              |
+| [路径](Graph-Path-And-Distance.md)                    | 无向图、有向图        | 从一个顶点到另一个顶点的顶点序列                                          |
+| [回路，也称环](Graph-Path-And-Distance.md)                | 无向图、有向图        | 起点和终点相同的路径                                                |
+| [简单路径](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 顶点不重复出现的路径                                                |
+| [简单回路](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 除首尾同一顶点外，其余顶点不重复的回路                                       |
+| [路径长度](Graph-Path-And-Distance.md)                  | 无向图、有向图        | 路径上边或弧的数目                                                 |
+| [距离](Graph-Path-And-Distance.md)                    | 无向图、有向图        | 两点间最短路径的长度                                                |
+| [连通](Graph-Connectivity-And-Components.md)          | 无向图            | 两个顶点之间存在路径                                                |
+| [强连通](Graph-Connectivity-And-Components.md)         | 有向图            | 两个顶点互相都有路径可达                                              |
+| [连通图](Graph-Connectivity-And-Components.md)         | 无向图            | 任意两个顶点都连通                                                 |
+| [非连通图](Graph-Connectivity-And-Components.md)        | 无向图            | 至少有一对顶点不连通                                                |
+| [强连通图](Graph-Connectivity-And-Components.md)        | 有向图            | 任意两个顶点都强连通                                                |
+| [子图](Graph-Subgraph.md)                             | 无向图、有向图        | 从原图中取部分顶点和部分边或弧                                           |
+| [生成子图](Graph-Subgraph.md)                           | 无向图、有向图        | 保留原图全部顶点的子图                                               |
+| [连通子图](Graph-Subgraph.md)                           | 无向图            | 本身连通的子图                                                   |
+| [连通分量](Graph-Connectivity-And-Components.md)        | 无向图            | 极大连通子图                                                    |
+| [强连通分量](Graph-Connectivity-And-Components.md)       | 有向图            | 极大强连通子图                                                   |
+| [生成树](Spanning-Tree.md)                             | 连通无向图          | 包含全部顶点的极小连通子图                                             |
+| [生成森林](Spanning-Tree.md)                            | 非连通无向图         | 各连通分量的生成树组成的森林                                            |
+| [最小生成树](Minimum-Spanning-Tree.md)                   | 带权无向连通图        | 权值总和最小的生成树                                                |
+| [Kruskal](Minimum-Spanning-Tree.md)                 | 带权无向图          | 按边权从小到大选不成环的边                                             |
+| [Prim](Minimum-Spanning-Tree.md)                    | 带权无向图          | 从树集合出发，每次接入最近的外部顶点                                        |
+| [边的权](Weighted-Graph.md)                            | 无向图、有向图        | 边或弧上标注的数值                                                 |
+| [带权图，也称网](Weighted-Graph.md)                        | 无向图、有向图        | 边或弧带有权值的图                                                 |
+| [带权路径长度](Weighted-Graph.md)                         | 带权图            | 路径上所有边或弧的权值之和                                             |
+| [单源最短路径](Shortest-Path-Algorithms.md)               | 无向图、有向图、带权图    | 从一个源点到其他各顶点的最短路径                                          |
+| [每对顶点间最短路径](Shortest-Path-Algorithms.md)            | 有向图、无向图、带权图    | 求任意两个顶点之间的最短路径                                            |
+| [负权回路](Shortest-Path-Algorithms.md)                 | 带权图            | 回路上边权之和为负                                                 |
+| [邻接矩阵](Adjacency-Matrix.md)                         | 无向图、有向图、带权图    | 用 $\lvert V\rvert\times \lvert V\rvert$ 矩阵表示顶点之间是否有边、弧或权值 |
+| [无向图邻接矩阵](Adjacency-Matrix.md)                      | 无向图            | $A[i][j]=A[j][i]$，矩阵关于主对角线对称                              |
+| [有向图邻接矩阵](Adjacency-Matrix.md)                      | 有向图            | $A[i][j]$ 表示从 $v_i$ 到 $v_j$ 的弧                            |
+| [邻接表](Adjacency-List.md)                            | 无向图、有向图、带权图    | 顶点表顺序存储顶点，每个顶点后接链表保存邻接点                                   |
+| [无向图邻接表](Adjacency-List.md)                         | 无向图            | 每条边在两个端点的链表中各存一次                                          |
+| [有向图邻接表](Adjacency-List.md)                         | 有向图            | 每条弧只存到起点的链表中，默认保存出边                                       |
+| [十字链表](Orthogonal-List-And-Adjacency-Multilist.md)  | 有向图            | 一个弧结点同时挂入弧尾的出边链和弧头的入边链                                    |
+| [邻接多重表](Orthogonal-List-And-Adjacency-Multilist.md) | 无向图            | 一条无向边只存一个边结点，同时挂入两个端点的边链                                  |
+| [广度优先搜索](Breadth-First-Search.md)                   | 无向图、有向图        | 借助队列从起点按层扩展访问顶点                                           |
+| [广度优先生成树](Breadth-First-Search.md)                  | 连通图的 BFS 过程    | 由 BFS 第一次发现新顶点时经过的边构成                                     |
+| [广度优先生成森林](Breadth-First-Search.md)                 | 非连通图的完整 BFS 过程 | 各连通分量的 BFS 生成树组成的森林                                       |
+| [深度优先搜索](Depth-First-Search.md)                     | 无向图、有向图        | 沿未访问邻接点不断深入，走不动再回退                                        |
+| [深度优先生成树](Depth-First-Search.md)                    | 连通图的 DFS 过程    | 由 DFS 第一次递归进入新顶点时经过的边构成                                   |
+| [深度优先生成森林](Depth-First-Search.md)                   | 非连通图的完整 DFS 过程 | 各连通分量的 DFS 生成树组成的森林                                       |
+| [DFS 判有向图环](Depth-First-Search.md)                  | 有向图            | 若搜索边指向当前递归栈中的顶点，则存在有向环                                    |
+| [遍历与连通性](Graph-Traversal-And-Connectivity.md)       | 无向图、有向图        | 通过 BFS/DFS 的覆盖范围和启动次数分析连通关系                               |
+| [DAG](DAG-And-AOV-Network.md)                       | 有向图            | 不存在有向环的有向图                                                |
+| [表达式 DAG](DAG-And-AOV-Network.md)                   | 表达式结构          | 合并重复操作数和重复子表达式后的表达式图                                      |
+| [AOV 网](DAG-And-AOV-Network.md)                     | 有向无环图          | 顶点表示活动，边表示活动先后约束                                          |
+| [拓扑排序](Topological-Sorting.md)                      | DAG、AOV 网      | 使每条路径起点都排在终点前面的顶点序列                                       |
+| [逆拓扑排序](Topological-Sorting.md)                     | DAG、AOV 网      | 从后继约束末端开始输出的反向拓扑序列                                        |
+| [AOE 网](AOE-Network-And-Critical-Path.md)           | 带权有向无环图        | 顶点表示事件，边表示活动，边权表示活动耗时                                     |
+| [关键路径](AOE-Network-And-Critical-Path.md)            | AOE 网          | 从源点到汇点的最长路径                                               |
+| [关键活动](AOE-Network-And-Critical-Path.md)            | AOE 网          | 时间余量为 0 的活动                                               |
+| [稀疏图](Sparse-And-Dense-Graph.md)                    | 无向图、有向图        | 边数较少的图                                                    |
+| [稠密图](Sparse-And-Dense-Graph.md)                    | 无向图、有向图        | 边数较多的图                                                    |
+| [树](Tree-As-Graph-Special-Form.md)                  | 无向图            | 连通且无回路的无向图                                                |
+| [森林](Tree-As-Graph-Special-Form.md)                 | 无向图            | 若干棵互不相交的树组成                                               |
+| [有向树](Tree-As-Graph-Special-Form.md)                | 有向图            | 一个顶点入度为 0，其余顶点入度均为 1                                      |
+| [无向完全图](Complete-Graph.md)                          | 无向图            | 任意两个不同顶点之间都有边                                             |
+| [有向完全图](Complete-Graph.md)                          | 有向图            | 任意两个不同顶点之间都有方向相反的两条弧                                      |
 

@@ -3,7 +3,7 @@ title: Nginx
 tags:
   - Nginx
 categories:
-  - Base Knowledge
+  - Tool
 date: 2025-11-29 00:00:00
 katex: true
 ---

@@ -1,9 +1,9 @@
 ---
 title: Linux Text Processing Pipelines
 tags:
-  - Shell
+  - cmd
 categories:
-  - Linux
+  - Tool
 date: 2026-06-26 00:00:00
 katex: true
 ---
