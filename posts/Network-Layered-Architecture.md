@@ -19,7 +19,7 @@ katex: true
 - 上层通过接口使用下层服务，不需要知道下层内部实现。
 - 同一层的通信双方遵守同一层协议。
 
-![[../assets/a-big-picture-in-network-layers.jpg]]
+见[[Big-Picture-For-Computer-Network|Big-Picture-For-Computer-Network]]
 
 # 三种体系结构
 
