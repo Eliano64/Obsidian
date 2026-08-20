@@ -1,5 +1,5 @@
 ---
-title: singleton
+title: Singleton
 tags:
   - InterfaceOrientedProgramming
   - SingletonPattern

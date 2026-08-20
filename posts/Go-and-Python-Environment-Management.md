@@ -1,7 +1,7 @@
 ---
-title: Go and Python Environment Management
+title: Go And Python Environment Management
 tags:
-  - Environment
+  - "#cmd"
 categories:
   - Tool
 date: 2026-06-24 00:00:00

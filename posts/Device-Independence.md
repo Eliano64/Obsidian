@@ -1,5 +1,5 @@
 ---
-title: Device-Independence
+title: Device Independence
 tags:
   - IO
 categories:

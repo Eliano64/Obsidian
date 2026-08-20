@@ -1,8 +1,9 @@
 ---
-title: SSH Connections and File Transfer
+title: SSH Connections And File Transfer
 tags:
-categories:
   - SSH
+categories:
+  - Tool
 date: 2026-06-24 00:00:00
 katex: true
 ---

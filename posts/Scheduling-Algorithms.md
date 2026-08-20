@@ -1,5 +1,5 @@
 ---
-title: Interactive Scheduling Algorithms
+title: Scheduling Algorithms
 tags:
   - ProcessAndThread
 categories:

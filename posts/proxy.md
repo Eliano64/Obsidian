@@ -1,5 +1,5 @@
 ---
-title: proxy
+title: Proxy
 tags:
   - ProxyPattern
 categories:

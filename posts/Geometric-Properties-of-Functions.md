@@ -1,5 +1,5 @@
 ---
-title: Geometric Properties of Functions
+title: Geometric Properties Of Functions
 tags:
   - Derivative
   - Integral

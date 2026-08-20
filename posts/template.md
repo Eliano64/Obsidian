@@ -1,5 +1,5 @@
 ---
-title: template
+title: Template
 tags:
   - TemplateMethodPattern
   - InterfaceOrientedDesign

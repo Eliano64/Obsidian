@@ -1,5 +1,5 @@
 ---
-title: chain of responsibility
+title: Chain Of Responsibility
 tags:
   - ChainOfResponsibilityPattern
   - InterfaceOrientedProgramming

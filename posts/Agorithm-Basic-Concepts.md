@@ -1,5 +1,5 @@
 ---
-title: Algorithm Basic Concepts
+title: Agorithm Basic Concepts
 tags:
   - DataStructureAndAlgorithmIntroduction
 categories:

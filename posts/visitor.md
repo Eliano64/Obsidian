@@ -1,5 +1,5 @@
 ---
-title: visitor
+title: Visitor
 tags:
   - VisitorPattern
   - InterfaceOrientedDesign

@@ -1,5 +1,5 @@
 ---
-title: monotonic stack
+title: Monotonic Stack
 tags:
   - Stack
 categories:

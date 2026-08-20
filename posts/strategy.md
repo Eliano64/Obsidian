@@ -1,5 +1,5 @@
 ---
-title: strategy
+title: Strategy
 tags:
   - StrategyPattern
   - InterfaceOrientedDesign

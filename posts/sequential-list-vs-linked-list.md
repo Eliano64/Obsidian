@@ -1,5 +1,5 @@
 ---
-title: Sequential List Vs Linked List
+title: Sequential List VS Linked List
 tags:
   - LinearList
 categories:

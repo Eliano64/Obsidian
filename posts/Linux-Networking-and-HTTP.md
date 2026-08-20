@@ -1,9 +1,9 @@
 ---
-title: Linux Networking and HTTP
+title: Linux Networking And HTTP
 tags:
-  - Network
+  - cmd
 categories:
-  - Linux
+  - Tool
 date: 2026-06-26 00:00:00
 katex: true
 ---

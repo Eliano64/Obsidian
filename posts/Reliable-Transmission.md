@@ -1,5 +1,5 @@
 ---
-title: Reliable Transmission And Stop Wait
+title: Reliable Transmission
 tags:
   - DataLinkLayer
 categories:

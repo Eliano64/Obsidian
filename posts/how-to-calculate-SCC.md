@@ -1,5 +1,5 @@
 ---
-title: How to Calculate SCC
+title: How To Calculate SCC
 tags:
   - Graph
 categories:

@@ -1,5 +1,5 @@
 ---
-title: closest equal element queries
+title: Closest Equal Element Queries
 tags:
   - LeetCode
 categories:

@@ -1,5 +1,5 @@
 ---
-title: iterator
+title: Iterator
 tags:
   - IteratorPattern
   - InterfaceOrientedProgramming

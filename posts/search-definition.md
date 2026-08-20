@@ -1,5 +1,5 @@
 ---
-title: search definition
+title: Search Definition
 tags:
   - Search
 categories:

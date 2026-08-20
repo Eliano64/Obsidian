@@ -1,5 +1,5 @@
 ---
-title: VLAN And 8021Q
+title: VLAN
 tags:
   - DataLinkLayer
 categories:

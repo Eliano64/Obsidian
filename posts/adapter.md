@@ -1,5 +1,5 @@
 ---
-title: adapter
+title: Adapter
 tags:
   - AdapterPattern
   - InterfaceOrientedProgramming

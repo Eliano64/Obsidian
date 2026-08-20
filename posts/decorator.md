@@ -1,5 +1,5 @@
 ---
-title: decorator
+title: Decorator
 tags:
   - DecoratorPattern
   - InterfaceOrientedDesign

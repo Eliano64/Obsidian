@@ -1,5 +1,5 @@
 ---
-title: composite
+title: Composite
 tags:
   - CompositePattern
   - InterfaceOrientedDesign

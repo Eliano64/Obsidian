@@ -1,5 +1,5 @@
 ---
-title: Improper integral
+title: Improper Integral
 tags:
   - Integral
 categories:

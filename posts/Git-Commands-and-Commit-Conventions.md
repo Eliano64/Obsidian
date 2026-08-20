@@ -1,5 +1,5 @@
 ---
-title: Git Commands and Commit Conventions
+title: Git Commands And Commit Conventions
 tags:
   - Git
 categories:

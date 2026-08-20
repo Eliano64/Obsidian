@@ -1,5 +1,5 @@
 ---
-title: Function Limits and Continuity
+title: Function Limits And Continuity
 tags:
   - Limit
   - Continuity

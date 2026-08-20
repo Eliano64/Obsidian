@@ -1,5 +1,5 @@
 ---
-title: Application-Models
+title: Application Models
 tags:
   - ApplicationLayer
 categories:

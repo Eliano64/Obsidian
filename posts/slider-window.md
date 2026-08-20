@@ -1,5 +1,5 @@
 ---
-title: slider window
+title: Slider Window
 tags:
   - Queue
 categories:

@@ -1,10 +1,9 @@
 ---
-title: jwt
+title: JWT
 tags:
   - JWT
-  - Frontend
 categories:
-  - Base Knowledge
+  - Frontend
 date: 2025-11-14 00:00:00
 katex: true
 ---

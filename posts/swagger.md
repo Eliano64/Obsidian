@@ -1,9 +1,9 @@
 ---
-title: swagger
+title: Swagger
 tags:
   - Swagger
 categories:
-  - Base Knowledge
+  - Tool
 date: 2025-11-22 00:00:00
 katex: true
 ---

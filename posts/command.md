@@ -1,5 +1,5 @@
 ---
-title: command
+title: Command
 tags:
   - CommandPattern
   - InterfaceOrientedProgramming

@@ -1,5 +1,5 @@
 ---
-title: Character IO End to End
+title: Character IO End To End
 tags:
   - IO
   - ExceptionAndInterrupt

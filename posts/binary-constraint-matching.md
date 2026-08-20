@@ -1,5 +1,5 @@
 ---
-title: binary constraint matching
+title: Binary Constraint Matching
 tags:
   - LeetCode
 categories:

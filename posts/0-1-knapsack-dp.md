@@ -1,5 +1,5 @@
 ---
-title: 0 1 knapsack dp
+title: 0 1 Knapsack DP
 tags:
   - DynamicProgramming
 categories:

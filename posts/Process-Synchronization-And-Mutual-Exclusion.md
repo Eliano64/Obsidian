@@ -1,5 +1,5 @@
 ---
-title: Mutual Exclusion Implementations
+title: Process Synchronization And Mutual Exclusion
 tags:
   - ProcessAndThread
 categories:

@@ -1,5 +1,5 @@
 ---
-title: factory method abstract factory
+title: Factory Method Abstract Factory
 tags:
   - InterfaceOrientedProgramming
   - FactoryMethod

@@ -1,5 +1,5 @@
 ---
-title: Counting Josephus and Big Integer
+title: Counting Josephus And Big Integer
 tags:
 categories:
   - Data Structure & Algorithm

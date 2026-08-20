@@ -1,5 +1,5 @@
 ---
-title: bridge
+title: Bridge
 tags:
   - BridgePattern
   - InterfaceOrientedProgramming

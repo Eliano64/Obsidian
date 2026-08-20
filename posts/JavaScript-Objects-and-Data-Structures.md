@@ -1,5 +1,5 @@
 ---
-title: JavaScript Objects and Data Structures
+title: JavaScript Objects And Data Structures
 tags:
 categories:
   - Frontend

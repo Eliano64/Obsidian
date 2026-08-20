@@ -1,5 +1,5 @@
 ---
-title: state
+title: State
 tags:
   - StatePattern
   - InterfaceOrientedDesign

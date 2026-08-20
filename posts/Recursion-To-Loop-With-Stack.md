@@ -1,5 +1,5 @@
 ---
-title: Recursion To Loop with stack
+title: Recursion To Loop With Stack
 tags:
   - Stack
 categories:

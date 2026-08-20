@@ -1,5 +1,5 @@
 ---
-title: regret heap
+title: Regret Heap
 tags:
   - Greedy
   - Heap

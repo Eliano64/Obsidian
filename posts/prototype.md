@@ -1,5 +1,5 @@
 ---
-title: prototype
+title: Prototype
 tags:
   - PrototypePattern
   - InterfaceOrientedProgramming

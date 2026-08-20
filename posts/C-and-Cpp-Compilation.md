@@ -1,5 +1,5 @@
 ---
-title: C and Cpp Compilation
+title: C And Cpp Compilation
 tags:
   - Compile
 categories:

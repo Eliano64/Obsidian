@@ -1,5 +1,5 @@
 ---
-title: subsequence check
+title: Subsequence Check
 tags:
   - String
 categories:

@@ -1,5 +1,5 @@
 ---
-title: buffer pool project study
+title: Buffer Pool Project Study
 tags:
   - Memory
 categories:

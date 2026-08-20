@@ -1,5 +1,5 @@
 ---
-title: facade
+title: Facade
 tags:
   - FacadePattern
   - InterfaceOrientedDesign

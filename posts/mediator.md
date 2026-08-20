@@ -1,5 +1,5 @@
 ---
-title: mediator
+title: Mediator
 tags:
   - MediatorPattern
 categories:

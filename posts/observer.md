@@ -1,5 +1,5 @@
 ---
-title: observer
+title: Observer
 tags:
   - ObserverPattern
   - InterfaceOrientedDesign

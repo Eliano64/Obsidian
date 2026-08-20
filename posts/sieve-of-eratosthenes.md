@@ -1,5 +1,5 @@
 ---
-title: sieve of eratosthenes
+title: Sieve Of Eratosthenes
 tags:
   - Mathematics
 categories:

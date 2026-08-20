@@ -1,5 +1,5 @@
 ---
-title: reverse linked list
+title: Reverse Linked List
 tags:
   - LinearList
 categories:

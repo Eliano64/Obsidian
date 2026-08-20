@@ -1,5 +1,5 @@
 ---
-title: flyweight
+title: Flyweight
 tags:
   - FlyweightPattern
 categories:

@@ -1,5 +1,5 @@
 ---
-title: builder
+title: Builder
 tags:
   - BuilderPattern
   - InterfaceOrientedProgramming

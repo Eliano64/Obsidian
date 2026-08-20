@@ -1,5 +1,5 @@
 ---
-title: difference array
+title: Difference Array
 tags:
   - Array
 categories:

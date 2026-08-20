@@ -1,5 +1,5 @@
 ---
-title: Red Black Tree
+title: Balanced Binary
 tags:
   - Tree
   - Search
