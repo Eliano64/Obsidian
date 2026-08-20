@@ -7,4 +7,4 @@ categories:
 date: 2026-08-20 13:54:04
 katex: true
 ---
-![[../assets/a-big-picture-in-network-layers.png]]
+![464](../assets/a-big-picture-in-network-layers.png)
