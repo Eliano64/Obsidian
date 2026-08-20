@@ -1,7 +1,7 @@
 ---
 title: Linux Filesystem And Basic Commands
 tags:
-  - cmd
+  - CMD
 categories:
   - Tool
 date: 2026-06-26 00:00:00

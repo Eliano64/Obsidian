@@ -1,7 +1,7 @@
 ---
 title: Linux Index
 tags:
-  - cmd
+  - CMD
 categories:
   - Tool
 date: 2026-06-24 00:00:00
