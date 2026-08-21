@@ -76,32 +76,42 @@ $$
 
 > [!example] 底数与指数同时变化
 > 设 $a>0$，求
+>
 > $$
 > \lim_{x\to+\infty}
 > \left[(x+a)^{1+\frac1x}-x^{1+\frac1{x+a}}\right].
 > $$
 >
 > 令
+>
 > $$
 > \alpha=1+\frac1x,
 > \qquad
 > \beta=1+\frac1{x+a}.
 > $$
+>
 > 插入 $(x+a)^\beta$：
-> $$\begin{align}
+>
+> $$
+> \begin{align}
 > (x+a)^\alpha-x^\beta &=\left[(x+a)^\alpha-(x+a)^\beta\right]+\left[(x+a)^\beta-x^\beta\right] \\
 > &= (x+a)^{\alpha}(1-e^{(\beta-\alpha)\ln(x+a)})+(x+a)^{\beta}(1-e^{\beta \ln(1-\frac{a}{x+a})}) \\
-> 
 > \end{align}
 > $$
+>
 > 又$$\lim_{x\to+\infty}(x+a)^{\frac1x}=\exp\left\{ \lim_{ x \to \infty } \left(\frac{1}{x} \right)\ln(x+a) \right\}=0$$同理$$\lim_{ x \to \infty } (x+a)^{ \frac{1}{x+a} }=0$$
-> 所以原式即为：$$\begin{align}
+>
+> 所以原式即为：
+>
+> $$
+> \begin{align}
 > &(x+a)\left( 1-e^{  -\frac{a}{x(x+a)} \ln(x+a)} \right)+(x+a)\left( 1-e^{\left( 1+ \frac{1}{x+a} \right) \left( -\frac{a}{x+a} \right)} \right) \\
 > =&(x+a)(\frac{a}{x(x+a)} \ln(x+a))+(x+a)\left( \left( 1+ \frac{1}{x+a} \right) \left( \frac{a}{x+a} \right) \right) \\
 > =& \frac{a}{x}\ln(x+a)+ a\left( 1+\frac{1}{x+a} \right) \\
 > =& 0 + a \\
 > =& a
-> \end{align}$$
+> \end{align}
+> $$
 
 # 极限
 
