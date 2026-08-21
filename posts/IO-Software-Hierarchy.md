@@ -85,4 +85,4 @@ I/O 中断处理程序通常做：
 5. 更新内核 I/O 请求状态。
 6. 唤醒等待该 I/O 的进程，或通知上层继续后续处理。
 
-异常与中断处理流程见 [[Exception-And-Interrupt-Handling]]。
+异常与中断处理流程见 [[Exception-And-Interrupt]]。

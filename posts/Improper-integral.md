@@ -155,7 +155,10 @@ $$
 
 # 含$\ln x$与幂函数的反常积分
 
-$\alpha=-1$ 时，幂积分变成对数并发散。若还有对数因子，不能把它丢掉：
+1. 若为整式则分部积分。
+2. 若为分式，一般令$\ln x = t$，则有 $\mathrm{d}t=\frac{1}{x}\mathrm{d}x$ 就可以提出$\frac{1}{t}$项。
+
+如
 
 $$
 \int_0^\delta
@@ -177,6 +180,72 @@ $$
 $$
 
 无穷远处的 $\displaystyle\int_A^{+\infty}\frac{dx}{x(\ln x)^q}$ 结论相同。
+
+再看               
+
+$$
+\int_0^\delta
+\frac{dx}{x^q\left(\ln x\right)}.
+$$
+
+不妨取 $0<\delta<1$。令
+
+$$
+u=\ln x,\qquad x=e^{u},\qquad dx=e^{u}du,
+$$
+
+当 $x\to0^+$ 时，$u\to-\infty$；当 $x=\delta$ 时，$u=\ln\delta$。因此
+
+$$
+\int_0^\delta
+\frac{dx}{x^q\ln x}
+=
+\int_{-\infty}^{\ln\delta}
+\frac{e^{(1-q)u}}{u}\,du.
+$$
+
+- $q<1$ 时，$1-q>0$。当 $u\to-\infty$ 时，$e^{(1-q)u}$ 指数衰减，积分收敛；
+- $q=1$ 时，积分化为 $\displaystyle\int_{-\infty}^{\ln\delta}\frac{du}{u}$，发散；
+- $q>1$ 时，$1-q<0$。当 $u\to-\infty$ 时，$e^{(1-q)u}/u$ 的绝对值趋于无穷，积分发散。
+
+因此
+
+$$
+\int_0^\delta
+\frac{dx}{x^q\ln x}
+\text{ 收敛}\iff q<1.
+$$
+
+无穷远处取 $A>1$，仍令 $u=\ln x$：
+
+$$
+\int_A^{+\infty}
+\frac{dx}{x^q\ln x}
+=
+\int_{\ln A}^{+\infty}
+\frac{e^{(1-q)u}}{u}\,du.
+$$
+
+- $q>1$ 时，$1-q<0$，指数因子随 $u\to+\infty$ 衰减，积分收敛；
+- $q=1$ 时，积分化为 $\displaystyle\int_{\ln A}^{+\infty}\frac{du}{u}$，发散；
+- $q<1$ 时，$e^{(1-q)u}/u$ 趋于无穷，积分发散。
+
+因此
+
+$$
+\int_A^{+\infty}
+\frac{dx}{x^q\ln x}
+\text{ 收敛}\iff q>1.
+$$
+
+两端的条件正好相反：
+
+| 瑕点 | 收敛条件 |
+| --- | --- |
+| $x\to0^+$ | $q<1$ |
+| $x\to+\infty$ | $q>1$ |
+
+临界情形 $q=1$ 在两端都会化为 $\int du/u$，所以一次方的对数因子不足以使积分收敛。
 
 # 振荡积分
 
@@ -228,4 +297,3 @@ $$
 > - $0<p\le1$：条件收敛；
 > - $1<p<2$：绝对收敛；
 > - 其余情形发散。
-

@@ -52,13 +52,13 @@ CPU 当前处于哪种状态通常由 **PSW** 中的状态位表示。用户态�
 
 ## 用户态到内核态
 
-用户态程序不能直接把 CPU 改成内核态。用户态到内核态必须由硬件事件触发，这个机制就是[[Exception-And-Interrupt-Definition|异常和中断机制]]。
+用户态程序不能直接把 CPU 改成内核态。用户态到内核态必须由硬件事件触发，这个机制就是[[Exception-And-Interrupt|异常和中断机制]]。
 
 没有这种机制，应用程序一旦运行，就可能长期占用 CPU，操作系统无法重新获得控制。
 
 # 异常与中断在状态切换中的作用
 
-异常与中断完整定义、分类和处理过程见 [[Exception-And-Interrupt-Definition]] 与 [[Exception-And-Interrupt-Handling]]。
+异常与中断完整定义、分类和处理过程见 [[Exception-And-Interrupt]] 与 [[Exception-And-Interrupt]]。
 
 它们在操作系统中的作用：
 
@@ -68,9 +68,9 @@ CPU 当前处于哪种状态通常由 **PSW** 中的状态位表示。用户态�
 
 异常来自 CPU 内部，通常与当前正在执行的指令有关。异常发生后，CPU 转入内核态，使内核有机会处理当前指令引发的问题或请求。
 
-系统调用使用 trap / 访管指令主动触发自陷；缺页故障、除 0、用户态执行特权指令等也会触发异常。分类细节见 [[Exception-And-Interrupt-Definition#异常|异常]]。
+系统调用使用 trap / 访管指令主动触发自陷；缺页故障、除 0、用户态执行特权指令等也会触发异常。分类细节见 [[Exception-And-Interrupt#异常|异常]]。
 
-[[Exception-And-Interrupt-Definition#中断|中断]]来自 CPU 外部，通常与当前正在执行的指令无关。中断让操作系统可以在用户程序运行期间重新获得 CPU 控制权。
+[[Exception-And-Interrupt#中断|中断]]来自 CPU 外部，通常与当前正在执行的指令无关。中断让操作系统可以在用户程序运行期间重新获得 CPU 控制权。
 
 常见中断：
 

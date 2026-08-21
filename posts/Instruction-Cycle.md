@@ -129,4 +129,4 @@ M(MAR) -> MDR
 向量地址 -> PC
 ```
 
-`1 -> W` 表示控制器向主存发出写命令。异常与中断的完整响应和处理流程见 [[Exception-And-Interrupt-Handling]]。
+`1 -> W` 表示控制器向主存发出写命令。异常与中断的完整响应和处理流程见 [[Exception-And-Interrupt]]。
