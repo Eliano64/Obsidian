@@ -51,7 +51,7 @@ $$
 
 **相等时优先取左子表元素，是归并排序稳定的关键。**
 
-# Merge 的 C 写法
+# 归并 Merge 的 C 写法
 
 ```c
 /**
@@ -107,54 +107,37 @@ static void merge(int a[], int aux[], int left, int mid, int right) {
 递归到区间只含一个元素时，该区间天然有序。
 
 ```c
-#include <stdlib.h>
+int merge_sort(int a[], int n); // 调用接口
 
-/**
- * Sorts an integer array in nondecreasing order using recursive merge sort.
- *
- * Args:
- *   a: Array to sort in place.
- *   n: Number of elements in the array.
- *
- * Returns:
- *   1 if sorting succeeds, 0 if auxiliary memory allocation fails.
- *
- * Notes:
- *   The auxiliary array is allocated once and reused by all merge operations.
- *   This keeps the extra space O(n), rather than allocating a new array in
- *   every recursive call.
- */
-int merge_sort(int a[], int n);
-
-static void merge_sort_range(int a[], int aux[], int left, int right) {
+static void merge_sort(int a[], int aux[], int left, int right) { // 实际实现
     if (right - left <= 1) {
         return;  // 只有 0 个或 1 个元素，已经有序
     }
 
     int mid = left + (right - left) / 2;
 
-    merge_sort_range(a, aux, left, mid);
-    merge_sort_range(a, aux, mid, right);
+    merge_sort(a, aux, left, mid);
+    merge_sort(a, aux, mid, right);
     merge(a, aux, left, mid, right);
 }
 
 int merge_sort(int a[], int n) {
     if (n <= 1) {
-        return 1;
+        return 0;
     }
 
     int *aux = (int *)malloc(sizeof(int) * n);
     if (aux == NULL) {
-        return 0;
+        return 1;
     }
 
-    merge_sort_range(a, aux, 0, n);
+    merge_sort(a, aux, 0, n);
     free(aux);
-    return 1;
+    return 0;
 }
 ```
 
-递归过程可以看成一棵倒置的二叉树：底层是长度为 1 的有序子表，向上不断两两归并。
+递归过程是一棵倒置的二叉树：底层是长度为 1 的有序子表，向上不断两两归并。
 
 # 二路归并过程
 
@@ -164,7 +147,7 @@ int merge_sort(int a[], int n) {
 49  38  65  97  76  13  27
 ```
 
-按子表长度逐趟归并：
+按子表长度逐趟归并。对所有尚未确定最终位置的区间都处理一遍称为一趟排序。于是，趟数 $=$ 递归层数 - 1。
 
 [html-card height=560](../assets/merge-sort-passes.html)
 
@@ -181,26 +164,14 @@ int merge_sort(int a[], int n) {
 
 ## 一次二路归并比较次数
 
+设两个有序子表长度分别为 $p$ 和 $q$。
 
-先看一次二路归并。设两个有序子表长度分别为 $p$ 和 $q$：
+>[!tip] 等价关系
+> 当两个子表都未比较完成时，一次比较确定一个元素的位置。
+> 一旦某个子表用完，另一个子表剩余元素只需要直接复制，不再比较关键字。
 
-$$
-A[left, mid),\quad A[mid, right)
-$$
 
-其中：
-
-$$
-p = mid-left,\quad q = right-mid
-$$
-
-每次比较只发生在：
-
-```c
-if (aux[i] <= aux[j])
-```
-
-一旦某个子表用完，另一个子表剩余元素只需要直接复制，不再比较关键字。
+所以对于最多/最少情况，有：
 
 | 情况  |        比较次数 | 原因                         |
 | --- | ----------: | -------------------------- |
@@ -248,7 +219,7 @@ B(n)=\frac n2\log_2 n
 $$
 
 
-考试中若给出具体序列并要求手算比较次数，不要直接套公式；应画出[[Merge-Sort#二路归并过程|具体归并过程]]，按每一次 Merge 的实际比较过程累计。
+若给出具体序列并要求手算比较次数，只能画出[[Merge-Sort#二路归并过程|具体归并过程]]，按每一次 Merge 的实际比较过程累计。
 
 
 # 归并排序的效率
@@ -281,7 +252,7 @@ $$
 
 归并排序的空间复杂度为 $O(n)$，主要来自辅助数组 `aux`。递归版还需要 $O(\log_2 n)$ 的递归栈空间，但通常被 $O(n)$ 主导。
 
-# 稳定性与适用性
+# 稳定性
 
 归并排序是**稳定排序**。
 
@@ -295,22 +266,9 @@ if (aux[i] <= aux[j]) {
 
 当左、右子表当前元素相等时，先取左子表元素。由于左子表中的元素在原序列中本来就在右子表元素之前，所以相等关键字的相对次序不会改变。
 
+# 适用性
+
 归并排序适合顺序表，也适合链表：
 
 - 顺序表归并时常用辅助数组，空间复杂度为 $O(n)$。
-- 链表归并时可以通过修改指针合并两个有序链表，不需要像数组那样整体移动元素。
-
-# 小结
-
-| 项目     | 结论                       |
-| ------ | ------------------------ |
-| 核心操作   | 把两个有序子表归并为一个有序子表         |
-| 常用归并路数 | 内部排序通常使用二路归并             |
-| 归并趟数   | $\lceil \log_2 n \rceil$ |
-| 单次二路归并比较次数 | $\min(p,q)$ 到 $p+q-1$ |
-| $n=2^k$ 时最坏比较次数 | $n\log_2 n-n+1$ |
-| 每趟时间   | $O(n)$                   |
-| 总时间复杂度 | $O(n\log_2 n)$           |
-| 空间复杂度  | $O(n)$                   |
-| 稳定性    | 稳定                       |
-| 适用存储   | 顺序表、链表均可                 |
+- 链表归并时可以通过修改指针合并两个有序链表，不需要像数组那样整体移动元素。采用自顶向下的归并排序时，确实要遍历当前子链表来找中点：慢指针每次前进一个结点，快指针每次前进两个结点，快指针到达链尾时慢指针就在中点附近，再断开链表并递归处理两半。虽然每个子链表都要找一次中点，但同一递归层遍历的结点总数仍为 $O(n)$，全部 $O(\log_2 n)$ 层合计为 $O(n\log_2 n)$。

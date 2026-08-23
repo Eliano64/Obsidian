@@ -1,5 +1,5 @@
 ---
-title: Router Architecture
+title: Router
 tags:
   - InternetLayer
 categories:
