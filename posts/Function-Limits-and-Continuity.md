@@ -1,7 +1,6 @@
 ---
 title: Function Limits And Continuity
 tags:
-  - Limit
   - Continuity
 categories:
   - Calculus

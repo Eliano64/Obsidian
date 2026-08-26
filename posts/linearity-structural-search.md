@@ -237,8 +237,6 @@ $$
 - `false`：`mid` 小于闭的下界，转向右侧区间 `[mid+1, hi)`。
 - 叶子：查找失败的节点应插在原数组中的位置。
 
-%%按上述文字修正下图。微调%%
-
 ![](../assets/binary-search-decision-tree.svg)
 
 ## 判定树的性质
@@ -366,4 +364,3 @@ $$
 $$
 ASL=\lceil \log_2(b+1)\rceil+\frac{s+1}{2}
 $$
-

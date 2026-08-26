@@ -1,5 +1,5 @@
 ---
-title: Router
+title: Router Architecture
 tags:
   - InternetLayer
 categories:
@@ -7,7 +7,6 @@ categories:
 date: 2026-07-08 14:34:28
 katex: true
 ---
-
 # 路由器
 
 路由器是网络层互联设备。它连接多个网络，根据 IP 数据报的目的地址和转发表，把分组从一个接口转发到另一个接口。

@@ -2,6 +2,7 @@
 title: Multivariable Function Property Relations
 tags:
   - Derivative
+  - Continuity
 categories:
   - Calculus
 date: 2026-08-09 13:10:35
