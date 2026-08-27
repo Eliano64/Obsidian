@@ -49,16 +49,13 @@ katex: true
 | [有向图邻接表](Adjacency-List.md)                         | 有向图            | 每条弧只存到起点的链表中，默认保存出边                                       |
 | [十字链表](Orthogonal-List-And-Adjacency-Multilist.md)  | 有向图            | 一个弧结点同时挂入弧尾的出边链和弧头的入边链                                    |
 | [邻接多重表](Orthogonal-List-And-Adjacency-Multilist.md) | 无向图            | 一条无向边只存一个边结点，同时挂入两个端点的边链                                  |
-| [广度优先搜索](Breadth-First-Search.md)                   | 无向图、有向图        | 借助队列从起点按层扩展访问顶点                                           |
-| [广度优先生成树](Breadth-First-Search.md)                  | 连通图的 BFS 过程    | 由 BFS 第一次发现新顶点时经过的边构成                                     |
-| [广度优先生成森林](Breadth-First-Search.md)                 | 非连通图的完整 BFS 过程 | 各连通分量的 BFS 生成树组成的森林                                       |
-| [深度优先搜索](Depth-First-Search.md)                     | 无向图、有向图        | 沿未访问邻接点不断深入，走不动再回退                                        |
-| [深度优先生成树](Depth-First-Search.md)                    | 连通图的 DFS 过程    | 由 DFS 第一次递归进入新顶点时经过的边构成                                   |
-| [深度优先生成森林](Depth-First-Search.md)                   | 非连通图的完整 DFS 过程 | 各连通分量的 DFS 生成树组成的森林                                       |
-| [DFS 判有向图环](Depth-First-Search.md)                  | 有向图            | 若搜索边指向当前递归栈中的顶点，则存在有向环                                    |
-| [遍历与连通性](Graph-Traversal-And-Connectivity.md)       | 无向图、有向图        | 通过 BFS/DFS 的覆盖范围和启动次数分析连通关系                               |
+| [广度优先搜索](Graph-Traversal.md)                        | 无向图、有向图        | 借助队列从起点按层扩展访问顶点                                           |
+| [广度优先生成树](Graph-Traversal.md)                       | 连通图的 BFS 过程    | 由 BFS 第一次发现新顶点时经过的边构成                                     |
+| [广度优先生成森林](Graph-Traversal.md)                      | 非连通图的完整 BFS 过程 | 各连通分量的 BFS 生成树组成的森林                                       |
+| [深度优先搜索](Graph-Traversal.md)                        | 无向图、有向图        | 沿未访问邻接点不断深入，走不动再回退                                        |
+| [深度优先生成树](Graph-Traversal.md)                       | 连通图的 DFS 过程    | 由 DFS 第一次递归进入新顶点时经过的边构成                                   |
+| [深度优先生成森林](Graph-Traversal.md)                      | 非连通图的完整 DFS 过程 | 各连通分量的 DFS 生成树组成的森林                                       |
 | [DAG](DAG-And-AOV-Network.md)                       | 有向图            | 不存在有向环的有向图                                                |
-| [表达式 DAG](DAG-And-AOV-Network.md)                   | 表达式结构          | 合并重复操作数和重复子表达式后的表达式图                                      |
 | [AOV 网](DAG-And-AOV-Network.md)                     | 有向无环图          | 顶点表示活动，边表示活动先后约束                                          |
 | [拓扑排序](Topological-Sorting.md)                      | DAG、AOV 网      | 使每条路径起点都排在终点前面的顶点序列                                       |
 | [逆拓扑排序](Topological-Sorting.md)                     | DAG、AOV 网      | 从后继约束末端开始输出的反向拓扑序列                                        |

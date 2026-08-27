@@ -12,8 +12,6 @@ katex: true
 
 生成树讨论的是：在保持全部顶点连通的前提下，把边删到尽可能少。非连通图不能得到覆盖全图的一棵生成树，只能得到生成森林。
 
-相关基础：[[Graph-Subgraph|子图与生成子图]]、[[Graph-Connectivity-And-Components|连通性与连通分量]]。
-
 ![生成树与生成森林](../assets/spanning-tree-forest.svg)
 
 ## 生成树
