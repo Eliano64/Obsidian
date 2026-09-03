@@ -1,7 +1,7 @@
 ---
 title: Differential Equations
 tags:
-  - Derivative
+  - Differentiation
 categories:
   - Calculus
 date: 2026-08-18 00:06:44

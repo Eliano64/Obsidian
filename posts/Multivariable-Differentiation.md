@@ -1,7 +1,7 @@
 ---
 title: Multivariable Differentiation
 tags:
-  - Derivative
+  - Differentiation
 categories:
   - Calculus
 date: 2026-08-18 14:07:09

@@ -112,7 +112,27 @@ $$
 其他条件同上，如果$f(x)\leqslant g(x)$，且$\int_{}^{} g(x) \mathrm{d}x$收敛，则$\int_{}^{} f(x) \, \mathrm{d}x$收敛；如果$f(x) \geqslant g(x)$，且$\int_{}^{} g(x) \mathrm{d}x$发散，则$\int_{}^{} f(x) \, \mathrm{d}x$发散。
 
 > [!success] Proof
-> %%TODO%%
+> 设 $b$ 为瑕点，取充分接近 $b$ 的 $c$。先设
+> $$
+> 0\le f(x)\le g(x)\qquad(c\le x<b).
+> $$
+> 对 $c<t<b$，有
+> $$
+> 0\le\int_c^t f(x)\,\mathrm{d}x
+> \le\int_c^t g(x)\,\mathrm{d}x.
+> $$
+> 若 $\int_c^b g(x)\,\mathrm{d}x$ 收敛，则右侧在 $t\to b^-$ 时有界。左侧随 $t$ 单调增加且有上界，故存在有限极限，所以 $\int_c^b f(x)\,\mathrm{d}x$ 收敛。
+>
+> 再设
+> $$
+> 0\le g(x)\le f(x)\qquad(c\le x<b).
+> $$
+> 若 $\int_c^b g(x)\,\mathrm{d}x$ 发散，则
+> $$
+> \int_c^t f(x)\,\mathrm{d}x
+> \ge\int_c^t g(x)\,\mathrm{d}x\to+\infty,
+> $$
+> 故 $\int_c^b f(x)\,\mathrm{d}x$ 发散。无穷区间及左端点为瑕点时同理。
 
 ## $g(x)$选取
 
@@ -263,11 +283,12 @@ $$
 
 ## 绝对收敛
 
+**绝对收敛一定收敛**
 
 $$
-\int |f(x)|\,dx<+\infty
+\int |f(x)|\,\mathrm{d}x\text{收敛}
 \Longrightarrow
-\int f(x)\,dx\text{ 绝对收敛}.
+\int f(x)\,\mathrm{d}x\text{ 收敛}.
 $$
 
 > [! success] Proof
@@ -275,7 +296,7 @@ $$
 > 而
 > $$0 \leqslant \int_{}^{} f(x)+|f(x)|\, \mathrm{d}{x} \leqslant 2\int |f(x)|\,\mathrm{d}{x}$$  
 
-**绝对收敛一定收敛**
+
 ## Dirichlet 判别
 
 > [! info] 引理

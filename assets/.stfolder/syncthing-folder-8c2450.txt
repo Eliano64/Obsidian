@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: zbtj3-aj2st
+created: 2026-09-02T21:41:59+08:00

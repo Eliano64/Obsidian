@@ -1,7 +1,7 @@
 ---
 title: Mean Value Theorem
 tags:
-  - Derivative
+  - Differentiation
 categories:
   - Calculus
 date: 2026-07-26 12:28:06

@@ -1,7 +1,7 @@
 ---
 title: Geometric Properties Of Functions
 tags:
-  - Derivative
+  - Differentiation
   - Integral
 categories:
   - Calculus

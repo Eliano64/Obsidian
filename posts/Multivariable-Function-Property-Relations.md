@@ -1,7 +1,7 @@
 ---
 title: Multivariable Function Property Relations
 tags:
-  - Derivative
+  - Differentiation
   - Continuity
 categories:
   - Calculus
