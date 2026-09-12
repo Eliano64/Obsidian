@@ -300,7 +300,7 @@ $$
 ## Dirichlet 判别
 
 > [! info] 引理
-若
+> 若
 >
 > $$
 > H(x)=\int_A^x h(t)\,dt
@@ -318,7 +318,7 @@ $$
 > 对它分部积分
 > $$
 > \int_A^{+\infty} h(x)\phi(x)\,dx
-=H(R)\phi(R)-\int_A^{+\infty} H(x)\phi'(x)\,dx.
+> =H(R)\phi(R)-\int_A^{+\infty} H(x)\phi'(x)\,dx.
 > $$
 > 第一项趋于 $0$；$H$ 有界，而单调性使 $\int_A^{+\infty}|\phi'(x)|dx<+\infty$，于是根据[[#不等价比较]]得出第二项绝对收敛。故第二项收敛。
 
