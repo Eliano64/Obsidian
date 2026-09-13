@@ -2,7 +2,6 @@
 title: Regret Heap
 tags:
   - Greedy
-  - Heap
 categories:
   - Data Structure & Algorithm
 date: 2025-09-26 00:00:00

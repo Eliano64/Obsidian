@@ -3,7 +3,7 @@ title: Best Time To Buy And Sell Stock
 tags:
   - LeetCode
 categories:
-  - Record
+  - Data Structure & Algorithm
 date: 2025-10-12 00:00:00
 katex: true
 ---

@@ -3,7 +3,7 @@ title: Closest Equal Element Queries
 tags:
   - LeetCode
 categories:
-  - Record
+  - Data Structure & Algorithm
 date: 2025-11-01 00:00:00
 katex: true
 ---

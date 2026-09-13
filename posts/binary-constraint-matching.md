@@ -3,7 +3,7 @@ title: Binary Constraint Matching
 tags:
   - LeetCode
 categories:
-  - Record
+  - Data Structure & Algorithm
 date: 2025-11-12 00:00:00
 katex: true
 ---
