@@ -14,6 +14,8 @@ katex: true
 
 ![1000](../assets/read-keyboard-block-wakeup-dark.png)
 
+![1000](../assets/write-screen-block-wakeup-dark.svg)
+
 # 为什么先使用内核输入缓冲区（键盘缓冲区）
 
 进程使用的是虚拟地址，但对于设备得到的是物理地址。设备不能把 P 的虚拟地址直接当成稳定的物理写入位置。
