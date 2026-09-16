@@ -221,7 +221,7 @@ Guest OS 看到的是虚拟硬件操作已经完成，但真实硬件是否被�
 
 Intel VT-x 使用 **VMX root / VMX non-root**，AMD-V 使用相近的 host / guest 控制机制。VMM 在 root 模式管理客户机，Guest OS 在 non-root 模式中仍可使用自己的 Ring 0，既保留了操作系统的内核态/用户态结构，又不能控制真实机器。
 
-## Ring 与 root / non-root 是两个维度
+## Ring 与 root / non-root 的关系
 
 “Ring -1”只是对 Hypervisor 控制层的俗称，x86 并没有真的增加一个编号为 $-1$ 的保护环。更准确的理解是：VMX root 与 VMX non-root 各自都可以具有 Ring 0～Ring 3。
 
