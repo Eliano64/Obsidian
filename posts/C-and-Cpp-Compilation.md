@@ -165,18 +165,6 @@ gcc -c file.c -o file.o
 | `-DNAME=value`            | 在编译命令中定义宏               |
 | `-fstack-protector-all`   | 启用栈保护，尝试检测栈缓冲区溢出        |
 
-开发调试阶段常用：
-
-```bash
-g++ -std=c++17 -O0 -g -Wall -Wextra -Werror -fsanitize=address,undefined main.cpp -o main
-```
-
-竞赛/发布阶段常用：
-
-```bash
-g++ -std=c++17 -O3 -Wall -Wextra main.cpp -o main
-```
-
 ## Sanitizer
 
 AddressSanitizer 和 UndefinedBehaviorSanitizer 很适合开发期排错。

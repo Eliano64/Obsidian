@@ -8,7 +8,7 @@ date: 2025-07-21 00:00:00
 katex: true
 ---
 
-> 他向远方望去，无法看到高山背后的矮山，只看到一座座更高的山峰。————by [灵神](https://leetcode.cn/discuss/post/3579480/ti-dan-dan-diao-zhan-ju-xing-xi-lie-zi-d-u4hk/)
+> 他向远方望去，无法看到高山背后的矮山，只看到一座座更高的山峰。引自 [灵神](https://leetcode.cn/discuss/post/3579480/ti-dan-dan-diao-zhan-ju-xing-xi-lie-zi-d-u4hk/)
 
 # 模型建立
 
