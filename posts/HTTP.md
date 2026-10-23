@@ -125,17 +125,27 @@ HTTP 响应报文包含状态行、首部行和可选的实体主体，同样用
 | **空行** | CRLF | 首部行结束标志 |
 | **实体主体** | 返回的文档内容 | 如 HTML 文件 |
 
-常见 HTTP 状态码：
+常见 HTTP 状态码按首位数字分为五类：`1xx` 信息、`2xx` 成功、`3xx` 重定向、`4xx` 客户错误、`5xx` 服务器错误。
 
-| 状态码 | 短语 | 含义 |
-|---|---|---|
-| `200` | OK | 请求成功 |
-| `202` | Accepted | 已接受请求 |
-| `301` | Moved Permanently | 永久重定向 |
-| `304` | Not Modified | 文档未修改（用于缓存验证） |
-| `400` | Bad Request | 请求报文有语法错误 |
-| `404` | Not Found | 服务器找不到请求的资源 |
-| `500` | Internal Server Error | 服务器内部错误 |
+| 状态码   | 短语                         | 含义                       |
+| ----- | -------------------------- | ------------------------ |
+| `200` | OK                         | 请求成功                     |
+| `202` | Accepted                   | 已接受请求                    |
+| `301` | Moved Permanently          | 永久重定向                    |
+| `304` | Not Modified               | 文档未修改（用于缓存验证）            |
+| `400` | Bad Request                | 请求报文有语法错误                |
+| `401` | Unauthorized               | 请求需要身份认证，或提供的凭证未通过验证     |
+| `403` | Forbidden                  | 服务器理解了请求但拒绝执行（无访问权限）     |
+| `404` | Not Found                  | 服务器找不到请求的资源              |
+| `405` | Method Not Allowed         | 目标资源不支持请求所用的方法           |
+| `408` | Request Timeout            | 服务器在等待请求的过程中连接超时         |
+| `429` | Too Many Requests          | 客户端在给定时间内发送了过多请求（限流）     |
+| `500` | Internal Server Error      | 服务器内部错误                  |
+| `501` | Not Implemented            | 服务器不支持请求所需的功能（如不认识的请求方法） |
+| `502` | Bad Gateway                | 网关或代理从上游服务器收到无效响应        |
+| `503` | Service Unavailable        | 服务器暂时无法处理请求（过载或维护中）      |
+| `504` | Gateway Timeout            | 网关或代理等待上游服务器响应超时         |
+| `505` | HTTP Version Not Supported | 服务器不支持请求使用的 HTTP 版本      |
 
 # Cookie：让 HTTP "记住"用户
 
