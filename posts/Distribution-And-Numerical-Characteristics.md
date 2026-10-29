@@ -575,7 +575,7 @@ $$
 
 > 前提条件：积分/级数和存在。
 
-定义期望$\operatorname{E}(X)=\displaystyle\sum_{k=0}^{\infty}x_kP\{X=x_k\}$或$\operatorname{E}(X)=\int_{-\infty}^{+\infty}xf_X(x)\,\mathrm dx.$ 显然期望的求解涉及[[../Infinite-Series#级数求和|无穷级数的求和]]或[[../../posts/Improper-Integral#|反常积分]]（但实际上$f_{X}(x)$非0区域可能有限，此时退化为普通的定积分）。
+定义期望$\operatorname{E}(X)=\displaystyle\sum_{k=0}^{\infty}x_kP\{X=x_k\}$或$\operatorname{E}(X)=\int_{-\infty}^{+\infty}xf_X(x)\,\mathrm dx.$ 显然期望的求解涉及[[Infinite-Series#级数求和|无穷级数的求和]]或[[../../posts/Improper-Integral#|反常积分]]（但实际上$f_{X}(x)$非0区域可能有限，此时退化为普通的定积分）。
 
 性质：
 1.  **在知道$X$的分布的情况下，若$Y=G(X)$ ，则求 $EY$ 不必先求 $Y$ 的分布。** $\operatorname{E}[G(X)]=\displaystyle\sum_{k=0}^{\infty}G(x_k)P\{X=x_k\}$或$\operatorname{E}[G(X)]=\int_{-\infty}^{+\infty}G(x)f_X(x)\,\mathrm dx.$
@@ -625,7 +625,7 @@ $$
 >因为根据几何概型，一条线上测度为 0 的点集不满足是不改变 $P\{X=A\}=1$ 的。
 2. $\operatorname{D}(aX+b)=a^2\operatorname{D}(X),$
 3. $\operatorname{D}\left( \sum_{i=1}^{n}a_{i}X_{i} +a_{0}\right)=\sum_{i=1}^{n}a_{i}^{2}\operatorname{D}(X_{i})+2\sum_{1\leqslant i<j \leqslant n} a_{i}a_{j}\operatorname{Cov}(X_{i},X_{j}).$
-4. 若$X,Y$独立，$\operatorname{D}(XY)=\operatorname{D}X\operatorname{D}Y+\operatorname{D}X\operatorname{E}^{2}Y+\operatorname{D}Y\operatorname{E}^{2}X$
+4. 若$X,Y$独立，$\operatorname{D}(XY)=\operatorname{D}X\operatorname{D}Y+\operatorname{D}X\operatorname{E}^{2}Y+\operatorname{D}Y\operatorname{E}^{2}X$ ^8220dc
 
 
 ## 一维分布的期望与方差总表

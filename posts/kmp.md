@@ -147,7 +147,7 @@ void GetNextval(SString t, int next[], int nextval[]) {
 
 它优化的是常数级比较次数，不改变 KMP 的总体时间复杂度 $O(n+m)$。
 
-> [! exmaple]
+> [! example]
 > 1. 例 1：`ababaa`
 > 
 > | j | 1 | 2 | 3 | 4 | 5 | 6 |

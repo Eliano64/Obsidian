@@ -37,7 +37,7 @@ $$
 右侧极限为有限数时，反常积分收敛；极限为无穷或不存在时，反常积分发散。
 
 > [!tip] 收敛的 Cauchy 描述
-> 见[[../drafts/Infinite-Series#收敛的定义与 Cauchy 准则|Cauchy准则]]
+> 见[[Infinite-Series#收敛的定义与 Cauchy 准则|Cauchy准则]]
 > 
 > $\int_a^{+\infty}f(x)\,dx$要收敛，即足够靠后以后，不管积分区间多么大，这一整段的积分都必须任意小。等价于：$$\forall\varepsilon>0,\ \exists N,\ \forall n>m\ge N:\ \left|\int_{m}^{n} f(x) \, \mathrm{d}x\right|<\varepsilon$$
 > 在瑕点 c 处收敛的情况同理。
@@ -312,7 +312,7 @@ $$
 > $$
 > 收敛。
 
-即要求 $\displaystyle\lim_{ x \to \infty }h(x)\phi(x)=0$ 以及 $| h(x)\phi(x)|$ 单减， 类似于[[../drafts/Infinite-Series#Leibniz 判别法 (充分条件)|交错级数的 Leibniz 判别]]。
+即要求 $\displaystyle\lim_{ x \to \infty }h(x)\phi(x)=0$ 以及 $| h(x)\phi(x)|$ 单减， 类似于[[Infinite-Series#Leibniz 判别法 (充分条件)|交错级数的 Leibniz 判别]]。
 
 > [! success] Proof
 > 对它分部积分
