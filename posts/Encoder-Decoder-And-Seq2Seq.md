@@ -2,9 +2,8 @@
 title: Encoder Decoder And Seq2Seq
 tags:
   - NLP
-  - Seq2Seq
 categories:
-  - Natural Language Processing
+  - Artificial Intelligence
 date: 2026-10-27 23:29:21
 katex: true
 ---
@@ -17,13 +16,16 @@ katex: true
 
 # 编码器与解码器
 
-经典实现把网络拆成两半：编码器读入整条源序列，把内容压成一个固定维度的向量 $c$；解码器从 $c$ 出发，一次生成一个目标 token，并把已生成的前缀作为下一步输入，递推关系写作：
+经典实现把网络拆成两半：编码器读入整条源序列，把内容压成一个固定维度的向量 $\boldsymbol{c}$；解码器从 $\boldsymbol{c}$ 出发，一次生成一个目标 token，并把已生成的前缀作为下一步输入，递推关系写作：
 
 $$
-c = h_T^{\text{enc}}, \qquad s_0 = c, \qquad s_t = f(y_{t-1}, s_{t-1}), \qquad p_t = \mathrm{softmax}(W s_t)
+\boldsymbol{c} = \boldsymbol{h}_T^{\text{enc}}, \qquad \boldsymbol{s}_0 = \boldsymbol{c}, \qquad \boldsymbol{s}_t = f(y_{t-1}, \boldsymbol{s}_{t-1}), \qquad \boldsymbol{p}_t = \operatorname{softmax}(\mathbf{W} \boldsymbol{s}_t)
 $$
 
-$T$ 是源句长度，$h_T^{\text{enc}}$ 是编码器的末状态，$s_t$ 是解码器状态。$f$ 是解码器的循环单元，先把输入 token $y_{t-1}$ 查嵌入表变成向量，再与 $s_{t-1}$ 一起更新状态。$W$ 是输出层权重，把状态映射成词表大小的得分，softmax 把这些得分变成概率分布 $p_t$。两半各有独立参数，只通过 $c$ 连接。
+$T$ 是源句长度，$\boldsymbol{h}_T^{\text{enc}}$ 是编码器的末状态，$\boldsymbol{s}_t$ 是解码器状态。$f$ 是解码器的循环单元，先把输入 token $y_{t-1}$ 查嵌入表变成向量，再与 $\boldsymbol{s}_{t-1}$ 一起更新状态。$\mathbf{W}$ 是输出层权重，把状态映射成词表大小的得分，softmax 把这些得分变成概率分布 $\boldsymbol{p}_t$。两半各有独立参数，只通过 $\boldsymbol{c}$ 连接。
+
+[html-card height=820](../assets/seq2seq-topology.html)
+
 
 # 生成与训练
 
@@ -31,12 +33,12 @@ $T$ 是源句长度，$h_T^{\text{enc}}$ 是编码器的末状态，$s_t$ 是解
 
 生成从起始符号 `<bos>` 开始，到结束符号 `<eos>` 停止：
 
-1. 编码器读入整条源句得到 $c$，用 $c$ 初始化解码器状态；
+1. 编码器读入整条源句得到 $\boldsymbol{c}$，用 $\boldsymbol{c}$ 初始化解码器状态；
 2. 把 `<bos>` 作为第一个输入，得到第一个位置的概率分布，取一个 token 作为 $y_1$；
 3. 把 $y_1$ 作为下一步输入，状态随之更新，得到 $y_2$；
 4. 重复第 3 步，直到输出 `<eos>` 或达到长度上限。
 
-示例采用贪心策略：每一步取概率最大的 token。生成在输出 `<eos>` 或达到长度上限时停止。
+上面的生成过程采用贪心策略：每一步取概率最大的 token。生成在输出 `<eos>` 或达到长度上限时停止。
 
 ## 训练：错开一位的输入与标签
 
@@ -57,7 +59,7 @@ $T$ 是源句长度，$h_T^{\text{enc}}$ 是编码器的末状态，$s_t$ 是解
 
 同一句话在两种模式下逐位置的输入并不相同：
 
-![[../assets/seq2seq-teacher-forcing.svg]]
+[html-card height=820](../assets/seq2seq-teacher-forcing.html)
 
 训练时解码器收到的是标注里的前一个目标 token；推理时收到的是模型上一步的输出。生成错一个 token 会改变下一步的输入，错误因此可能影响后续输出。
 
@@ -67,13 +69,15 @@ $T$ 是源句长度，$h_T^{\text{enc}}$ 是编码器的末状态，$s_t$ 是解
 
 ## 串行计算
 
-编码器与解码器都按时间步推进，$h_t$ 依赖 $h_{t-1}$，同一句内部无法并行，序列越长单步等待越多。教师强制把整段前缀一次送入，也不改变状态更新的顺序。
+编码器与解码器都按时间步推进，$\boldsymbol{h}_t$ 依赖 $\boldsymbol{h}_{t-1}$，同一句内部无法并行，序列越长单步等待越多。教师强制把整段前缀一次送入，也不改变状态更新的顺序。
+
+[html-card height=820](../assets/seq2seq-serial-parallel.html)
 
 ## 固定上下文
 
-源句越长，压进同一个 $c$ 的信息越多，翻译与摘要的质量越容易下降。门控让信息更容易穿过时间链，却没有取消只交出一个向量这一步。
+源句越长，压进同一个 $\boldsymbol{c}$ 的信息越多，翻译与摘要的质量越容易下降。门控让信息更容易穿过时间链，却没有取消只交出一个向量这一步。
 
 > [!note] 输入反转
 > 一个工程技巧是把源句反过来送入编码器。源句开头的词因此在编码器最后几步才被读入，与解码器最先要生成的词在时间上更接近，但固定的上下文维度不变。
 
-下一步的改法是保留编码器的每个位置，让解码器每步按当前状态重新分配读取比例，即[[Attention|注意力]]。
+下一步的改法是保留编码器的每个位置，让解码器每步按当前状态重新分配读取比例，即[[../drafts/Attention|注意力]]。

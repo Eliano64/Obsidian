@@ -10,75 +10,85 @@ katex: true
 
 # 深度带来的优化困难
 
-增加卷积层能提高表达能力，实际训练中却可能越深越差。一个常见现象是：不加捷径连接时，较深的网络在训练集上的误差反而高于较浅的网络。训练误差本身变差，说明问题不在拟合训练集之后的泛化，而在优化。更深的网络没能把训练误差降下来，这类现象称为退化。
+增加卷积层能提高表达能力，训练误差却可能随深度上升。深层普通网络在训练集上的误差高于浅层网络，说明问题出在优化，而非泛化。原论文把这种现象称为“退化”。
 
-深层网络在表达能力上不缺解。新增层若都能实现恒等映射，输出等于输入，其余层复制浅层权重，深网络至少应与浅层持平。解存在不等于优化器能找到。残差连接改的是寻找这个解的方式。
+深层网络并不缺少解。新增层若都实现恒等映射，其余层复制浅层权重，深网络的训练误差至多与浅层持平。解存在，优化器未必能找到，残差连接改变的是寻找这个解的方式。
+
+[html-card height=820](../assets/resnet-degradation-curve.html)
+
+> [!cite] He et al. 2016, Deep Residual Learning for Image Recognition, §3.1-3.3
+> 退化现象、残差写法与形状匹配的讨论来源。
 
 # 残差写法与直接路径
 
-设某几层原本要学的映射是 $H(x)$，残差写法让这几层只学差值 $F(x)=H(x)-x$，前向变成：
+设若干堆叠层原本要拟合的映射为 $\mathcal{H}(\boldsymbol{x})$。残差写法让这些层只拟合差值 $\mathcal{F}(\boldsymbol{x})=\mathcal{H}(\boldsymbol{x})-\boldsymbol{x}$，本示例在相加后接 ReLU，前向计算为：
 
 $$
-z = x + F(x),\qquad \text{输出} = \mathrm{ReLU}(z)
-$$
+z = x + \mathcal{F}(x), \qquad y = \operatorname{ReLU}(z)
+\boldsymbol{z} = \boldsymbol{x} + \mathcal{F}(\boldsymbol{x}), \qquad \boldsymbol{y} = \operatorname{ReLU}(\boldsymbol{z})
 
-$x$ 是通道数 $C$、高 $H$、宽 $W$ 的特征图，$F(x)$ 与 $x$ 同形状，相加按元素进行。若最优映射接近恒等，让 $F$ 接近 0 比让多层非线性精确输出 $x$ 更容易优化：参数只需要描述相对输入的修正量，不必重新生成整个表示。这是参数化上的动机，不保证任何设置下都更易训练。
+[html-card height=820](../assets/resnet-residual-block.html)
+
+前向拓扑是：学习分支输出 $\mathcal{F}(\boldsymbol{x})$，恒等捷径直接传递输入，两支相加得到 $\boldsymbol{z}$，再经 ReLU 得到 $\boldsymbol{y}$。$\mathcal{F}$ 的内部层数与算子类型都可变化。
+
+$\boldsymbol{x}$ 与 $\mathcal{F}(\boldsymbol{x})$ 形状相同时，相加按元素进行。若最优映射接近恒等，让 $\mathcal{F}$ 接近 0 比让多层非线性精确输出 $\boldsymbol{x}$ 更容易优化：参数只需描述相对输入的修正量。这是参数化上的动机，不保证任何设置下都更易训练。
 
 > [!note] ReLU 与恒等
-> $F=0$ 时预激活为 $x$，后面的 ReLU 会截掉负分量，因此整个块只在输入非负时等于恒等映射。
+> $\mathcal{F}=0$ 时相加结果为 $\boldsymbol{x}$。随后的 ReLU 会截掉负分量，因此这个块只在输入非负时等于恒等映射。
 
-设 $L$ 为损失。以标量为例，$z=x+F(x)$ 时 $dz/dx=1+F'(x)$。推广到特征图时，1 对应单位矩阵 $I$，$F'$ 对应雅可比矩阵，元素是每个输出分量对每个输入分量的偏导：
+## 捷径连接的直接梯度路径
+
+设 $L$ 为损失，$\boldsymbol{x}$ 为块输入，$\boldsymbol{z}$ 为相加结果。以标量为例，$\boldsymbol{z}=\boldsymbol{x}+\mathcal{F}(\boldsymbol{x})$ 时 $\mathrm{d}\boldsymbol{z}/\mathrm{d}\boldsymbol{x}=1+\mathcal{F}'(\boldsymbol{x})$；推广到特征图，$1$ 对应单位矩阵 $\mathbf{I}$，$\mathcal{F}'$ 对应 $\mathcal{F}$ 对输入的雅可比矩阵：
 
 $$
-\frac{\partial L}{\partial x}=\frac{\partial L}{\partial z}\left(I+\frac{\partial F}{\partial x}\right)
-$$
 
-括号里的恒等项给梯度一条直接回传的路径，不必完全穿过 $F$ 的非线性。恒等项提供直接通路，不保证梯度永不消失。
+\frac{\partial L}{\partial x} = \frac{\partial L}{\partial z}\left(I+\frac{\partial \mathcal{F}}{\partial x}\right)
+\frac{\partial L}{\partial \boldsymbol{x}} = \frac{\partial L}{\partial \boldsymbol{z}}\left(\mathbf{I}+\frac{\partial \mathcal{F}}{\partial \boldsymbol{x}}\right)
+
+括号中的恒等项让梯度有一条不经过 $\mathcal{F}$ 中非线性层的通路。这条通路提供直接路径，不保证梯度在任何深度下都不消失。
 
 # 残差块与形状匹配
 
-最常用的两种块：
+## 同形状与形状改变
 
-| 块 | 主路径 | 块内层数 | 常见深度 |
-| --- | --- | --- | --- |
-| Basic Block | 3×3 → 3×3 | 2 | 18、34 |
-| Bottleneck | 1×1 → 3×3 → 1×1 | 3 | 50、101、152 |
+残差块的学习分支改动特征，捷径把输入送到相加处，两支必须在相加前形状一致。形状相同时捷径直接取 $\boldsymbol{x}$，没有参数，也不增加计算量；形状不同时，捷径要做一次变换 $S(\boldsymbol{x})$，把 $\boldsymbol{x}$ 映射到学习分支输出的形状。通道数、高、宽分别记为 $C$、$H$、$W$，对应的输出通道数、高、宽记为 $C'$、$H'$、$W'$。
 
-Basic Block 是 Conv 3×3 → BN（批归一化）→ ReLU → Conv 3×3 → BN，再与捷径相加后接 ReLU。批归一化在训练时按通道统计：均值与方差取该通道在一个批次内全部样本与空间位置上的值，再作标准化和可学习的缩放、平移。
+[html-card height=820](../assets/resnet-shape-matching.html)
 
-Bottleneck 先用 1×1 卷积降低通道数，在较少通道上执行 3×3 卷积，再用 1×1 卷积恢复通道数。空间尺寸相同时，3×3 卷积的计算量与输入、输出通道数的乘积成正比，因此通道压缩可以减少这部分计算。
+形状相同时捷径是恒等映射，形状改变时要做一次变换 $S(\boldsymbol{x})$。输入为 $C \times H \times W$、学习分支输出对应为 $C' \times H' \times W'$ 时，两支都以 $C' \times H' \times W'$ 进入加法节点。$64 \times 32 \times 32 \to 128 \times 16 \times 16$ 只说明形状如何对应。
 
-通道与空间尺寸相同时，捷径直接取 $x$，没有参数。形状不同时，主路径输出与 $x$ 不能相加，需要投影捷径：$z=F+W_sx$。$W_s$ 用 1×1 卷积匹配通道，步幅决定是否同时把空间减半。每个新 stage 的首块通常需要投影，因为通道数变了。
+变换 $S(\boldsymbol{x})$ 通常做两件事：用 $1 \times 1$ 卷积调整通道数，用步幅大于 1 的卷积或池化把空间尺寸降到学习分支的水平。
 
-![[../assets/resnet-addition.svg]]
+## 残差块的前向计算
+
+```text
+f = F(x)
+s = S(x)
+z = s + f
+return ReLU(z)
+```
+
+$S$ 是捷径：形状相同时 $S(\boldsymbol{x})=\boldsymbol{x}$，形状不同时做形状变换。
 
 # 整体网络与分类头
 
-ResNet-34 的输入是 3×224×224。stem 指进入残差块之前的主干：7×7 卷积（步幅 2、padding 3、64 通道）、BN、ReLU，再接 3×3 最大池化（步幅 2、padding 1），输出 64×56×56。
+## 通用残差网络的结构
 
-stage 指空间分辨率相同的一组残差块。四个 stage 依次堆叠 3、4、6、3 个 Basic Block，通道 64、128、256、512；stage 2 到 4 的首块把空间减半，stage 1 保持 56×56。
+残差块可以逐块串联。网络先做特征提取，再串起 $B_1, B_2, \dots, B_N$ 这一串残差块，每个块都带一条捷径，块与块之间只传递特征图。
 
-| 部分 | 操作 | 输出形状 |
-| --- | --- | --- |
-| stem | 7×7 conv s2 + BN + ReLU，3×3 maxpool s2 | 64×56×56 |
-| stage 1 | 3 个 Basic Block，64 通道 | 64×56×56 |
-| stage 2 | 4 个 Basic Block，128 通道 | 128×28×28 |
-| stage 3 | 6 个 Basic Block，256 通道 | 256×14×14 |
-| stage 4 | 3 个 Basic Block，512 通道 | 512×7×7 |
-| 池化 | 全局平均池化 | 512 |
-| 分类 | 512 → 1000 | 1000 个 logits |
+[html-card height=820](../assets/resnet-generic-network.html)
 
-深度按层数计：stem 的 1 层卷积、16 个块共 32 层、分类头 1 层，合计 34。把 Basic Block 换成 Bottleneck，保持 3、4、6、3 的块数，深度变为 $1+3\times16+1=50$，即 ResNet-50。
+整体依次是特征提取、重复的残差块、池化与结果向量。省略号表示重复同构的块，块数 $N$ 不是固定值。
 
-分类头用全局平均池化把每个通道的 7×7 个值取平均，得到 512 个数，再送全连接层：
+## 全局平均池化
+
+最后一个块输出的特征图记为 $\mathbf{x}$，形状为 $C \times H \times W$。记通道下标为 $c$，空间位置为 $i$、$j$，逐通道取平均得到 $C$ 维向量：
 
 $$
-z_c=\frac{1}{HW}\sum_{i=1}^{H}\sum_{j=1}^{W}x_{c,i,j}
+g_c=\frac{1}{HW}\sum_{i=1}^{H}\sum_{j=1}^{W}x_{c,i,j}
 $$
 
-逐通道平均把位置信息去掉，分类看的是各个通道的总体响应。相比把 512×7×7 展平后接全连接，池化把分类头参数从数千万降到 51 万量级。
-
-![[../assets/resnet-gap-4x4.svg]]
+再经任务输出层（例如 softmax 分类）给出结果。逐通道平均去掉位置信息，分类依据是各通道的总体响应；池化还让输出层的输入维数只依赖通道数。
 
 > [!note] 适用范围
-> 残差连接缓解的是深层网络的优化困难；更易优化不等于更易泛化，深度增加时泛化表现仍需验证。
+> 残差连接缓解的是深层网络的优化困难。更易优化不等于更易泛化，深度增加时泛化表现仍需实验验证。

@@ -10,7 +10,7 @@ katex: true
 
 # 激活函数的作用
 
-仿射层的输出称为预激活，激活函数逐元素把预激活映射为新的输出。以下讨论仿射变换与逐点激活交替堆叠的前馈网络。激活函数为这种网络提供非线性；其他结构也可能产生非线性，例如最大池化的最大值选择、归一化中依赖输入的统计量，以及注意力中的 softmax 加权。
+仿射层的输出称为预激活，激活函数逐元素把预激活映射为新的输出。以下讨论仿射变换与逐点激活交替堆叠的前馈网络。在这类网络里，非线性由激活函数提供。其他结构也能提供非线性，例如最大池化对窗口取最大值、归一化中依赖输入的统计量，以及注意力中的 softmax 加权。
 
 单个单元先做线性组合，再过一次非线性：
 
@@ -21,10 +21,10 @@ $$
 如果去掉第二步，多层网络退化成一次仿射变换：
 
 $$
-y = W_3\left(W_2\left(W_1x + b_1\right) + b_2\right) + b_3 = (W_3W_2W_1)\,x + \left(W_3W_2b_1 + W_3b_2 + b_3\right)
+\boldsymbol{y} = \mathbf{W}_3\left(\mathbf{W}_2\left(\mathbf{W}_1\boldsymbol{x} + \boldsymbol{b}_1\right) + \boldsymbol{b}_2\right) + \boldsymbol{b}_3 = (\mathbf{W}_3\mathbf{W}_2\mathbf{W}_1)\,\boldsymbol{x} + \left(\mathbf{W}_3\mathbf{W}_2\boldsymbol{b}_1 + \mathbf{W}_3\boldsymbol{b}_2 + \boldsymbol{b}_3\right)
 $$
 
-括号展开后仍然是 $W'x + b'$，堆叠不增加非线性表达能力。
+括号展开后仍然是 $\mathbf{W}'\boldsymbol{x} + \boldsymbol{b}'$，堆叠不增加非线性表达能力。
 
 # 仿射变换与激活函数
 
@@ -32,11 +32,13 @@ $$
 
 一是数值尺度。取单变量、单位权重、零偏置，并让每层采用平方映射 $x \mapsto x^2$。叠加 $L$ 层后得到 $x^{2^L}$：三层是 $x^8$，十层是 $x^{1024}$。$|x|>1$ 时迅速溢出，$|x|<1$ 时迅速衰减。这个标量例子说明，每层都做幂次映射会让尺度控制变难。
 
-ReLU（Rectified Linear Unit，修正线性单元）定义为 $\max(0,x)$。ReLU 在正半轴无上界，深层网络叠加大权重时，激活值仍可能逐层放大。
+[html-card height=820](../assets/activation-scale-growth.html)
 
-二是工程实现。矩阵乘有成熟的库与内核，对 $z = w^{\top}x + b$，有 $\partial z/\partial w = x$；对单个样本，$\mathrm{d}L/\mathrm{d}W = \delta x^{\top}$，其中 $\delta = \partial L/\partial z$，一次外积即可给出该样本的权重梯度；整层把各样本的外积相加。
+ReLU（Rectified Linear Unit，修正线性单元）定义为 $\max(0,x)$。ReLU 不做幂次映射，但正半轴无上界，深层网络叠加大权重时，激活值仍可能逐层放大。
 
-自定义的非线性只要能用框架已有的算子组合出来，自动微分同样可以求导。框架没有提供的新算子需要自行实现反向，写出该算子在自身定义下的导数。
+二是工程实现。矩阵乘有成熟的库与内核。对 $z = \boldsymbol{w}^{\top}\boldsymbol{x} + b$，有 $\partial z/\partial \boldsymbol{w} = \boldsymbol{x}$；对单个样本，$\mathrm{d}L/\mathrm{d}\mathbf{W} = \delta\boldsymbol{x}^{\top}$，其中 $\delta = \partial L/\partial z$，一次外积即可给出该样本的权重梯度。整层计算时把各样本的外积相加。
+
+自定义的非线性只要能由框架已有的算子组合得到，就同样可以借助自动微分求导。框架没有提供的新算子需要自行实现反向，写出该算子在自身定义下的导数。
 
 # 从激活导数到梯度传播
 
@@ -49,10 +51,10 @@ ReLU（Rectified Linear Unit，修正线性单元）定义为 $\max(0,x)$。ReLU
 评估一个激活函数通常看下面六项。这六项是取舍指标，不是硬性门槛，没有哪个函数同时满足全部。
 
 1. 非线性：不具备非线性，堆叠深度就没有意义。
-2. 几乎处处可导：反向传播要乘该激活函数的导数。ReLU 在 0 处不可导，可约定该点的导数为 0；详见下文 ReLU 一节。阶跃函数则是除 0 点外导数恒为 0，这才是阶跃函数难以训练的原因。
+2. 几乎处处可导：反向传播要乘该激活函数的导数。ReLU 在 0 处不可导，可约定该点的导数为 0；详见下文 ReLU 一节。阶跃函数的问题更严重：除 0 点外导数恒为 0，因此难以训练。
 3. 梯度行为良好：导数不消失、不爆炸，理想情况接近 1。
 4. 计算开销小：训练中会被调用上亿次，单次开销与具体实现和硬件有关。
-5. 输出零中心：输出均值为 0。这样可以缓解同一层所有输入同号带来的更新方向受限；ReLU 不满足这一项，这正是 ReLU 在取舍中的代价之一。
+5. 输出零中心：输出均值为 0。这样可以缓解同一层所有输入同号时各权重梯度只能同向、更新方向受限的问题；ReLU 不满足这一项，这是它的代价之一。
 6. 单调、平滑、有界：常见的加分项，不是必需项。
 
 # 逐点激活函数族
@@ -63,12 +65,15 @@ ReLU（Rectified Linear Unit，修正线性单元）定义为 $\max(0,x)$。ReLU
 阶跃函数是最简单的阈值型激活函数：
 
 $$
-\text{step}(x) = \begin{cases} 1, & x \ge 0 \\ 0, & x < 0 \end{cases}
+\operatorname{step}(x) = \begin{cases} 1, & x \ge 0 \\ 0, & x < 0 \end{cases}
 $$
 
 阶跃函数在 $x \ne 0$ 处导数恒为 0，在 $x = 0$ 处不可导。多层网络使用阶跃函数时，误差在反向乘上 0，参数得到的梯度为零。
 
 另一个问题是输出只有两种取值：输入是 0.001 还是 1000 都输出 1，数值上的差别被丢掉。
+
+![阶跃函数的值与导数：0 处跳变，导数在 0 处未定义，其余位置为 0|390](../assets/activation-step.svg)
+
 
 ## Sigmoid
 
@@ -76,19 +81,22 @@ $$
 \sigma(x) = \frac{1}{1 + e^{-x}}, \qquad \sigma'(x) = \sigma(x)\left(1 - \sigma(x)\right)
 $$
 
-sigmoid 在整个实数轴上处处可导，而反向传播需要一个能提供非零梯度的激活函数，S 形曲线因此成为常用选择。输出落在 $(0,1)$ 且 $\sigma(0) = 0.5$，适合做二分类的概率输出；过渡平滑，输入 1.5 与 1.6 的输出有可分辨的差别。
+sigmoid 在整个实数轴上处处可导，反向传播要乘的导数处处存在，它因此成为常用的激活函数。它的输出落在 $(0,1)$ 且 $\sigma(0) = 0.5$，适合做二分类的概率输出；过渡平滑，输入 1.5 与 1.6 的输出有可分辨的差别。
 
 > [!important] 饱和
 >
 > 饱和指输入绝对值很大时，导数趋近 0。sigmoid 的导数在 $x = 0$ 处取最大值 $0.25$，$|x|$ 增大后迅速趋零，函数值趋近 1 或 0。
 >
-> 反向传播每穿过一层都要乘一次该层激活的导数（连乘过程见 [[Backpropagation-Chain-Rule]]），五层连乘的上界是 $0.25^5 \approx 9.8 \times 10^{-4}$。这是激活导数因子的乘积上界，不含权重因子；完整梯度还要乘上各层权重，所以这个上界给出的是量级上的衰减趋势，不是精确的梯度范数。
+> 反向传播每穿过一层都要乘一次该层激活的导数（连乘过程见 [[Backpropagation-Chain-Rule]]），五层连乘的上界是 $0.25^5 \approx 9.8 \times 10^{-4}$。这个上界只含激活导数因子，不含权重因子；完整梯度还要乘上各层权重，所以它给出的是量级上的衰减趋势，不是精确的梯度范数。
 
 > [!note] 非零中心的适用范围
 >
 > 记 $\delta = \partial L/\partial z$ 为该神经元预激活处的梯度，则 $\partial L/\partial w_j = \delta\, a_j^{(\text{prev})}$。如果上一层输出全为正，同一个神经元的所有权重梯度分量都与 $\delta$ 同号，这一次更新只能整体增大或整体减小。
 >
-> 这个结论适用于单个样本、单个神经元、上一层输出全为正的情形。整个训练过程中梯度是否同号，需要逐次计算才能判断；更新路径也不一定呈 Z 字形。
+> 这个结论适用于单个样本、单个神经元、上一层输出全为正的情形。整个训练过程中梯度是否同号，需要逐次计算才能判断，不能直接套用这里的结论。
+
+![sigmoid 与导数：导数在 0 处取最大值 0.25|390](../assets/activation-sigmoid.svg)
+
 
 sigmoid 与 tanh 都涉及指数运算。`exp` 的开销高于比较与加法，具体差值取决于硬件与内核，没有固定的数量级结论。
 
@@ -98,31 +106,39 @@ $$
 \tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} = 2\sigma(2x) - 1, \qquad \tanh'(x) = 1 - \tanh^2(x)
 $$
 
-值域从 $(0,1)$ 扩展到 $(-1,1)$，关于原点对称。导数最大值从 $0.25$ 提到 $1$，但 $1$ 只在 $x = 0$ 处取到，是上界而不是典型值。
+tanh 的值域从 $(0,1)$ 扩展到 $(-1,1)$，关于原点对称。导数最大值从 $0.25$ 提到 $1$，但 $1$ 只在 $x = 0$ 处取到，是上界而不是典型值。
 
-$x = 1$ 时 $\tanh'(1) = 1 - \tanh^2(1) \approx 0.42$，两层连乘就是 $0.18$ 量级。该例中的激活导数乘积仍会衰减，但大于两层 sigmoid 导数乘积的上界。
+$x = 1$ 时 $\tanh'(1) = 1 - \tanh^2(1) \approx 0.42$，两层 tanh 的导数连乘约为 $0.18$。该例中的激活导数乘积仍会衰减，但大于两层 sigmoid 导数乘积的上界。
 
 与 sigmoid 相比，tanh 的值域以 0 为中心，原点附近的导数更大；两端仍会饱和，计算也仍涉及指数运算。
 
 $\tanh$ 是奇函数，输入分布关于 0 对称时，输出分布也关于 0 对称。输入分布不对称时，输出均值可能不为 0，不能仅凭值域就认定输出零均值。
+
+![tanh 与导数：导数在 0 处为 1，在 x = 1 处约 0.42|390](../assets/activation-tanh.svg)
+
 
 ## ReLU
 
 ReLU 截断负半轴：
 
 $$
-\text{ReLU}(x) = \max(0, x), \qquad \text{ReLU}'(x) = \begin{cases} 1, & x > 0 \\ 0, & x \le 0 \end{cases}
+\operatorname{ReLU}(x) = \max(0, x), \qquad \operatorname{ReLU}'(x) = \begin{cases} 1, & x > 0 \\ 0, & x \le 0 \end{cases}
 $$
 
-ReLU 在 $x = 0$ 处不可导。该点可以使用次梯度：通过原点、且始终不高于 ReLU 图像的直线的斜率，可取 $[0,1]$ 内的任一值；框架通常取 0；自定义实现应与所用框架的约定一致。
+ReLU 在 $x = 0$ 处不可导。该点可以使用次梯度：斜率取 $[0,1]$ 内任一值都能构成次梯度，这些斜率对应的直线都通过原点、且始终不高于 ReLU 图像。框架通常取 0；自定义实现应与所用框架的约定一致。
 
 ReLU 相对 sigmoid 与 tanh 的优势有三条。正半轴导数恒为 1，不饱和，梯度可以连续回传；只需一次比较，计算开销小；负半轴输出 0，激活结果稀疏，即一部分单元的输出恰为 0。
 
-代价同样有三条。负半轴导数为 0：只要某个单元的预激活在参与训练的所有样本上都是负的，该单元收到的数据梯度就一直是 0，这个单元在当下不起作用，称为死亡 ReLU。
+ReLU 的代价有三条。
 
-该状态仍有恢复的可能：上游参数或优化器状态改变后，预激活可能重新变正，该单元的梯度也随之恢复。输出非负、不是零中心，在正半轴梯度直通的情况下这点不利通常可以接受。
+第一条是负半轴导数为 0。只要某个单元的预激活在参与训练的所有样本上都是负的，该单元收到的数据梯度就一直是 0，这个单元在当下不起作用，称为死亡 ReLU。这种状态仍有恢复的可能：上游参数或优化器状态改变后，预激活可能重新变正，该单元的梯度随之恢复。
 
-正半轴无上界，深层叠加大参数时激活值可能放大，实践中常配合归一化与小学习率，但归一化不是 ReLU 网络能工作的必要条件。
+第二条是输出非负、不是零中心。正半轴梯度直通时，由此带来的更新方向受限通常可以接受。
+
+第三条是正半轴无上界。激活值在深层网络叠加大权重时可能被放大，实践中常配合归一化与小学习率；但归一化不是 ReLU 网络能工作的必要条件。
+
+![ReLU 与导数：0 处按约定取导数 0|390](../assets/activation-relu.svg)
+
 
 
 ## 带小斜率与门控的变体
@@ -130,34 +146,43 @@ ReLU 相对 sigmoid 与 tanh 的优势有三条。正半轴导数恒为 1，不�
 Leaky ReLU 在负半轴给一个很小的斜率：
 
 $$
-\text{LeakyReLU}(x) = \begin{cases} x, & x > 0 \\ \alpha x, & x \le 0 \end{cases}
+\operatorname{LeakyReLU}(x) = \begin{cases} x, & x > 0 \\ \alpha x, & x \le 0 \end{cases}
 $$
 
 负半轴导数恒为 $\alpha$（常见取值 0.01 到 0.1），即便预激活为负，梯度也不是 0。Leaky ReLU 避免了负半轴局部导数为零造成的梯度阻断，但完整梯度仍取决于上游梯度与其他层。
 
-$\alpha$ 是新的手动超参，配合 Leaky ReLU 使用时初始化尺度要改：预激活分布关于 0 对称时，负半轴斜率让二阶矩变成 $(1+\alpha^2)/2$ 倍，对应的 He 初始化给出权重方差 $2/\left((1+\alpha^2)\,\text{fan\_in}\right)$，这里 fan_in 指每个单元接收的输入个数。
+$\alpha$ 是 Leaky ReLU 引入的新超参数，它的取值决定初始化所需的尺度。预激活分布关于 0 对称时，负半轴斜率使预激活的二阶矩变成原来的 $(1+\alpha^2)/2$ 倍。对应的 He 初始化给出权重方差 $2/\left((1+\alpha^2)\,\text{fan\_in}\right)$，其中 fan_in 指每个单元接收的输入个数。
+
+![Leaky ReLU（α = 0.01）与导数：负半轴斜率很小|390](../assets/activation-leaky-relu.svg)
+
 
 GELU（Gaussian Error Linear Unit，高斯误差线性单元）用标准正态分布的累积分布函数给输入加权。设 $Z \sim \mathcal{N}(0,1)$，$\Phi(x) = P(Z \le x)$，即标准正态变量不超过 $x$ 的概率：
 
 $$
-\text{GELU}(x) = x\,\Phi(x) \approx 0.5x\left(1 + \tanh\left(\sqrt{\tfrac{2}{\pi}}\left(x + 0.044715x^3\right)\right)\right)
+\operatorname{GELU}(x) = x\,\Phi(x) \approx 0.5x\left(1 + \tanh\left(\sqrt{\tfrac{2}{\pi}}\left(x + 0.044715x^3\right)\right)\right)
 $$
 
 这里的 $\sqrt{2/\pi}$ 是一个预先算好的常数，不是运行时的开方开销。GELU 在 0 附近平滑过渡，负半轴保留很小的负值，$x = 1$ 时输出约 0.841。
 
 Transformer 前馈层常用这一激活（[GELU 论文](https://arxiv.org/abs/1606.08415)）。并非所有 Transformer 都如此，也有模型选择别的激活。
 
+![GELU 的 erf 精确值与 tanh 近似，以及精确导数|390](../assets/activation-gelu.svg)
+
+
 SiLU（Sigmoid Linear Unit，也称 Swish）形式更简单：
 
 $$
-\text{SiLU}(x) = x \cdot \sigma(x)
+\operatorname{SiLU}(x) = x \cdot \sigma(x)
 $$
 
-只需一个 sigmoid，形状与 GELU 接近。部分轻量级卷积神经网络采用 Swish 的分段线性近似 hard-swish（[MobileNetV3 论文](https://arxiv.org/abs/1905.02244)），两者并不等同。
+SiLU 只需一个 sigmoid，形状与 GELU 接近。部分轻量级卷积神经网络采用 Swish 的分段线性近似 hard-swish（[MobileNetV3 论文](https://arxiv.org/abs/1905.02244)），hard-swish 与 Swish 并不等同。
 
-大模型前馈层常用门控版本 SwiGLU。门控指两组线性变换的结果逐元素相乘，其中一组经过 SiLU；公式为 $\text{SwiGLU}(x) = \text{SiLU}(W_1x) \odot W_2x$，$\odot$ 表示逐元素相乘。这一结构出现在 LLaMA、Mistral、Qwen 与 PaLM 等模型中，取舍点仍是精度与计算成本。
+![SiLU 与导数：函数在 x = -1.28 附近取最小值约 -0.28|390](../assets/activation-silu.svg)
 
-![六种激活函数的值与导数](../assets/dl-activation-curves.svg)
+
+大模型前馈层常用门控版本 SwiGLU。门控指两组线性变换的结果逐元素相乘，其中一组经过 SiLU；公式为 $\operatorname{SwiGLU}(\boldsymbol{x}) = \operatorname{SiLU}(\mathbf{W}_1\boldsymbol{x}) \odot \mathbf{W}_2\boldsymbol{x}$，$\odot$ 表示逐元素相乘。这一结构出现在 LLaMA、Mistral、Qwen 与 PaLM 等模型中。
+
+[html-card height=820](../assets/swiglu-gate.html)
 
 # 按位置选型
 

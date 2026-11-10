@@ -2,7 +2,6 @@
 title: Recurrent Neural Networks
 tags:
   - NLP
-  - RNN
 categories:
   - Artificial Intelligence
 date: 2026-10-27 23:29:21
@@ -17,22 +16,25 @@ katex: true
 
 # 循环结构与形状
 
-符号约定如下。$x_t\in\mathbb{R}^{D}$ 是第 $t$ 个 token 的嵌入向量，$h_t\in\mathbb{R}^{H}$ 是隐藏状态，$D$、$H$ 分别是嵌入维度与隐藏维度，$V$ 是词表大小，$t$ 从 1 到 $T$。$\tanh$ 逐元素作用，把实数压到 $(-1,1)$：
+符号约定如下。$\boldsymbol{x}_t\in\mathbb{R}^{D}$ 是第 $t$ 个 token 的嵌入向量，$\boldsymbol{h}_t\in\mathbb{R}^{H}$ 是隐藏状态，$D$、$H$ 分别是嵌入维度与隐藏维度，$V$ 是词表大小，$t$ 从 1 到 $T$。$\tanh$ 逐元素作用，把实数压到 $(-1,1)$：
 
 $$
-h_t=\tanh(W_x x_t + W_h h_{t-1} + b)
+\boldsymbol{h}_t=\tanh(\mathbf{W}_x \boldsymbol{x}_t + \mathbf{W}_h \boldsymbol{h}_{t-1} + \boldsymbol{b})
 $$
 
-$W_x\in\mathbb{R}^{H\times D}$、$W_h\in\mathbb{R}^{H\times H}$、$b\in\mathbb{R}^{H}$，$h_0$ 通常取零向量。同一组权重在所有时间步复用，参数量与句长无关。
+$\mathbf{W}_x\in\mathbb{R}^{H\times D}$、$\mathbf{W}_h\in\mathbb{R}^{H\times H}$、$\boldsymbol{b}\in\mathbb{R}^{H}$，$\boldsymbol{h}_0$ 通常取零向量。同一组权重在所有时间步复用，参数量与句长无关。
 
-$h_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩进固定维度。
+$\boldsymbol{h}_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩进固定维度。
 
 下面的演示用一组可手算的小权重逐步展示状态与下一个词的概率，参数未经训练：
 
 [html-card height=760](../assets/rnn-language-model-slides.html)
 
+[html-card height=780](../assets/rnn-unfolded.html)
+
+
 > [!note] 双向结构
-> 单向的 $h_t$ 只包含 $t$ 及之前的词。需要右侧上下文时用双向结构：两个方向各算一遍，把对应位置的输出拼接。
+> 单向的 $\boldsymbol{h}_t$ 只包含 $t$ 及之前的词。需要右侧上下文时用双向结构：两个方向各算一遍，把对应位置的输出拼接。
 
 # 三类任务的读数位置
 
@@ -41,8 +43,8 @@ $h_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩�
 | 任务 | 任务头读哪里 | logits 形状 | 目标 |
 | --- | --- | --- | --- |
 | 整段分类 | 末状态 | $(B,C)$ | 每段一个类别 |
-| 序列标注 | 每个位置的 $h_t$ | $(B,T,C)$ | 每个位置一个标签 |
-| 语言模型 | 每个位置的 $h_t$ | $(B,T,V)$ | 下一个词 |
+| 序列标注 | 每个位置的 $\boldsymbol{h}_t$ | $(B,T,C)$ | 每个位置一个标签 |
+| 语言模型 | 每个位置的 $\boldsymbol{h}_t$ | $(B,T,V)$ | 下一个词 |
 
 三种用法采用相同的状态递推，按任务选择输出层。语言模型把输入与目标错开一位：输入“顾客 不 喜欢”，对应目标为“不 喜欢 这部”。
 
@@ -52,7 +54,7 @@ $h_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩�
 
 损失在最后一步产生时，梯度要沿时间链回退。标量递推 $h_t=w\,h_{t-1}+x_t$ 最能看清缩放：每回退一步乘一个因子 $w$，回退 $k$ 步就是 $k$ 个因子相乘。$w=0.5$ 时五步之后乘数约为 0.03，$w=1.6$ 时约为 10.5；$\tanh$ 再乘一个不超过 1 的导数 $1-h_t^2$。
 
-![[../assets/rnn-bptt-gradient.svg]]
+[html-card height=820](../assets/rnn-bptt-gradient.html)
 
 因子长期小于 1，梯度趋于消失，早期位置收不到更新；因子持续大于 1，梯度随步数增长，训练容易发散。$\tanh$ 在输出接近 $+1$ 或 $-1$ 时导数接近 0，也会削弱回传的梯度。
 
@@ -60,7 +62,7 @@ $h_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩�
 
 ## 长序列的困难
 
-时间维仍然串行：$h_t$ 依赖 $h_{t-1}$，同一序列无法一次算出所有位置。
+时间维仍然串行：$\boldsymbol{h}_t$ 依赖 $\boldsymbol{h}_{t-1}$，同一序列无法一次算出所有位置。
 
 状态容量固定：序列越长，同样的维度要概括的内容越多。
 

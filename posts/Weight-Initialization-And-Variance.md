@@ -3,7 +3,7 @@ title: Weight Initialization And Variance
 tags:
   - DeepLearning
 categories:
-  - Deep Learning
+  - Artificial Intelligence
 date: 2026-10-26 23:42:25
 katex: true
 ---
@@ -16,7 +16,7 @@ katex: true
 2. 信号在层间的尺度大致保持，不逐层放大或衰减。
 3. 梯度在反向传播中不消失也不爆炸。
 
-第一条由对称性分析给出，第二条由方差在层间的传播推出，第三条由反向连乘的幅度决定。训练开始后的分布漂移不归初始化处理，相关机制见 [[Batch-Norm-And-Layer-Norm]]。
+第一条由对称性分析给出，第二条由方差在层间的传播推出，第三条由反向连乘的幅度决定。训练开始后的分布漂移不归初始化处理，相关机制见 [[Norm]]。
 
 # 对称性
 
