@@ -83,7 +83,7 @@ $$
 
 拼接把 $h$ 个 $N\times d_v$ 的输出并排成 $N\times hd_v$。$\mathbf{W}_O$ 的形状为 $hd_v\times d_{\text{model}}$，于是输出 $\mathbf{O}$ 回到 $N\times d_{\text{model}}$。Concat 不改变各 Head 内部的计算，只改变结果的排列。
 
-> [!note] 为什么拼接后还要投影
+> [!question] 为什么拼接后还要投影
 > 拼接只把 $h$ 个 Head 的输出并排，输出的每一段仍只来自一个 Head。$\mathbf{W}_O$ 的每一行能读取所有 Head ，进而重新组合信息。若没有 $\mathbf{W}_O$，各 Head 的信息只能分段共存，无法相互组合。
 
 这一步让不同 Head 在同一组输出维度上汇合，后续层不再区分信息来自哪个 Head。

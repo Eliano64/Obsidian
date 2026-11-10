@@ -66,7 +66,7 @@ $$
 p_i=\frac{\exp(l_i/\tau)}{\sum_{j=1}^{|\mathcal{V}|}\exp(l_j/\tau)}
 $$
 
-> [!note] 温度为 0
+> [!example] 温度为 0
 > $\tau=0$ 时取 $\tau\to0^+$ 的极限：最大项 $\exp(l_{\max}/\tau)$ 在分子与分母中占主导，Softmax 收敛为在最大 logit 对应 Token 上取 1、其余取 0 的 one-hot 分布，等价于[[#贪心采样]]。设 $i^\ast=\arg\max_j l_j$，则 $\lim_{\tau\to0^+}p_{i^\ast}=1$，其余 $p_i=0$。
 > 若有多个 Token 并列最大，概率在并列项之间均分。
 > 代码实现使用很小的正数，或直接取最大 logit 的 Token。

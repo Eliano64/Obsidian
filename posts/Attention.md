@@ -66,7 +66,7 @@ $$
 再乘 $\mathbf{H}$，得上下文向量 $\boldsymbol{c}=[1.9684,0.4649]$。
  
 
-> [!note] PAD
+> [!tip] PAD
 > 批量计算时短句要补齐，补位符号记作 PAD。掩码标记哪些位置有效；计算时在 softmax 之前把无效位置的分数置为 $-\infty$，再在有效位置上归一化，补齐位置的权重因此为 0。
 
 [html-card height=820](../assets/attention-mechanism-slides.html)

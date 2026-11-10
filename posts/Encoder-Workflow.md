@@ -32,7 +32,7 @@ $\mathbf{A}$ 的形状与 $\mathbf{X}^{(0)}$ 相同，都是 $N\times d_{\text{m
 
 多头注意力的输出投影保证 $\mathbf{A}$ 与 $\mathbf{X}^{(0)}$ 同形状，因此自注意力的输出与子层输入[[Residual-Networks|残差相加]]可以直接进行。再做 [[../posts/Norm#LayerNorm|LayerNorm]]。LayerNorm 对每个 Token 的特征维单独归一化，不跨位置。归一化在特征维进行，每个位置各自计算一组均值与方差；缩放和平移参数在所有位置共享。
 
-> [!note] 为什么用 LayerNorm 而不是 BatchNorm
+> [!question] 为什么用 LayerNorm 而不是 BatchNorm
 > BatchNorm 统计同一批次内同一特征维的均值与方差，要求不同样本在相同位置上有对应关系。序列长度不同，不同句子的同一位置没有稳定对应，这种统计方式不适用。LayerNorm 对每个 Token 自己的特征维归一化，不依赖批次中的其他样本，因此适合变长序列。两种归一化的对比见 [[../posts/Norm#两种归一化的对比|两种归一化的对比]]。
 
 得到中间表示：
