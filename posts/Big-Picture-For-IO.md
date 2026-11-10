@@ -2,7 +2,6 @@
 title: Big Picture For IO
 tags:
   - IO
-  - BigPicture
 categories:
   - Operating System
 date: 2026-08-15 12:07:00

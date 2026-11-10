@@ -1,7 +1,7 @@
 ---
 title: Big Picture For Computer Network
 tags:
-  - BigPicture
+  - ComputerNetworkIntroduction
 categories:
   - Computer Network
 date: 2026-08-20 13:54:04
