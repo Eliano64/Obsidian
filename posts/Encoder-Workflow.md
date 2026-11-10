@@ -10,7 +10,7 @@ katex: true
 
 # 从序列矩阵开始
 
-设序列长度为 $N$，每个 Token 的表示维数为 $d_{\text{model}}$。[[Word-Embeddings-And-Word2Vec|Embedding]] 把每个 Token 映射成 $d_{\text{model}}$ 维向量，再加上 [[../posts/Position-Encoding|位置编码]]，得到序列表示矩阵 $\mathbf{X}^{(0)}$，形状为 $N\times d_{\text{model}}$。矩阵的行对应位置，列对应特征；不同行共享同一组权重。
+设序列长度为 $N$，每个 Token 的表示维数为 $d_{\text{model}}$。[[Word-Embeddings|Embedding]] 把每个 Token 映射成 $d_{\text{model}}$ 维向量，再加上 [[../posts/Position-Encoding|位置编码]]，得到序列表示矩阵 $\mathbf{X}^{(0)}$，形状为 $N\times d_{\text{model}}$。矩阵的行对应位置，列对应特征；不同行共享同一组权重。
 
 ![编码器一侧的架构|630](../assets/encoder-architecture.svg)
 
