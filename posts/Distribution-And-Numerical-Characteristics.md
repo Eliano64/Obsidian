@@ -575,7 +575,7 @@ $$
 
 > 前提条件：积分/级数和存在。
 
-定义期望$\operatorname{E}(X)=\displaystyle\sum_{k=0}^{\infty}x_kP\{X=x_k\}$或$\operatorname{E}(X)=\int_{-\infty}^{+\infty}xf_X(x)\,\mathrm dx.$ 显然期望的求解涉及[[Infinite-Series#级数求和|无穷级数的求和]]或[[../../posts/Improper-Integral#|反常积分]]（但实际上$f_{X}(x)$非0区域可能有限，此时退化为普通的定积分）。
+定义期望$\operatorname{E}(X)=\displaystyle\sum_{k=0}^{\infty}x_kP\{X=x_k\}$或$\operatorname{E}(X)=\int_{-\infty}^{+\infty}xf_X(x)\,\mathrm dx.$ 显然期望的求解涉及[[Infinite-Series#级数求和|无穷级数的求和]]或[[Improper-Integral#|反常积分]]（但实际上$f_{X}(x)$非0区域可能有限，此时退化为普通的定积分）。
 
 性质：
 1.  **在知道$X$的分布的情况下，若$Y=G(X)$ ，则求 $EY$ 不必先求 $Y$ 的分布。** $\operatorname{E}[G(X)]=\displaystyle\sum_{k=0}^{\infty}G(x_k)P\{X=x_k\}$或$\operatorname{E}[G(X)]=\int_{-\infty}^{+\infty}G(x)f_X(x)\,\mathrm dx.$

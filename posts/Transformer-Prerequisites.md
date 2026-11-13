@@ -171,8 +171,7 @@ Attention 根据当前查询，为候选位置分配权重，再按权重汇总�
 自注意力通常用三组可学习权重，分别从同一序列的输入矩阵 $\mathbf{X}$ 产生查询、键和值：
 
 $$
-Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V
-\mathbf{Q}=\mathbf{X}\mathbf{W}_Q,\qquad \mathbf{K}=\mathbf{X}\mathbf{W}_K,\qquad \mathbf{V}=\mathbf{X}\mathbf{W}_V
+\mathbf{Q}=\mathbf{X}\mathbf{W}_Q,\qquad \mathbf{K}=\mathbf{X}\mathbf{W}_K,\qquad \mathbf{V}=\mathbf{X}\mathbf{W}_V$$
 
 三组权重分别学习，因此即使来源相同，查询、键和值也不必相同。
 
@@ -181,9 +180,7 @@ Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V
 以未缩放的点积注意力为例，先计算匹配分数，再归一化并汇总值：
 
 $$
-
-A=\operatorname{softmax}(QK^{\top}),\qquad O=AV
-\mathbf{A}=\operatorname{softmax}(\mathbf{QK^{\top}}),\qquad \mathbf{O}=\mathbf{AV}
+\mathbf{A}=\operatorname{softmax}(\mathbf{QK^{\top}}),\qquad \mathbf{O}=\mathbf{AV}$$
 
 Softmax 对每一行的 $n$ 个分数分别归一化。若 $\mathbf{V}$ 的形状为 $n\times d_v$，输出 $\mathbf{O}$ 的形状就是 $m\times d_v$。第 $i$ 个查询的输出为：
 
@@ -198,7 +195,7 @@ $$
 查询来自解码器、键和值来自编码器时，汇总的是另一条序列的信息。三者都来自同一条序列时，这种机制称为自注意力。两种形式都在位置之间汇总信息，与逐位置独立计算的 FFN 分工不同。
 
 > [!note] 从点积注意力到 Transformer
-> Transformer 还会在 Softmax 前缩放点积分数，以控制数值幅度。缩放的理由与公式见 [[Attention#缩放|点积分数的缩放]]；这里先把握匹配、归一化和汇总三步。
+> Transformer 还会在 Softmax 前缩放点积分数，以控制数值幅度。缩放的理由与公式见 [[Attention#缩放|点积分数的缩放]] 。
 
 [html-card height=820](../assets/attention-mechanism-slides.html)
 
@@ -211,16 +208,13 @@ Attention 汇总位置之间的信息，FFN 变换各位置的特征。反复堆
 
 设子层输入为 $\mathbf{X}$，子层计算为 $F(\mathbf{X})$，残差连接按元素相加：
 
-$$
-
-Y=X+F(X)
-\mathbf{Y}=\mathbf{X}+F(\mathbf{X})
+$$\mathbf{Y}=\mathbf{X}+F(\mathbf{X})$$
 
 输入直接参与输出，子层只需学习相对于输入的修正。例如 $F(\mathbf{X})$ 接近 0 时，整个相加结果接近 $\mathbf{X}$，不要求子层重新构造完整输入。
 
 $\mathbf{X}$ 与 $F(\mathbf{X})$ 必须同形状。这也解释了 FFN 为什么在中间扩展维数后，仍要恢复到 $d_{\text{model}}$ 维。
 
-相加还为梯度提供一条不必经过 $F$ 内部全部变换的直接路径，有助于深层网络的优化。直接路径的推导见 [[Residual-Networks#残差写法与直接路径|残差写法与直接路径]]。
+相加还为梯度提供一条不必经过 $F$ 内部全部变换的直接路径，有助于深层网络的优化。见 [[Residual-Networks#残差写法与直接路径|残差写法与直接路径]]。
 
 ## 12. LayerNorm
 
@@ -242,18 +236,7 @@ $$
 
 $\epsilon$ 是防止除零的小常数，$\gamma_j$ 与 $\beta_j$ 是可学习的缩放和平移参数。标准化后的均值为 0，方差在 $v$ 远大于 $\epsilon$ 时近似为 1；再经过缩放和平移，最终输出不必保持这两个数值。
 
-对于 $B\times n\times d$ 的输入，每个样本、每个位置都用各自的 $d$ 个特征计算一组均值和方差，不跨 Token，也不跨批次样本。可学习参数则在位置与样本之间共享。与 BatchNorm 的区别见 [[../posts/Norm#两种归一化的对比|两种归一化的对比]]。
+对于 $B\times n\times d$ 的输入，每个样本、每个位置都用各自的 $d$ 个特征计算一组均值和方差，不跨 Token，也不跨批次样本。可学习参数则在位置与样本之间共享。与 BatchNorm 的区别见 [[Norm#两种归一化的对比|两种归一化的对比]]。
 
 [html-card height=620](../assets/transformer-residual-layernorm.html)
-
-
-# Transformer 层的组成
-
-文本经过分词和 Embedding 后得到向量序列，位置信息补充顺序。在 Transformer 层中，注意力汇总不同位置的内容，FFN 再对各位置的表示做非线性变换。
-
-以编码器的一层（Transformer block）为例，自注意力与 FFN 构成两个子层。注意力子层通过输出投影匹配输入维数。两个子层分别配有残差连接和 LayerNorm。残差使输入直接参与输出，归一化控制数值尺度，两者帮助这些子层反复堆叠。
-
-将这样的层堆叠 $N$ 次，上一层的输出成为下一层的输入，序列表示便得到逐层更新。Encoder-Decoder 结构中的解码器还包含读取编码器输出的注意力子层，承担源序列与目标序列之间的信息传递。
-
-[html-card height=820](../assets/transformer-encoder-block.html)
 

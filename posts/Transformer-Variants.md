@@ -10,7 +10,7 @@ katex: true
 
 # 三种路线
 
-原版 Transformer 为机器翻译设计，为了让它能应用到更多 NLP 工作，后续工作从结构、训练目标和任务接口上改造它，形成三个代表模型：
+[[Transformer-Architecture|Transformer]] 原本是为机器翻译设计，为了让它能应用到更多 [[Natural-Language-Processing|NLP]] 工作，后续工作从结构、训练目标和任务接口上改造它，形成三个代表模型：
 1. BERT（Bidirectional Encoder Representations from Transformers）只保留编码器，利用双向上下文学习可迁移的语言表示；
 2. T5（Text-to-Text Transfer Transformer）保留编码器与解码器，把所有任务统一为 Text-to-Text；
 3. GPT（Generative Pre-trained Transformer）只保留解码器，做自回归语言建模，预测下一个 Token。
@@ -108,3 +108,4 @@ GPT-2 到 GPT-3 的跃迁说明，路线优势直到规模、数据与训练目�
 第三，解码器结构简单，便于工程扩展。同一套解码器层反复堆叠，训练切分与显存管理更直接；推理围绕逐 Token 生成，可以用 KV Cache、批处理和推理调度优化。结构简单不保证效果好，但这些工程经验可以复用到结构相近的模型上。
 
 这三条优势在规模扩大时被放大，Scaling Law 与 GPT-3 的少样本能力由此成为可能。
+

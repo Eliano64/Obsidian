@@ -88,7 +88,7 @@ $$
 
 这一步让不同 Head 在同一组输出维度上汇合，后续层不再区分信息来自哪个 Head。
 
-输出 $\mathbf{O}$ 的每一行仍是一个 Token 的向量表示，形状与输入 $\mathbf{X}$ 相同。因此多头注意力的输入输出形状不变，可以直接接[[Transformer-Prerequisites#11. 残差连接|残差连接]]与 [[../posts/Norm#LayerNorm|LayerNorm]] 。
+输出 $\mathbf{O}$ 的每一行仍是一个 Token 的向量表示，形状与输入 $\mathbf{X}$ 相同。因此多头注意力的输入输出形状不变，可以直接接[[Transformer-Prerequisites#11. 残差连接|残差连接]]与 [[Norm#LayerNorm|LayerNorm]] 。
 
 对 $B$ 条长度为 $N$ 的序列，整个过程张量形状依次为：
 
