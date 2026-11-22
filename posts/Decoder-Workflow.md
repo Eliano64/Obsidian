@@ -10,131 +10,86 @@ katex: true
 
 # 解码器的任务
 
-[[Encoder-Workflow|编码器]]把输入序列转换成一份可以反复读取的表示 $\mathbf{H}$，形状为 $S\times d_{\text{model}}$。这里 $S$ 是编码器输入序列长度（源序列长度）。$d_{\text{model}}$ 是 token 向量的表示维度数。
+**解码器（Decoder）** 从起始符 `<BOS>` 出发自回归预测词元，每生成一词便追加到前缀末尾预测下一词，直到输出 `<EOS>` 或触及长度上限。记编码器输出的源序列表示矩阵为 $\mathbf{H} \in \mathbb{R}^{S\times d_{\text{model}}}$（$S$ 为源序列长度，$d_{\text{model}}$ 为隐藏维数，详见 [[Encoder-Workflow]]）。
 
-解码器从一个起始 Token `<BOS>` 开始，不断预测下一个 Token。它每生成一个 Token，就把这个 Token 追加到已生成的前缀后面，再预测下一个，直到生成 `<EOS>`。
+原始 Encoder-Decoder 解码器层依次包含**掩码自注意力**、读取 $\mathbf{H}$ 的**交叉注意力**与 **FFN**（现代大模型普遍采用 Pre-RMSNorm 排布，见 [[Encoder-Workflow#Pre-Norm|Pre-Norm]]）；现代 Decoder-Only 大语言模型则省略编码器与交叉注意力，将提示词与生成回复统一视作因果序列。
 
 # 推理
 
-设目标序列总长度为 $T$，当前生成第 $t$ 个 Token，前缀长度为 $t$。第 $t$ 步的输入是已经生成的前缀。前缀经过输出侧 Embedding 与位置编码后，得到解码器表示 $\mathbf{X}_D$，形状为 $t\times d_{\text{model}}$。
-
-解码器的一层依次执行掩码自注意力、交叉注意力、FFN。每个模块后面都跟着 Add & Norm，作用与编码器中完全相同。一层解码器只完成一轮历史理解、编码器信息融合和特征加工；完整的解码器会堆叠多个结构相同的层，每层有自己独立的注意力与 FFN 参数。
+设当前处于第 $t$ 个解码步（已生成前缀长 $t$）。未开启 KV Cache 时，每步须把全部前缀矩阵 $\mathbf{X}_D \in \mathbb{R}^{t\times d_{\text{model}}}$ 重新算一遍；开启 [[Attention-In-Transformer#KV Cache|KV Cache]] 复用历史键值对后，第 $t$ 步仅输入最新词元行向量 $\boldsymbol{x}_t \in \mathbb{R}^{1\times d_{\text{model}}}$。
 
 [html-card height=680](../assets/attention-decoder-steps.html)
 
-推理时每步只取最新位置的一行输出，而不使用整个矩阵。
-
-> [!question] 为什么只用最新一行
-> 注意力按权重汇总前面位置的 Value，因此最新一行的表示融合了整段前缀的信息，生成下一个 Token 只需要这一行。
+推理每步仅提取末层**最新一行**输出用于预测下一词，因为注意力已通过加权求和将整段前缀上下文写入该位置表示中。
 
 ## 掩码自注意力
 
-解码器在生成第 $t$ 个 Token 时，只能读取已经生成的前缀，不能看到未来内容。训练时一次送入完整目标序列，如果不加限制，前面的位置就能直接读到后面的正确答案。
-
-[[Attention-In-Transformer#掩码自注意力|因果掩码]]把匹配分数矩阵的右上三角置为 $-\infty$，第 $i$ 行只允许第 $j\le i$ 列参与 Softmax。这样，训练与推理的可见范围一致。推理时未来 Token 尚未产生，本来就读不到；掩码主要解决训练阶段一次读入完整目标序列时的信息泄露。
-
-[html-card height=680](../assets/decoder-masked-attention-slides.html)
-
+生成第 $t$ 步时不能窥探未来词元；训练期一次读入整条目标序列以及 Decoder-Only 推理的预填充（Prefill）阶段并行处理整段提示词时，必须施加 [[Attention-In-Transformer#掩码自注意力|因果掩码]] 将右上三角（$j > i$）打分置为 $-\infty$。仅在启用 KV Cache 的单步 Decode 阶段，当前查询位于序列末端且只读已缓存历史，因果掩码退化为全放行。
 
 ## 交叉注意力
 
-解码器先由掩码自注意力得到当前前缀的上下文表示 $\mathbf{Z}_T$。交叉注意力用它去读取编码器输出：
+经掩码自注意力得到当前输出前缀表示 $\mathbf{Z}_D \in \mathbb{R}^{t\times d_{\text{model}}}$（训练取目标全长 $T$；Decode 开启 KV Cache 时仅取末行 $\boldsymbol{z}_t \in \mathbb{R}^{1\times d_{\text{model}}}$），交叉注意力以它为查询、以编码器输出 $\mathbf{H}$ 为键和值（$\mathbf{W}_Q,\mathbf{W}_K,\mathbf{W}_V$ 为可学习投影矩阵）：
 
 $$
-\mathbf{Q}=\mathbf{Z}_T\mathbf{W}_Q,\qquad
+\mathbf{Q}=\mathbf{Z}_D\mathbf{W}_Q,\qquad
 \mathbf{K}=\mathbf{H}\mathbf{W}_K,\qquad
 \mathbf{V}=\mathbf{H}\mathbf{W}_V
 $$
 
-其中 $\mathbf{W}_Q$、$\mathbf{W}_K$、$\mathbf{W}_V$ 是可学习投影矩阵。查询来自解码器，键与值来自编码器，这是交叉注意力与自注意力唯一的区别。
-
-编码器输出 $\mathbf{H}$ 的形状为 $S\times d_{\text{model}}$，投影后键与值的行数仍为 $S$。训练时整段目标序列有 $T$ 个位置，查询有 $T$ 行，注意力权重矩阵为 $T\times S$；推理第 $t$ 步只有最新一行查询，权重矩阵为 $1\times S$。
+由于 $\mathbf{H}$ 行数为 $S$，训练期交叉注意力权重矩阵为 $T\times S$，单步推理权重为 $1\times S$（行向量）。
 
 ## 输出分布
 
-解码器最后一层的输出仍是一个 $T\times d_{\text{model}}$ 的矩阵。每个位置是一个 $d_{\text{model}}$ 维向量，但向量的每一维并不直接对应某个 Token。为了预测下一个 Token，线性层只取最后一行的向量，把它映射到词表空间：
+推理时线性分类头仅取解码器末层最后一个位置的行向量 $\boldsymbol{h}_t^{\text{dec}}\in\mathbb{R}^{1\times d_{\text{model}}}$（训练阶段则对 $T\times d_{\text{model}}$ 整矩阵一次右乘并行算出所有步 logits），经词表映射矩阵 $\mathbf{W}_{\text{vocab}}\in\mathbb{R}^{d_{\text{model}}\times |\mathcal{V}|}$（$|\mathcal{V}|$ 为词表大小）得到未归一化得分向量 $\boldsymbol{l}_t\in\mathbb{R}^{1\times|\mathcal{V}|}$：
 
 $$
-\mathbf{z}_T=\mathbf{X}_D\mathbf{W}_{\text{vocab}}
+\boldsymbol{l}_t = \boldsymbol{h}_t^{\text{dec}}\mathbf{W}_{\text{vocab}}, \qquad
+p_i = \frac{\exp(l_i/\tau)}{\sum_{j=1}^{|\mathcal{V}|}\exp(l_j/\tau)}
 $$
 
-其中 $\mathbf{X}_D$ 取最后一行的表示，$\mathbf{W}_{\text{vocab}}\in\mathbb{R}^{d_{\text{model}}\times|\mathcal{V}|}$ 是可学习映射矩阵，$|\mathcal{V}|$ 是词表大小。输出的 $\mathbf{z}_T$ 是词表中每个 Token 的原始分数，称为 logits，**还不是概率**。
+其中 $l_i$ 为 $\boldsymbol{l}_t$ 第 $i$ 个词元原始得分，**温度 $\tau > 0$** 在 Softmax 前缩放 logits 得到分布概率 $p_i$：调高 $\tau$ 使分布平缓增加随机探索，调低 $\tau$ 使高分项更集中。
 
-设第 $i$ 个 Token 的 logit 为 $l_i$。Softmax 把 logits 转换成概率分布。温度参数 $\tau$ 在 Softmax 之前缩放 logits：
-
-$$
-p_i=\frac{\exp(l_i/\tau)}{\sum_{j=1}^{|\mathcal{V}|}\exp(l_j/\tau)}
-$$
-
-> [!example] 温度为 0
-> $\tau=0$ 时取 $\tau\to0^+$ 的极限：最大项 $\exp(l_{\max}/\tau)$ 在分子与分母中占主导，Softmax 收敛为在最大 logit 对应 Token 上取 1、其余取 0 的 one-hot 分布，等价于[[#贪心采样]]。设 $i^\ast=\arg\max_j l_j$，则 $\lim_{\tau\to0^+}p_{i^\ast}=1$，其余 $p_i=0$。
-> 若有多个 Token 并列最大，概率在并列项之间均分。
-> 代码实现使用很小的正数，或直接取最大 logit 的 Token。
-
-$\tau$ 调高时分布更平缓，低概率 Token 也有机会被选中；$\tau$ 调低时分布更尖锐，生成更保守。
+> [!example] 温度极限 $\tau \to 0^+$
+> 当 $\tau\to 0^+$ 时，最大得分项 $i^\ast = \arg\max_j l_j$ 在指数中占据绝对优势，分布收敛为在 $i^\ast$ 上取 $1$ 其余为 $0$ 的 one-hot 分布，等价于[[#贪心采样]]。
 
 [html-card height=620](../assets/decoder-distribution-slides.html)
 
 ## 输出采样
 
-得到概率分布后，还需要决定从哪些候选中、以什么方式选出 Token。不同策略的区别在于候选范围与随机性。
+先按温度 $\tau$ 调整整体概率锐度，再选定采样规则确定候选范围与随机性：
 
 ![三种采样策略|630](../assets/decoder-sampling-diagram.svg)
 
-常使用用温度调整分布，再用 Top-K 或 Top-P 缩小候选并采样。
-
 ### 贪心采样
 
-每步直接取概率最大的 Token。结果确定，不引入随机性。但它只比较当前这一步的候选，不会比较整条序列的联合概率，也不能回退修改已生成的 Token。前面一旦选错，后面只能沿这个前缀继续，因此可能错过整体概率更高的序列，也容易生成重复或过于常见的句子。
+每步直接选取概率最大词元。结果完全确定但无法回溯，早步错选可能导致后续陷入次优或重复循环；翻译等确定性任务常改用保留多分支的束搜索（见 [[Encoder-Decoder-And-Seq2Seq#生成：从 BOS 到 EOS|束搜索]]）。
 
 ### Top-K 采样
 
-从词表中保留概率最高的 $K$ 个候选，记候选集合为 $S$。归一化得到新的概率$q$
-
-$$
-q_i=\frac{p_i}{\sum_{j\in S}p_j},\qquad i\in S
-$$
-
-然后从 $S$ 中**随机**抽一个 Token，该 Token 被抽中的概率正是对应的 $q$ 。显然，概率高的更容易被抽到，但其他候选仍有机会。
-
-分布很集中时，$K$ 可能把低概率 Token 也放进候选。
+从词表按概率从高到低截断保留固定前 $K$ 个词构成候选集 $\mathcal{C}$，按 $q_i = p_i / \sum_{j\in\mathcal{C}} p_j$（$i\in\mathcal{C}$）重归一化后随机抽样；缺点是分布极尖锐时仍会强行纳入低概率词。
 
 ### Top-P 采样
 
-从词表按概率从高到低累加，取累计概率首次达到 $P$ 的最小集合 $S$。$S$ 内的概率同样按上式重归一化，再依概率 $q_i$ 从 $S$ 中随机抽一个 Token。
-
-候选数量随分布动态变化。
+按概率从高到低累加，取累计概率刚达到阈值 $P$ 的最小集合作为 $\mathcal{C}$ 后依重归一化概率 $q_i$ 随机抽样，候选个数随上下文不确定度动态增减。
 
 # 训练
 
-推理与训练的区别集中在可见范围与并行方式：推理逐 Token 生成，训练一次并行预测所有位置。
-
-推理时下一个 Token 尚未产生，各步必须依次进行。训练时正确的目标序列已经存在，可以把整句右移一位当作解码器输入，一次算出 $T$ 个位置的预测。Transformer 消除的是已知序列内部的循环依赖，不是自回归生成的先后顺序。
+训练阶段完整目标序列已知，因此无需像推理那样逐词等待。Transformer 通过错开一位输入一次并行算出全句 $T$ 个位置的预测与交叉熵损失（消除序列内部循环依赖，但自回归推理本身的先后顺序不变）。
 
 ![训练与推理的差别|630](../assets/decoder-training-vs-inference.svg)
 
 ## Teacher Forcing
 
-Teacher Forcing 指训练时把真实目标序列右移一位作为解码器输入：每个位置用真实前缀预测下一个 Token，而不是用模型自己生成的前缀。这样，所有位置可以在一次前向传播中并行计算，不必等前一个 Token 生成。
-
-具体做法是：输入为 `<BOS>` 加上目标序列去掉最后一个 Token，预测目标为目标序列去掉第一个 Token 后加上 `<EOS>`。每个位置都预测它的下一个 Token，并使用[[Attention-In-Transformer#掩码自注意力|因果掩码]]保证位置 $i$ 只读取前 $i$ 个输入位置，不会看到答案。
-
-Teacher Forcing 避免了错误前缀在训练中逐步累积。
-
-损失函数逐位置比较预测分布与正确 Token，通常用交叉熵。
+设纯目标序列为 $y_1,\dots,y_T$：解码器输入在头部拼接 `<BOS>`、目标标签在尾部拼接 `<EOS>`（即完整序列分别错位去尾与去头）。配合 [[Attention-In-Transformer#掩码自注意力|因果掩码]] 保证第 $i$ 位置只能读取自身及之前真实前缀预测第 $i+1$ 词，所有时间步可在单次前向中并行训练并避免早期错误滚雪球累积。
 
 ## 批量与填充
 
-实际实现会同时处理 $B$ 个样本。不同样本长度不同，需要使用 `<PAD>` 补齐到同一长度。补齐的 `<PAD>` 位置不参与损失，也不参与注意力，利用掩码标记：有效 Token 记 1，`<PAD>` 记 0。
+处理批次大小 $B$ 的不等长样本时需用 `<PAD>` 补齐，并将补位位置掩码设 $0$（在进入 Softmax 前转为 $-\infty$），与因果掩码叠加使补位权重与损失贡献归零。下表列出单样本与批量张量形状对照（$S$ 为源长、$T$ 为目标长、$|\mathcal{V}|$ 为词表大小）：
 
-下表列出单个样本与批量处理时的形状，其中 $S$ 是源序列长度，$T$ 是目标序列长度，$\lvert\mathcal{V}\rvert$ 是词表大小，$B$ 是批量大小。
-
-| 数据 | 单个样本 | 批量处理 |
+| 张量对象 | 单个样本形状 | 批量形状（$B$ 样本） |
 | --- | --- | --- |
 | 编码器序列表示 | $S\times d_{\text{model}}$ | $B\times S\times d_{\text{model}}$ |
 | 解码器序列表示 | $T\times d_{\text{model}}$ | $B\times T\times d_{\text{model}}$ |
 | 掩码自注意力权重 | $T\times T$ | $B\times T\times T$ |
 | 交叉注意力权重 | $T\times S$ | $B\times T\times S$ |
-| 线性层输出 | $T\times\lvert\mathcal{V}\rvert$ | $B\times T\times\lvert\mathcal{V}\rvert$ |
-
-
+| 词表线性层输出 | $T\times\lvert\mathcal{V}\rvert$ | $B\times T\times\lvert\mathcal{V}\rvert$ |

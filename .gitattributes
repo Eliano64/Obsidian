@@ -1,0 +1,7 @@
+# keep LF in the repository so Windows checkouts do not show spurious diffs
+* text=auto eol=lf
+
+# # binary assets
+# *.png binary
+# *.jpg binary
+# *.svg binary

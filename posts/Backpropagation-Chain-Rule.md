@@ -3,130 +3,95 @@ title: Backpropagation Chain Rule
 tags:
   - DeepLearning
 categories:
-  - Deep Learning
+  - Artificial Intelligence
 date: 2026-10-26 23:42:25
 katex: true
 ---
 
 # 问题规模
 
-设参数总数为 $P$。一个有 20 万参数的网络，如果用数值差分求梯度，前向差分要对每个参数各做一次前向（共 $P+1$ 次），中心差分要对每个参数做正负两次前向（共 $2P$ 次）。
-
-反向传播把代价压到一次前向加一次反向：从损失出发，逆序遍历计算图，每到一个节点只乘该节点的局部导数，所有参数的梯度一次算出。
+**反向传播（Backpropagation）** 沿计算图从标量损失出发逆序遍历，利用链式法则一次前向加一次反向即可算出网络中全部参数的梯度。设模型总参数数为 $P$（例如 20 万），若用数值差分逐参数扰动求导，前向差分需 $P+1$ 次前向、中心差分需 $2P$ 次前向；反向传播复用共享中间结果，计算量不随参数量呈平方级膨胀。
 
 # 符号约定
 
-先约定符号。$L$ 是标量损失，$Z^{(l)}$、$A^{(l)}$ 分别是第 $l$ 层的预激活与激活；预激活指线性变换的输出，激活指预激活经过激活函数后的结果。
+设 $L$ 为标量损失，$l$ 为网络层序号，$\mathbf{Z}^{(l)}$、$\mathbf{A}^{(l)}$ 分别为第 $l$ 层的预激活矩阵与激活矩阵，$\mathbf{W}^{(l)}$、$\boldsymbol{b}^{(l)}$ 分别为该层的权重矩阵与偏置列向量，$\sigma$ 为逐元素激活函数。下文记梯度张量 $\mathrm{d}\mathbf{A}^{(l)} := \partial L/\partial \mathbf{A}^{(l)}$、$\mathrm{d}\mathbf{Z}^{(l)} := \partial L/\partial \mathbf{Z}^{(l)}$、$\mathrm{d}\mathbf{W}^{(l)} := \partial L/\partial \mathbf{W}^{(l)}$、$\mathrm{d}\boldsymbol{b}^{(l)} := \partial L/\partial \boldsymbol{b}^{(l)}$，每个梯度矩阵与对应原矩阵同形。
 
-下面写的 $\mathrm{d}A^{(l)} := \partial L/\partial A^{(l)}$、$\mathrm{d}Z^{(l)} := \partial L/\partial Z^{(l)}$、$\mathrm{d}W^{(l)} := \partial L/\partial W^{(l)}$ 都是梯度矩阵，与对应的量同形，不是微分形式。
-
-一层的前向计算为：
+单层前向计算写作：
 
 $$
-Z^{(l)} = W^{(l)} A^{(l-1)} + b^{(l)}, \qquad A^{(l)} = \sigma\left(Z^{(l)}\right)
+\mathbf{Z}^{(l)} = \mathbf{W}^{(l)} \mathbf{A}^{(l-1)} + \boldsymbol{b}^{(l)}, \qquad \mathbf{A}^{(l)} = \sigma\left(\mathbf{Z}^{(l)}\right)
 $$
 
-形状约定：$A^{(l)} \in \mathbb{R}^{n_l \times B}$，$W^{(l)} \in \mathbb{R}^{n_l \times n_{l-1}}$，$b^{(l)} \in \mathbb{R}^{n_l \times 1}$，$B$ 是 batch 内样本数。$b^{(l)}$ 沿 batch 维广播；因此反向时，偏置的梯度要在 batch 维上汇总。
+设 $n_l$ 与 $n_{l-1}$ 分别为当前层与前一层的单元数，$B$ 为一个 batch 内的样本数，则形状为 $\mathbf{A}^{(l)} \in \mathbb{R}^{n_l \times B}$、$\mathbf{W}^{(l)} \in \mathbb{R}^{n_l \times n_{l-1}}$、$\boldsymbol{b}^{(l)} \in \mathbb{R}^{n_l \times 1}$（加法时沿 batch 维广播）。普通表格数据与 PyTorch 惯例采用「行是样本数、列是特征数」（$[B, D]$），而本篇推导采用列样本排布 $[n_l, B]$，两者互为转置、数学上完全等价。
 
 # 链式法则与计算图
 
-一元复合函数的链式法则为：
+对一元复合函数 $y(u(x))$，链式法则把总导数拆成局部导数的乘积：
 
 $$
 \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}u} \cdot \frac{\mathrm{d}u}{\mathrm{d}x}
 $$
 
-一个变量被用到多处时，要把每条路径的乘积相加。以 $y = x \cdot x$ 为例，对第一个 $x$ 求偏导得到第二个 $x$，对第二个 $x$ 求偏导得到第一个 $x$，两条相加得 $\mathrm{d}y/\mathrm{d}x = 2x$。
-
-把每一步计算记成节点、把依赖记成边，得到计算图。一个节点的梯度由所有使用该节点的下游分支贡献相加得到，再沿输入方向继续传播。
-
-因此反向传播只需一次遍历，就能得到全部节点与参数的梯度，开销低于逐参数数值差分。
+当一个中间变量在下游被多条分支复用（如 $y = x \cdot x$），总梯度等于所有下游分支传回的梯度贡献**相加**（第一分支贡献 $x$，第二分支贡献 $x$，合计 $2x$）。把算子记作节点、张量依赖记作有向边就构成**计算图**：反向阶段每个节点收集所有下游传来的上游梯度之和，乘以自身的局部偏导，再向各输入边分发。
 
 # 一个可以手算的例子
 
 ## 前向
 
-取一个三层标量网络：输入、权重、中间值与输出都是单个实数，而不是向量或矩阵。输入 $x = 1$，权重 $w_1 = 2$、$w_2 = 3$、$w_3 = -1$，中间用 ReLU，目标值 $t = 0$，损失取 $\tfrac{1}{2}(y-t)^2$。
-
-前向得到 $z_1 = 2$、$a_1 = 2$、$z_2 = 6$、$a_2 = 6$、$y = -6$、$L = 18$。
+构造一个三层标量网络（输入、权重与中间值均为标量）：输入 $x = 1$，权重 $w_1 = 2$、$w_2 = 3$、$w_3 = -1$，前两层使用 ReLU 激活、末层线性输出，目标 $t = 0$，损失取 $L = \frac{1}{2}(y - t)^2$。前向依次算出 $z_1 = 2 \to a_1 = 2 \to z_2 = 6 \to a_2 = 6 \to y = z_3 = -6 \to L = 18$。
 
 ## 反向
 
-反向的初始梯度取 $\mathrm{d}L/\mathrm{d}L=1$。由损失函数的导数得到 $\mathrm{d}L/\mathrm{d}y=y-t=-6$。
+从 $\mathrm{d}L/\mathrm{d}L = 1$ 出发，先求损失对输出导数 $\mathrm{d}L/\mathrm{d}y = y - t = -6$，再沿链逆序把上游梯度乘当前局部导数：
 
-沿链回传时，每个节点把上游梯度乘上该节点的局部导数，再传给下一层。上游梯度指损失对当前节点输出的梯度。按这个顺序逐层计算：
-
-1. 损失对输出：$\mathrm{d}L/\mathrm{d}y = y - t = -6$。
-2. 穿过输出层（线性，局部导数 1）：$\mathrm{d}L/\mathrm{d}z_3 = -6 \times 1 = -6$。
-3. 输出层权重：$\mathrm{d}L/\mathrm{d}w_3 = \mathrm{d}L/\mathrm{d}z_3 \times a_2 = -6 \times 6 = -36$。
-4. 继续向输入方向，乘本层权重：$\mathrm{d}L/\mathrm{d}a_2 = \mathrm{d}L/\mathrm{d}z_3 \times w_3 = -6 \times (-1) = 6$。这里用的是第 2 步缓存的 $\mathrm{d}L/\mathrm{d}z_3$，不是第 3 步算出的 $-36$。
-5. 穿过 ReLU（$z_2 = 6 > 0$，局部导数 1）：$\mathrm{d}L/\mathrm{d}z_2 = 6 \times 1 = 6$，于是 $\mathrm{d}L/\mathrm{d}w_2 = 6 \times a_1 = 6 \times 2 = 12$。
-6. 再向输入方向：$\mathrm{d}L/\mathrm{d}a_1 = \mathrm{d}L/\mathrm{d}z_2 \times w_2 = 6 \times 3 = 18$；穿过 ReLU 得 $\mathrm{d}L/\mathrm{d}z_1 = 18$，于是 $\mathrm{d}L/\mathrm{d}w_1 = 18 \times x = 18$。
+1. **输出层预激活**：线性出力局部导数为 1，$\mathrm{d}L/\mathrm{d}z_3 = -6 \times 1 = -6$。
+2. **输出层权重梯度**：$\mathrm{d}L/\mathrm{d}w_3 = \mathrm{d}L/\mathrm{d}z_3 \times a_2 = -6 \times 6 = -36$。
+3. **传向前一层激活**：复用已缓存的 $\mathrm{d}L/\mathrm{d}z_3$，得 $\mathrm{d}L/\mathrm{d}a_2 = \mathrm{d}L/\mathrm{d}z_3 \times w_3 = -6 \times (-1) = 6$。
+4. **穿过第二层 ReLU**：因 $z_2 = 6 > 0$ 局部导数为 1，$\mathrm{d}L/\mathrm{d}z_2 = 6$，进而 $\mathrm{d}L/\mathrm{d}w_2 = 6 \times a_1 = 12$。
+5. **传到首层**：$\mathrm{d}L/\mathrm{d}a_1 = 6 \times w_2 = 18$；因 $z_1 = 2 > 0$ 得 $\mathrm{d}L/\mathrm{d}z_1 = 18$，故 $\mathrm{d}L/\mathrm{d}w_1 = 18 \times x = 18$。
 
 ## 这个例子的网络图
 
-下图把这个例子画成一条可以逐步检查的计算链。绿色是输入与权重，蓝色框是线性运算（符号式、代入与结果），金色框是 ReLU，紫色是输出 $y = z_3$，红色是损失与目标。
-
-右侧虚线框存着各层的梯度，左侧橙色虚线表示反向传播方向。点“下一步”先看前向的中间量逐个填上，再看反向时每一步用的是哪个上游值、哪个局部因子；权重梯度与其他梯度分开记录，显示在对应权重旁。
+点击下方幻灯片中的“下一步”，先逐步填满前向中间激活，再沿橙色反向虚线观察上游梯度如何与局部因子相乘（权重梯度分开汇总于对应权重旁）：
 
 [html-card height=930](../assets/dl-backprop-graph.html)
 
 # 矩阵形式的三个梯度
 
-把逐项计算写成矩阵，每一层要算三件事：
+记 $\odot$ 为逐元素乘，$\boldsymbol{1} \in \mathbb{R}^{B}$ 为全 1 列向量，第 $l$ 层的反向传播核心完成三项矩阵梯度与一向上游回传：
 
 $$
 \begin{aligned}
-\mathrm{d}Z^{(l)} &= \mathrm{d}A^{(l)} \odot \sigma'\left(Z^{(l)}\right) \\
-\mathrm{d}W^{(l)} &= \mathrm{d}Z^{(l)} \left(A^{(l-1)}\right)^{\top} \\
-\mathrm{d}b^{(l)} &= \mathrm{d}Z^{(l)} \mathbf{1}
+\mathrm{d}\mathbf{Z}^{(l)} &= \mathrm{d}\mathbf{A}^{(l)} \odot \sigma'\left(\mathbf{Z}^{(l)}\right) \\
+\mathrm{d}\mathbf{W}^{(l)} &= \mathrm{d}\mathbf{Z}^{(l)} \left(\mathbf{A}^{(l-1)}\right)^{\top} \\
+\mathrm{d}\boldsymbol{b}^{(l)} &= \mathrm{d}\mathbf{Z}^{(l)} \boldsymbol{1} \\
+\mathrm{d}\mathbf{A}^{(l-1)} &= \left(\mathbf{W}^{(l)}\right)^{\top}\mathrm{d}\mathbf{Z}^{(l)}
 \end{aligned}
 $$
 
-第一式穿过激活，$\odot$ 表示逐元素相乘；第二式与标量例子里“上游梯度乘本层输入”一致；第三式把每个样本的偏置梯度沿 batch 维加起来，$\mathbf{1}$ 是长度为 $B$ 的全 1 向量。
+**转置位置的维度对齐记忆法**：所有梯度张量必须与原张量形状严格一致。已知 $\mathrm{d}\mathbf{Z}^{(l)}$ 为 $[n_l, B]$、$\mathbf{A}^{(l-1)}$ 为 $[n_{l-1}, B]$、$\mathbf{W}^{(l)}$ 为 $[n_l, n_{l-1}]$：要凑出 $\mathrm{d}\mathbf{W}^{(l)}$ 的 $[n_l, n_{l-1}]$ 必须将批维 $B$ 在中间相消，故唯独右乘 $(\mathbf{A}^{(l-1)})^{\top}$；要凑出 $\mathrm{d}\mathbf{A}^{(l-1)}$ 的 $[n_{l-1}, B]$ 必须将输出维 $n_l$ 在中间相消，故唯独左乘 $(\mathbf{W}^{(l)})^{\top}$；而偏置在 batch 上共享，需沿 $B$ 维求和汇总。
 
-反向向输入方向传播时用 $W^{\top}\mathrm{d}Z$，注意转置的位置。
-
-> [!important] 损失归一化与 1/B
->
-> 损失的归一化方式决定梯度里有没有 $1/B$。若损失是 batch 上的平均，$\mathrm{d}Z$ 里已经含了 $1/B$，不要再除一次；若损失是求和，梯度里没有 $1/B$，也不要在更新时补上。
->
-> 梯度取决于所选的目标函数。
+> [!important] 损失归一化与 $1/B$
+> 损失函数采用 batch 平均时，系数 $1/B$ 已自动进入顶层梯度并传遍每一层 $\mathrm{d}\mathbf{Z}^{(l)}$；若损失采用求和则不包含 $1/B$。不要在优化器步骤中重复除以 $B$，梯度定义完全忠实于目标函数。
 
 # 自动微分的记录与释放
 
-自动微分指框架在前向时记录运算、反向时按记录求导的机制。记录运算的条件是：张量带 `requires_grad=True`（该标记表示需要为这个张量计算梯度），且当前处于梯度记录模式（训练循环里默认开启）。
+深度学习框架的**自动微分（Autograd）** 在前向计算中动态搭建计算图：只要张量带 `requires_grad=True` 标记且处于梯度记录上下文中，每次算子调用都会记录输入依赖与对应的反向函数。调用 `loss.backward()` 时按拓扑逆序求导并将梯度累加至各参数 `param.grad`，随后由 `optimizer.step()` 真正更新权重（因此每轮训练前需先 `zero_grad()` 清空旧梯度）。
 
-前向时，带梯度的张量由哪个算子、用什么输入算出，会被记下来。反向时按拓扑逆序遍历这张图，每个算子调用该算子对应的反向函数，把上游梯度乘上局部导数再传给上游。
+计算图在前向结束后仍驻留内存以支撑反向计算，在 `backward()` 完成后立即释放；若需对同一计算图二次求导，必须在首次调用时显式传入 `retain_graph=True`。
 
-`loss.backward()` 执行后，每个参数的梯度写入 `param.grad`；`optimizer.step()` 才真正改参数。
+由于常规做法需把全部 $L$ 层的中间激活留给反向阶段使用，激活显存开销呈 $O(L)$ 增长。**梯度检查点（Gradient / Activation Checkpointing）** 以局部重算换显存：若把 $L$ 层均分为 $K$ 段并仅缓存每段边界激活，前向边界存储占 $O(K)$，反向进入单段重算时需临时缓存段内激活占 $O(L/K)$，总显存开销 $O(K + L/K)$ 由均值不等式在 $K = \sqrt{L}$ 处取得极小值 $O(\sqrt{L})$，代价仅是额外执行约一次前向计算（耗时通常增加约 20% 至 33%）。
 
-计算图不会在前向结束时释放，通常在反向结束之后才释放为反向保存的中间量。如果要对同一个损失再求一次梯度，需在首次调用 `backward()` 时传入 `retain_graph=True` 以保留中间量，否则会报“图已被释放”。
+# 梯度裁剪与数值稳定
 
-中间激活值必须留着供反向使用，所以显存占用与前向保存的激活规模成正比。长序列训练对显存的占用需求随之增加。梯度检查点的做法是在反向时重算部分前向，以少存中间激活、换取更低的显存占用。
+反向传播算出的梯度向量 $\boldsymbol{g} = \nabla_{\boldsymbol{\theta}} L$ 指向参数使损失上升最快的方向；按学习率 $\eta$ 沿负梯度迭代更新的步长选择与自适应优化器详见 [[Gradient-Descent]] 与 [[Learning-Rate-Schedule]]。
 
-# 梯度与学习率
+深层网络（如 RNN 与深层 Transformer）在反向连乘矩阵后容易出现两类数值病态：
 
-梯度是损失对全部参数的偏导组成的向量，在当前参数点指向损失上升最快的方向。按负梯度执行一次参数更新：
+- **梯度爆炸**：雅可比连乘放大造成单步梯度尖峰，容易直接冲飞当前参数。标准防线是更新前执行**全局范数梯度裁剪（Gradient Clipping）**（PyTorch 中为 `torch.nn.utils.clip_grad_norm_`）：统计全网梯度 L2 范数 $\lVert \boldsymbol{g} \rVert_2$，当超过阈值 $c$（大模型预训练常取 $c=1.0$）时按同比例缩回阈值球内，只压缩尖峰幅度、不改变各参数梯度的相对方向：
 
 $$
-\theta \leftarrow \theta - \eta \, \nabla_\theta L
+\boldsymbol{g} \leftarrow \frac{c}{\lVert \boldsymbol{g} \rVert_2} \, \boldsymbol{g} \qquad (\text{当 } \lVert \boldsymbol{g} \rVert_2 > c)
 $$
 
-$\eta$ 是学习率，决定这一步的幅度。沿负梯度更新能否降低损失，取决于步长是否合适。
-
-以 $f(x) = x^2$、从 $x = 3$ 出发为例。梯度是 $2x$，更新式变成 $x \leftarrow x - 2\eta x = (1 - 2\eta)x$，于是 $x_k = 3(1-2\eta)^k$。
-
-- $\eta = 0.1$：因子 $0.8$，序列 $3, 2.4, 1.92, 1.536$，单调收敛。
-- $\eta = 0.5$：因子 $0$，一步到 $0$，这是二次函数上的最优常数步长。
-- $\eta = 0.6$：因子 $-0.2$，序列 $3, -0.6, 0.12, -0.024$，符号来回变，但绝对值下降得比 $\eta = 0.1$ 更快。
-- $\eta = 1.0$：因子 $-1$，在 $3$ 与 $-3$ 之间循环，不收敛。
-- $\eta = 1.2$：因子 $-1.4$，绝对值逐次放大，发散。
-
-在这个二次函数上，震荡不代表收敛更慢：$\eta=0.6$ 的参数符号交替变化，但比 $\eta=0.1$ 更快趋近 0。损失下降要求 $|1-2\eta|<1$，即 $0<\eta<1$；换用其他目标函数，适合的学习率范围也会变化。
-
-学习率调度按训练进度调整步长，自适应优化器还利用梯度统计调整各参数的更新尺度。
-
-梯度消失与爆炸是另一个问题，取决于各层权重和激活导数共同形成的矩阵连乘，幅度还与传播方向有关；仅凭激活导数或权重中的单一因素，不能判断完整梯度。相关量化见 [[Weight-Initialization-And-Variance]] 与 [[Activation-Function-Comparison]]。
-
-参数梯度为零不代表到达最优，也可能是鞍点或平坦区；判断是否收敛要看损失与验证指标，而不是单看梯度范数。
+- **梯度消失**：连乘小于 1 的局部因子导致深层梯度信号趋零，裁剪对此无能为力，必须从结构与尺度源头解决，详见 [[Weight-Initialization-And-Variance]]、[[Activation-Function-Comparison]] 与 [[Norm]]。注意零梯度既可能对应极小值，也可能是鞍点或平坦高原，判断收敛应观察损失曲线与验证指标，不可仅看梯度范数。

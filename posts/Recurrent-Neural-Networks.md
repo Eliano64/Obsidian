@@ -10,60 +10,48 @@ katex: true
 
 # 定长输入与序列依赖
 
-用前馈网络预测下一个词时，可以将固定窗口内的词向量拼接为输入。窗口外的内容不参与预测；扩大窗口又会增加输入维度与参数量，难以直接处理不断增长的前文。
-
-循环神经网络（RNN）用隐藏状态概括已读内容。每读入一个 token，就用当前输入和上一状态更新状态。各步共享参数，因此可以逐步处理不同长度的输入。
+用前馈网络处理语言时，只能把固定窗口内的词向量拼接为定长输入：窗口之外的前文无法访问，而扩大窗口会令输入维度与参数量线性膨胀。**循环神经网络（RNN）** 用隐藏状态概括已读历史，每读入一个词元就用当前输入与上一状态算出新状态，所有时间步共享同一套权重，从而能够逐步处理任意长度的序列。
 
 # 循环结构与形状
 
-符号约定如下。$\boldsymbol{x}_t\in\mathbb{R}^{D}$ 是第 $t$ 个 token 的嵌入向量，$\boldsymbol{h}_t\in\mathbb{R}^{H}$ 是隐藏状态，$D$、$H$ 分别是嵌入维度与隐藏维度，$V$ 是词表大小，$t$ 从 1 到 $T$。$\tanh$ 逐元素作用，把实数压到 $(-1,1)$：
+设序列长度为 $T$，$D$ 为词元嵌入维数，$H$ 为隐藏状态维数。第 $t$ 个词元的嵌入向量为 $\boldsymbol{x}_t \in \mathbb{R}^D$，第 $t$ 步的隐藏状态为 $\boldsymbol{h}_t \in \mathbb{R}^H$（初值 $\boldsymbol{h}_0$ 常取零向量），输入权重 $\mathbf{W}_x \in \mathbb{R}^{H\times D}$、状态转移权重 $\mathbf{W}_h \in \mathbb{R}^{H\times H}$ 与偏置 $\boldsymbol{b} \in \mathbb{R}^H$ 在全体时间步共享，$\tanh$ 逐元素作用于预激活：
 
 $$
-\boldsymbol{h}_t=\tanh(\mathbf{W}_x \boldsymbol{x}_t + \mathbf{W}_h \boldsymbol{h}_{t-1} + \boldsymbol{b})
+\boldsymbol{h}_t = \tanh\left(\mathbf{W}_x \boldsymbol{x}_t + \mathbf{W}_h \boldsymbol{h}_{t-1} + \boldsymbol{b}\right)
 $$
 
-$\mathbf{W}_x\in\mathbb{R}^{H\times D}$、$\mathbf{W}_h\in\mathbb{R}^{H\times H}$、$\boldsymbol{b}\in\mathbb{R}^{H}$，$\boldsymbol{h}_0$ 通常取零向量。同一组权重在所有时间步复用，参数量与句长无关。
-
-$\boldsymbol{h}_t$ 是对已读前缀的摘要：状态把前 $t$ 个 token 的信息压缩进固定维度。
-
-下面的演示用一组可手算的小权重逐步展示状态与下一个词的概率，参数未经训练：
-
-[html-card height=760](../assets/rnn-language-model-slides.html)
-
-[html-card height=780](../assets/rnn-unfolded.html)
-
-
-> [!note] 双向结构
-> 单向的 $\boldsymbol{h}_t$ 只包含 $t$ 及之前的词。需要右侧上下文时用双向结构：两个方向各算一遍，把对应位置的输出拼接。
+> [!note] 单向与双向结构
+> 单向 $\boldsymbol{h}_t$ 只汇总到位置 $t$ 为止的前缀。当任务允许预先读入完整输入（如句子分类或序列标注）时，可采用双向结构分别沿正反方向各算一遍状态并拼接输出（这也是编码器 / BERT 路线的基础）；**自回归生成**因生成第 $t$ 步时尚不存在右侧词元，只能采用单向递推（对应解码器 / GPT 路线）。
 
 # 三类任务的读数位置
 
-编码器逐位置更新状态，任务头决定读哪些位置。表中 logits 指未经 softmax 的分数；$B$ 是批大小，$T$ 是序列长度，$C$ 是类别数，$V$ 是词表大小。
+RNN 按同一套递推公式更新隐藏状态，下游仅因任务头读取的位置不同而区分：语言模型在训练时把输入序列与目标错开一位以逐位置预测下一词（下表中 logits 指未经 Softmax 归一化的类别分数，$B$ 为批大小，$C$ 为分类类别数，$V$ 为词表大小）。
 
-| 任务 | 任务头读哪里 | logits 形状 | 目标 |
+| 任务 | 任务头读数位置 | logits 形状 | 预测目标 |
 | --- | --- | --- | --- |
-| 整段分类 | 末状态 | $(B,C)$ | 每段一个类别 |
-| 序列标注 | 每个位置的 $\boldsymbol{h}_t$ | $(B,T,C)$ | 每个位置一个标签 |
-| 语言模型 | 每个位置的 $\boldsymbol{h}_t$ | $(B,T,V)$ | 下一个词 |
+| 整段分类 | 末位置状态 $\boldsymbol{h}_T$ | $(B, C)$ | 每段序列一个类别 |
+| 序列标注 | 每个位置的 $\boldsymbol{h}_t$ | $(B, T, C)$ | 每个位置一个标签 |
+| 语言模型 | 每个位置的 $\boldsymbol{h}_t$ | $(B, T, V)$ | 下一个词元分布 |
 
-三种用法采用相同的状态递推，按任务选择输出层。语言模型把输入与目标错开一位：输入“顾客 不 喜欢”，对应目标为“不 喜欢 这部”。
+[html-card height=780](../assets/rnn-unfolded.html)
 
 # 时间反向传播与长序列限制
 
 ## 梯度传播
 
-损失在最后一步产生时，梯度要沿时间链回退。标量递推 $h_t=w\,h_{t-1}+x_t$ 最能看清缩放：每回退一步乘一个因子 $w$，回退 $k$ 步就是 $k$ 个因子相乘。$w=0.5$ 时五步之后乘数约为 0.03，$w=1.6$ 时约为 10.5；$\tanh$ 再乘一个不超过 1 的导数 $1-h_t^2$。
+**时间反向传播（BPTT）** 要求将末尾损失沿时间链逆向传回早先步骤。以标量简化递推 $h_t = w\,h_{t-1} + x_t$ 为例，回溯 $k$ 步须连乘 $k$ 次因子 $w$（如 $w=0.5$ 五步缩至约 $0.03$，$w=1.6$ 五步放大至约 $10.5$）。
 
 [html-card height=820](../assets/rnn-bptt-gradient.html)
 
-因子长期小于 1，梯度趋于消失，早期位置收不到更新；因子持续大于 1，梯度随步数增长，训练容易发散。$\tanh$ 在输出接近 $+1$ 或 $-1$ 时导数接近 0，也会削弱回传的梯度。
+推广到向量状态 $\boldsymbol{h}_t \in \mathbb{R}^H$，令 $\operatorname{diag}(1 - \boldsymbol{h}_\tau^2)$ 表示第 $\tau$ 步 $\tanh$ 的局部导数对角矩阵，沿时间回传 $k$ 步产生雅可比矩阵连乘：
 
-梯度消失让长距离依赖难学；门控与注意力分别从保留信息和读取位置两方面缓解。
+$$
+\frac{\partial \boldsymbol{h}_t}{\partial \boldsymbol{h}_{t-k}} = \prod_{\tau = t-k+1}^{t} \operatorname{diag}\left(1 - \boldsymbol{h}_\tau^2\right)\mathbf{W}_h
+$$
 
-## 长序列的困难
+每回溯一步既乘以不超过 $1$ 的 $\tanh'$（激活饱和时趋近 $0$），又重复右乘同一转移矩阵 $\mathbf{W}_h$。当 $\mathbf{W}_h$ 最大奇异值大于 $1$ 时容易发生**梯度爆炸**，可利用 [[Backpropagation-Chain-Rule#梯度裁剪与数值稳定|梯度裁剪]] 抑制尖峰；当连乘因子持续小于 $1$ 时发生**梯度消失**，无法靠裁剪恢复，必须通过 [[LSTM-And-GRU|门控加法通道]] 或 [[Attention|自注意力直连]] 重构传递路径。
 
-时间维仍然串行：$\boldsymbol{h}_t$ 依赖 $\boldsymbol{h}_{t-1}$，同一序列无法一次算出所有位置。
+## 走向 Transformer 的两大动因
 
-状态容量固定：序列越长，同样的维度要概括的内容越多。
-
-门控改善旧信息的保留，注意力让解码一步读取多个编码位置；在循环网络上加注意力并不取消时间递推。
+1. **时间维严格串行**：计算 $\boldsymbol{h}_t$ 必须等待 $\boldsymbol{h}_{t-1}$ 完成，同一条序列内无法跨位置并行，限制了大规模语料训练吞吐量。
+2. **固定维度状态瓶颈**：无论序列多长，全部历史信息都必须不断被新输入重写进同一维度的 $\boldsymbol{h}_t$ 中，远距离细节极易在递推中被覆盖丢失。

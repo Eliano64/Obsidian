@@ -10,104 +10,74 @@ katex: true
 
 # 从序列矩阵开始
 
-设序列长度为 $N$，每个 Token 的表示维数为 $d_{\text{model}}$。[[Word-Embeddings|Embedding]] 把每个 Token 映射成 $d_{\text{model}}$ 维向量，再加上 [[Position-Encoding|位置编码]]，得到序列表示矩阵 $\mathbf{X}^{(0)}$，形状为 $N\times d_{\text{model}}$。矩阵的行对应位置，列对应特征；不同行共享同一组权重。
+设序列长度为 $N$，模型表示维数为 $d_{\text{model}}$。每个词元经 [[Word-Embeddings|词嵌入查表]] 并结合 [[Position-Encoding|位置编码]] 后，按行堆叠成输入序列矩阵 $\mathbf{X}^{(0)} \in \mathbb{R}^{N\times d_{\text{model}}}$：行对应词元位置，列对应特征维数，各位置在各子层间共用权重。
 
 ![编码器一侧的架构|630](../assets/encoder-architecture.svg)
 
-此后在各模块之间传递的，始终是由所有 Token 向量组成的这份矩阵。
-
 # 一层编码器
 
-编码器的一层包含两个子层：多头自注意力，以及逐位置的前馈网络。每个子层都带残差连接与 LayerNorm。自注意力中，查询、键、值都来自同一个 $\mathbf{X}^{(0)}$，因此每个位置都能与整个序列交换信息。这正是自注意力，而不是交叉注意力。
+单层编码器依次包含**多头自注意力**与**逐位置前馈网络（FFN）**两个子层，各子层外配残差连接与层归一化。下文先按原始 Post-Norm 顺序写出张量形态，再在 `Pre-Norm` 一节对比现代深层排布。
 
 ## 自注意力子层
 
-设输入为 $\mathbf{X}^{(0)}$。自注意力先让 Token 之间交换信息：
+多头自注意力在全序列范围内汇总上下文，其输出投影保持形状仍为 $N\times d_{\text{model}}$：
 
 $$
-\mathbf{A}=\operatorname{MultiHeadAttention}(\mathbf{X}^{(0)})
-$$
-
-$\mathbf{A}$ 的形状与 $\mathbf{X}^{(0)}$ 相同，都是 $N\times d_{\text{model}}$；多头注意力的输出投影把各头的拼接结果映射回这个维数。$\mathbf{A}$ 的每一行对应一个查询位置的汇总结果，行数仍是 $N$。
-
-多头注意力的输出投影保证 $\mathbf{A}$ 与 $\mathbf{X}^{(0)}$ 同形状，因此自注意力的输出与子层输入[[Residual-Networks|残差相加]]可以直接进行。再做 [[Norm#LayerNorm|LayerNorm]]。LayerNorm 对每个 Token 的特征维单独归一化，不跨位置。归一化在特征维进行，每个位置各自计算一组均值与方差；缩放和平移参数在所有位置共享。
-
-> [!question] 为什么用 LayerNorm 而不是 BatchNorm
-> BatchNorm 统计同一批次内同一特征维的均值与方差，要求不同样本在相同位置上有对应关系。序列长度不同，不同句子的同一位置没有稳定对应，这种统计方式不适用。LayerNorm 对每个 Token 自己的特征维归一化，不依赖批次中的其他样本，因此适合变长序列。两种归一化的对比见 [[Norm#两种归一化的对比|两种归一化的对比]]。
-
-得到中间表示：
-
-$$
+\mathbf{A}=\operatorname{MultiHeadAttention}(\mathbf{X}^{(0)}), \qquad
 \mathbf{U}=\operatorname{LayerNorm}(\mathbf{X}^{(0)}+\mathbf{A})
 $$
 
+这里 $\mathbf{A}$ 为自注意力输出矩阵，$\mathbf{U}$ 为经 [[Residual-Networks|残差相加]] 与 [[Norm#LayerNorm|LayerNorm]] 归一化后的中间表示。
+
+> [!question] 为什么用 LayerNorm 而不是 BatchNorm
+> BatchNorm 需按样本对齐同一位置并跨批次统计均值方差，但文本长度不一且同位置不对应同一语义；LayerNorm 对单个 Token 自身的 $d_{\text{model}}$ 个特征独立归一化，与批次内其他样本及序列长度无关。
 
 ## 前馈网络子层
 
-然后 [[Transformer-Prerequisites#6. FFN|FFN]] 对每个位置单独做非线性变换：
+前馈网络对 $\mathbf{U}$ 的每一行独立做相同非线性变换（不混合不同位置），再经残差与归一化输出本层结果 $\mathbf{X}^{(1)} \in \mathbb{R}^{N\times d_{\text{model}}}$：
 
 $$
-\mathbf{F}=\operatorname{FFN}(\mathbf{U})
-$$
-
-FFN 的输出再次与它的输入相加，再做 LayerNorm，得到这一层的输出：
-
-$$
+\mathbf{F}=\operatorname{FFN}(\mathbf{U}), \qquad
 \mathbf{X}^{(1)}=\operatorname{LayerNorm}(\mathbf{U}+\mathbf{F})
 $$
 
-这四步的每一步都保持 $N\times d_{\text{model}}$ 的形状。
-
-FFN 不在 Token 之间传递信息，只对每个位置的特征维做非线性变换。所有位置共用同一套参数，输入不同，结果也不同。FFN 对每一行独立计算，行与行之间不混合。
-
-两层线性变换中间夹一次激活：
+记单个位置的行向量为 $\boldsymbol{x}\in\mathbb{R}^{1\times d_{\text{model}}}$，中间扩展维数为 $d_{\text{ff}}$，可学习权重为 $\mathbf{W}_1\in\mathbb{R}^{d_{\text{model}}\times d_{\text{ff}}}$、$\mathbf{W}_2\in\mathbb{R}^{d_{\text{ff}}\times d_{\text{model}}}$，偏置为 $\boldsymbol{b}_1,\boldsymbol{b}_2$，经典 FFN 写为：
 
 $$
-\operatorname{FFN}(\mathbf{x})=\operatorname{ReLU}(\mathbf{x}\mathbf{W}_1+\mathbf{b}_1)\mathbf{W}_2+\mathbf{b}_2
+\operatorname{FFN}(\boldsymbol{x})=\operatorname{ReLU}(\boldsymbol{x}\mathbf{W}_1+\boldsymbol{b}_1)\mathbf{W}_2+\boldsymbol{b}_2
 $$
 
-其中 $\mathbf{W}_1$、$\mathbf{W}_2$ 是可学习矩阵，$\mathbf{b}_1$、$\mathbf{b}_2$ 是偏置向量，ReLU 是逐元素激活函数。第一层把向量从 $d_{\text{model}}$ 升到更大的中间维 $d_{\text{ff}}$，激活后再由第二层降回 $d_{\text{model}}$。序列表示的形状不变。中间维通常是输入的 4 倍；单看参数量，FFN 比同一层的注意力部分更大。
-
-$\mathbf{W}_1$ 的形状是 $d_{\text{model}}\times d_{\text{ff}}$，$\mathbf{W}_2$ 的形状是 $d_{\text{ff}}\times d_{\text{model}}$。取 $d_{\text{ff}}=4d_{\text{model}}$ 时，仅这两个矩阵的参数量约为 $8d_{\text{model}}^2$。$d_{\text{ff}}$ 通常远大于 $d_{\text{model}}$，形成先扩维再压回的结构，增加的是逐位置的非线性变换能力。
+工程常取 $d_{\text{ff}} = 4d_{\text{model}}$（两矩阵参数量约 $8d_{\text{model}}^2$，大于同层注意力模块）。现代大模型常把 ReLU 升级为 GELU 或三矩阵门控 **SwiGLU**（见 [[Activation-Function-Comparison#带小斜率与门控的变体|激活函数变体]]）。
 
 [html-card height=620](../assets/transformer-ffn.html)
 
-## 归一化顺序
+## Pre-Norm
 
-原始 Transformer 采用先相加再归一化的顺序，称为 Post-Norm。后来的实现更多把 LayerNorm 前置到子层之前，子层输入先做 LayerNorm，再进入注意力或 FFN。这种方式被称为 Pre-Norm。Post-Norm 的梯度回传要穿过 LayerNorm，与之相比，Pre-Norm 的残差路径更直接，这样深层模型更容易训练。
+归一化在残差块内的位置有两种排布。记第 $l$ 层输入为 $\mathbf{X}^{(l)}$、子层变换为 $F_l$、层归一化为 $\operatorname{LN}$（现代大模型多替换为 [[Norm#RMSNorm|RMSNorm]]）：
 
-[html-card height=900](../assets/encoder-layer-slides.html)
+$$
+\text{Post-Norm:}\quad \mathbf{X}^{(l+1)} = \operatorname{LN}\left(\mathbf{X}^{(l)} + F_l\left(\mathbf{X}^{(l)}\right)\right), \qquad \text{Pre-Norm:}\quad \mathbf{X}^{(l+1)} = \mathbf{X}^{(l)} + F_l\left(\operatorname{LN}\left(\mathbf{X}^{(l)}\right)\right)
+$$
+
+现代深层模型普遍采用 **Pre-Norm**，原因落在梯度与方差传递机理：
+
+1. **Post-Norm 的梯度衰减**：初始化时主干与分支方差约为 $1$、相加翻倍至 $2$，前向 $\operatorname{LN}$ 除以 $\sqrt{2}$ 拉回尺度；反向传播每跨过主干上一层 $\operatorname{LN}$ 即折减约 $1/\sqrt{2}$，深层顶底梯度失衡，无预热极易发散。
+2. **Pre-Norm 的恒等直通**：$\operatorname{LN}$ 移入分支后展开 $L$ 层得 $\mathbf{X}^{(L)} = \mathbf{X}^{(0)} + \sum_{l=0}^{L-1} F_l(\operatorname{LN}(\mathbf{X}^{(l)}))$，反向对 $\mathbf{X}^{(0)}$ 求导保留单位矩阵 $\mathbf{I}$，梯度直达底层。
+3. **Pre-Norm 的代价与补偿**：主干方差随深度呈 $O(L)$ 增长，离开末层必须补充一层最终归一化；同时深层分支相对更新比例变小，常配合 [[Weight-Initialization-And-Variance#残差网络与 Transformer 的深层初始化|深度缩放初始化]] 控制累加膨胀。
+
+[html-card height=880](../assets/encoder-layer-prenorm-slides.html)
 
 # 多层堆叠与输出 $\mathbf{H}$
 
-一层编码器只更新一次表示。把同样的层堆叠 $L$ 次（层数记作 $L$），上一层的输出成为下一层的输入，每一层都保持 $N\times d_{\text{model}}$ 的形状。堆叠的层结构相同，但参数不共享。层数 $L$ 是超参数；堆叠的作用是让表示逐层更新，浅层与深层可以形成不同层次的表示。原论文的基准配置取 $L=6$、$d_{\text{model}}=512$、$d_{\text{ff}}=2048$、头数 $h=8$；这些数值是超参数，不是固定要求。
-
-编码器不改变序列长度，也不改变表示维数，只更新每一行的内容。所有位置的计算可以并行完成，这也是编码器比循环网络更容易并行训练的原因。层与层之间没有池化或下采样，序列长度不变；输入多长，输出 $\mathbf{H}$ 就有多少行。位置信息在输入端已经加入，后续层沿用同一套位置对应关系。每层只更新每一行的内容，不改变矩阵形状，因此 $\mathbf{H}$ 与 $\mathbf{X}^{(0)}$ 可以直接按行比较。
-
-最后一层的输出记作 $\mathbf{H}$：
-
-$$
-\mathbf{H}=\mathbf{X}^{(L)}\in\mathbb{R}^{N\times d_{\text{model}}}
-$$
-
-$\mathbf{H}$ 与输入 $\mathbf{X}^{(0)}$ 的形状相同，都是 $N\times d_{\text{model}}$。行数 $N$ 等于输入 Token 数，每一行对应一个位置。每一行是一个 $d_{\text{model}}$ 维向量，行与行之间保留位置对应关系。
-
-设下标 $i$ 表示位置序号，$\mathbf{H}$ 的第 $i$ 行 $\mathbf{h}_i$ 对应输入序列的第 $i$ 个位置。这些表示已经不再只描述单个 Token，而是融合了整个输入序列的上下文信息。整句话没有被压缩进一个向量，而是保留每个 Token 各自的上下文表示。可以把 $\mathbf{H}$ 看作编码器留给解码器的记忆：它保留每个输入位置的表示，解码器按需读取。
-
-编码器不使用掩码，每个位置都能看到整个输入序列；解码器的掩码自注意力只能看到当前前缀，两者的可见范围不同。
+堆叠 $L$ 层结构相同但参数独立的编码器后，所有位置完全并行计算，输出仍保持 $N\times d_{\text{model}}$（Post-Norm 取 $\mathbf{H}=\mathbf{X}^{(L)}$；Pre-Norm 取最终归一化结果 $\mathbf{H}=\operatorname{LN}(\mathbf{X}^{(L)})$）。编码器不使用因果掩码，每个有效位置均读取全序列上下文；其第 $i$ 行 $\boldsymbol{h}_i \in \mathbb{R}^{1\times d_{\text{model}}}$ 作为第 $i$ 个源位置的上下文表示保留下来。
 
 ![编码器的多层堆叠与输出 H|630](../assets/encoder-stack.svg)
 
-
-$\mathbf{H}$ 也是解码器 [[Attention-In-Transformer#交叉注意力|交叉注意力]]的键与值来源：
+整条源句不再被压成单一向量，而是由 $\mathbf{H}$ 一次算出交叉注意力的键矩阵与值矩阵（$\mathbf{W}_K,\mathbf{W}_V$ 为可学习投影矩阵）：
 
 $$
 \mathbf{K}=\mathbf{H}\mathbf{W}_K,\qquad
 \mathbf{V}=\mathbf{H}\mathbf{W}_V
 $$
 
-查询由解码器产生。编码器只执行一次，解码器每一步复用同一份 $\mathbf{H}$。解码器每一步用当前查询读取整份 $\mathbf{H}$，读取到的内容再用于预测下一个 Token。$\mathbf{H}$ 与输入同形状，因此解码器可以直接用线性投影得到键和值。
-
-其中 $\mathbf{W}_K$、$\mathbf{W}_V$ 是可学习投影矩阵。投影后的键与值仍按位置排列，行数不变。$\mathbf{H}$ 不参与解码器的自注意力，只作为交叉注意力的键与值来源。交叉注意力的计算见 [[Attention-In-Transformer#交叉注意力|交叉注意力]]。
-
-因此编码器的输出是一份与输入位置一一对应的上下文表示矩阵：第 $i$ 行对应第 $i$ 个输入位置，而不是把所有位置的信息压缩成一个向量。解码器在生成每个 Token 时，都从这份矩阵里读取当前需要的信息。$\mathbf{H}$ 本身不是预测结果，只是编码器对输入序列的表示；预测由解码器完成。
+编码器全程只计算一次 $\mathbf{H}$，供解码器每步按当前查询按需读取（见 [[Attention-In-Transformer#交叉注意力|交叉注意力]]）。

@@ -8,86 +8,63 @@ date: 2026-10-27 23:29:21
 katex: true
 ---
 
-# 时间链上的信息与梯度
+# 门控要解决的问题
 
-循环网络每读一个词就重写一次状态，早期信息要到达后面的位置，必须经过多次矩阵乘法与非线性。反向传播沿同一条链回退，每回退一步乘一个因子；回退 $k$ 步就是 $k$ 个因子相乘，长期小于 1 时梯度趋近 0。
+普通循环网络每读入一个词元就重写一次全部隐藏状态，梯度在 [[Recurrent-Neural-Networks#梯度传播|时间反向传播]] 时不得不连续乘以饱和 $\tanh'$ 与循环权重矩阵 $\mathbf{W}_h$，导致长距离梯度迅速衰减。**LSTM** 与 **GRU** 没有取消时间步递推，而是通过可学习的**门控机制**构造加法更新通道，使旧记忆与梯度得以近似无损地跨时间传递。
 
-LSTM 与 GRU 没有消除时间链，改的是状态更新的路径：让旧信息沿一条不经过复杂变换的直接通道传递。
+# LSTM：细胞状态与加法直接路径
 
-# LSTM：分开存储与输出
-
-## 门与候选
-
-设序列长 $T$，$t$ 是当前步，$\boldsymbol{x}_t\in\mathbb{R}^{D}$ 是第 $t$ 个 token 的嵌入向量，$D$ 是嵌入维度；$\boldsymbol{h}_t\in\mathbb{R}^{H}$ 与 $\boldsymbol{c}_t\in\mathbb{R}^{H}$ 是成对的状态，$H$ 是隐藏维度。把上一步状态与当前输入拼成 $[\boldsymbol{h}_{t-1};\boldsymbol{x}_t]\in\mathbb{R}^{H+D}$，四个线性变换各给出一个 $H$ 维向量。$\sigma$ 指 sigmoid，$\sigma(v)=1/(1+e^{-v})$，逐元素作用：
+**长短期记忆网络（LSTM）** 将状态拆为两条 $H$ 维通道：$\boldsymbol{c}_t \in \mathbb{R}^H$ 为专职跨时间保存长期记忆的**细胞状态**，$\boldsymbol{h}_t \in \mathbb{R}^H$ 为向任务头与下一步门控提供的**隐藏输出**。设 $D$ 为输入嵌入维数，第 $t$ 步输入为 $\boldsymbol{x}_t \in \mathbb{R}^D$，将 $[\boldsymbol{h}_{t-1}; \boldsymbol{x}_t] \in \mathbb{R}^{H+D}$ 送入四组线性投影（权重 $\mathbf{W}_f, \mathbf{W}_i, \mathbf{W}_c, \mathbf{W}_o \in \mathbb{R}^{H\times(H+D)}$，偏置 $\boldsymbol{b}_f, \boldsymbol{b}_i, \boldsymbol{b}_c, \boldsymbol{b}_o \in \mathbb{R}^H$），以逐元素 Sigmoid 函数 $\sigma$ 产生连续比例门控，由 $\tanh$ 生成候选写入向量 $\tilde{\boldsymbol{c}}_t$（记 $\odot$ 为逐元素乘法）：
 
 $$
 \begin{aligned}
-\boldsymbol{f}_t &= \sigma(\mathbf{W}_f [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_f)\\
-\boldsymbol{i}_t &= \sigma(\mathbf{W}_i [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_i)\\
-\tilde{\boldsymbol{c}}_t &= \tanh(\mathbf{W}_c [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_c)\\
-\boldsymbol{o}_t &= \sigma(\mathbf{W}_o [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_o)
+\boldsymbol{f}_t &= \sigma\left(\mathbf{W}_f [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_f\right), &
+\boldsymbol{i}_t &= \sigma\left(\mathbf{W}_i [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_i\right), \\
+\tilde{\boldsymbol{c}}_t &= \tanh\left(\mathbf{W}_c [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_c\right), &
+\boldsymbol{o}_t &= \sigma\left(\mathbf{W}_o [\boldsymbol{h}_{t-1};\boldsymbol{x}_t] + \boldsymbol{b}_o\right)
 \end{aligned}
 $$
 
-状态更新与读出为：
+随后通过加法更新细胞状态，再按输出门缩放出隐藏输出：
 
 $$
-\boldsymbol{c}_t = \boldsymbol{f}_t \odot \boldsymbol{c}_{t-1} + \boldsymbol{i}_t \odot \tilde{\boldsymbol{c}}_t,\qquad \boldsymbol{h}_t = \boldsymbol{o}_t \odot \tanh(\boldsymbol{c}_t)
+\boldsymbol{c}_t = \boldsymbol{f}_t \odot \boldsymbol{c}_{t-1} + \boldsymbol{i}_t \odot \tilde{\boldsymbol{c}}_t, \qquad \boldsymbol{h}_t = \boldsymbol{o}_t \odot \tanh(\boldsymbol{c}_t)
 $$
 
-$\mathbf{W}$ 的形状都是 $H\times(H+D)$，偏置是 $H$ 维向量 $\boldsymbol{b}$，$\odot$ 是逐元素乘法。$\boldsymbol{c}_t$ 与 $\boldsymbol{h}_t$ 是成对的状态：$\boldsymbol{c}$ 负责跨时间保存记忆，$\boldsymbol{h}$ 是这一步交给任务与下一步门计算的表示；两者都是 $H$ 维，不是把两个向量相加。
-
-$\boldsymbol{f}_t$ 是遗忘门，控制旧记忆 $\boldsymbol{c}_{t-1}$ 保留多少；$\boldsymbol{i}_t$ 是输入门，控制写入多少候选；$\boldsymbol{o}_t$ 是输出门，控制从 $\boldsymbol{c}_t$ 读出多少。候选 $\tilde{\boldsymbol{c}}_t$ 由 tanh 生成，取值在 $-1$ 到 1 之间，可正可负。
-
-三个门都经 sigmoid 落在 0 到 1 之间，是连续比例而不是开关；$\boldsymbol{c}_t$ 只经加法更新，不受 tanh 限制，$\boldsymbol{h}_t$ 才是 $\boldsymbol{c}_t$ 经 tanh 后再由输出门缩放的结果。
-
-[html-card height=820](../assets/lstm-cell-slides.html)
+其中**遗忘门 $\boldsymbol{f}_t$** 决定保留多少旧记忆 $\boldsymbol{c}_{t-1}$，**输入门 $\boldsymbol{i}_t$** 控制写入多少候选信息 $\tilde{\boldsymbol{c}}_t$，**输出门 $\boldsymbol{o}_t$** 控制向外部读出多少当前记忆；注意 $\boldsymbol{c}_t$ 本身仅经历加法更新而不被 $\tanh$ 反复压扁。
 
 ## 直接路径
 
-对 $\boldsymbol{c}_{t-1}$ 求导，固定门值与 $\boldsymbol{h}_{t-1}$，只有第一项直接依赖 $\boldsymbol{c}_{t-1}$：
+考察沿细胞状态主通道传播的主导梯度路径（暂固定各门输出与 $\boldsymbol{h}_{t-1}$）：由于加法更新第一项仅乘逐元素遗忘门 $\boldsymbol{f}_t$，相邻两步主通道偏导简化为：
 
 $$
 \frac{\partial \boldsymbol{c}_t}{\partial \boldsymbol{c}_{t-1}} = \operatorname{diag}(\boldsymbol{f}_t)
 $$
 
-沿时间回退 $k$ 步，这条路径的因子是逐维门值连乘。$\boldsymbol{f}$ 接近 1 时，直接路径接近恒等映射，早期状态的信息与梯度更容易穿过；门值小，连乘仍然衰减。完整梯度还包括绕经各门与隐藏状态的路径，直接路径是主要通道，不是全部梯度。
+沿时间回溯 $k$ 步得到 $\prod_{\tau=t-k+1}^{t}\operatorname{diag}(\boldsymbol{f}_\tau)$。与普通 RNN 每步硬乘固定权重 $\mathbf{W}_h$ 不同，遗忘门 $\boldsymbol{f}_\tau \in (0, 1)$ 由上下文动态决定：需要长期保留记忆的维度只需把 $\boldsymbol{f}_\tau$ 学到接近 $1$，即可形成近似恒等直通通道（实践中常将遗忘门偏置 $\boldsymbol{b}_f$ 初始化为正值以防止训练初期遗忘过多）。这种加法直通思想与后续深层网络中的残差连接一脉相承。
 
 [html-card height=820](../assets/lstm-direct-path.html)
 
-# GRU：两个门与一份状态
+# GRU 与两种单元对照
 
-GRU 不再单独维护细胞状态，跨时间信息与对外表示都放在 $\boldsymbol{h}_t$ 中。PyTorch 的实现为：
+**门控循环单元（GRU）** 将细胞状态与隐藏输出合二为一（仅保留 $\boldsymbol{h}_t$），并把三个门精简为两个：
 
-$$
-\begin{aligned}
-\boldsymbol{z}_t &= \sigma(\mathbf{W}_{iz}\boldsymbol{x}_t + \boldsymbol{b}_{iz} + \mathbf{W}_{hz}\boldsymbol{h}_{t-1} + \boldsymbol{b}_{hz})\\
-\boldsymbol{r}_t &= \sigma(\mathbf{W}_{ir}\boldsymbol{x}_t + \boldsymbol{b}_{ir} + \mathbf{W}_{hr}\boldsymbol{h}_{t-1} + \boldsymbol{b}_{hr})\\
-\boldsymbol{n}_t &= \tanh\big(\mathbf{W}_{in}\boldsymbol{x}_t + \boldsymbol{b}_{in} + \boldsymbol{r}_t\odot(\mathbf{W}_{hn}\boldsymbol{h}_{t-1} + \boldsymbol{b}_{hn})\big)\\
-\boldsymbol{h}_t &= (1-\boldsymbol{z}_t)\odot \boldsymbol{n}_t + \boldsymbol{z}_t\odot \boldsymbol{h}_{t-1}
-\end{aligned}
-$$
+- **更新门 $\boldsymbol{z}_t \in (0, 1)^H$**：用互补权重在旧状态与新候选之间做线性插值，即 $\boldsymbol{h}_t = \boldsymbol{z}_t \odot \boldsymbol{h}_{t-1} + (1 - \boldsymbol{z}_t) \odot \boldsymbol{n}_t$（$\boldsymbol{n}_t$ 为候选新状态）。
+- **重置门 $\boldsymbol{r}_t \in (0, 1)^H$**：控制计算候选 $\boldsymbol{n}_t$ 时参考多少上一时刻状态 $\boldsymbol{h}_{t-1}$。
 
-$\mathbf{W}_{iz},\mathbf{W}_{ir},\mathbf{W}_{in}$ 为 $H\times D$，作用于输入；$\mathbf{W}_{hz},\mathbf{W}_{hr},\mathbf{W}_{hn}$ 为 $H\times H$，作用于上一步状态。$\boldsymbol{n}_t$ 是候选新状态，$\boldsymbol{r}_t$ 缩放旧状态在候选中的参与，$\boldsymbol{z}_t$ 是保留旧状态的比例，$1-\boldsymbol{z}_t$ 分配给新候选。
+下表汇总两种门控单元的对应关系：注意二者仅为功能近似而非逐门一一等价（LSTM 的遗忘与输入独立开关可同时趋近 1，而 GRU 由互补系数分配新旧比例），下方卡片演示同一步内的状态更新流转：
 
-[html-card height=820](../assets/gru-cell-slides.html)
-
-> [!note] 另一种书写顺序
-> 有些实现先把 $\boldsymbol{r}_t$ 与 $\boldsymbol{h}_{t-1}$ 逐元素相乘，再与 $\boldsymbol{x}_t$ 拼接后一起投影。两种写法数学上不等价，读别的实现时需要确认。
-
-# 两种单元的对照
-
-| 项目 | LSTM | GRU |
+| 对比维度 | LSTM | GRU |
 | --- | --- | --- |
-| 状态 | $(\boldsymbol{h}_t,\boldsymbol{c}_t)$ 一对 | $\boldsymbol{h}_t$ 一份 |
-| 门 | 遗忘、输入、输出 | 更新、重置 |
-| 更新方式 | 保留与写入相加 | 旧状态与新候选插值 |
-| 每步线性变换 | 4 组 | 3 组 |
-
-对应关系是功能上的，不是逐个门一一对等。LSTM 的遗忘门与输入门是两个独立系数，可以同时接近 1；GRU 的更新门用 $\boldsymbol{z}_t$ 与 $1-\boldsymbol{z}_t$ 两个互补系数分配新旧状态。GRU 的重置门只影响候选的生成方式，保留比例由更新门负责。
+| 状态向量 | $(\boldsymbol{h}_t, \boldsymbol{c}_t)$ 两套状态 | $\boldsymbol{h}_t$ 单一状态 |
+| 门控构成 | 遗忘门、输入门、输出门（独立控制） | 更新门、重置门（互补插值与重置） |
+| 状态更新方式 | 保留项与写入项直接相加 | 旧状态与新候选加权插值 |
+| 每步线性投影组数 | 4 组 | 3 组（参数更省） |
 
 [html-card height=580](../assets/lstm-gru-update.html)
 
+# 门控仍未解决的瓶颈与后续演进
 
-> [!note] 串行与固定状态
-> 时间维仍然串行：$\boldsymbol{h}_t$ 依赖 $\boldsymbol{h}_{t-1}$，同一序列无法一次算出所有位置。状态维度固定：序列越长，同样的维度要概括的内容越多。注意力改变的是可读取的编码位置，循环的时间递推仍在。
+门控单元虽然缓解了长距离梯度消失，但未打破循环结构本身的两道限制：时间维依然严格串行（计算 $\boldsymbol{h}_t$ 仍须等待 $\boldsymbol{h}_{t-1}$，无法并行训练长文本），且单步隐藏状态维度有限，长程记忆依然面临容量竞争。这一局限促使 NLP 架构转向全序列两两直连、可高度并行的 [[Attention|自注意力]] 与 [[Transformer-Architecture|Transformer]]。
+
+在最新长序列架构演化中，**状态空间模型（SSM，如 Mamba）** 保留了固定维度状态的递推骨架，但移除了状态更新主链上的非线性激活使递推满足线性结合律，从而兼具训练阶段的并行扫描能力与推理阶段 $O(1)$ 恒定状态显存开销。

@@ -20,23 +20,21 @@ katex: true
 
 ## 打分、归一化与加权
 
-**打分。** 用当前状态与每个编码状态算一个标量分数：
+**打分。** 用当前解码状态 $\boldsymbol{s}_t \in \mathbb{R}^{d}$ 与每个编码状态 $\boldsymbol{h}_i \in \mathbb{R}^{d}$ 做点积，算出标量相关性得分；将全部 $n$ 个位置的得分排成得分向量 $\boldsymbol{e}_t = \mathbf{H}\boldsymbol{s}_t \in \mathbb{R}^{n}$，其第 $i$ 个分量为：
 
 $$
 e_{t,i} = \boldsymbol{s}_t^{\top}\boldsymbol{h}_i
 $$
 
-点积要求 $\boldsymbol{s}_t$ 与 $\boldsymbol{h}_i$ 维数相同，分数可以是任意实数。
+点积要求 $\boldsymbol{s}_t$ 与 $\boldsymbol{h}_i$ 维数相同。经典序列模型中，Bahdanau 注意力（加性注意力）先将 $[\boldsymbol{s}_t; \boldsymbol{h}_i]$ 拼接后过单层前馈网络打分，能够处理查询与键维数不同的情形；而现代 Transformer 采用的点积注意力可直接利用高效的高度并行矩阵乘法实现，因而成为主流。
 
-**归一化。** 把分数变成一组和为 1 的权重：
+**归一化。** 将整组得分向量 $\boldsymbol{e}_t$ 送入 Softmax，转化为非负且总和为 $1$ 的注意力权重向量 $\boldsymbol{\alpha}_t = \operatorname{softmax}(\boldsymbol{e}_t) \in \mathbb{R}^{n}$，其第 $i$ 个分量为：
 
 $$
 \alpha_{t,i} = \frac{\exp(e_{t,i})}{\sum_{j=1}^{n} \exp(e_{t,j})}
 $$
 
-softmax 逐行作用在 $n$ 个位置上，每个权重都大于 0，只反映分数的相对大小。
-
-**加权求和。** 用权重把编码状态汇总成上下文向量：
+**加权求和。** 用权重向量 $\boldsymbol{\alpha}_t$ 对全部编码位置的状态加权汇总，得到第 $t$ 步的上下文向量 $\boldsymbol{c}_t \in \mathbb{R}^{d}$：
 
 $$
 \boldsymbol{c}_t = \sum_{i=1}^{n} \alpha_{t,i}\boldsymbol{h}_i
@@ -49,7 +47,7 @@ $$
 
 ## 数值示例
 
-演示设定：源句为「我 / 喜欢 / 深度 / 学习」，当前解码步要生成「深度」；为演示直接给定查询 $\boldsymbol{q}=[1,0]$，不取自身行。以下状态与查询都是未训练的演示取值，四个源位置对应四个 2 维状态：
+演示设定：源句为「我 / 喜欢 / 深度 / 学习」，当前解码步要生成「深度」；为演示直接给定查询向量 $\boldsymbol{q}=[1,0]^{\top}$，不取自身行。以下状态与查询都是未训练的演示取值，四个源位置按行排成 2 维状态矩阵 $\mathbf{H} \in \mathbb{R}^{4 \times 2}$：
 
 $$
 \mathbf{H} = \begin{bmatrix}
@@ -58,34 +56,31 @@ $$
 2.5 & 0.3 \\
 0.3 & 2.5
 \end{bmatrix},
-\quad \boldsymbol{h}_1 \leftrightarrow \text{我},\ \boldsymbol{h}_2 \leftrightarrow \text{喜欢},\ \boldsymbol{h}_3 \leftrightarrow \text{深度},\ \boldsymbol{h}_4 \leftrightarrow \text{学习}
+\quad \boldsymbol{h}_1^{\top} \leftrightarrow \text{我},\ \boldsymbol{h}_2^{\top} \leftrightarrow \text{喜欢},\ \boldsymbol{h}_3^{\top} \leftrightarrow \text{深度},\ \boldsymbol{h}_4^{\top} \leftrightarrow \text{学习}
 $$
 
-取查询 $\boldsymbol{q}=[1,0]$，与四行的点积为 $[0.2,0.1,2.5,0.3]$。对四个分数取指数并归一化，得到权重 $\boldsymbol{\alpha}=[0.0770,0.0697,0.7682,0.0851]$，分量之和为 1。
+计算查询与四行的点积得分 $\mathbf{H}\boldsymbol{q} = [0.2,0.1,2.5,0.3]^{\top}$。对四个分数取指数并归一化，得到行向量形式权重 $\boldsymbol{\alpha}^{\top}=[0.0770,0.0697,0.7682,0.0851]$，分量之和为 1。
 
-再乘 $\mathbf{H}$，得上下文向量 $\boldsymbol{c}=[1.9684,0.4649]$。
- 
+用行权重左乘按行排布的状态矩阵，得上下文向量 $\boldsymbol{c}^{\top} = \boldsymbol{\alpha}^{\top}\mathbf{H} = [1.9684,0.4649]$。
 
 > [!tip] PAD
 > 批量计算时短句要补齐，补位符号记作 PAD。掩码标记哪些位置有效；计算时在 softmax 之前把无效位置的分数置为 $-\infty$，再在有效位置上归一化，补齐位置的权重因此为 0。
 
 [html-card height=820](../assets/attention-mechanism-slides.html)
 
-# Q、K、V 的分工
+# Q、K、V
 
-同样的计算可以按角色拆开：查询提出匹配需求，键用于匹配，值参与汇总。
+定义查询 $\mathbf{Q}$ 提出匹配需求，键 $\mathbf{K}$ 用于匹配，值 $\mathbf{V}$ 参与汇总。
 
 查询描述当前位置在更新自身表示时想寻找什么信息；键描述当前位置提供哪些可以参与匹配的特征；值描述匹配成功后真正提供给其他位置的内容。
 
 表中 $n_q$ 是查询位置数，$n_k$ 是被检索的位置数，$d_k$ 与 $d_v$ 分别是键与值的维数。
 
-| 角色 | 作用 | 形状 |
-| --- | --- | --- |
+| 角色              | 作用                                | 形状              |
+| --------------- | --------------------------------- | --------------- |
 | 查询 $\mathbf{Q}$ | 由解码器状态产生（本示例取 $\boldsymbol{s}_t$） | $n_q\times d_k$ |
-| 键 $\mathbf{K}$ | 与查询算分数 | $n_k\times d_k$ |
-| 值 $\mathbf{V}$ | 按权重汇总的内容 | $n_k\times d_v$ |
-
-本篇的点积版本把键与值都取成 $\mathbf{H}$，即 $\mathbf{K}=\mathbf{V}=\mathbf{H}$，数值上相同、作用不同。
+| 键 $\mathbf{K}$  | 与查询算分数                            | $n_k\times d_k$ |
+| 值 $\mathbf{V}$  | 按权重汇总的内容                          | $n_k\times d_v$ |
 
 一般形式下三者各自经过一个可学习投影：
 
@@ -99,38 +94,39 @@ $$
 
 分数矩阵 $\mathbf{QK^{\top}}$ 的形状是 $n_q\times n_k$，softmax 按每行的 $n_k$ 个候选归一化，再乘 $\mathbf{V}$ 得到 $n_q\times d_v$ 的输出。
 
-编码器-解码器注意力是跨序列的：查询来自解码器，键与值来自编码器。三个输入都来自同一条序列时 $n_q=n_k=n$，每个位置既发起查询也提供内容，这种机制称为自注意力（self-attention）。计算公式相同，区别在输入的来源。
-
 > [!note] 软对齐
 > 把各解码步的权重按行排开，行对应目标词，列对应源位置，可以看到一个目标词同时参考多个源位置。这种对应称为软对齐（soft alignment），不要求一对一；最大权重的位置不保证是语言学上的对应词，权重高也不等于对输出贡献大。
 
-
 # 从点积注意力到 Transformer
 
-## 缩放
+## 缩放点积注意力
 
-若各分量独立、均值为 0、方差为 1，点积 $\mathbf{QK^{\top}}$ 的方差随 $d_k$ 增大，分数幅度随之变大，softmax 容易过于集中。常见的处理是除以 $\sqrt{d_k}$：
+点积分数直接送入 Softmax 在维度较大时会引发梯度消失。设查询向量 $\boldsymbol{q}\in\mathbb{R}^{d_k}$ 与键向量 $\boldsymbol{k}\in\mathbb{R}^{d_k}$ 的各分量独立、零均值、单位方差，则点积 $z = \boldsymbol{q}^{\top}\boldsymbol{k} = \sum_{i=1}^{d_k} q_i k_i$ 的均值为 $0$，方差随维度线性增长：
 
 $$
-\text{scores} = \frac{\mathbf{QK^{\top}}}{\sqrt{d_k}}
+\operatorname{Var}(z) = \sum_{i=1}^{d_k}\operatorname{Var}(q_i k_i) = d_k
 $$
 
-缩放之后，后续的归一化与加权求和不变。
+$d_k$ 较大时点积幅值显著拉大，经指数函数放大后，Softmax 输出几乎全部集中在最大分数位置（接近 $1$，其余接近 $0$）。此时任意输出分量的导数 $p_i(1-p_i)$ 与 $-p_i p_j$ 均趋近 $0$（$p_i$ 为第 $i$ 个位置权重），注意力梯度随之消失。
+
+将分数除以 $\sqrt{d_k}$ 后，点积方差拉回 $1$（不再随 $d_k$ 膨胀），使 Softmax 维持在梯度畅通的区间：
+
+$$
+\operatorname{Attention}(\mathbf{Q},\mathbf{K},\mathbf{V})=\operatorname{softmax}\left(\frac{\mathbf{QK^{\top}}}{\sqrt{d_k}}\right)\mathbf{V}
+$$
 
 [html-card height=430](../assets/attention-score-variance.html)
 
 ## 位置信息
 
-没有位置编码、也没有额外掩码的自注意力只比较向量相似度，不含顺序信息：打乱输入序列，输出按同样的顺序重排。要区分“第 3 个词”与“第 4 个词”，必须另外提供位置信息。
+无掩码自注意力只比较向量内容相似度，满足**置换等变性**：对输入序列矩阵 $\mathbf{X}$ 乘任意行置换矩阵 $\mathbf{P}$，输出也只作相同重排：
+
+$$
+\operatorname{SelfAttention}(\mathbf{P}\mathbf{X}) = \mathbf{P}\operatorname{SelfAttention}(\mathbf{X})
+$$
+
+词序被打乱后各词的新表示数值不变，模型无法区分“狗咬人”和“人咬狗”，因此必须额外注入[[Position-Encoding|位置信息]]。
 
 [html-card height=820](../assets/attention-position-scramble.html)
 
-## 并行的边界
-
-Transformer 的编码器在整段输入已知时可以并行：所有位置的查询、键、值同时算出。解码器训练时也一次送入右移后的真实前缀，用因果掩码把每个位置可看的范围限制在当前位置及之前，未来的 token 不参与计算。
-
-推理逐 token 进行，第 $t$ 步的查询依赖已经生成的前缀，只能一步接一步算。
-
-注意力加到循环网络上时，递推仍在，教师强制一次送整段也不改变状态更新的顺序；Transformer 用自注意力替代递推，才得到按位置并行的训练。完整模型还包含前馈网络、残差连接、层归一化与位置编码。
-
-
+关于上述机制如何在编码器与解码器中落地为自注意力、掩码自注意力与交叉注意力，见 [[Attention-In-Transformer]]。
